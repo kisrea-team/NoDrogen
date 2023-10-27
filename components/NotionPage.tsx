@@ -1,14 +1,18 @@
+"use client"
+
 import * as React from 'react'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 // import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
+
 
 import { ExtendedRecordMap } from 'notion-types'
 import { getPageTitle } from 'notion-utils'
 import { NotionRenderer } from 'react-notion-x'
 import TweetEmbed from 'react-tweet-embed'
+import 'react-notion-x/src/styles.css'
 
 import { Loading } from './Loading'
 
@@ -63,12 +67,12 @@ const Collection = dynamic(() =>
 const Equation = dynamic(() =>
   import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
 )
-const Pdf = dynamic(
-  () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
-  {
-    ssr: false
-  }
-)
+// const Pdf = dynamic(
+//   () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
+//   {
+//     ssr: false
+//   }
+// )
 const Modal = dynamic(
   () => import('react-notion-x/build/third-party/modal').then((m) => m.Modal),
   {
@@ -159,7 +163,7 @@ export const NotionPage = ({
           Code,
           Collection,
           Equation,
-          Pdf,
+         // Pdf,
           Modal,
           Tweet
         }}
