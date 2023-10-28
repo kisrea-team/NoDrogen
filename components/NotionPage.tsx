@@ -16,6 +16,14 @@ import 'react-notion-x/src/styles.css'
 
 import { Loading } from './Loading'
 
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: <Loading></Loading>
+  };
+}
+
+
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
@@ -97,9 +105,7 @@ export const NotionPage = ({
 }) => {
   const router = useRouter()
 
-  if (router.isFallback) {
-    return <Loading />
-  }
+  
 
   if (!recordMap) {
     return null

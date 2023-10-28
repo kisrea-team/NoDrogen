@@ -1,14 +1,6 @@
 import * as React from 'react'
-import { ExtendedRecordMap } from 'notion-types'
-import * as notion from '../lib/notion'
 import { NotionPage } from '../components/NotionPage'
-import { NotionAPI } from "notion-client";
-
-import {
-  previewImagesEnabled,
-  rootDomain,
-  rootNotionPageId
-} from '../lib/config'
+import { NotionAPI } from "notion-client"
 
 
 
