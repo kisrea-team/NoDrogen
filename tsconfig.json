@@ -5,7 +5,8 @@
       "dom",
       "esnext"
     ],
-    "allowJs": false,
+    "allowJs": true,
+    "suppressImplicitAnyIndexErrors":true,
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,

@@ -1,110 +1,89 @@
+//import { config as BLOG } from '@/lib/server/config'
 
 import { idToUuid } from 'notion-utils'
+
+import getAllPageIds from './getAllPageIds'
+import getPageProperties from './getPageProperties'
+import filterPublishedPosts from './filterPublishedPosts'
 import { NotionAPI } from 'notion-client'
+import dayjs, { Dayjs } from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import isBetween from 'dayjs/plugin/isBetween';
+import isYesterday from 'dayjs/plugin/isYesterday';
+import isToday from 'dayjs/plugin/isToday';
+import isTomorrow from 'dayjs/plugin/isTomorrow';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/en';
 
-export async function getPageWithRetry(id, from, retryAttempts = 3) {
-  if (retryAttempts && retryAttempts > 0) {
-    console.log('[请求API]', `from:${from}`, `id:${id}`, retryAttempts < 3 ? `剩余重试次数:${retryAttempts}` : '')
-    try {
-      const authToken = ''
-      const api = new NotionAPI({ authToken, userTimeZone: Intl.DateTimeFormat().resolvedOptions().timeZone })
-      const pageData = await api.getPage(id)
-      console.info('[响应成功]:', `from:${from}`)
-      return pageData
-    } catch (e) {
-      console.warn('[响应异常]:', e)
-      
-      return await getPageWithRetry(id, from, retryAttempts - 1)
-    }
-  } else {
-    console.error('[请求失败]:', `from:${from}`, `id:${id}`)
-    return null
-  }
-}
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(localizedFormat);
+dayjs.extend(advancedFormat);
+dayjs.extend(customParseFormat);
+dayjs.extend(isBetween);
+dayjs.extend(isYesterday);
+dayjs.extend(isToday);
+dayjs.extend(isTomorrow);
+dayjs.extend(relativeTime);
 
-export default function getAllPageIds (collectionQuery, collectionId, collectionView, viewIds) {
-  if (!collectionQuery && !collectionView) {
-    return []
-  }
-  let pageIds = []
-  if (collectionQuery && Object.values(collectionQuery).length > 0) {
-    const pageSet = new Set()
-    Object.values(collectionQuery[collectionId]).forEach(view => {
-      view?.blockIds?.forEach(id => pageSet.add(id)) // group视图
-      view?.collection_group_results?.blockIds?.forEach(id => pageSet.add(id)) // table视图
-    })
-    pageIds = [...pageSet]
-    // console.log('PageIds: 从collectionQuery获取', collectionQuery, pageIds.length)
-  } else if (viewIds && viewIds.length > 0) {
-    const ids = collectionView[viewIds[0]].value.page_sort
-    // console.log('PageIds: 从viewId获取', viewIds)
-    for (const id of ids) {
-      pageIds.push(id)
-    }
-  }
-  return pageIds
-}
+dayjs.locale('en');
 
-export async function getPostBlocks(id, from) {
+const { NOTION_ACCESS_TOKEN } = process.env
 
-  const start = new Date().getTime()
-  const pageBlock = await getPageWithRetry(id, from)
-  const end = new Date().getTime()
-  console.log('[API耗时]', `${end - start}ms`)
+const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN })
+/**
+ * @param {{ includePages: boolean }} - false: posts only / true: include pages
+ */
+export async function getAllPosts ({ includePages = false }) {
+  const id = idToUuid("1ac8cfb2dde44bbc8f6ed18d2acb1e3b")
 
- 
-  return pageBlock
-}
+  const response = await client.getPage(id)
 
-async function getDataBaseInfoByNotionAPI({ pageId, from }) {
-  const pageRecordMap = await getPostBlocks(pageId, from)
-  if (!pageRecordMap) {
-    console.error('can`t get Notion Data ; Which id is: ', pageId)
-    return {}
-  }
-  pageId = idToUuid(pageId)
-  const block = pageRecordMap.block || {}
-  const rawMetadata = block[pageId]?.value
-  // Check Type Page-Database和Inline-Database
-  if (
-    rawMetadata?.type !== 'collection_view_page' && rawMetadata?.type !== 'collection_view'
-  ) {
-    console.error(`pageId "${pageId}" is not a database`)
-    return ''
-  }
-  const collection = Object.values(pageRecordMap.collection)[0]?.value || {}
-  //const siteInfo = getSiteInfo({ collection, block })
-  const collectionId = rawMetadata?.collection_id
-  const collectionQuery = pageRecordMap.collection_query
-  const collectionView = pageRecordMap.collection_view
+  const collection = Object.values(response.collection)[0]?.['value']
+  const collectionQuery = response.collection_query
+  const block = response.block
   const schema = collection?.schema
 
-  const viewIds = rawMetadata?.view_ids
-  const collectionData = []
-  const pageIds = getAllPageIds(collectionQuery, collectionId, collectionView, viewIds)
-  if (pageIds?.length === 0) {
-    console.error('获取到的文章列表为空，请检查notion模板', collectionQuery, collection, collectionView, viewIds, pageRecordMap)
-  }
-  for (let i = 0; i < pageIds.length; i++) {
-    const id = pageIds[i]
-    const value = block[id]?.value
-    if (!value) {
-      continue
+  const rawMetadata = block[id].value
+
+  // Check Type
+  if (
+    rawMetadata?.type !== 'collection_view_page' &&
+    rawMetadata?.type !== 'collection_view'
+  ) {
+    console.log(`pageId "${id}" is not a database`)
+    return null
+  } else {
+    // Construct Data
+    const pageIds = getAllPageIds(collectionQuery)
+    const data = []
+    for (let i = 0; i < pageIds.length; i++) {
+      const id = pageIds[i]
+      const properties = (await getPageProperties(id, block, schema)) || null
+
+      // Add fullwidth to properties
+      properties['fullWidth'] = block[id].value?.format?.page_full_width ?? false
+      // Convert date (with timezone) to unix milliseconds timestamp
+      properties['date'] = (
+        properties['date']?.start_date
+          ? dayjs.tz(properties['date']?.start_date)
+          : dayjs(block[id].value?.created_time)
+      ).valueOf()
+
+      data.push(properties)
     }
-    // const properties = (await getPageProperties(id, block, schema, null, getTagOptions(schema))) || null
-    // if (properties) {
-    //   collectionData.push(properties)
+
+    // remove all the the items doesn't meet requirements
+    const posts = filterPublishedPosts({ posts: data, includePages })
+
+    // // Sort by date
+    // if (BLOG.sortByDate) {
+    //   posts.sort((a, b) => b.date - a.date)
     // }
+    return posts
   }
-
-  // 文章计数
-  let postCount = 0
-  // 查找所有的Post和Page
-  const allPages = collectionData.filter(post => {
-    if (post.status === 'Published') {
-      postCount++
-    }
-    return post?.status === 'Published'
-  })
-
 }
