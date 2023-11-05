@@ -10,13 +10,13 @@ export default async function Home() {
 
     const notion = new NotionAPI();
   
-    const recordMap = await notion.getPage("4f51a601c1b14a23b5bc7737efcfee6b");
-    const posts = await getAllPosts({ includePages: true })
+    // const recordMap = await notion.getPage("4f51a601c1b14a23b5bc7737efcfee6b");
+    const posts = await getAllPosts({ includePages: false })
 
     console.log(posts)
     return (
       <main>
-        <NotionPage recordMap={recordMap} />
+        {/* <NotionPage recordMap={recordMap} /> */}
       </main>
     );
   }

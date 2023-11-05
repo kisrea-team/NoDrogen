@@ -11,16 +11,6 @@ exports.id = "vendor-chunks/is-url-superb";
 exports.ids = ["vendor-chunks/is-url-superb"];
 exports.modules = {
 
-/***/ "(ssr)/./node_modules/is-url-superb/index.js":
-/*!*********************************************!*\
-  !*** ./node_modules/is-url-superb/index.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ isUrl)\n/* harmony export */ });\nfunction isUrl(string, {lenient = false} = {}) {\n\tif (typeof string !== 'string') {\n\t\tthrow new TypeError('Expected a string');\n\t}\n\n\tstring = string.trim();\n\tif (string.includes(' ')) {\n\t\treturn false;\n\t}\n\n\ttry {\n\t\tnew URL(string); // eslint-disable-line no-new\n\t\treturn true;\n\t} catch {\n\t\tif (lenient) {\n\t\t\treturn isUrl(`https://${string}`);\n\t\t}\n\n\t\treturn false;\n\t}\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvaXMtdXJsLXN1cGVyYi9pbmRleC5qcyIsIm1hcHBpbmdzIjoiOzs7O0FBQWUsd0JBQXdCLGlCQUFpQixJQUFJO0FBQzVEO0FBQ0E7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBLG1CQUFtQjtBQUNuQjtBQUNBLEdBQUc7QUFDSDtBQUNBLDJCQUEyQixPQUFPO0FBQ2xDOztBQUVBO0FBQ0E7QUFDQSIsInNvdXJjZXMiOlsid2VicGFjazovL25vdGlvbi14LWV4YW1wbGUtZnVsbC8uL25vZGVfbW9kdWxlcy9pcy11cmwtc3VwZXJiL2luZGV4LmpzPzBiNjgiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gaXNVcmwoc3RyaW5nLCB7bGVuaWVudCA9IGZhbHNlfSA9IHt9KSB7XG5cdGlmICh0eXBlb2Ygc3RyaW5nICE9PSAnc3RyaW5nJykge1xuXHRcdHRocm93IG5ldyBUeXBlRXJyb3IoJ0V4cGVjdGVkIGEgc3RyaW5nJyk7XG5cdH1cblxuXHRzdHJpbmcgPSBzdHJpbmcudHJpbSgpO1xuXHRpZiAoc3RyaW5nLmluY2x1ZGVzKCcgJykpIHtcblx0XHRyZXR1cm4gZmFsc2U7XG5cdH1cblxuXHR0cnkge1xuXHRcdG5ldyBVUkwoc3RyaW5nKTsgLy8gZXNsaW50LWRpc2FibGUtbGluZSBuby1uZXdcblx0XHRyZXR1cm4gdHJ1ZTtcblx0fSBjYXRjaCB7XG5cdFx0aWYgKGxlbmllbnQpIHtcblx0XHRcdHJldHVybiBpc1VybChgaHR0cHM6Ly8ke3N0cmluZ31gKTtcblx0XHR9XG5cblx0XHRyZXR1cm4gZmFsc2U7XG5cdH1cbn1cbiJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/is-url-superb/index.js\n");
-
-/***/ }),
-
 /***/ "(rsc)/./node_modules/is-url-superb/index.js":
 /*!*********************************************!*\
   !*** ./node_modules/is-url-superb/index.js ***!

@@ -4,9 +4,8 @@ import { idToUuid } from 'notion-utils'
 
 import getAllPageIds from './getAllPageIds'
 import getPageProperties from './getPageProperties'
-import filterPublishedPosts from './filterPublishedPosts'
 import { NotionAPI } from 'notion-client'
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
@@ -78,12 +77,11 @@ export async function getAllPosts ({ includePages = false }) {
     }
 
     // remove all the the items doesn't meet requirements
-    const posts = filterPublishedPosts({ posts: data, includePages })
 
     // // Sort by date
     // if (BLOG.sortByDate) {
     //   posts.sort((a, b) => b.date - a.date)
     // }
-    return posts
+    return data
   }
 }
