@@ -4,7 +4,10 @@ import { NotionAPI } from 'notion-client'
 const { NOTION_ACCESS_TOKEN } = process.env
 
 const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN })
-
+/*
+获取页面属性
+block、schema是整体的
+*/
 async function getPageProperties (id, block, schema) {
   const rawProperties = Object.entries(block?.[id]?.value?.properties || [])
   const excludeProperties = ['date', 'select', 'multi_select', 'person']

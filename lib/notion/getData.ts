@@ -1,35 +1,21 @@
 //import { config as BLOG } from '@/lib/server/config'
-
+import { NotionAPI } from 'notion-client'
 import { idToUuid } from 'notion-utils'
 
 import getAllPageIds from './getAllPageIds'
 import getPageProperties from './getPageProperties'
-import { NotionAPI } from 'notion-client'
+//自开发库
+
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import isBetween from 'dayjs/plugin/isBetween';
-import isYesterday from 'dayjs/plugin/isYesterday';
-import isToday from 'dayjs/plugin/isToday';
-import isTomorrow from 'dayjs/plugin/isTomorrow';
-import relativeTime from 'dayjs/plugin/relativeTime';
+
 import 'dayjs/locale/en';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
-dayjs.extend(localizedFormat);
-dayjs.extend(advancedFormat);
-dayjs.extend(customParseFormat);
-dayjs.extend(isBetween);
-dayjs.extend(isYesterday);
-dayjs.extend(isToday);
-dayjs.extend(isTomorrow);
-dayjs.extend(relativeTime);
-
 dayjs.locale('en');
+//截至
 
 const { NOTION_ACCESS_TOKEN } = process.env
 
@@ -41,14 +27,14 @@ export async function getAllPosts ({ includePages = false }) {
   const id = idToUuid("1ac8cfb2dde44bbc8f6ed18d2acb1e3b")
 
   const response = await client.getPage(id)
-
+//获取page块的信息
   const collection = Object.values(response.collection)[0]?.['value']
+//获取page数据集的第一个id的value内容
   const collectionQuery = response.collection_query
   const block = response.block
   const schema = collection?.schema
-
   const rawMetadata = block[id].value
-
+//获取本身的rawMetadata
   // Check Type
   if (
     rawMetadata?.type !== 'collection_view_page' &&
@@ -56,24 +42,29 @@ export async function getAllPosts ({ includePages = false }) {
   ) {
     console.log(`pageId "${id}" is not a database`)
     return null
+    //如果这个块不是视图则返回错误
   } else {
-    // Construct Data
+    // 构造数据
     const pageIds = getAllPageIds(collectionQuery)
+    //获取所有page的id（yy）
     const data = []
+    //遍历所有的page
     for (let i = 0; i < pageIds.length; i++) {
       const id = pageIds[i]
       const properties = (await getPageProperties(id, block, schema)) || null
-
+      //获取单个页面的属性
       // Add fullwidth to properties
       properties['fullWidth'] = block[id].value?.format?.page_full_width ?? false
+      //设置页面格式的属性
       // Convert date (with timezone) to unix milliseconds timestamp
       properties['date'] = (
         properties['date']?.start_date
-          ? dayjs.tz(properties['date']?.start_date)
+          ? dayjs.tz(properties['date']?.start_date) 
           : dayjs(block[id].value?.created_time)
       ).valueOf()
-
+//属性里有起始时间就转换时区，没有就获取block的时间
       data.push(properties)
+      //把页面的属性推给data
     }
 
     // remove all the the items doesn't meet requirements

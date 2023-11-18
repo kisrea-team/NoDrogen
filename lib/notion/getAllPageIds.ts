@@ -2,6 +2,7 @@ import { idToUuid } from 'notion-utils'
 
 export default function getAllPageIds (collectionQuery, viewId?:any) {
   const views = Object.values(collectionQuery)[0] as any
+  
   let pageIds = []
   if (viewId) {
     const vId = idToUuid(viewId)
