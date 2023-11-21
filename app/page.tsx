@@ -3,8 +3,6 @@ import { NotionPage } from '../components/NotionPage'
 import { NotionAPI } from "notion-client"
 import { getAllPosts } from '../lib/notion/getData'
 
-import 'react-notion-x/src/styles.css'
-import '../styles/globals.css'//引用样式
 
 import Head from '../components/Head'
 
@@ -22,8 +20,6 @@ export default async function Home() {
    return (
       <main>
          {/* <NotionPage recordMap={recordMap} /> */}
-         {/* <h1>{posts[0].title}</h1> */}
-         <h1 className='text-center text-4xl font-bold'>{posts.length}</h1>
          <Head/>
       </main>
    );
