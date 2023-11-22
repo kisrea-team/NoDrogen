@@ -13,9 +13,9 @@ export default async function Home() {
 
    // const recordMap = await notion.getPage("4f51a601c1b14a23b5bc7737efcfee6b");
    const recordMap  = await notion.getPage("1ac8cfb2dde44bbc8f6ed18d2acb1e3b");
-   const posts = await getAllPosts({ includePages: false })
+   const posts = await getAllPosts(1)
 
-   console.log(posts)
+   console.log(posts.name)
    
    return (
       <main>
