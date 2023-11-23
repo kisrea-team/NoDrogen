@@ -180,11 +180,7 @@
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-<<<<<<< HEAD
-/******/ 		__webpack_require__.h = function() { return "cf5138814c905e46"; }
-=======
 /******/ 		__webpack_require__.h = function() { return "f4fcb472263d5553"; }
->>>>>>> fb7090a (view 基本信息)
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

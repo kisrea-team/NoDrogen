@@ -8,10 +8,6 @@
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-<<<<<<< HEAD
-      "static/css/app/layout.css",
-=======
->>>>>>> fb7090a (view 基本信息)
       "static/chunks/app/layout.js"
     ]
   }
