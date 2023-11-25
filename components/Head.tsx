@@ -9,5 +9,5 @@ const Head = async () => {
          <h1 className='text-center text-4xl font-bold'>{posts.length}</h1>
       </div>
    )
-}
+} 
 export default Head;

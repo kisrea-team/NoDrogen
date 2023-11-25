@@ -6,7 +6,7 @@
       "esnext"
     ],
     "allowJs": true,
-    "suppressImplicitAnyIndexErrors":true,
+   //  "suppressImplicitAnyIndexErrors":true,
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
