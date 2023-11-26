@@ -16,12 +16,12 @@ export default async function Home() {
    const posts = await getAllPosts(1)
 
    console.log(posts)
-   console.log(posts.name)
+   console.log(posts['name'])
    
    return (
       <main>
          {/* <NotionPage recordMap={recordMap} /> */}
-         <h1>{posts[1].name}</h1>
+         <h1>{posts['name']}</h1>
          <Head/>
       </main>
    );
