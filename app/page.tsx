@@ -15,11 +15,13 @@ export default async function Home() {
    const recordMap  = await notion.getPage("1ac8cfb2dde44bbc8f6ed18d2acb1e3b");
    const posts = await getAllPosts(1)
 
+   console.log(posts)
    console.log(posts.name)
    
    return (
       <main>
          {/* <NotionPage recordMap={recordMap} /> */}
+         <h1>{posts[1].name}</h1>
          <Head/>
       </main>
    );
