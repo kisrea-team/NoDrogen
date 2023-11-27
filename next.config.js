@@ -14,7 +14,8 @@ module.exports = withBundleAnalyzer({
       'notion.so',
       'images.unsplash.com',
       'pbs.twimg.com',
-      's3.us-west-2.amazonaws.com'
+      's3.us-west-2.amazonaws.com',
+      'prod-files-secure.s3.us-west-2.amazonaws.com'
     ],
     formats: ['image/avif', 'image/webp']
   },

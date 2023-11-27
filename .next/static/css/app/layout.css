@@ -531,34 +531,77 @@ video {
 .flex {
   display: flex;
 }
+.grow {
+  flex-grow: 1;
+}
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-.text-center {
-  text-align: center;
+.pt-4 {
+  padding-top: 1rem;
 }
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 .font-bold {
   font-weight: 700;
 }
+
 * {
-  box-sizing: border-box;
+   box-sizing: border-box;
 }
 
 body {
-  padding: 0;
-  margin: 0;
+   padding: 0;
+   margin: 0;
 }
-/* h1{
-   color: aqua;
+
+/* #btn-menu {
+   opacity: 0;
+   transition: 0.5s opacity ease-in-out;
+   z-index: 1;
+   position: fixed;
+   top: calc(40px - var(--height)/2);
+   right: 2rem;
 } */
+
+.btn-menu {
+   --width: 35px;
+   --height: 45px;
+   width: var(--width);
+   height: var(--height);
+   position: relative;
+   display: block;
+   cursor: pointer;
+}
+
+.btn-menu::after,
+.btn-menu::before {
+   content: "";
+
+   display: block;
+   width: var(--width);
+   height: 3px;
+   background: #000;
+   border-radius: 0;
+   position: absolute;
+   left: 0;
+   transition: all 0.3s ease-in-out;
+}
+
+.btn-menu::before {
+   top: 10px;
+   box-shadow: 0 10px #000;
+}
+
+.btn-menu::after {
+   bottom: 10px;
+}
+
+.btn-menu:hover::before {
+   box-shadow: none;
+}
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[2].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[12].oneOf[2].use[2]!./node_modules/next/font/google/target.css?{"path":"app\\layout.tsx","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
