@@ -5,6 +5,7 @@ import Image from 'next/image'
 const Main = async () => {
    // const posts = await getAllPosts({ includePages: false })
    const posts = await getAllPosts(1)
+   console.log(posts['cover'])
    return (
       <div>
          <Image

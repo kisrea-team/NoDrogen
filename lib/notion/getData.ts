@@ -1,6 +1,7 @@
 //import { config as BLOG } from '@/lib/server/config'
 import { NotionAPI } from 'notion-client'
 import { idToUuid } from 'notion-utils'
+import { defaultMapImageUrl } from 'react-notion-x'
 
 import getAllPageIds from './getAllPageIds'
 import getPageProperties from './getPageProperties'
@@ -25,7 +26,6 @@ const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN })
  */
 export async function getAllPosts (item) {
   const id = idToUuid("1ac8cfb2dde44bbc8f6ed18d2acb1e3b")
-
   const response = await client.getPage(id)
 //获取page块的信息
   const collection = Object.values(response.collection)[0]?.['value']
@@ -34,12 +34,42 @@ export async function getAllPosts (item) {
   const block = response.block
   const schema = collection?.schema
   const rawMetadata = block[id].value
+  console.log(rawMetadata)
+
+ 
 
 
 
-  switch (item) {
+  const mapImgUrl = (img, block) => {
+    let ret = null
+    // 相对目录，则视为notion的自带图片
+    if (img.startsWith('/')) {
+      ret = "https://www.notion.so" + img
+    } else {
+      ret = img
+    }
+  
+    // Notion 图床转换为永久地址
+    if (ret.indexOf('amazonaws.com') > 0) {
+      ret = "https://www.notion.so" + '/image/' + encodeURIComponent(ret) + '?table=' + "collection" + '&id=' + block.collection_id
+    }
+  
+    // 文章封面
+    
+    return ret
+  }
+  const pageCover =  mapImgUrl(collection['cover'],block[id].value)
+
+
+
+
+
+
+
+
+  switch(item) {
       case 1:
-          const data = {"cover":collection['cover'],name:collection['name'][0][0],description:collection['description'][0][0]};
+          const data = {"cover":pageCover,name:collection['name'][0][0],description:collection['description'][0][0]};
           return data
           break;
       default:
