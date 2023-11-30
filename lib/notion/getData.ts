@@ -34,7 +34,6 @@ export async function getAllPosts (item) {
   const block = response.block
   const schema = collection?.schema
   const rawMetadata = block[id].value
-  console.log(rawMetadata)
 
  
 
@@ -101,6 +100,7 @@ export async function getAllPosts (item) {
                   ? dayjs.tz(properties['date']?.start_date) 
                   : dayjs(block[id].value?.created_time)
               ).valueOf()
+              properties['icon']=block[id].value?.format?.page_icon
         //属性里有起始时间就转换时区，没有就获取block的时间
               data.push(properties)
               //把页面的属性推给data
