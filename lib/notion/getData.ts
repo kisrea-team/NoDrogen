@@ -35,6 +35,7 @@ export async function getAllPosts (item) {
   const schema = collection?.schema
   const rawMetadata = block[id].value
   console.log(rawMetadata)
+ 
 
  
 
@@ -71,7 +72,6 @@ export async function getAllPosts (item) {
       case 1:
           const data = {"cover":pageCover,name:collection['name'][0][0],description:collection['description'][0][0]};
           return data
-          break;
       default:
         //获取本身的rawMetadata
           // Check Type

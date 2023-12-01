@@ -8,13 +8,13 @@ const Main = async () => {
    console.log(posts['cover'])
    return (
       <div>
-         <Image
+         {/* <Image
          src={posts['cover']}
          width={1000}
          height={1000}
          alt='cover'
-         // fill={true}
-         />
+         /> */}
+         <p></p>
       </div>
    )
 }
