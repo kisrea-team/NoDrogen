@@ -1,5 +1,6 @@
 import { getTextContent, getDateValue } from 'notion-utils'
 import { NotionAPI } from 'notion-client'
+import { Decoration } from 'notion-types'
 
 const { NOTION_ACCESS_TOKEN } = process.env
 
@@ -13,8 +14,8 @@ async function getPageProperties (id, block, schema) {
   const excludeProperties = ['date', 'select', 'multi_select', 'person']
   const properties = {}
   for (let i = 0; i < rawProperties.length; i++) {
-    const [key, val] = rawProperties[i]
-    properties.id = id
+    const [key, val]:any = rawProperties[i]
+    properties['id'] = id
     if (schema[key]?.type && !excludeProperties.includes(schema[key].type)) {
       properties[schema[key].name] = getTextContent(val)
     } else {
@@ -34,6 +35,7 @@ async function getPageProperties (id, block, schema) {
           break
         }
         case 'person': {
+          
           const rawUsers = val.flat()
           const users = []
           for (let i = 0; i < rawUsers.length; i++) {
@@ -41,7 +43,7 @@ async function getPageProperties (id, block, schema) {
               const userId = rawUsers[i][0]
               const res = await client.getUsers(userId)
               const resValue =
-                res?.recordMapWithRoles?.notion_user?.[userId[1]]?.value
+                res?.['recordMapWithRoles']?.notion_user?.[userId[1]]?.value
               const user = {
                 id: resValue?.id,
                 first_name: resValue?.given_name,
