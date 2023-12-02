@@ -9,5 +9,7 @@ export function getAllTagsFromPosts (posts) {
         tagObj[tag] = 1
       }
     })
+
+  
     return tagObj
-  }
+}

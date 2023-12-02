@@ -4,8 +4,8 @@ import Image from 'next/image'
 
 const Main = async () => {
    // const posts = await getAllPosts({ includePages: false })
-   const posts = await getAllPosts(1)
-   console.log(posts['cover'])
+   const view = await getAllPosts(1)
+   console.log(view['cover'])
    return (
       <div>
          {/* <Image
@@ -14,7 +14,7 @@ const Main = async () => {
          height={1000}
          alt='cover'
          /> */}
-         <p></p>
+         <p>{view['description']}</p>
       </div>
    )
 }
