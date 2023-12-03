@@ -8,6 +8,7 @@ import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
 
 import Head from '../components/Head'
 import Main from '../components/Main'
+import List from '../components/List'
 
 export default async function Home() {
 
@@ -27,6 +28,8 @@ export default async function Home() {
          {/* <NotionPage recordMap={recordMap} /> */}
          <Head />
          <Main />
+         <List />
       </main>
    );
+   // console.log(posts)
 }

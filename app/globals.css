@@ -6,6 +6,14 @@
    box-sizing: border-box;
 }
 
+@media (prefers-color-scheme: dark) {
+   :root {
+      --foreground-rgb: 255, 255, 255;
+      --background-start-rgb: 0, 0, 0;
+      --background-end-rgb: 0, 0, 0;
+      --x3: 12px;
+   }
+}
 body {
    padding: 0;
    margin: 0;
@@ -55,4 +63,26 @@ body {
 
 .btn-menu:hover::before {
    box-shadow: none;
+}
+.cover{
+   height: 500px;
+}
+.posts-item{
+   width: 300px;
+   border-radius: 8px;
+   background-color: aliceblue;
+}
+.posts-cover{
+   width: 45%;
+}
+.posts-info{
+   width: 55%;
+}
+.posts-title{
+   font-size: 1.2rem;
+   font-weight: bold;
+}
+.posts-secondary{
+   color: hsl(210,8%,70%);
+   font-size: 12px;
 }

@@ -590,6 +590,12 @@ video {
     max-width: 1536px;
   }
 }
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -621,6 +627,14 @@ video {
    box-sizing: border-box;
 }
 
+@media (prefers-color-scheme: dark) {
+   :root {
+      --foreground-rgb: 255, 255, 255;
+      --background-start-rgb: 0, 0, 0;
+      --background-end-rgb: 0, 0, 0;
+      --x3: 12px;
+   }
+}
 body {
    padding: 0;
    margin: 0;
@@ -671,3 +685,85 @@ body {
 .btn-menu:hover::before {
    box-shadow: none;
 }
+.cover{
+   height: 500px;
+}
+.posts-item{
+   width: 300px;
+   border-radius: 8px;
+   background-color: aliceblue;
+}
+.posts-cover{
+   width: 45%;
+}
+.posts-info{
+   width: 55%;
+}
+.posts-title{
+   font-size: 1.2rem;
+   font-weight: bold;
+}
+.posts-secondary{
+   color: hsl(210,8%,70%);
+   font-size: 12px;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./app/copy.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************/
+
+:root {
+   --foreground-rgb: 0, 0, 0;
+   --background-start-rgb: 214, 219, 220;
+   --background-end-rgb: 255, 255, 255;
+   --notion-red: rgb(224, 62, 62);
+   --notion-pink: rgb(173, 26, 114);
+   --notion-blue: rgb(11, 110, 153);
+   --notion-purple: rgb(105, 64, 165);
+   --notion-teal: rgb(15, 123, 108);
+   --notion-yellow: rgb(223, 171, 1);
+   --notion-orange: rgb(217, 115, 13);
+   --notion-brown: rgb(100, 71, 58);
+   --notion-gray: rgb(155, 154, 151);
+   --x3: 13px;
+}
+
+.notion-red_background {
+   background-color: var(--notion-red);
+}
+
+.notion-pink_background {
+   background-color: var(--notion-pink);
+}
+
+.notion-blue_background {
+   background-color: var(--notion-blue);
+}
+
+.notion-purple_background {
+   background-color: var(--notion-purple);
+}
+
+.notion-teal_background {
+   background-color: var(--notion-teal);
+}
+
+.notion-yellow_background {
+   background-color: var(--notion-yellow);
+}
+
+.notion-orange_background {
+   background-color: var(--notion-orange);
+}
+
+.notion-brown_background {
+   background-color: var(--notion-brown);
+}
+
+.notion-gray_background {
+   background-color: var(--notion-gray);
+}
+
+.notion-green_background {
+   background-color: var(--notion-green);
+}
+
