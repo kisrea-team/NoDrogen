@@ -612,12 +612,27 @@ video {
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+.overflow-hidden {
+  overflow: hidden;
+}
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
 .pt-4 {
   padding-top: 1rem;
 }
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+.text-2xl\/6 {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
 }
 .font-bold {
   font-weight: 700;
@@ -689,18 +704,23 @@ body {
    height: 500px;
 }
 .posts-item{
-   width: 300px;
+   width: 600px;
    border-radius: 8px;
    background-color: aliceblue;
 }
 .posts-cover{
    width: 45%;
+   border-radius: 8px 0 0 8px;
+   
+}
+.object{
+   -o-object-fit:cover;
+      object-fit:cover;
 }
 .posts-info{
    width: 55%;
 }
 .posts-title{
-   font-size: 1.2rem;
    font-weight: bold;
 }
 .posts-secondary{
