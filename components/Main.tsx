@@ -1,11 +1,10 @@
 'use cilent'
-import { getAllPosts } from '../lib/notion/getData'
+
 import Image from 'next/image'
 
-const Main = async () => {
+export default function Main({view,posts}) {
    // const posts = await getAllPosts({ includePages: false })
-   const view = await getAllPosts(1)
-   const posts = await getAllPosts(0)
+
    console.log(view['cover'])
    return (
       <div>
@@ -23,4 +22,3 @@ const Main = async () => {
       </div>
    )
 }
-export default Main;

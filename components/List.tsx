@@ -1,12 +1,10 @@
 'use cilent'
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode } from 'react'
-import { getAllPosts } from '../lib/notion/getData'
 import Image from 'next/image'
 
-const List = async () => {
+export default function List({view,posts}) {
 
-   const posts = await getAllPosts(0)
-   const view = await getAllPosts(1)
+
 
    const listItems = posts.map(list =>
 
@@ -39,4 +37,3 @@ const List = async () => {
       </div>
    )
 }
-export default List;

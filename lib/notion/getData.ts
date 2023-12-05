@@ -1,7 +1,7 @@
 //import { config as BLOG } from '@/lib/server/config'
 import { NotionAPI } from 'notion-client'
 import { idToUuid } from 'notion-utils'
-import { defaultMapImageUrl } from 'react-notion-x'
+//import { defaultMapImageUrl } from 'react-notion-x'
 
 import getAllPageIds from './getAllPageIds'
 import getPageProperties from './getPageProperties'
