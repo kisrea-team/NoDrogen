@@ -1,4 +1,5 @@
 'use cilent'
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode } from 'react'
 import { getAllPosts } from '../lib/notion/getData'
 import Image from 'next/image'
 
@@ -6,8 +7,10 @@ const List = async () => {
 
    const posts = await getAllPosts(0)
    const view = await getAllPosts(1)
-   return (
-      <div className='flex absolute posts-item '>
+
+   const listItems = posts.map(list =>
+
+      <div className='flex relative posts-item my-6 '>
          <div className='relative overflow-hidden posts-cover '>
             {/* <p>图片</p> */}
             <Image
@@ -19,16 +22,20 @@ const List = async () => {
                fill={true}
             />
          </div>
-         <div className='posts-info py-24 px-12'>
+         <div className='posts-info py-4 px-10'>
             <p className='posts-title text-2xl/6'>
-               <span>{posts[0].icon}</span>{posts[0].title}
+               <span>{list.icon}</span>{list.title}
             </p>
             <div className='posts-secondary'>
-               <span>{posts[0].date}</span>
-               <span>{posts[0].tags}</span>
-               <span>{posts[0].summary}</span>
+               <span>{list.date}</span>
+               <span>{list.tags}</span>
+               <span>{list.summary}</span>
             </div>
          </div>
+      </div>);
+   return (
+      <div className='flex flex-col space-y-6 '>
+         {listItems}
       </div>
    )
 }

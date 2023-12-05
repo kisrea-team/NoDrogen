@@ -9,7 +9,7 @@ const Main = async () => {
    console.log(view['cover'])
    return (
       <div>
-         <div className='relative cover'>
+         <div className='relative'>
             <Image
                className=''
                src={view['cover']}
@@ -19,6 +19,7 @@ const Main = async () => {
                fill={true}
             /></div>
          <p>{view['description']}</p>
+         <p>{posts[0].title}</p>
       </div>
    )
 }
