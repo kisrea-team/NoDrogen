@@ -98,8 +98,8 @@ export async function getAllPosts(item) {
                // Convert date (with timezone) to unix milliseconds timestamp
                properties['date'] = (
                   properties['date']?.start_date
-                     ? dayjs.tz(properties['date']?.start_date).format('YYYY年MM月DD')
-                     : dayjs(block[id].value?.created_time).format('YYYY年MM月DD')
+                     ? dayjs.tz(properties['date']?.start_date).format('YYYY年MM月DD日')
+                     : dayjs(block[id].value?.created_time).format('YYYY年MM月DD日')
                ).valueOf()
                properties['icon'] = block[id].value?.format?.page_icon
                //属性里有起始时间就转换时区，没有就获取block的时间

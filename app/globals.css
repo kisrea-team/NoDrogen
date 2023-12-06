@@ -6,12 +6,15 @@
    box-sizing: border-box;
 }
 
+:root {
+   --radius: 8px;
+}
+
 @media (prefers-color-scheme: dark) {
    :root {
       --foreground-rgb: 255, 255, 255;
       --background-start-rgb: 0, 0, 0;
       --background-end-rgb: 0, 0, 0;
-      --x3: 12px;
    }
 }
 
@@ -42,7 +45,6 @@ body {
 .btn-menu::after,
 .btn-menu::before {
    content: "";
-
    display: block;
    width: var(--width);
    height: 3px;
@@ -71,19 +73,24 @@ body {
 }
 
 .posts-item {
-   width: 600px;
-   border-radius: 8px;
+   display: flex;
+   position: relative;
+   width: 700px;
+   height: 230px;
+   border-radius: var(--radius);
+   margin-bottom: 1rem;
    background-color: white;
    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
    transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
 }
+
 .posts-item:hover {
    box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.16);
-   transform: scale3d(1.01,1.01,1.01);
+   transform: scale3d(1.01, 1.01, 1.01);
 }
 
 .posts-cover {
-   width: 45%;
+   width: 48%;
    border-radius: 8px 0 0 8px;
 
 }
@@ -102,5 +109,12 @@ body {
 
 .posts-secondary {
    color: hsl(210, 8%, 70%);
-   font-size: 12px;
+   font-size: 1rem;
+}
+
+.aaa {
+   width: 100px;
+   height: 230px;
+   border-radius: var(--radius);
+   background-color: aliceblue;
 }

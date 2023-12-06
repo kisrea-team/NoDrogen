@@ -14,7 +14,7 @@
         "url": "http://localhost:3000"
       },
       {
-        "name": "Next.js: debug full stack",
+        "name": "Next.js: 全部调试",
         "type": "node-terminal",
         "request": "launch",
         "command": "npm run dev",
