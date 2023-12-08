@@ -8,7 +8,8 @@ export default function Main({view,posts}) {
    console.log(view['cover'])
    return (
       <div>
-         <div className='relative'>
+         <p>你好</p>
+         {/* <div className='relative'>
             <Image
                className=''
                src={view['cover']}
@@ -18,7 +19,7 @@ export default function Main({view,posts}) {
                fill={true}
             /></div>
          <p>{view['description']}</p>
-         <p>{posts[0].title}</p>
+         <p>{posts[0].title}</p> */}
       </div>
    )
 }

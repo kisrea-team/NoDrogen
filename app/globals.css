@@ -8,14 +8,12 @@
 
 :root {
    --radius: 8px;
-}
+   --gray: #8f8f8f;
+   --bg-light: #ffffff;
+   --bg-dark: #202020;
+   --bg-item-dark: #242424;
+   --bg-item-dark-hover: #202224;
 
-@media (prefers-color-scheme: dark) {
-   :root {
-      --foreground-rgb: 255, 255, 255;
-      --background-start-rgb: 0, 0, 0;
-      --background-end-rgb: 0, 0, 0;
-   }
 }
 
 body {
@@ -79,7 +77,7 @@ body {
    height: 230px;
    border-radius: var(--radius);
    margin-bottom: 1rem;
-   background-color: white;
+   background-color: var(--bg-light);
    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
    transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
 }
@@ -87,6 +85,12 @@ body {
 .posts-item:hover {
    box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.16);
    transform: scale3d(1.01, 1.01, 1.01);
+}
+
+.posts-heart {
+   position: absolute;
+   top: 0;
+   right: 20px;
 }
 
 .posts-cover {
@@ -117,4 +121,36 @@ body {
    height: 230px;
    border-radius: var(--radius);
    background-color: aliceblue;
+}
+
+@media (prefers-color-scheme: dark) {
+   body {
+      background-color: var(--bg-dark);
+   }
+
+   .posts-title,
+   p,
+   h1,
+   h2 {
+      color: var(--bg-light);
+   }
+
+   .posts-secondary {
+      color: var(--gray);
+   }
+
+   .posts-item,
+   .aaa {
+      background-color: var(--bg-item-dark);
+   }
+
+   .posts-item:hover {
+      background-color: var(--bg-dark-hover);
+   }
+
+   :root {
+      --foreground-rgb: 255, 255, 255;
+      --background-start-rgb: 0, 0, 0;
+      --background-end-rgb: 0, 0, 0;
+   }
 }

@@ -7,8 +7,8 @@ export default function Head({ view }) {
    return (
       <div className='flex pt-4 select-none'>
          <p className='text-2xl font-bold'>{view['name']}</p>
-         <p className='grow'></p>
-         <div id='btn-menu' className='btn-menu'></div>
+         {/* <p className='grow'></p> */}
+         {/* <div id='btn-menu' className='btn-menu'></div> */}
       </div>
    )
 }
