@@ -69,7 +69,9 @@ body {
 .cover {
    height: 500px;
 }
-
+.list-items{
+   padding-right: 20px;
+}
 .posts-item {
    display: flex;
    position: relative;
@@ -116,13 +118,17 @@ body {
    font-size: 1rem;
 }
 
-.aaa {
-   width: 100px;
+.tags-card {
+   width: 300px;
    height: 230px;
+   padding: 1rem;
    border-radius: var(--radius);
    background-color: aliceblue;
 }
-
+.tags-title{
+   font-size: 1.5rem;
+   font-weight: bold;
+}
 @media (prefers-color-scheme: dark) {
    body {
       background-color: var(--bg-dark);
@@ -140,7 +146,7 @@ body {
    }
 
    .posts-item,
-   .aaa {
+   .tags-card {
       background-color: var(--bg-item-dark);
    }
 

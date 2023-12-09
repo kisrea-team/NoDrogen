@@ -23,13 +23,13 @@ export default async function Home() {
    const tags = await getAllTagsFromPosts(posts)
    console.log(posts, view, tags)
    return (
-      <main className='mx-auto flex'>
+      <main className='mx-auto container'>
          <link rel='icon' href={posts[0].icon} />
          <title>{view['name']}</title>
          {/* <NotionPage recordMap={recordMap} /> */}
          <Head view={view} />
          <Main view={view} posts={posts} />
-         <List view={view} posts={posts} />
+         <List view={view} posts={posts} tags={tags}/>
       </main>
    );
 }

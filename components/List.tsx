@@ -1,6 +1,7 @@
 'use cilent'
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode } from 'react'
 import Image from 'next/image'
+import { list } from 'postcss';
 
 export default function List({ view, posts }) {
 
@@ -41,10 +42,13 @@ export default function List({ view, posts }) {
          {/* </div> */}
       </a>);
    return (
-      <div className='flex'>
-         <div>{listItems}</div>
-         <div className='aaa'>
-            <h2>你好Hello</h2>
+      <div className='flex mx-auto'>
+         <div className='list-items'>{listItems}</div>
+         <div className='tags-card'>
+            <h1 className='tags-title'>标签</h1>
+            <div>
+               <span>{posts[0].tags}</span>
+            </div>
          </div>
       </div>
    )
