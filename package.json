@@ -19,7 +19,7 @@
     "express": "^4.18.2",
     "got": "^12.0.2",
     "lqip-modern": "^1.2.0",
-    "next": "14.0.0",
+    "next": "^14.0.0",
     "notion-client": "^6.16.0",
     "notion-compat": "^6.16.0",
     "notion-utils": "^6.16.0",

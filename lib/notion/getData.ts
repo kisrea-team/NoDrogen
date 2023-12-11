@@ -35,8 +35,8 @@ export async function getAllPosts(item) {
    const schema = collection?.schema
    const rawMetadata = block[id].value
    console.log(rawMetadata)
-
-
+   const tagSchema = Object.values(schema)
+   const tagOptions=tagSchema?.[4]?.['options']
 
 
 
@@ -102,6 +102,9 @@ export async function getAllPosts(item) {
                      : dayjs(block[id].value?.created_time).format('YYYY年MM月DD日')
                ).valueOf()
                properties['icon'] = block[id].value?.format?.page_icon
+               properties['tags'] = properties?.['tags']?.map(tag => {
+                  return { name: tag, color: tagOptions?.find(t => t.value === tag)?.color || 'gray' }
+                }) || []
                //属性里有起始时间就转换时区，没有就获取block的时间
                data.push(properties)
                //把页面的属性推给data
