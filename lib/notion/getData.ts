@@ -39,6 +39,7 @@ export async function getAllPosts(item) {
    const tagOptions=tagSchema?.[4]?.['options']
 
 
+   console.log(collection)//断点这个获取的信息特别乱，不过也可以看看
 
 
    const mapImgUrl = (img, block) => {

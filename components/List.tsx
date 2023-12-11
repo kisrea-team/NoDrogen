@@ -7,7 +7,7 @@ export default function List({ view, posts }) {
 
 
 
-   const listItems = posts.map(list =>
+   const listItems = posts.map((list: { id: string; icon: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode; type: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode; date: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode; tags: any[]; summary: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode; }) =>
       <a className='posts-item' href={list.id} target='_blank'>
          {/* <div className='posts-item'> */}
          <div className='posts-heart'>
@@ -35,7 +35,13 @@ export default function List({ view, posts }) {
             </p>
             <p className='posts-secondary'>
                <span>{list.date}</span>
-               <span className=' space-x-2'>{list.tags}</span>
+               <div>
+                  {list.tags.map((item: { color: any; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode; }) => (
+                     <span className={`colored-texttext-l p-2calc rounded-md leading-8 m-1 notion-${item.color}_background`}>
+                        {item.name}
+                     </span>
+                  ))}
+               </div>
                <span>{list.summary}</span>
             </p>
          </div>
@@ -46,9 +52,9 @@ export default function List({ view, posts }) {
          <div className='list-items'>{listItems}</div>
          <div className='tags-card'>
             <h1 className='tags-title'>标签</h1>
-            <div>
+            {/* <div>
                <span>{posts[0].tags}Good evening</span>
-            </div>
+            </div> */}
          </div>
       </div>
    )
