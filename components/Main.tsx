@@ -4,12 +4,9 @@ import Image from 'next/image'
 
 export default function Main({view,posts}) {
    // const posts = await getAllPosts({ includePages: false })
-
-   console.log(view['cover'])
    return (
       <div>
-         <p>你好</p>
-         {/* <div className='relative'>
+         <div className='relative cover'>
             <Image
                className=''
                src={view['cover']}
@@ -19,7 +16,7 @@ export default function Main({view,posts}) {
                fill={true}
             /></div>
          <p>{view['description']}</p>
-         <p>{posts[0].title}</p> */}
+         <p>{posts[0].title}</p>
       </div>
    )
 }

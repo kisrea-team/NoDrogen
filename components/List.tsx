@@ -47,7 +47,7 @@ export default function List({ view, posts }) {
          <div className='tags-card'>
             <h1 className='tags-title'>标签</h1>
             <div>
-               <span>{posts[0].tags}</span>
+               <span>{posts[0].tags}Good evening</span>
             </div>
          </div>
       </div>
