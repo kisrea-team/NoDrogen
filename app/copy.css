@@ -1,18 +1,28 @@
-
 :root {
    --foreground-rgb: 0, 0, 0;
    --background-start-rgb: 214, 219, 220;
    --background-end-rgb: 255, 255, 255;
-   --notion-red: rgb(224, 62, 62);
-   --notion-pink: rgb(173, 26, 114);
-   --notion-blue: rgb(11, 110, 153);
-   --notion-purple: rgb(105, 64, 165);
-   --notion-teal: rgb(15, 123, 108);
-   --notion-yellow: rgb(223, 171, 1);
-   --notion-orange: rgb(217, 115, 13);
-   --notion-brown: rgb(100, 71, 58);
-   --notion-gray: rgb(155, 154, 151);
-   --x3: 13px;
+   --notion-red: rgb(255, 226, 221);
+   --notion-pink: rgb(245, 224, 233);
+   --notion-blue: rgb(211, 229, 239);
+   --notion-purple: rgb(232, 222, 238);
+   --notion-green: rgb(219, 237, 219);
+   --notion-yellow: rgb(253, 236, 200);
+   --notion-orange: rgb(250, 222, 201);
+   --notion-brown: rgb(238, 224, 218);
+   --notion-gray: rgb(227, 226, 224);
+   --notion-default: rgb(240, 239, 238);
+
+   --notion-dark-red: rgb(110,54,48);
+   --notion-dark-pink: rgb(105,49,76);
+   --notion-dark-blue: rgb(40,69,108);
+   --notion-dark-purple: rgb(73,47,100);
+   --notion-dark-green: rgb(43,89,63);
+   --notion-dark-yellow: rgb(137,99,42);
+   --notion-dark-orange: rgb(133,76,29);
+   --notion-dark-brown: rgb(96,59,44);
+   --notion-dark-gray: rgb(90,90,90);
+   --notion-dark-default: rgb(55,55,55);
 }
 
 .notion-red_background {
@@ -31,8 +41,8 @@
    background-color: var(--notion-purple);
 }
 
-.notion-teal_background {
-   background-color: var(--notion-teal);
+.notion-green_background {
+   background-color: var(--notion-green);
 }
 
 .notion-yellow_background {
@@ -53,4 +63,55 @@
 
 .notion-green_background {
    background-color: var(--notion-green);
+}
+
+.notion-default_background {
+   background-color: var(--notion-default);
+}
+
+@media (prefers-color-scheme: dark) {
+
+   .notion-red_background {
+      background-color: var(--notion-dark-red);
+   }
+
+   .notion-pink_background {
+      background-color: var(--notion-dark-pink);
+   }
+
+   .notion-blue_background {
+      background-color: var(--notion-dark-blue);
+   }
+
+   .notion-purple_background {
+      background-color: var(--notion-dark-purple);
+   }
+
+   .notion-teal_background {
+      background-color: var(--notion-dark-teal);
+   }
+
+   .notion-yellow_background {
+      background-color: var(--notion-dark-yellow);
+   }
+
+   .notion-orange_background {
+      background-color: var(--notion-dark-orange);
+   }
+
+   .notion-brown_background {
+      background-color: var(--notion-dark-brown);
+   }
+
+   .notion-gray_background {
+      background-color: var(--notion-dark-gray);
+   }
+
+   .notion-green_background {
+      background-color: var(--notion-dark-green);
+   }
+
+   .notion-default_background {
+      background-color: var(--notion-dark-default);
+   }
 }

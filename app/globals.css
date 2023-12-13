@@ -68,11 +68,13 @@ body {
 
 .cover {
    height: 500px;
-   
+
 }
-.list-items{
+
+.list-items {
    padding-right: 20px;
 }
+
 .posts-item {
    display: flex;
    position: relative;
@@ -126,10 +128,22 @@ body {
    border-radius: var(--radius);
    background-color: aliceblue;
 }
-.tags-title{
+
+.tags-title {
    font-size: 1.5rem;
    font-weight: bold;
 }
+
+.tags {
+   font-size: .8rem;
+   padding: 3px 5px;
+   color: #6B5449;
+}
+
+.list-tags {
+   width: 220px;
+}
+
 @media (prefers-color-scheme: dark) {
    body {
       background-color: var(--bg-dark);
@@ -138,7 +152,8 @@ body {
    .posts-title,
    p,
    h1,
-   h2 ,span{
+   h2,
+   span {
       color: var(--bg-light);
    }
 
@@ -159,5 +174,8 @@ body {
       --foreground-rgb: 255, 255, 255;
       --background-start-rgb: 0, 0, 0;
       --background-end-rgb: 0, 0, 0;
+   }
+   .tags{
+      color: #E3DACD;
    }
 }

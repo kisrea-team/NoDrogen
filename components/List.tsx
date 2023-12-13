@@ -33,17 +33,17 @@ export default function List({ view, posts }) {
             <p className='posts-title text-2xl/8'>
                <span>{list.icon}</span>{list.title}{list.type}
             </p>
-            <p className='posts-secondary'>
+            <div className='posts-secondary'>
                <span>{list.date}</span>
-               <div>
+               <div className=' list-tags '>
                   {list.tags.map((item: { color: any; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode; }) => (
-                     <span className={`colored-texttext-l p-2calc rounded-md leading-8 m-1 notion-${item.color}_background`}>
+                     <span className={`tags rounded-md leading-8 m-1 notion-${item.color}_background`}>
                         {item.name}
                      </span>
                   ))}
                </div>
                <span>{list.summary}</span>
-            </p>
+            </div>
          </div>
          {/* </div> */}
       </a>);
