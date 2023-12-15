@@ -70,9 +70,6 @@ export async function getAllPosts(item) {
 
 
    switch (item) {
-      case 1:
-         const data = { "cover": pageCover, name: collection['name'][0][0], description: collection['description'][0][0] };
-         return data
       default:
          //获取本身的rawMetadata
          // Check Type
@@ -108,15 +105,18 @@ export async function getAllPosts(item) {
                 }) || []
                //属性里有起始时间就转换时区，没有就获取block的时间
                data.push(properties)
+               
                //把页面的属性推给data
             }
-
+            const wiki = { "cover": pageCover, name: collection['name'][0][0], description: collection['description'][0][0] };
+            data.unshift(wiki)
             // remove all the the items doesn't meet requirements
 
             // // Sort by date
             // if (BLOG.sortByDate) {
             //   posts.sort((a, b) => b.date - a.date)
             // }
+            console.log(data)
             return data
          }
    }

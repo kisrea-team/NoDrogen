@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function List({ view, posts }) {
 
    // const [value] = useState("精选");
-
+   posts.shift()
    const listItems = posts.map((list) =>
       <a className='posts-item' href={list.id} target='_blank'>
          {/* <div className='posts-item'> */}
@@ -34,7 +34,7 @@ export default function List({ view, posts }) {
             <div className='posts-secondary'>
                <span>{list.date}</span>
                <div className=' list-tags '>
-                  {list.tags.map((item) => (
+                  {list.tags?.map((item) => (
                      <span className={`tags rounded-md leading-8 m-1 notion-${item.color}_background`}>
                         {item.name}
                      </span>
