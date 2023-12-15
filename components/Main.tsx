@@ -1,8 +1,7 @@
-'use cilent'
 
 import Image from 'next/image'
 
-export default function Main({view,posts}) {
+export default function Main({ view, posts }) {
    // const posts = await getAllPosts({ includePages: false })
    return (
       <div>
@@ -14,9 +13,9 @@ export default function Main({view,posts}) {
                // height={1000}
                alt='cover'
                fill={true}
-            /></div>
-         <p>{view['description']}</p>
-         <p>{posts[0].title}</p>
+            />
+            <div className=' absolute text-center'>{view['description']}</div>
+         </div>
       </div>
    )
 }

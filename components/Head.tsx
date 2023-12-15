@@ -1,6 +1,3 @@
-'use cilent'
-
-
 export default function Head({ view }) {
    // const posts = await getAllPosts({ includePages: false })
 

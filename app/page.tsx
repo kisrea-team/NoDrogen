@@ -1,6 +1,7 @@
 //import * as React from 'react'
 //import { NotionPage } from '../components/NotionPage'
 //import { NotionAPI } from "notion-client"
+
 import { getAllPosts } from '../lib/notion/getData'
 import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
 
@@ -29,7 +30,7 @@ export default async function Home() {
          {/* <NotionPage recordMap={recordMap} /> */}
          <Head view={view} />
          <Main view={view} posts={posts} />
-         <List view={view} posts={posts}/>
+         <List view={view} posts={posts} />
       </main>
    );
 }
