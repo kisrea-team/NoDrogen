@@ -100,6 +100,10 @@ export async function getAllPosts(item) {
                      : dayjs(block[id].value?.created_time).format('YYYY年MM月DD日')
                ).valueOf()
                properties['icon'] = block[id].value?.format?.page_icon
+               if(block[id].value?.format?.page_cover)
+               {
+               properties['cover'] = mapImgUrl(block[id].value?.format?.page_cover, block[id].value) ?? ''
+               }
                properties['tags'] = properties?.['tags']?.map(tag => {
                   return { name: tag, color: tagOptions?.find(t => t.value === tag)?.color || 'gray' }
                 }) || []
