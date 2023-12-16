@@ -10,6 +10,7 @@ import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
 import Head from '../components/Head'
 import Main from '../components/Main'
 import List from '../components/List'
+import { list } from 'postcss'
 
 export default async function Home() {
 
@@ -20,6 +21,7 @@ export default async function Home() {
    // const recordMap = await notion.getPage("1ac8cfb2dde44bbc8f6ed18d2acb1e3b");
    const id = "1ac8cfb2dde44bbc8f6ed18d2acb1e3b";
    const posts = await getAllPosts(0)
+   const list=posts.slice(1)
    const tags = await getAllTagsFromPosts(posts)
    console.log(tags)
    return (
@@ -27,9 +29,10 @@ export default async function Home() {
          <link rel='icon' href={posts[0].icon} />
          <title>{posts[0]['name']}</title>
          {/* <NotionPage recordMap={recordMap} /> */}
+
          <Head view={posts[0]} />
-         <Main view={posts[0]} posts={posts} />
-         <List view={posts[0]} posts={posts} />
+         <Main view={posts[0]} posts={list} />
+         <List view={posts[0]} posts={list} />
       </main>
    );
 }
