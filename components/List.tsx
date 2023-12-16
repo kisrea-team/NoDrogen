@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function List({ view, posts }) {
 
    // const [value] = useState("精选");
-   posts.shift()
+   //posts.shift()
    const listItems = posts.map((list) =>
       <a className='posts-item' href={list.id} target='_blank'>
          {/* <div className='posts-item'> */}

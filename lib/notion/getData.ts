@@ -116,7 +116,7 @@ export async function getAllPosts(item) {
             // if (BLOG.sortByDate) {
             //   posts.sort((a, b) => b.date - a.date)
             // }
-            console.log(data)
+           // console.log(data)
             return data
          }
    }

@@ -3,7 +3,7 @@
 //import { NotionAPI } from "notion-client"
 
 import { getAllPosts } from '../lib/notion/getData'
-//import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
+import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
 
 
 
@@ -20,8 +20,8 @@ export default async function Home() {
    // const recordMap = await notion.getPage("1ac8cfb2dde44bbc8f6ed18d2acb1e3b");
    const id = "1ac8cfb2dde44bbc8f6ed18d2acb1e3b";
    const posts = await getAllPosts(0)
-   // const tags = await getAllTagsFromPosts(posts)
-   console.log(posts)
+   const tags = await getAllTagsFromPosts(posts)
+   console.log(tags)
    return (
       <main className='mx-auto container'>
          <link rel='icon' href={posts[0].icon} />
