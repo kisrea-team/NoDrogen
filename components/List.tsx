@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 // import { list } from 'postcss';
 
-export default function List({ view, posts }) {
+export default function List({ view, posts, tags }) {
 
    // const [value] = useState("精选");
    //posts.shift()
@@ -45,14 +45,19 @@ export default function List({ view, posts }) {
          </div>
          {/* </div> */}
       </a>);
+   const tagsitem = tags?.map((tag) => (
+      <span className={`tags rounded-md leading-8 m-1 notion-${tag.color}_background`}>
+         {tag.name}
+      </span>
+   ));
    return (
       <div className='flex mx-auto'>
          <div className='list-items'>{listItems}</div>
          <div className='tags-card'>
             <h1 className='tags-title'>{posts[1].type}标签</h1>
-            {/* <div>
-               <span>{posts[0].tags}Good evening</span>
-            </div> */}
+            <div>
+               {tagsitem}
+            </div>
          </div>
       </div>
    )
