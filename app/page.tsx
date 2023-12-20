@@ -19,7 +19,7 @@ export default async function Home() {
 
    // const recordMap = await notion.getPage("4f51a601c1b14a23b5bc7737efcfee6b");
    // const recordMap = await notion.getPage("1ac8cfb2dde44bbc8f6ed18d2acb1e3b");
-   const id = "1ac8cfb2dde44bbc8f6ed18d2acb1e3b";
+   // const id = "1ac8cfb2dde44bbc8f6ed18d2acb1e3b";
    const posts = await getAllPosts(0)
    const list=posts.slice(1)
    const tags = await getAllTagsFromPosts(posts)

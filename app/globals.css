@@ -156,6 +156,16 @@ body {
    span {
       color: var(--bg-light);
    }
+   .btn-menu::after,
+   .btn-menu::before {
+      background: #ffffff;
+   }
+   .btn-menu::before {
+
+      box-shadow: 0 10px #ffffff;
+   }
+
+   .posts
 
    .posts-secondary {
       color: var(--gray);
