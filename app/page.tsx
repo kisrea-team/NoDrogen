@@ -5,8 +5,7 @@ import { cache } from 'react'
 import { Suspense } from 'react'
 // import { getAllPosts } from '../lib/notion/getData'
 // import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+
 
 
 
@@ -37,14 +36,13 @@ export default async function Home() {
          {/* <NotionPage recordMap={recordMap} /> */}
          
          <Suspense fallback={
-            <div>
+         <div>
             <h1>Hello, world!</h1>
             <p>Fast is slow.</p>
             <p>欲速则不达。</p>
-            <Skeleton count={20} /> 
          </div>}>
-         <Main/>
          <Head/>
+         <Main/>
          <List/>
          {/* <Main view={posts[0]} posts={list} />
          <List view={posts[0]} posts={list} tags={tags} /> */}
