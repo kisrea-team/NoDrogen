@@ -10,7 +10,7 @@ import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
 import Head from '../components/Head'
 import Main from '../components/Main'
 import List from '../components/List'
-import { list } from 'postcss'
+// import { list } from 'postcss'
 
 export default async function Home() {
 
@@ -32,7 +32,7 @@ export default async function Home() {
 
          <Head view={posts[0]} />
          <Main view={posts[0]} posts={list} />
-         <List view={posts[0]} posts={list} />
+         <List view={posts[0]} posts={list} tags={tags} />
       </main>
    );
 }
