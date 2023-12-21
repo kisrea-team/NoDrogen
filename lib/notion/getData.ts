@@ -1,6 +1,8 @@
 //import { config as BLOG } from '@/lib/server/config'
 import { NotionAPI } from 'notion-client'
 import { idToUuid } from 'notion-utils'
+import {cache} from 'react';
+
 //import { defaultMapImageUrl } from 'react-notion-x'
 
 import getAllPageIds from './getAllPageIds'
@@ -18,29 +20,18 @@ dayjs.extend(timezone);
 dayjs.locale('en');
 //截至
 
-const { NOTION_ACCESS_TOKEN } = process.env
-
-const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN })
 /**
  * @param {{ includePages: boolean }} - false: posts only / true: include pages
  */
-export async function getAllPosts(item) {
-   const id = idToUuid("1ac8cfb2dde44bbc8f6ed18d2acb1e3b")
-   const response = await client.getPage(id)
-   //获取page块的信息
-   const collection = Object.values(response.collection)[0]?.['value']
-   //获取page数据集的第一个id的value内容
-   const collectionQuery = response.collection_query
-   const block = response.block
-   const schema = collection?.schema
-   const rawMetadata = block[id].value
-   console.log(rawMetadata)
-   const tagSchema = Object.values(schema)
-   const tagOptions=tagSchema?.[4]?.['options']
 
 
-   console.log(collection)//断点这个获取的信息特别乱，不过也可以看看
 
+export async function getAllPosts(item,source) {
+
+
+
+   //console.log(collection)//断点这个获取的信息特别乱，不过也可以看看
+   //追求模块化、需要再取
 
    const mapImgUrl = (img, block) => {
       let ret = null
@@ -60,7 +51,6 @@ export async function getAllPosts(item) {
 
       return ret
    }
-   const pageCover = mapImgUrl(collection['cover'], block[id].value)
 
 
 
@@ -70,7 +60,32 @@ export async function getAllPosts(item) {
 
 
    switch (item) {
+      case 1:
+         const posts = source.filter(post => {
+            return post.title && post?.status?.[0] === '展现'
+          })
+          console.log(posts)
+          return posts
+         break; 
       default:
+         
+         const { NOTION_ACCESS_TOKEN } = process.env
+         const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN })
+         const id = idToUuid(process.env.VIEW_ID)
+         //视图号
+         const response = await client.getPage(id)
+         //获取page块的信息
+         const collection = Object.values(response.collection)[0]?.['value']
+         //获取page数据集的第一个id的value内容
+         const collectionQuery = response.collection_query
+         const block = response.block
+         const schema = collection?.schema
+         const rawMetadata = block[id].value
+        // console.log(rawMetadata)
+         const tagSchema = Object.values(schema)
+         const tagOptions=tagSchema?.[4]?.['options']
+         const pageCover = mapImgUrl(collection['cover'], block[id].value)
+
          //获取本身的rawMetadata
          // Check Type
          if (
@@ -99,14 +114,10 @@ export async function getAllPosts(item) {
                      ? dayjs.tz(properties['date']?.start_date).format('YYYY年MM月DD日')
                      : dayjs(block[id].value?.created_time).format('YYYY年MM月DD日')
                ).valueOf()
-<<<<<<< HEAD
                if(block[id].value?.format?.page_icon)
                {
                properties['icon'] = mapImgUrl(block[id].value?.format?.page_icon,block[id].value)
                }
-=======
-               properties['icon'] = block[id].value?.format?.page_icon
->>>>>>> 379ee98832384a86d6c4a4b8c33d9ac05e7cefb4
                if(block[id].value?.format?.page_cover)
                {
                properties['cover'] = mapImgUrl(block[id].value?.format?.page_cover, block[id].value) ?? ''
@@ -127,7 +138,7 @@ export async function getAllPosts(item) {
             // if (BLOG.sortByDate) {
             //   posts.sort((a, b) => b.date - a.date)
             // }
-           // console.log(data)
+            console.log(data)
             return data
          }
    }
@@ -141,3 +152,6 @@ export async function getAllPosts(item) {
 
 
 }
+
+
+export default cache(getAllPosts);

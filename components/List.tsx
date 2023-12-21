@@ -1,10 +1,13 @@
-"use client"
-import React, { useState } from 'react'
+import { getAllPosts } from '../lib/notion/getData'
+import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
+
+//import React, { useState } from 'react'
 import Image from 'next/image'
 // import { list } from 'postcss';
 
-export default function List({ view, posts, tags }) {
-
+export default async function List() {
+   const posts = await getAllPosts(0,0)
+   const tags = await getAllTagsFromPosts(posts)
    // const [value] = useState("精选");
    //posts.shift()
    const listItems = posts.map((list) =>
