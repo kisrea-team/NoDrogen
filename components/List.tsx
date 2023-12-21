@@ -20,7 +20,7 @@ export default function List({ view, posts, tags }) {
             {/* <p>图片</p> */}
             <Image
                className='object'
-               src={view['cover']}
+               src={list.cover}
                // width={1000}
                // height={1000}
                alt='cover'
@@ -51,7 +51,7 @@ export default function List({ view, posts, tags }) {
       </span>
    ));
    return (
-      <div className='flex mx-auto'>
+      <div className='flex mx-auto container'>
          <div className='list-items'>{listItems}</div>
          <div className='tags-card'>
             <h1 className='tags-title'>{posts[1].type}标签</h1>

@@ -99,10 +99,14 @@ export async function getAllPosts(item) {
                      ? dayjs.tz(properties['date']?.start_date).format('YYYY年MM月DD日')
                      : dayjs(block[id].value?.created_time).format('YYYY年MM月DD日')
                ).valueOf()
+<<<<<<< HEAD
                if(block[id].value?.format?.page_icon)
                {
                properties['icon'] = mapImgUrl(block[id].value?.format?.page_icon,block[id].value)
                }
+=======
+               properties['icon'] = block[id].value?.format?.page_icon
+>>>>>>> 379ee98832384a86d6c4a4b8c33d9ac05e7cefb4
                if(block[id].value?.format?.page_cover)
                {
                properties['cover'] = mapImgUrl(block[id].value?.format?.page_cover, block[id].value) ?? ''
