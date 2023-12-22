@@ -8,7 +8,7 @@ export default async function Main() {
 
    return (
       <div>
-         <div className='relative cover'>
+         {/* <div className='relative cover'>
             <Image
                className=''
                src={view['0']['cover']}
@@ -18,7 +18,7 @@ export default async function Main() {
                fill={true}
             />
             <div className=' absolute text-center'>{view['0']['description']}</div>
-         </div>
+         </div> */}
       </div>
    )
 }

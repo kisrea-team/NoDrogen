@@ -71,85 +71,12 @@ body {
 
 }
 
-.list-items {
-   padding-right: 20px;
-}
-
-.posts-item {
-   display: flex;
-   position: relative;
-   width: 700px;
-   height: 230px;
-   border-radius: var(--radius);
-   margin-bottom: 1rem;
-   background-color: var(--bg-light);
-   box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
-   transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
-}
-
-.posts-item:hover {
-   box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.16);
-   transform: scale3d(1.01, 1.01, 1.01);
-}
-
-.posts-heart {
-   position: absolute;
-   top: 0;
-   right: 20px;
-}
-
-.posts-cover {
-   width: 48%;
-   border-radius: 8px 0 0 8px;
-
-}
-
-.object {
-   object-fit: cover;
-}
-
-.posts-info {
-   width: 55%;
-}
-
-.posts-title {
-   font-weight: bold;
-}
-
-.posts-secondary {
-   color: hsl(210, 8%, 70%);
-   font-size: 1rem;
-}
-
-.tags-card {
-   width: 300px;
-   height: 230px;
-   padding: 1rem;
-   border-radius: var(--radius);
-   background-color: aliceblue;
-}
-
-.tags-title {
-   font-size: 1.5rem;
-   font-weight: bold;
-}
-
-.tags {
-   font-size: .8rem;
-   padding: 3px 5px;
-   color: #6B5449;
-}
-
-.list-tags {
-   width: 220px;
-}
 
 @media (prefers-color-scheme: dark) {
    body {
       background-color: var(--bg-dark);
    }
 
-   .posts-title,
    p,
    h1,
    h2,
@@ -160,14 +87,13 @@ body {
    .btn-menu::before {
       background: #ffffff;
    }
+
    .btn-menu::before {
 
       box-shadow: 0 10px #ffffff;
    }
 
-   .posts
-
-   .posts-secondary {
+   .posts .posts-secondary {
       color: var(--gray);
    }
 
@@ -185,7 +111,8 @@ body {
       --background-start-rgb: 0, 0, 0;
       --background-end-rgb: 0, 0, 0;
    }
-   .tags{
+/* 
+   .tags {
       color: #E3DACD;
-   }
+   } */
 }
