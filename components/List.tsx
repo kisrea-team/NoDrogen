@@ -1,12 +1,25 @@
 import { getAllPosts } from '../lib/notion/getData'
 import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
+import {getCache,setCache} from '../lib/cache'
 
 //import React, { useState } from 'react'
 import Image from 'next/image'
 // import { list } from 'postcss';
 
 export default async function List() {
-   const posts = await getAllPosts(0,0)
+   let posts
+
+   
+   if (JSON.stringify(getCache("posts")) === '{}') {
+      posts = await getAllPosts(0,0)
+      setCache("posts",posts)
+      console.log("test")
+   }
+   else
+   {
+      posts = getCache("posts")
+      console.log(posts)
+   }
    const tags = await getAllTagsFromPosts(posts)
    // const [value] = useState("精选");
    //posts.shift()
