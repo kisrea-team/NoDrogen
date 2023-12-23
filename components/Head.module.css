@@ -1,0 +1,12 @@
+.bar{
+   --px:40px;
+   background-color: #292A27;
+   height: var(--px);
+   border-radius: var(--radius);
+   /* align-items: center; */
+   line-height: var(--px);
+   text-align: center;
+}
+.bar_text{
+   text-align: center;
+}

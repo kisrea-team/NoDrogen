@@ -1,7 +1,7 @@
-.list_container{
+.list_container {
    display: flex;
-   margin: 0 10rem 0 12rem;
 }
+
 .list_items {
    padding-right: 20px;
 }
@@ -13,7 +13,7 @@
    height: 230px;
    border-radius: var(--radius);
    margin-bottom: 1rem;
-   background-color: var(--bg-light);
+   background-color: var(--bg_light);
    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
    transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
 }
@@ -43,16 +43,24 @@
 
 .posts_info {
    width: 55%;
-   padding-top: 1rem/* 16px */;
-   padding-bottom: 1rem/* 16px */;
-   padding-left: 2.5rem/* 40px */;
-   padding-right: 2.5rem/* 40px */;
+   padding-top: 1rem
+      /* 16px */
+   ;
+   padding-bottom: 1rem
+      /* 16px */
+   ;
+   padding-left: 2.5rem
+      /* 40px */
+   ;
+   padding-right: 2.5rem
+      /* 40px */
+   ;
 }
 
 .posts_title {
    font-weight: bold;
-   font-size: 1.5rem/* 24px */;
-   line-height: 2rem/* 32px */;
+   font-size: var(--font_size);
+   line-height: var(--font_height);
 }
 
 .posts_secondary {
@@ -73,6 +81,10 @@
    font-weight: bold;
 }
 
+.tags_item {
+   padding-top: 8px;
+}
+
 .tags {
    font-size: .8rem;
    padding: 3px 5px;
@@ -83,9 +95,47 @@
    width: 220px;
 }
 
+@media (min-width: 640px) {
+   .posts_item {
+      width: 300px;
+      height: 100px;
+   }
+}
+
+@media (min-width: 768px) {
+
+   .posts_item {
+      width: 350px;
+      height: 150px;
+   }
+}
+
+@media (min-width: 1024px) {
+   .posts_item {
+      width: 500px;
+      height: 180px;
+   }
+}
+
+@media (min-width: 1280px) {
+
+   .posts_item {
+      width: 550px;
+      height: 200px;
+   }
+}
+
+@media (min-width: 1536px) {
+
+   .posts_item {
+      width: 700px;
+      height: 230px;
+   }
+}
+
 @media (prefers-color-scheme: dark) {
    .posts_title {
-      color: var(--bg-light);
+      color: var(--bg_light);
    }
 
    .btn-menu::after,
@@ -104,11 +154,11 @@
 
    .posts_item,
    .tags_card {
-      background-color: var(--bg-item-dark);
+      background-color: var(--bg_item_dark);
    }
 
    .posts_item:hover {
-      background-color: var(--bg-dark-hover);
+      background-color: var(--bg_dark_hover);
    }
 
    .tags {

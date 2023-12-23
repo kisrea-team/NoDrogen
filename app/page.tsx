@@ -30,9 +30,9 @@ export default async function Home() {
    // const tags = await getAllTagsFromPosts(posts)
    // console.log(tags)
    return (
-      <main className='mx-auto container'>
-         {/* <link rel='icon' href={posts[0].icon} />
-         <title>{posts[0]['name']}</title> */}
+      <main className='mx-auto container space-y-6'>
+         {/* <link rel='icon' href={posts[0].icon} /> */}
+         {/* <title>{posts.name}</title> */}
          {/* <NotionPage recordMap={recordMap} /> */}
          
          <Suspense fallback={
