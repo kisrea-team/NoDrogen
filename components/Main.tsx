@@ -21,7 +21,7 @@ export default async function Main() {
    }
    return (
       <div>
-         <div className='relative cover'>
+         {/* <div className='relative cover'>
             <Image
                className=''
                src={posts['0']['cover']}
@@ -30,8 +30,8 @@ export default async function Main() {
                alt='cover'
                fill={true}
             />
-            <div className=' absolute text-center'>{posts['0']['description']}</div>
-         </div>
+            <div className=' absolute text-center'>{view['0']['description']}</div>
+         </div> */}
       </div>
    )
 }

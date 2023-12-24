@@ -40,6 +40,7 @@ export default async function Home() {
             <h1>Hello, world!</h1>
             <p>Fast is slow.</p>
             <p>欲速则不达。</p>
+            <p>年轻一代应该有理想，有目标</p>
          </div>}>
          <Head/>
          <Main/>
