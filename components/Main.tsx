@@ -1,7 +1,7 @@
 
 import { getAllPosts } from '../lib/notion/getData'
 import Image from 'next/image'
-import {getCache,setCache} from '../lib/cache'
+import {setDataToCache,getDataFromCache} from '../lib/cache'
 
 export default async function Main() {
    // const posts = await getAllPosts({ includePages: false })
@@ -9,15 +9,15 @@ export default async function Main() {
    let posts
 
    
-   if (JSON.stringify(getCache("posts")) === '{}') {
+   if (await getDataFromCache("posts") == null) {
       posts = await getAllPosts(0,0)
-      setCache("posts",posts)
-      console.log("test")
+      await setDataToCache("posts",posts)
+      console.log("no")
    }
    else
    {
-      posts = getCache("posts")
-      console.log('posts')
+      posts = await getDataFromCache("posts")
+      console.log('yes')
    }
    return (
       <div>

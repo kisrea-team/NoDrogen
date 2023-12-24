@@ -9,11 +9,12 @@
 :root {
    --radius: 8px;
    --gray: #8f8f8f;
-   --bg-light: #ffffff;
-   --bg-dark: #202020;
-   --bg-item-dark: #242424;
-   --bg-item-dark-hover: #202224;
-
+   --bg_light: #ffffff;
+   --bg_dark: #202020;
+   --bg_item_dark: #242424;
+   --bg_item_dark_hover: #202224;
+   --font_size: 1.2rem;
+   --font_height: 1.5rem;
 }
 
 body {
@@ -71,18 +72,53 @@ body {
 
 }
 
+@media (min-width: 640px) {
+
+   .container {
+      max-width: 440px;
+   }
+}
+
+@media (min-width: 768px) {
+
+   .container {
+      max-width: 568px;
+   }
+}
+
+@media (min-width: 1024px) {
+
+   .container {
+      max-width: 824px;
+   }
+}
+
+@media (min-width: 1280px) {
+
+   .container {
+      max-width: 1080px;
+   }
+}
+
+@media (min-width: 1536px) {
+
+   .container {
+      max-width: 1336px;
+   }
+}
 
 @media (prefers-color-scheme: dark) {
    body {
-      background-color: var(--bg-dark);
+      background-color: var(--bg_dark);
    }
 
    p,
    h1,
    h2,
    span {
-      color: var(--bg-light);
+      color: var(--bg_light);
    }
+
    .btn-menu::after,
    .btn-menu::before {
       background: #ffffff;
@@ -99,11 +135,11 @@ body {
 
    .posts-item,
    .tags-card {
-      background-color: var(--bg-item-dark);
+      background-color: var(--bg_item_dark);
    }
 
    .posts-item:hover {
-      background-color: var(--bg-dark-hover);
+      background-color: var(--bg_dark_hover);
    }
 
    :root {
@@ -111,7 +147,8 @@ body {
       --background-start-rgb: 0, 0, 0;
       --background-end-rgb: 0, 0, 0;
    }
-/* 
+
+   /* 
    .tags {
       color: #E3DACD;
    } */

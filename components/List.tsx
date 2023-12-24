@@ -1,6 +1,6 @@
 import { getAllPosts } from '../lib/notion/getData'
 import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
-import {getCache,setCache} from '../lib/cache'
+import {setDataToCache,getDataFromCache} from '../lib/cache'
 import styles from '../components/list.module.css'
 
 //import React, { useState } from 'react'
@@ -11,23 +11,21 @@ export default async function List() {
    let posts
 
    
-   if (JSON.stringify(getCache("posts")) === '{}') {
+   if (await getDataFromCache("posts") == null) {
       posts = await getAllPosts(0,0)
-      setCache("posts",posts)
-      console.log("test")
+      await setDataToCache("posts",posts)
+      console.log("no")
    }
    else
    {
-      posts = getCache("posts")
-      console.log(posts)
+      posts = await getDataFromCache("posts")
+      console.log('yes')
    }
    const tags = await getAllTagsFromPosts(posts)
    // const [value] = useState("精选");
    //posts.shift()
    const listItems = posts.map((list) =>
       <a className={styles.posts_item} href={list.id} target='_blank'>
-         {/* <div className='posts-item'> */}
-         {/* <div className={value === posts[2].type ? "posts-heart" : ""}> */}
          <div className={styles.posts_heart}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" version="1.1" width="16.000003814697266" height="22.30051803588867" viewBox="0 0 35.000003814697266 47.30051803588867">
                <path d="M0,45.9367L0,0L35,0L35,45.9367C35,47.1162,33.6172,47.7374,32.7517,46.9469L18.4022,33.8438C17.8898,33.3758,17.1102,33.3758,16.5978,33.8438L2.2484,46.9469C1.38265,47.7374,0,47.1162,0,45.9367Z" fill="#838383" fill-opacity="0.27000001072883606" />
@@ -68,11 +66,13 @@ export default async function List() {
       </span>
    ));
    return (
-      <div className={styles.list_container}>
-         <div className={styles.list_items}>{listItems}</div>
+      <div className={`${styles.list_container}`}>
+         <div className={styles.list_items}>
+            {listItems}
+         </div>
          <div className={styles.tags_card}>
-            <h1 className={styles.tags_title}>{posts[1].type}标签</h1>
-            <div>
+            <h1 className={styles.tags_title}>标签</h1>
+            <div className={styles.tags_item}>
                {tagsitem}
             </div>
          </div>
