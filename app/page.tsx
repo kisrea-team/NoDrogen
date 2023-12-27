@@ -7,12 +7,23 @@ import { Suspense } from 'react'
 // import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
 
 
+// // core styles shared by all of react-notion-x (required)
+// import 'react-notion-x/src/styles.css'
 
+// // used for code syntax highlighting (optional)
+// import 'prismjs/themes/prism-tomorrow.css'
+
+// // used for rendering equations (optional)
+// import 'katex/dist/katex.min.css'
+
+// import './globals.css'
+// import '../app/copy.css'
 
 import Head from '../components/Head'
 import Main from '../components/Main'
 import List from '../components/List'
 // import { list } from 'postcss'
+import { Loading } from '../components/Loading'
 
 export default async function Home() {
 
@@ -34,18 +45,19 @@ export default async function Home() {
          {/* <link rel='icon' href={posts[0].icon} /> */}
          {/* <title>{posts.name}</title> */}
          {/* <NotionPage recordMap={recordMap} /> */}
-         
+
          <Suspense fallback={
-         <div>
-            <h1>Hello, world!</h1>
-            <p>Fast is slow.</p>
-            <p>欲速则不达。</p>
-            <p>年轻一代应该有理想，有目标</p>
-         </div>}>
-         <Head/>
-         <Main/>
-         <List/>
-         {/* <Main view={posts[0]} posts={list} />
+            <div>
+               <Loading />
+               {/* <h1>Hello, world!</h1>
+               <p>Fast is slow.</p>
+               <p>欲速则不达。</p>
+               <p>年轻一代应该有理想，有目标</p> */}
+            </div>}>
+            <Head />
+            <Main />
+            <List />
+            {/* <Main view={posts[0]} posts={list} />
          <List view={posts[0]} posts={list} tags={tags} /> */}
          </Suspense>
       </main>
