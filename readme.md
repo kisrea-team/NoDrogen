@@ -1,4 +1,4 @@
-### 实验性版本在dev(https://github.com/kisrea-team/Notion-New/tree/dev)分支。
+### 实验性版本在dev分支(https://github.com/kisrea-team/Notion-New/tree/dev)。
 ## 基本特性
 
 
