@@ -22,8 +22,10 @@ export default async function Head() {
          <div className={styles.head}>
             <p className={styles.title}>{posts['0']['name']}</p>
             <p className={styles.grow}></p>
-            <div id={styles.btn_menu} className={styles.btn_menu}></div>
+            <div className={styles.btn_menu}></div>
          </div>
+
+
          <div className={styles.bar}>
             <p className={styles.bar_text}>欲速则不达</p>
          </div>
