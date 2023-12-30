@@ -12,7 +12,7 @@ export default async function List() {
 
 
    if (await getDataFromCache("posts") == null) {
-      posts = await getAllPosts(0, 0)
+      posts = await getAllPosts(0, 0, 0)
       await setDataToCache("posts", posts)
       console.log("no")
    }
@@ -20,6 +20,7 @@ export default async function List() {
       posts = await getDataFromCache("posts")
       console.log('yes')
    }
+   posts=posts.slice(1);
    const tags = await getAllTagsFromPosts(posts)
    // const [value] = useState("精选");
    //posts.shift()

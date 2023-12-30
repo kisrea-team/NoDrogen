@@ -31,14 +31,17 @@ async function getIcon() {
 let posts
 if (await getDataFromCache("posts") != null) {
    posts = await getDataFromCache("posts")
-   return posts[2]['icon'];
 }
 else
 {
-   posts = await getAllPosts(0, 0)
+   posts = await getAllPosts(0, 0 ,0)
    await setDataToCache("posts", posts)
-   return posts[2]['icon'];
 }
+const notes = await getAllPosts(1, posts ,"Notes")
+//筛选notes
+console.log(notes)
+return posts[1]['icon'];
+
 }
 
 export default async function Home() {

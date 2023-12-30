@@ -26,7 +26,7 @@ dayjs.locale('en');
 
 
 
-export async function getAllPosts(item,source) {
+export async function getAllPosts(item,source,type) {
 
 
 
@@ -62,7 +62,7 @@ export async function getAllPosts(item,source) {
    switch (item) {
       case 1:
          const posts = source.filter(post => {
-            return post.title && post?.status?.[0] === '展现'
+            return post.title && post?.status?.[0] === '展现'  && post?.type?.[0] === type;
           })
           //console.log(posts)
           return posts
