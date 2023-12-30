@@ -93,6 +93,15 @@
 @media (min-width: 1536px) {}
 
 @media (prefers-color-scheme: dark) {
+
+   .btn_menu::after,
+   .btn_menu::before {
+      background: #ffffff;
+   }
+   .btn_menu::before {
+      box-shadow: 0 10px #ffffff;
+   }
+
    .bar {
       background-color: #292A27;
    }
