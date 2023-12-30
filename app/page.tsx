@@ -6,22 +6,38 @@ import { Suspense } from 'react'
 // import { getAllPosts } from '../lib/notion/getData'
 // import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
 import {setDataToCache,getDataFromCache} from '../lib/cache'
+import { getAllPosts } from '../lib/notion/getData'
 
 
+// // core styles shared by all of react-notion-x (required)
+// import 'react-notion-x/src/styles.css'
 
+// // used for code syntax highlighting (optional)
+// import 'prismjs/themes/prism-tomorrow.css'
+
+// // used for rendering equations (optional)
+// import 'katex/dist/katex.min.css'
+
+// import './globals.css'
+// import '../app/copy.css'
 
 import Head from '../components/Head'
 import Main from '../components/Main'
 import List from '../components/List'
+import { Loading } from '../components/Loading'
+
 // import { list } from 'postcss'
 async function getIcon() {
+let posts
 if (await getDataFromCache("posts") != null) {
-   let posts = await getDataFromCache("posts")
+   posts = await getDataFromCache("posts")
    return posts[2]['icon'];
 }
 else
 {
-   return "6";
+   posts = await getAllPosts(0, 0)
+   await setDataToCache("posts", posts)
+   return posts[2]['icon'];
 }
 }
 

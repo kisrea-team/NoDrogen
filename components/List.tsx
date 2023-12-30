@@ -1,6 +1,6 @@
 import { getAllPosts } from '../lib/notion/getData'
 import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
-import {setDataToCache,getDataFromCache} from '../lib/cache'
+import { setDataToCache, getDataFromCache } from '../lib/cache'
 import styles from '../components/list.module.css'
 
 //import React, { useState } from 'react'
@@ -10,14 +10,13 @@ import Image from 'next/image'
 export default async function List() {
    let posts
 
-   
+
    if (await getDataFromCache("posts") == null) {
-      posts = await getAllPosts(0,0)
-      await setDataToCache("posts",posts)
+      posts = await getAllPosts(0, 0)
+      await setDataToCache("posts", posts)
       console.log("no")
    }
-   else
-   {
+   else {
       posts = await getDataFromCache("posts")
       console.log('yes')
    }
@@ -70,10 +69,15 @@ export default async function List() {
          <div className={styles.list_items}>
             {listItems}
          </div>
-         <div className={styles.tags_card}>
-            <h1 className={styles.tags_title}>标签</h1>
-            <div className={styles.tags_item}>
-               {tagsitem}
+         <div className=''>
+            <div className={styles.tags_card}>
+
+            </div>
+            <div className={styles.tags_card}>
+               <h1 className={styles.tags_title}>标签</h1>
+               <div className={styles.tags_item}>
+                  {tagsitem}
+               </div>
             </div>
          </div>
       </div>
