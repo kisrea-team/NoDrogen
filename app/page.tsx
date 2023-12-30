@@ -5,6 +5,7 @@ import { cache } from 'react'
 import { Suspense } from 'react'
 // import { getAllPosts } from '../lib/notion/getData'
 // import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
+import {setDataToCache,getDataFromCache} from '../lib/cache'
 
 
 
@@ -13,6 +14,16 @@ import Head from '../components/Head'
 import Main from '../components/Main'
 import List from '../components/List'
 // import { list } from 'postcss'
+async function getIcon() {
+if (await getDataFromCache("posts") != null) {
+   let posts = await getDataFromCache("posts")
+   return posts[2]['icon'];
+}
+else
+{
+   return "6";
+}
+}
 
 export default async function Home() {
 
@@ -35,7 +46,9 @@ export default async function Home() {
          {/* <title>{posts.name}</title> */}
          {/* <NotionPage recordMap={recordMap} /> */}
          
+
          <Suspense fallback={
+         
          <div>
             <h1>Hello, world!</h1>
             <p>Fast is slow.</p>
@@ -45,6 +58,11 @@ export default async function Home() {
          <Head/>
          <Main/>
          <List/>
+         <Suspense fallback={<h1>icon .</h1>}>
+
+         <link rel="icon" href={`data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${await getIcon()}</text></svg>`}/>
+         </Suspense>
+
          {/* <Main view={posts[0]} posts={list} />
          <List view={posts[0]} posts={list} tags={tags} /> */}
          </Suspense>
