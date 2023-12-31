@@ -11,7 +11,7 @@ export default async function Main() {
 
    
    if (await getDataFromCache("posts") == null) {
-      posts = await getAllPosts(0,0)
+      posts = await getAllPosts(0,0,0)
       await setDataToCache("posts",posts)
       console.log("no")
    }
