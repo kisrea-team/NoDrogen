@@ -82,7 +82,7 @@ export default async function Home() {
          <Suspense fallback={<h1>icon .</h1>}>
          {
                      
-               icon.indexOf('h') > 0 ?
+               icon.startsWith('http') > 0 ?
                <link rel="shortcut icon" href={`${await getIcon()}`} type="image/x-icon"/>
 
                :  <link rel="icon" href={`data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${await getIcon()}</text></svg>`}/>

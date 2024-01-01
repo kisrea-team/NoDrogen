@@ -86,6 +86,7 @@ export async function getAllPosts(item,source,type) {
          const tagSchema = Object.values(schema)
          const tagOptions=tagSchema?.[4]?.['options']
          const pageCover = mapImgUrl(collection['cover'], block[id].value)
+         const icon = mapImgUrl(collection['icon'], block[id].value)
 
          //获取本身的rawMetadata
          // Check Type
@@ -131,7 +132,7 @@ export async function getAllPosts(item,source,type) {
                
                //把页面的属性推给data
             }
-            const wiki = { "icon": collection['icon'][0],"cover": pageCover, name: collection['name'][0][0], description: collection['description'][0][0] };
+            const wiki = { "icon": icon,"cover": pageCover, name: collection['name'][0][0], description: collection['description'][0][0] };
             data.unshift(wiki)
             // remove all the the items doesn't meet requirements
 
