@@ -75,6 +75,20 @@ export async function getAllPosts(item,source,type) {
          //视图号
          const response = await client.getPage(id)
          console.log(response)
+         const users = response?.notion_user
+         const notion_users = []
+
+         Object.values(users).forEach(user => {
+            const notion_user = {
+               id: user?.['value']?.id,
+               name: user?.['value']?.name,
+               first_name: user?.['value']?.given_name,
+               last_name: user?.['value']?.family_name,
+               profile_photo: user?.['value']?.profile_photo
+             }
+             notion_users.push(notion_user)
+             console.log(notion_users)
+          })
          //获取page块的信息
          const collection = Object.values(response.collection)[0]?.['value']
          //获取page数据集的第一个id的value内容
@@ -84,7 +98,7 @@ export async function getAllPosts(item,source,type) {
          const rawMetadata = block[id].value
         // console.log(rawMetadata)
          const tagSchema = Object.values(schema)
-         const tagOptions=tagSchema?.[4]?.['options']
+         const tagOptions=tagSchema?.[3]?.['options']
          const pageCover = mapImgUrl(collection['cover'], block[id].value)
          const icon = mapImgUrl(collection['icon'], block[id].value)
 
@@ -132,7 +146,7 @@ export async function getAllPosts(item,source,type) {
                
                //把页面的属性推给data
             }
-            const wiki = { "icon": icon,"cover": pageCover, name: collection['name'][0][0], description: collection['description'][0][0] };
+            const wiki = { "icon": icon,"cover": pageCover, name: collection['name'][0][0], description: collection['description'][0][0],user:notion_users};
             data.unshift(wiki)
             // remove all the the items doesn't meet requirements
 

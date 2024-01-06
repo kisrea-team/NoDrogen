@@ -20,6 +20,7 @@ export default async function List() {
       posts = await getDataFromCache("posts")
       console.log('yes')
    }
+   const view = posts[0];
    posts = posts.slice(1);
    const tags = await getAllTagsFromPosts(posts)
    // const [value] = useState("精选");
@@ -73,7 +74,7 @@ export default async function List() {
          <div className=''>
             <div className={styles.tags_card}>
                <Image
-                  src={posts[1].Person[0]?.profile_photo}
+                  src={view?.['user']?.[1]?.profile_photo}
                   width={100}
                   height={100}
                   alt='牛' />
