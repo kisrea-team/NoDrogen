@@ -20,7 +20,7 @@ export default async function List() {
       posts = await getDataFromCache("posts")
       console.log('yes')
    }
-   posts=posts.slice(1);
+   posts = posts.slice(1);
    const tags = await getAllTagsFromPosts(posts)
    // const [value] = useState("精选");
    //posts.shift()
@@ -72,7 +72,11 @@ export default async function List() {
          </div>
          <div className=''>
             <div className={styles.tags_card}>
-
+               <Image
+                  src={posts[1].Person[0]?.profile_photo}
+                  width={100}
+                  height={100}
+                  alt='牛' />
             </div>
             <div className={styles.tags_card}>
                <h1 className={styles.tags_title}>标签</h1>

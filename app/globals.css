@@ -38,7 +38,7 @@ body {
 @media (min-width: 375px) {
 
    .container {
-      max-width: 350px;
+      max-width: 100%;
    }
 }
 

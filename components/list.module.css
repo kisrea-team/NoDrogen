@@ -8,6 +8,7 @@
 
 .posts_item {
    display: flex;
+   flex-direction: initial;
    position: relative;
    width: 700px;
    height: 230px;
@@ -43,18 +44,10 @@
 
 .posts_info {
    width: 55%;
-   padding-top: 1rem
-      /* 16px */
-   ;
-   padding-bottom: 1rem
-      /* 16px */
-   ;
-   padding-left: 2.5rem
-      /* 40px */
-   ;
-   padding-right: 2.5rem
-      /* 40px */
-   ;
+   padding-top: 1rem;
+   padding-bottom: 1rem;
+   padding-left: 2.5rem;
+   padding-right: 2.5rem;
 }
 
 .posts_title {
@@ -95,10 +88,26 @@
    width: 220px;
 }
 
-@media (min-width: 375px) {
+@media(min-width: 375px) and (max-width: 427px) {
    .posts_item {
-      width: 390px;
-      height: 100px;
+      flex-direction: column;
+      width: 95%;
+      height: 300px;
+      /* animation: ; */
+   }
+
+   .posts_cover {
+      height: 50%;
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+   }
+
+   .posts_info {
+      width: 100%;
+   }
+
+   .list_items {
+      padding-right: initial;
    }
 
    .tags_card {
@@ -106,8 +115,9 @@
    }
 }
 
-@media (min-width: 428px) {
+@media (min-width: 428px) and (max-width: 639px){
    .posts_item {
+      flex-direction: column;
       width: 300px;
       height: 100px;
    }
@@ -118,8 +128,9 @@
 
 }
 
-@media (min-width: 640px) {
+@media (min-width: 640px) and (max-width: 767px) {
    .posts_item {
+      flex-direction: column;
       width: 300px;
       height: 100px;
    }
@@ -129,9 +140,10 @@
    }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px)  and (max-width: 427px){
 
    .posts_item {
+      flex-direction: initial;
       width: 350px;
       height: 150px;
    }
@@ -143,6 +155,7 @@
 
 @media (min-width: 1024px) {
    .posts_item {
+      flex-direction: initial;
       width: 500px;
       height: 180px;
    }
@@ -156,6 +169,7 @@
 @media (min-width: 1280px) {
 
    .posts_item {
+      flex-direction: initial;
       width: 550px;
       height: 200px;
    }
@@ -168,6 +182,7 @@
 @media (min-width: 1536px) {
 
    .posts_item {
+      flex-direction: initial;
       width: 700px;
       height: 230px;
    }
@@ -178,6 +193,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
    .posts_title {
       color: var(--bg_light);
    }
