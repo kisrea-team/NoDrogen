@@ -87,6 +87,15 @@
 .list_tags {
    width: 220px;
 }
+.avatar_info{
+   display: flex;
+   margin: 45px auto;
+   width: 120px;
+   height: 120px;
+}
+.avatar{
+   border-radius:100% ;
+}
 
 @media(min-width: 375px) and (max-width: 427px) {
    .posts_item {

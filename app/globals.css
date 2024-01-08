@@ -9,6 +9,7 @@
 :root {
    --radius: 8px;
    --gray: #8f8f8f;
+   --width:#fff;
    --bg_light: #ffffff;
    --bg_dark: #202020;
    --bg_item_dark: #242424;

@@ -39,8 +39,10 @@ else
    await setDataToCache("posts", posts)
 }
 const notes = await getAllPosts(1, posts ,"Notes")
+const star = await getAllPosts(1, posts ,"精选")
 //筛选notes
 console.log(notes)
+console.log(star)
 return posts[0]['icon'];
 
 }
