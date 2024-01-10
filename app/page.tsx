@@ -38,11 +38,13 @@ else
    posts = await getAllPosts(0, 0 ,0)
    await setDataToCache("posts", posts)
 }
-const notes = await getAllPosts(1, posts ,"Notes")
-const star = await getAllPosts(1, posts ,"精选")
+// const notes = await getAllPosts(1, posts ,"Notes")
+// const star = await getAllPosts(1, posts ,"精选")
+// const postsp = star.concat(notes);
+
 //筛选notes
-console.log(notes)
-console.log(star)
+// console.log(notes)
+// console.log(star)
 return posts[0]['icon'];
 
 }
@@ -62,7 +64,7 @@ export default async function Home() {
    // const list=posts.slice(1)
    // const tags = await getAllTagsFromPosts(posts)
    // console.log(tags)
-   const icon:any = await getIcon()
+   let icon
    return (
       <main className='mx-auto container space-y-6'>
          {/* <link rel='icon' href={posts[0].icon} /> */}
@@ -82,8 +84,8 @@ export default async function Home() {
          <Main/>
          <List/>
          <Suspense fallback={<h1>icon .</h1>}>
+         {icon= await getIcon()}
          {
-                     
                icon.startsWith('http') > 0 ?
                <link rel="shortcut icon" href={`${await getIcon()}`} type="image/x-icon"/>
 

@@ -138,6 +138,10 @@ export async function getAllPosts(item,source,type) {
                {
                properties['cover'] = mapImgUrl(block[id].value?.format?.page_cover, block[id].value) ?? ''
                }
+               else
+               {
+               properties['cover']="https://www.notion.so/images/page-cover/met_fitz_henry_lane.jpg"
+               }
                properties['tags'] = properties?.['tags']?.map(tag => {
                   return { name: tag, color: tagOptions?.find(t => t.value === tag)?.color || 'gray' }
                 }) || []
