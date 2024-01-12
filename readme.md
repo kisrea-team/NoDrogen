@@ -7,7 +7,7 @@
 ```shell
 git clone http://github.com/kisrea-team/NoDrogen.git
 cd NoDrogen
-npm i
+npm install --unsafe-perm
 npm run build
 ```
 ### Vercel
