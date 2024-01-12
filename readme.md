@@ -4,6 +4,12 @@
 ## 快速构建
 你可以通过以下方式快速构建：
 ### 自有服务器
+```shell
+git clone http://github.com/kisrea-team/NoDrogen.git
+cd NoDrogen
+npm install --unsafe-perm
+npm run build
+```
 ### Vercel
 ### Github Pages
 ## License
