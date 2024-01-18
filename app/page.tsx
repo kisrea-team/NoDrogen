@@ -25,6 +25,7 @@ import './globals.css'
 import Head from '../components/Head'
 import Main from '../components/Main'
 import List from '../components/List'
+
 import { Loading } from '../components/Loading'
 
 // import { list } from 'postcss'
@@ -49,7 +50,14 @@ return posts[0]['icon'];
 
 }
 
-export default async function Home() {
+export default async function Home({
+   searchParams,
+ }: {
+   searchParams?: {
+     query?: string,
+     page?: string,
+   },
+ }) {
 
 
    // const notion = new NotionAPI();
@@ -64,6 +72,9 @@ export default async function Home() {
    // const list=posts.slice(1)
    // const tags = await getAllTagsFromPosts(posts)
    // console.log(tags)
+   const query = searchParams?.query || '';
+   const currentPage = Number(searchParams?.page) || 1;
+ 
    let icon
    return (
       <main className='mx-auto container space-y-6'>
@@ -81,6 +92,8 @@ export default async function Home() {
             <p>年轻一代应该有理想，有目标</p>
          </div>}>
          <Head/>
+
+
          <Main/>
          <List/>
          <Suspense fallback={<h1>icon .</h1>}>

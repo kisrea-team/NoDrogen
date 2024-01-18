@@ -36,6 +36,11 @@ body {
 
 }
 
+
+.block{
+   display: inline-block;
+}
+
 @media (min-width: 375px) {
 
    .container {
