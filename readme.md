@@ -2,7 +2,7 @@
 # 轻量化、主题可拔插（暂未完成）
 ## 快速构建
 你可以修改下面的文件以做到显示你的notion文章。
-.env.local
+### .env.local
 ```.env.local
 VIEW_ID=1ac8cfb2dde44bbc8f6ed18d2acb1e3b
 ```
