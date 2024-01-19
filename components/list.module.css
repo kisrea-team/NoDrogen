@@ -90,11 +90,27 @@
 .avatar_info{
    display: flex;
    margin: 45px auto;
-   width: 120px;
-   height: 120px;
+   width: 7rem;
+   height: 7rem;
+   position: relative;
+}
+.demo{
+   display: flex;
+   width: 1.5rem;
+   height: 1.5rem;
+   color: pink;
 }
 .avatar{
    border-radius:100% ;
+}
+.sidebar_name{
+   position: absolute;
+   font-size: 1.5rem;
+   font-weight: bold;
+}
+.sidebar{
+   display: flex;
+   flex-direction: column;
 }
 
 @media(min-width: 375px) and (max-width: 427px) {

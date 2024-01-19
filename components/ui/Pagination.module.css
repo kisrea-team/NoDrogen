@@ -1,0 +1,33 @@
+.pagination {
+   cursor: pointer;
+   display: flex;
+   gap: .3rem;
+}
+.line{
+   display: flex;
+   align-items: center;
+}
+.pageItemActive {
+   border: 1px solid #000;
+   border-radius: calc(var(--radius) - 4px);
+}
+
+.pageItem {
+   display: flex;
+}
+
+.pageLink:hover {
+   border-radius: calc(var(--radius) - 4px);
+   background-color: hsl(240, 3%, 24%);
+}
+
+.pageLink {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transition-property: all;
+   transition: cubic-bezier(.4, 0, .2, 1);
+   transition-duration: .3s;
+   width: 1.75rem;
+   height: 1.75rem;
+}

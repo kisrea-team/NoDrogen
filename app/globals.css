@@ -9,7 +9,7 @@
 :root {
    --radius: 8px;
    --gray: #8f8f8f;
-   --width:#fff;
+   --width: #fff;
    --bg_light: #ffffff;
    --bg_dark: #202020;
    --bg_item_dark: #242424;
@@ -19,7 +19,7 @@
    --font_size: 1.2rem;
    --font_height: 1.5rem;
    --bar_border: 1.2px solid var(--shadow);
-   --bar_border_hover:2px solid var(--shadow);
+   --bar_border_hover: 2px solid var(--shadow);
 }
 
 body {
@@ -37,7 +37,7 @@ body {
 }
 
 
-.block{
+.block {
    display: inline-block;
 }
 
