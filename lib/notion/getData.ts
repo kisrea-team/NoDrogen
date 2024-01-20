@@ -24,13 +24,13 @@ dayjs.locale('en');
  * @param {{ includePages: boolean }} - false: posts only / true: include pages
  */
 
-// export function paginate(items, pageNumber, pageSize)  {
+export function paginate(items, pageNumber, pageSize)  {
 
-//    const startIndex = (pageNumber - 1) * pageSize;
+   const startIndex = (pageNumber-1) * pageSize;
    
-//    return items.slice(startIndex, startIndex + pageSize);
+   return items.slice(startIndex, startIndex + pageSize);
    
-//    };
+   };
 
 export async function getAllPosts(item,source,type) {
 
