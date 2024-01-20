@@ -24,7 +24,13 @@ dayjs.locale('en');
  * @param {{ includePages: boolean }} - false: posts only / true: include pages
  */
 
+// export function paginate(items, pageNumber, pageSize)  {
 
+//    const startIndex = (pageNumber - 1) * pageSize;
+   
+//    return items.slice(startIndex, startIndex + pageSize);
+   
+//    };
 
 export async function getAllPosts(item,source,type) {
 
@@ -131,6 +137,10 @@ export async function getAllPosts(item,source,type) {
             for (let i = 0; i < pageIds.length; i++) {
                const id = pageIds[i]
                const properties = (await getPageProperties(id, block, schema)) || null
+               if(!properties['title'])
+               {
+                  continue;
+               }
                //获取单个页面的属性
                // Add fullwidth to properties
                properties['fullWidth'] = block[id].value?.format?.page_full_width ?? false

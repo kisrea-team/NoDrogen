@@ -98,7 +98,8 @@ body {
    p,
    h1,
    h2,
-   span {
+   span,
+   a {
       color: var(--bg_light);
    }
 

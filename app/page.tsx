@@ -33,6 +33,7 @@ async function getIcon() {
 let posts
 if (await getDataFromCache("posts") != null) {
    posts = await getDataFromCache("posts")
+   
 }
 else
 {
@@ -54,7 +55,6 @@ export default async function Home({
    searchParams,
  }: {
    searchParams?: {
-     query?: string,
      page?: string,
    },
  }) {
@@ -72,9 +72,8 @@ export default async function Home({
    // const list=posts.slice(1)
    // const tags = await getAllTagsFromPosts(posts)
    // console.log(tags)
-   const query = searchParams?.query || '';
    const currentPage = Number(searchParams?.page) || 1;
- 
+
    let icon
    return (
       <main className='mx-auto container space-y-6'>
@@ -96,6 +95,7 @@ export default async function Home({
 
          <Main/>
          <List/>
+         <p>第{currentPage}页</p>
          <Suspense fallback={<h1>icon .</h1>}>
          {icon= await getIcon()}
          {
