@@ -1,15 +1,15 @@
 'use client'
 import React from 'react';
-const style = {
-   time: {
-      backgroundColor: 'rgba(255,255,255,0.2)',
-      color: 'var(--width)',
-      borderRadius: 10,
-      width: 'fit-content',
-      padding: '0 10px',
-      textAlign: 'right',
-   }
-}
+// const style = {
+//    time: {
+//       backgroundColor: 'rgba(255,255,255,0.2)',
+//       color: 'var(--width)',
+//       borderRadius: 10,
+//       width: 'fit-content',
+//       padding: '0 10px',
+//       textAlign: 'right',
+//    }
+// }
 class GreetingMessage extends React.Component {
    constructor(props) {
       super(props);
@@ -54,7 +54,7 @@ class GreetingMessage extends React.Component {
    render() {
       return (
          <div>
-            <h1 style={style.time}>{this.state.message}</h1>
+            <h1 className='times'>{this.state.message}</h1>
          </div>
       );
    }

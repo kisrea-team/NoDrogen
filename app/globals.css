@@ -9,7 +9,8 @@
 :root {
    --radius: 8px;
    --gray: #8f8f8f;
-   --width: #fff;
+   --white: #fff;
+   --black:#202020;
    --bg_light: #ffffff;
    --bg_dark: #202020;
    --bg_item_dark: #242424;
@@ -41,6 +42,15 @@ body {
    display: inline-block;
 }
 
+.times {
+   background-color: rgba(255, 255, 255, 0.2);
+   color: var(--white);
+   border-radius: 10px;
+   width: fit-content;
+   padding: 0 10px;
+   text-align: right;
+}
+
 @media (min-width: 375px) {
 
    .container {
@@ -65,7 +75,7 @@ body {
 @media (min-width: 768px) {
 
    .container {
-      max-width: 668px;
+      max-width: 728px;
    }
 }
 

@@ -1,19 +1,16 @@
-
 import { getAllPosts } from '../lib/notion/getData'
 import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
 import { setDataToCache, getDataFromCache } from '../lib/cache'
 import styles from '../components/list.module.css'
 import Pagination from './ui/Pagination'
-import {paginate} from '../lib/notion/getData'
+
 import Time from '../components/Time'
 import abc from '../public/social.jpg'
 
 //import React, { useState } from 'react'
 import Image from 'next/image'
 // import { list } from 'postcss';
-import { usePathname, useSearchParams } from 'next/navigation';
-
-export default async function List(props) {
+export default async function List() {
    let posts
 
 
@@ -36,9 +33,8 @@ export default async function List(props) {
    })
    // const [value] = useState("精选");
    //posts.shift()
-   
-   const postsp = paginate(star.concat(posts),Number(props.currentPage),10);
-   console.log("Y"+props.currentPage)
+   const postsp = star.concat(posts);
+
    const listItems = postsp.map((list) =>
       <a className={styles.posts_item} href={list.id} target='_blank'>
          <div className={styles.posts_heart}>
@@ -90,30 +86,33 @@ export default async function List(props) {
 
                {listItems}
             </div>
-            <div className=''>
+            <aside className={styles.sticky}>
                <div>
                   <div className={styles.tags_card}>
                      <Time />
-                     <div className={styles.avatar_info}>
-                        <Image
-                           className={styles.avatar}
-                           src={view?.['user']?.[1]?.profile_photo}
-                           width={100}
-                           height={100}
-                           alt='牛' />
+                     <div className={styles.info_card}>
+                        <div className={styles.name_info}>
+                           <h1 className={styles.title}>{view?.['user']?.[1]?.name}</h1>
+                        </div>
+                        <div className={styles.avatar_info}>
+                           <Image
+                              className={styles.avatar}
+                              src={view?.['user']?.[1]?.profile_photo}
+                              width={100}
+                              height={100}
+                              alt='牛' />
+                        </div>
                      </div>
-                     <div>
-                        <h1 className={styles.tags_title}>{view?.['user']?.[1]?.name}</h1>
-                     </div>
+
                   </div>
                </div>
                <div className={styles.tags_card}>
-                  <h1 className={styles.tags_title}>标签</h1>
+                  <h1 className={styles.title}>标签</h1>
                   <div className={styles.tags_item}>
                      {tagsitem}
                   </div>
                </div>
-            </div>
+            </aside>
 
          </div>
          <div className="mt-5 flex w-full justify-center">

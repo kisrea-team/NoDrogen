@@ -69,7 +69,7 @@
    background-color: aliceblue;
 }
 
-.tags_title {
+.title {
    font-size: 1.5rem;
    font-weight: bold;
 }
@@ -87,38 +87,62 @@
 .list_tags {
    width: 220px;
 }
-.avatar_info{
+
+.avatar_info {
    display: flex;
    margin: 45px auto;
-   width: 7rem;
-   height: 7rem;
+   justify-content: center;
    position: relative;
 }
-.demo{
+
+.info_card {
+   display: flex;
+   flex-direction: column-reverse;
+}
+
+.demo {
    display: flex;
    width: 1.5rem;
    height: 1.5rem;
    color: pink;
 }
-.avatar{
-   border-radius:100% ;
+
+.avatar {
+
+   border-radius: 100%;
 }
-.sidebar_name{
+
+.name_info {
+   position: absolute;
+}
+
+.sidebar_name {
    position: absolute;
    font-size: 1.5rem;
    font-weight: bold;
 }
-.sidebar{
+
+.sidebar {
    display: flex;
    flex-direction: column;
 }
 
+.sticky {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   top: 1rem;
+   align-self: flex-start;
+   position: sticky;
+}
+
 @media(min-width: 375px) and (max-width: 427px) {
    .posts_item {
+      margin: auto;
       flex-direction: column;
       width: 95%;
       height: 300px;
-      /* animation: ; */
+
    }
 
    .posts_cover {
@@ -138,9 +162,15 @@
    .tags_card {
       display: none;
    }
+
+   .posts_title {
+      font-weight: medium;
+      font-size: calc(var(--font_size) - 1rem);
+      line-height: var(--font_height);
+   }
 }
 
-@media (min-width: 428px) and (max-width: 639px){
+@media (min-width: 428px) and (max-width: 639px) {
    .posts_item {
       flex-direction: column;
       width: 300px;
@@ -148,7 +178,7 @@
    }
 
    .tags_card {
-      display: block;
+      display: none;
    }
 
 }
@@ -161,16 +191,29 @@
    }
 
    .tags_card {
-      display: block;
+      display: none;
    }
 }
 
-@media (min-width: 768px)  and (max-width: 427px){
+@media (min-width: 768px) and (max-width: 1023px) {
+   .posts_info {
+      width: 55%;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      padding-left: .5rem;
+      padding-right: .5rem;
+   }
 
    .posts_item {
       flex-direction: initial;
       width: 350px;
       height: 150px;
+   }
+
+   .posts_title {
+      font-weight: normal;
+      font-size: calc(var(--font_size) - .5rem);
+      line-height: var(--font_height);
    }
 
    .tags_card {

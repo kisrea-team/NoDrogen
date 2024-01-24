@@ -3,12 +3,21 @@
    display: flex;
    gap: .3rem;
 }
-.line{
+
+.line {
    display: flex;
    align-items: center;
+   color: var(--bg_item_dark);
 }
+
+.icon path {
+   fill: var(--black);
+}
+
 .pageItemActive {
-   border: 1px solid #000;
+   --tw-shadow: 0 1px 4px 2px rgb(0, 0, 0, .1);
+   /* border: 1px solid 0 0 #0000; */
+   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
    border-radius: calc(var(--radius) - 4px);
 }
 
@@ -18,7 +27,7 @@
 
 .pageLink:hover {
    border-radius: calc(var(--radius) - 4px);
-   background-color: hsl(240, 3%, 24%);
+   background-color: hsl(240, 4.8%, 95.9%);
 }
 
 .pageLink {
@@ -28,6 +37,21 @@
    transition-property: all;
    transition: cubic-bezier(.4, 0, .2, 1);
    transition-duration: .3s;
-   width: 1.75rem;
-   height: 1.75rem;
+   width: 1.9rem;
+   height: 1.9rem;
+}
+
+@media (prefers-color-scheme: dark) {
+   .pageLink:hover {
+      border-radius: calc(var(--radius) - 4px);
+      background-color: hsl(240, 3%, 24%);
+   }
+
+   .pageItemActive {
+      --tw-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.1);
+   }
+
+   .icon path {
+      fill: var(--white);
+   }
 }
