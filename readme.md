@@ -1,8 +1,15 @@
 ### 实验性版本在dev分支。(https://github.com/kisrea-team/Notion-New/tree/dev)
+![20240124112925](https://github.com/kisrea-team/NoDrogen/assets/49295983/9de398a1-60b8-45de-8e06-25034ab2ed12)
+
 ## 基本特性
 # 轻量化、主题可拔插（暂未完成）
 ## 快速构建
-你可以修改下面的文件以做到显示你的notion文章。
+1.Duplicate以下的notion模板<br />
+Nodrogen模板(https://www.notion.so/kisrea/1ac8cfb2dde44bbc8f6ed18d2acb1e3b?v=86c74e71bd524a29b5dc0fa1a1cf4fce)<br />
+2.点击右上角，选择Publish选项卡，点击Publish to web<br />
+![20240124114207](https://github.com/kisrea-team/NoDrogen/assets/49295983/7d184aad-0a8e-4486-88c6-6e289405b091)
+
+<br />你可以修改下面的文件以做到显示你的notion文章。
 ### .env.local
 ```.env.local
 VIEW_ID=1ac8cfb2dde44bbc8f6ed18d2acb1e3b
@@ -17,6 +24,7 @@ git clone http://github.com/kisrea-team/NoDrogen.git
 cd NoDrogen
 npm install --unsafe-perm
 npm run build
+npm run start
 ```
 ### Vercel
 ### Github Pages
