@@ -24,7 +24,13 @@ dayjs.locale('en');
  * @param {{ includePages: boolean }} - false: posts only / true: include pages
  */
 
+export function paginate(items, pageNumber, pageSize)  {
 
+   const startIndex = (pageNumber-1) * pageSize;
+   
+   return items.slice(startIndex, startIndex + pageSize);
+   
+   };
 
 export async function getAllPosts(item,source,type) {
 
@@ -67,6 +73,9 @@ export async function getAllPosts(item,source,type) {
           //console.log(posts)
           return posts
          break; 
+            
+            
+
       default:
          
          const { NOTION_ACCESS_TOKEN } = process.env
@@ -75,8 +84,20 @@ export async function getAllPosts(item,source,type) {
          //视图号
          const response = await client.getPage(id)
          console.log(response)
-         const user = response?.notion_user
+         const users = response?.notion_user
+         const notion_users = []
 
+         Object.values(users).forEach(user => {
+            const notion_user = {
+               id: user?.['value']?.id,
+               name: user?.['value']?.name,
+               first_name: user?.['value']?.given_name,
+               last_name: user?.['value']?.family_name,
+               profile_photo: user?.['value']?.profile_photo
+             }
+             notion_users.push(notion_user)
+             console.log(notion_users)
+          })
          //获取page块的信息
          const collection = Object.values(response.collection)[0]?.['value']
          //获取page数据集的第一个id的value内容
@@ -108,6 +129,10 @@ export async function getAllPosts(item,source,type) {
             for (let i = 0; i < pageIds.length; i++) {
                const id = pageIds[i]
                const properties = (await getPageProperties(id, block, schema)) || null
+               if(!properties['title'])
+               {
+                  continue;
+               }
                //获取单个页面的属性
                // Add fullwidth to properties
                properties['fullWidth'] = block[id].value?.format?.page_full_width ?? false
@@ -126,6 +151,10 @@ export async function getAllPosts(item,source,type) {
                {
                properties['cover'] = mapImgUrl(block[id].value?.format?.page_cover, block[id].value) ?? ''
                }
+               else
+               {
+               properties['cover']="https://www.notion.so/images/page-cover/met_fitz_henry_lane.jpg"
+               }
                properties['tags'] = properties?.['tags']?.map(tag => {
                   return { name: tag, color: tagOptions?.find(t => t.value === tag)?.color || 'gray' }
                 }) || []
@@ -134,7 +163,7 @@ export async function getAllPosts(item,source,type) {
                
                //把页面的属性推给data
             }
-            const wiki = { "icon": icon,"cover": pageCover, name: collection['name'][0][0], description: collection['description'][0][0], user:user};
+            const wiki = { "icon": icon,"cover": pageCover, name: collection['name'][0][0], description: collection['description'][0][0],user:notion_users};
             data.unshift(wiki)
             // remove all the the items doesn't meet requirements
 

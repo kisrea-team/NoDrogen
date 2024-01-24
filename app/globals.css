@@ -9,6 +9,8 @@
 :root {
    --radius: 8px;
    --gray: #8f8f8f;
+   --white: #fff;
+   --black:#202020;
    --bg_light: #ffffff;
    --bg_dark: #202020;
    --bg_item_dark: #242424;
@@ -18,7 +20,7 @@
    --font_size: 1.2rem;
    --font_height: 1.5rem;
    --bar_border: 1.2px solid var(--shadow);
-   --bar_border_hover:2px solid var(--shadow);
+   --bar_border_hover: 2px solid var(--shadow);
 }
 
 body {
@@ -35,10 +37,24 @@ body {
 
 }
 
+
+.block {
+   display: inline-block;
+}
+
+.times {
+   background-color: rgba(255, 255, 255, 0.2);
+   color: var(--white);
+   border-radius: 10px;
+   width: fit-content;
+   padding: 0 10px;
+   text-align: right;
+}
+
 @media (min-width: 375px) {
 
    .container {
-      max-width: 350px;
+      max-width: 100%;
    }
 }
 
@@ -59,7 +75,7 @@ body {
 @media (min-width: 768px) {
 
    .container {
-      max-width: 668px;
+      max-width: 728px;
    }
 }
 
@@ -92,7 +108,8 @@ body {
    p,
    h1,
    h2,
-   span {
+   span,
+   a {
       color: var(--bg_light);
    }
 

@@ -3,6 +3,7 @@ import { setDataToCache, getDataFromCache } from '../lib/cache'
 import styles from '../components/Head.module.css'
 
 
+
 export default async function Head() {
    let posts
 
@@ -26,7 +27,9 @@ export default async function Head() {
          </div>
          <div className={styles.bar}>
             <p className={styles.bar_text}>欲速则不达</p>
+
          </div>
+         
       </div>
    )
 }

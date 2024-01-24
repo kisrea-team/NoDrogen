@@ -25,6 +25,7 @@ import './globals.css'
 import Head from '../components/Head'
 import Main from '../components/Main'
 import List from '../components/List'
+
 import { Loading } from '../components/Loading'
 
 // import { list } from 'postcss'
@@ -32,20 +33,31 @@ async function getIcon() {
 let posts
 if (await getDataFromCache("posts") != null) {
    posts = await getDataFromCache("posts")
+   
 }
 else
 {
    posts = await getAllPosts(0, 0 ,0)
    await setDataToCache("posts", posts)
 }
-const notes = await getAllPosts(1, posts ,"Notes")
+// const notes = await getAllPosts(1, posts ,"Notes")
+// const star = await getAllPosts(1, posts ,"精选")
+// const postsp = star.concat(notes);
+
 //筛选notes
-console.log(notes)
+// console.log(notes)
+// console.log(star)
 return posts[0]['icon'];
 
 }
 
-export default async function Home() {
+export default async function Home({
+   searchParams,
+ }: {
+   searchParams?: {
+     page?: string,
+   },
+ }) {
 
 
    // const notion = new NotionAPI();
@@ -60,7 +72,9 @@ export default async function Home() {
    // const list=posts.slice(1)
    // const tags = await getAllTagsFromPosts(posts)
    // console.log(tags)
-   const icon:any = await getIcon()
+   const currentPage = Number(searchParams?.page) || 1;
+
+   let icon
    return (
       <main className='mx-auto container space-y-6'>
          {/* <link rel='icon' href={posts[0].icon} /> */}
@@ -77,11 +91,14 @@ export default async function Home() {
             <p>年轻一代应该有理想，有目标</p>
          </div>}>
          <Head/>
+
+
          <Main/>
-         <List/>
+         <List currentPage={currentPage}/>
+         <p>第{currentPage}页</p>
          <Suspense fallback={<h1>icon .</h1>}>
+         {icon= await getIcon()}
          {
-                     
                icon.startsWith('http') > 0 ?
                <link rel="shortcut icon" href={`${await getIcon()}`} type="image/x-icon"/>
 
