@@ -5,7 +5,7 @@ import styles from '../components/list.module.css'
 import Pagination from './ui/Pagination'
 
 import Time from '../components/Time'
-import abc from '../public/social.jpg'
+//import abc from '../public/social.jpg'
 
 //import React, { useState } from 'react'
 import Image from 'next/image'
