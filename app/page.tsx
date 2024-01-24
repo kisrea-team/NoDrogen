@@ -91,9 +91,7 @@ export default async function Home({
             <p>年轻一代应该有理想，有目标</p>
          </div>}>
          <Head/>
-
-
-         <Main/>
+         {/* <Main/> */}
          <List currentPage={currentPage}/>
          <p>第{currentPage}页</p>
          <Suspense fallback={<h1>icon .</h1>}>

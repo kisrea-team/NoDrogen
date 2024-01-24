@@ -1,5 +1,10 @@
 .list_container {
    display: flex;
+   max-width: 80%;
+   margin: auto;
+}
+.list_container p{
+   cursor: pointer;
 }
 
 .list_items {
@@ -61,7 +66,39 @@
    font-size: 1rem;
 }
 
-.tags_card {
+.auther_card {
+   width: 300px;
+   height: 340px;
+   padding: 1rem;
+   border-radius: var(--radius);
+   background-color: aliceblue;
+}
+
+.auther_avatar {
+   display: flex;
+   margin: 45px auto;
+   justify-content: center;
+   position: relative;
+}
+
+.auther_avatar img {
+   border-radius: 100%;
+}
+
+.auther_info {
+   display: flex;
+   flex-direction: column-reverse;
+}
+
+.auther_name {
+   position: absolute;
+   font-size: 1.1rem;
+   font-weight: bold;
+   line-height: 2rem;
+}
+
+
+.card_info {
    width: 300px;
    height: 230px;
    padding: 1rem;
@@ -86,34 +123,6 @@
 
 .list_tags {
    width: 220px;
-}
-
-.avatar_info {
-   display: flex;
-   margin: 45px auto;
-   justify-content: center;
-   position: relative;
-}
-
-.info_card {
-   display: flex;
-   flex-direction: column-reverse;
-}
-
-.demo {
-   display: flex;
-   width: 1.5rem;
-   height: 1.5rem;
-   color: pink;
-}
-
-.avatar {
-
-   border-radius: 100%;
-}
-
-.name_info {
-   position: absolute;
 }
 
 .sidebar_name {
@@ -281,7 +290,8 @@
    }
 
    .posts_item,
-   .tags_card {
+   .card_info,
+   .auther_card {
       background-color: var(--bg_item_dark);
    }
 

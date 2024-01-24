@@ -57,14 +57,6 @@ export async function getAllPosts(item,source,type) {
 
       return ret
    }
-
-
-
-
-
-
-
-
    switch (item) {
       case 1:
          const posts = source.filter(post => {
