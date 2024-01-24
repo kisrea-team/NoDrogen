@@ -3,6 +3,7 @@ import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
 import { setDataToCache, getDataFromCache } from '../lib/cache'
 import styles from '../components/list.module.css'
 import Pagination from './ui/Pagination'
+import {paginate} from '../lib/notion/getData'
 
 import Time from '../components/Time'
 //import abc from '../public/social.jpg'
@@ -10,7 +11,7 @@ import Time from '../components/Time'
 //import React, { useState } from 'react'
 import Image from 'next/image'
 // import { list } from 'postcss';
-export default async function List() {
+export default async function List(props) {
    let posts
 
 
@@ -33,8 +34,9 @@ export default async function List() {
    })
    // const [value] = useState("精选");
    //posts.shift()
-   const postsp = star.concat(posts);
-
+   //const postsp = star.concat(posts);
+   const postsp = paginate(star.concat(posts),Number(props.currentPage),10);
+   console.log("Y"+props.currentPage)
    const listItems = postsp.map((list) =>
       <a className={styles.posts_item} href={list.id} target='_blank'>
          <div className={styles.posts_heart}>
