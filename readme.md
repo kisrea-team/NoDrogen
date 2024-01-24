@@ -1,3 +1,4 @@
+### 实验性版本在dev分支。(https://github.com/kisrea-team/Notion-New/tree/dev)
 ## 基本特性
 # 轻量化、主题可拔插（暂未完成）
 ## 快速构建

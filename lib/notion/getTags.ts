@@ -1,4 +1,0 @@
-//tagitem
-export function getTags(){
-
-}
