@@ -46,6 +46,7 @@ async function getPageProperties (id, block, schema) {
                 res?.['recordMapWithRoles']?.notion_user?.[userId[1]]?.value
               const user = {
                 id: resValue?.id,
+                name: resValue?.name,
                 first_name: resValue?.given_name,
                 last_name: resValue?.family_name,
                 profile_photo: resValue?.profile_photo

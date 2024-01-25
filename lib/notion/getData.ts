@@ -1,7 +1,7 @@
 //import { config as BLOG } from '@/lib/server/config'
 import { NotionAPI } from 'notion-client'
 import { idToUuid } from 'notion-utils'
-import {cache} from 'react';
+import { cache } from 'react';
 
 //import { defaultMapImageUrl } from 'react-notion-x'
 
@@ -24,15 +24,15 @@ dayjs.locale('en');
  * @param {{ includePages: boolean }} - false: posts only / true: include pages
  */
 
-export function paginate(items, pageNumber, pageSize)  {
+export function paginate(items, pageNumber, pageSize) {
 
-   const startIndex = (pageNumber-1) * pageSize;
-   
+   const startIndex = (pageNumber - 1) * pageSize;
+
    return items.slice(startIndex, startIndex + pageSize);
-   
-   };
 
-export async function getAllPosts(item,source,type) {
+};
+
+export async function getAllPosts(item, source, type) {
 
 
 
@@ -60,16 +60,16 @@ export async function getAllPosts(item,source,type) {
    switch (item) {
       case 1:
          const posts = source.filter(post => {
-            return post.title && post?.status?.[0] === '展现'  && post?.type?.[0] === type;
-          })
-          //console.log(posts)
-          return posts
-         break; 
-            
-            
+            return post.title && post?.status?.[0] === '展现' && post?.type?.[0] === type;
+         })
+         //console.log(posts)
+         return posts
+         break;
+
+
 
       default:
-         
+
          const { NOTION_ACCESS_TOKEN } = process.env
          const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN })
          const id = idToUuid(process.env.VIEW_ID)
@@ -79,17 +79,24 @@ export async function getAllPosts(item,source,type) {
          const users = response?.notion_user
          const notion_users = []
 
-         Object.values(users).forEach(user => {
-            const notion_user = {
-               id: user?.['value']?.id,
-               name: user?.['value']?.name,
-               first_name: user?.['value']?.given_name,
-               last_name: user?.['value']?.family_name,
-               profile_photo: user?.['value']?.profile_photo
-             }
-             notion_users.push(notion_user)
-             console.log(notion_users)
-          })
+         // Object.values(users).forEach(user => {
+         //    const notion_user = {
+         //       id: user?.['value']?.id,
+         //       name: user?.['value']?.name,
+         //       first_name: user?.['value']?.given_name,
+         //       last_name: user?.['value']?.family_name,
+         //       profile_photo: user?.['value']?.profile_photo
+         //     }
+         //     notion_users.push(notion_user)
+         //     console.log(notion_users)
+         //  })
+
+
+
+
+
+
+
          //获取page块的信息
          const collection = Object.values(response.collection)[0]?.['value']
          //获取page数据集的第一个id的value内容
@@ -97,9 +104,9 @@ export async function getAllPosts(item,source,type) {
          const block = response.block
          const schema = collection?.schema
          const rawMetadata = block[id].value
-        // console.log(rawMetadata)
+         // console.log(rawMetadata)
          const tagSchema = Object.values(schema)
-         const tagOptions=tagSchema?.[3]?.['options']
+         const tagOptions = tagSchema?.[3]?.['options']
          const pageCover = mapImgUrl(collection['cover'], block[id].value)
          const icon = mapImgUrl(collection['icon'], block[id].value)
 
@@ -121,8 +128,7 @@ export async function getAllPosts(item,source,type) {
             for (let i = 0; i < pageIds.length; i++) {
                const id = pageIds[i]
                const properties = (await getPageProperties(id, block, schema)) || null
-               if(!properties['title'])
-               {
+               if (!properties['title']) {
                   continue;
                }
                //获取单个页面的属性
@@ -135,27 +141,30 @@ export async function getAllPosts(item,source,type) {
                      ? dayjs.tz(properties['date']?.start_date).format('YYYY年MM月DD日')
                      : dayjs(block[id].value?.created_time).format('YYYY年MM月DD日')
                ).valueOf()
-               if(block[id].value?.format?.page_icon)
-               {
-               properties['icon'] = mapImgUrl(block[id].value?.format?.page_icon,block[id].value)
+               if (block[id].value?.format?.page_icon) {
+                  properties['icon'] = mapImgUrl(block[id].value?.format?.page_icon, block[id].value)
                }
-               if(block[id].value?.format?.page_cover)
-               {
-               properties['cover'] = mapImgUrl(block[id].value?.format?.page_cover, block[id].value) ?? ''
+               if (block[id].value?.format?.page_cover) {
+                  properties['cover'] = mapImgUrl(block[id].value?.format?.page_cover, block[id].value) ?? ''
                }
-               else
-               {
-               properties['cover']="https://www.notion.so/images/page-cover/met_fitz_henry_lane.jpg"
+               else {
+                  properties['cover'] = "https://www.notion.so/images/page-cover/met_fitz_henry_lane.jpg"
                }
                properties['tags'] = properties?.['tags']?.map(tag => {
                   return { name: tag, color: tagOptions?.find(t => t.value === tag)?.color || 'gray' }
-                }) || []
+               }) || []
+               if (properties['Person']) {
+                  let filtered = notion_users.filter(item => item.id !== properties['Person'].id);
+                  if (filtered.length === notion_users.length) {
+                  notion_users.push(properties['Person']);
+                  }
+               }
                //属性里有起始时间就转换时区，没有就获取block的时间
                data.push(properties)
-               
+
                //把页面的属性推给data
             }
-            const wiki = { "icon": icon,"cover": pageCover, name: collection['name'][0][0], description: collection['description'][0][0],user:notion_users};
+            const wiki = { "icon": icon, "cover": pageCover, name: collection['name'][0][0], description: collection['description'][0][0], user: notion_users };
             data.unshift(wiki)
             // remove all the the items doesn't meet requirements
 

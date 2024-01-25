@@ -94,12 +94,12 @@ export default async function List() {
                   <div className={styles.auther_info}>
                      <div className={styles.auther_name}>
                         <p>
-                           {view?.['user']?.[1]?.name}
+                           {view?.['user']?.[0]?.[0]?.name}
                            </p>
                      </div>
                      <div className={styles.auther_avatar}>
                         <Image
-                           src={view?.['user']?.[1]?.profile_photo}
+                           src={view?.['user']?.[0]?.[0]?.profile_photo}
                            width={100}
                            height={100}
                            alt='牛' />
