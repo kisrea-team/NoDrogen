@@ -3,6 +3,7 @@
 
 ## 基本特性
 # 轻量化、主题可拔插（暂未完成）
+## 迁移notion已有文章到nodrogen
 ## 快速构建
 1.Duplicate以下的notion模板<br />
 Nodrogen模板(https://www.notion.so/kisrea/1ac8cfb2dde44bbc8f6ed18d2acb1e3b?v=86c74e71bd524a29b5dc0fa1a1cf4fce)<br />
@@ -27,6 +28,13 @@ npm run build
 npm run start
 ```
 ### Vercel
+1.fork本仓库
+2.选择nextjs
+![20240125153353](https://github.com/kisrea-team/NoDrogen/assets/49295983/c5d256f3-e56e-42e6-8d86-8aae1bfd63b8)
+3.导入git仓库
+![20240125153544](https://github.com/kisrea-team/NoDrogen/assets/49295983/88e72d3a-de3e-408b-a1a0-aae5aad02b2f)
+![20240125153808](https://github.com/kisrea-team/NoDrogen/assets/49295983/1c5ca88c-0e2b-476c-b2bd-7e2a2e8d9d41)
+待更新...
 ### Github Pages
 ## License
 react-notion-x(https://github.com/NotionX/react-notion-x?tab=MIT-1-ov-file#readme)
