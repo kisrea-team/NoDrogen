@@ -17,7 +17,7 @@
    --bg_item_dark_hover: #202224;
    --shadow: rgba(0, 0, 0, 0.08);
    --shadow_2: rgba(0, 0, 0, 0.16);
-   --font_size: 1.2rem;
+   --font_size: 18px;
    --font_height: 1.5rem;
    --bar_border: 1.2px solid var(--shadow);
    --bar_border_hover: 2px solid var(--shadow);
@@ -31,12 +31,10 @@ body {
 ::-webkit-scrollbar {
    display: none;
 }
-
-.cover {
-   height: 500px;
-
+p,span{
+   user-select: none;
+   text-wrap: wrap;
 }
-
 
 .block {
    display: inline-block;
@@ -64,7 +62,7 @@ body {
 @media (min-width: 428px) {
 
    .container {
-      max-width: 400px;
+      max-width: 100%;
    }
 }
 

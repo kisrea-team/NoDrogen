@@ -3,7 +3,7 @@ import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
 import { setDataToCache, getDataFromCache } from '../lib/cache'
 import styles from '../components/list.module.css'
 import Pagination from './ui/Pagination'
-import {paginate} from '../lib/notion/getData'
+import { paginate } from '../lib/notion/getData'
 
 import Time from '../components/Time'
 //import abc from '../public/social.jpg'
@@ -34,8 +34,8 @@ export default async function List(props) {
    })
    // const [value] = useState("精选");
    //posts.shift()
-   const postsp = paginate(star.concat(posts),Number(props.currentPage),10);
-   console.log("Y"+props.currentPage)
+   const postsp = paginate(star.concat(posts), Number(props.currentPage), 10);
+   console.log("Y" + props.currentPage)
 
    const listItems = postsp.map((list) =>
       <a className={styles.posts_item} href={list.id} target='_blank'>
@@ -55,10 +55,11 @@ export default async function List(props) {
             />
          </div>
          <div className={styles.posts_info}>
-            <p className={styles.posts_title}>
-               <span>{list.icon}</span>{list.title}{list.type}
-            </p>
+            <span>{list.icon}</span>
             <div className={styles.posts_secondary}>
+               <p className={styles.posts_title}>
+                  {list.title}
+               </p>
                <span>{list.date}</span>
                <div className={styles.list_tags}>
                   {list.tags?.map((item) => (
@@ -97,7 +98,7 @@ export default async function List(props) {
                      <div className={styles.auther_name}>
                         <p>
                            {view?.['user']?.[0]?.[0]?.name}
-                           </p>
+                        </p>
                      </div>
                      <div className={styles.auther_avatar}>
                         <Image
@@ -106,7 +107,7 @@ export default async function List(props) {
                            height={100}
                            alt='牛' />
                      </div>
-                     <p>{view. description}</p>
+                     <p>{view.description}</p>
                   </div>
                </div>
                <div className={styles.card_info}>
