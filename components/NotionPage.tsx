@@ -13,6 +13,8 @@ import { getPageTitle } from 'notion-utils'
 import { NotionRenderer } from 'react-notion-x'
 import TweetEmbed from 'react-tweet-embed'
 import 'react-notion-x/src/styles.css'
+import '../app/globals.css'
+// import '../components/ui/Notion.module.css'
 
 import { Loading } from './Loading'
 
@@ -27,6 +29,19 @@ export async function getStaticPaths() {
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
+// const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)"); // 是深色
+// let x
+// if (isDarkTheme.matches) { // 是深色
+//    // 主题设置为深色。
+//     x = new Boolean(true);
+
+//  } else { // 不是深色
+//    // 主题设置为浅色。
+//     x = new Boolean(false);
+//  }
+//  console.log(x)
+
+
 
 const Code = dynamic(() =>
    import('react-notion-x/build/third-party/code').then(async (m) => {
@@ -108,6 +123,31 @@ export const NotionPage = ({
 
 
 
+   let isDarkTheme
+   type ThemeName = "light" | "dark"
+
+   //const [themeName, setThemeName] = useState("dark")
+
+   // const [dark, setDark] = useState<boolean>(false)
+   // useEffect(() => {
+   //    const darkMode =
+   //       window?.matchMedia &&
+   //       window.matchMedia('(prefers-color-scheme: dark)').matches
+   //    console.log(window?.matchMedia)
+   //    setDark(darkMode)
+   //    if(dark)
+   //    {
+   //    document.getElementsByTagName('html')[0].setAttribute('class', 'dark-mode')
+     
+   //    }
+   //    else
+   //    {
+         
+   //       document.getElementsByTagName('html')[0].setAttribute('class', 'light-mode')
+   //    }
+   // }, [dark])
+
+   // console.log(dark)
    if (!recordMap) {
       return null
    }
@@ -155,11 +195,11 @@ export const NotionPage = ({
             <meta name='twitter:creator' content='@transitive_bs' />
             <link rel='icon' href='/favicon.ico' />
          </Head>
-
+         {/* <button onClick={() => setDark(false)}>update</button> */}
          <NotionRenderer
             recordMap={recordMap}
             fullPage={true}
-            darkMode={false}
+            // darkMode={false}
             rootDomain={rootDomain}
             rootPageId={rootPageId}
             previewImages={previewImagesEnabled}
@@ -180,4 +220,8 @@ export const NotionPage = ({
          />
       </>
    )
+
+
+
+
 }
