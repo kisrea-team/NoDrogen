@@ -12,7 +12,7 @@ import { NotionRenderer } from 'react-notion-x'
 import TweetEmbed from 'react-tweet-embed'
 import 'react-notion-x/src/styles.css'
 import '../app/globals.css'
-
+import '../components/ui/prism-vsc-dark-plus.css'
 
 
 
