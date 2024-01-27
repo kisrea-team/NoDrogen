@@ -107,8 +107,8 @@ export async function getAllPosts(item, source, type) {
          // console.log(rawMetadata)
          const tagSchema = Object.values(schema)
          const tagOptions = tagSchema?.[3]?.['options']
-         const pageCover = mapImgUrl(collection['cover'], block[id].value)
-         const icon = mapImgUrl(collection['icon'], block[id].value)
+         const pageCover = mapImgUrl(collection['cover'], rawMetadata)
+         const icon = mapImgUrl(collection['icon'], rawMetadata)
 
          //获取本身的rawMetadata
          // Check Type
