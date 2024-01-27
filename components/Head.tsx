@@ -17,8 +17,10 @@ export default async function Head() {
    }
    const view = posts['0']
    return (
+
       <div className={styles.header}>
          <title>{posts['0']['name']}</title>
+         <meta name="description" content={view. description}/>
          <div className={styles.head}>
             <p className={styles.title}>{posts['0']['name']}</p>
             <p className={styles.grow}></p>
