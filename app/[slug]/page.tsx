@@ -56,38 +56,18 @@ export async function generateStaticParams() {
 }
 export default async function Page({ params }) {
    const { slug } = params
-
-   // const notion = new NotionAPI();
-
-   // const recordMap = await notion.getPage("4f51a601c1b14a23b5bc7737efcfee6b");
-   // const recordMap = await notion.getPage("1ac8cfb2dde44bbc8f6ed18d2acb1e3b");
-   // const id = "1ac8cfb2dde44bbc8f6ed18d2acb1e3b";
-
-   // const source = await getAllPosts(0,0)
-   // //21
-   // const posts = await getAllPosts(1,source)
-   // const list=posts.slice(1)
-   // const tags = await getAllTagsFromPosts(posts)
-   // console.log(tags)
    const List = lazy(() => import('../../components/List'));
-  // const currentPage = Number(searchParams?.page) || 1;
-
-   //let icon
    return (
 
       <main className='mx-auto container space-y-6'>
-         {/* <link rel='icon' href={posts[0].icon} /> */}
-         {/* <title>{posts.name}</title> */}
-         {/* <NotionPage recordMap={recordMap} /> */}
-       
-
          <Suspense fallback={
          
          <div>
-            <h1>Hello, world!</h1>
+            {/* <h1>Hello, world!</h1>
             <p>Fast is slow.</p>
             <p>欲速则不达。</p>
-            <p>年轻一代应该有理想，有目标</p>
+            <p>年轻一代应该有理想，有目标</p> */}
+            <Loading/>
          </div>}>
          <Head/>
          {/* <Main/> */}
@@ -95,9 +75,6 @@ export default async function Page({ params }) {
          <List currentPage={slug||1}/>
          <p>第{slug|1}页</p>
          {/* <IconPreview/> */}
-         
-         {/* <Main view={posts[0]} posts={list} />
-         <List view={posts[0]} posts={list} tags={tags} /> */}
          </Suspense>
       </main>
    );

@@ -54,20 +54,20 @@ export default async function List(props) {
             />
          </div>
          <div className={styles.posts_info}>
-            <span>{list.icon}</span>
+            <span className={styles.icon}>{list.icon}</span>
             <div className={styles.posts_secondary}>
                <p className={styles.posts_title}>
                   {list.title}
                </p>
-               <span>{list.date}</span>
-               <div className={styles.list_tags}>
+               <p className={styles.date}>{list.date}</p>
+               <p>{list.summary}</p>
+               <div className={styles.post_tags}>
                   {list.tags?.map((item) => (
                      <span className={`${styles.tags} rounded-md leading-8 m-1 notion-${item.color}_background`}>
                         {item.name}
                      </span>
                   ))}
                </div>
-               <span>{list.summary}</span>
             </div>
          </div>
       </a>);
