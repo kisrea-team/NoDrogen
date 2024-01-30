@@ -48,7 +48,8 @@ export async function generateStaticParams() {
    posts = posts.filter(post => {
       return post?.type?.[0] != "精选";
    })
-   const pages = Array.from({ length: posts.length }, (_, i) => i + 1);
+   const pagesCount = Math.ceil(posts.length / 10); // 100/10
+   const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
    return pages.map((post) => ({
       slug: String(post),
    }))
