@@ -40,21 +40,21 @@ import { Loading } from '../../components/Loading'
 //  }) {
 
 export async function generateStaticParams() {
-let posts
-posts = await getAllPosts(0, 0, 0)
-const view = posts[0];
-posts = posts.slice(1);
-const star = await getAllPosts(1, posts, "精选")
-posts = posts.filter(post => {
-   return post?.type?.[0] != "精选";
-})
-const pages = Array.from({ length: posts.length }, (_, i) => i + 1);
-return pages.map((post) => ({
-   currentPage: post,
- }))
+   let posts
+   posts = await getAllPosts(0, 0, 0)
+   const view = posts[0];
+   posts = posts.slice(1);
+   const star = await getAllPosts(1, posts, "精选")
+   posts = posts.filter(post => {
+      return post?.type?.[0] != "精选";
+   })
+   const pages = Array.from({ length: posts.length }, (_, i) => i + 1);
+   return pages.map((post) => ({
+      slug: String(post),
+   }))
 }
 export default async function Page({ params }) {
-   const { currentPage } = params
+   const { slug } = params
 
    // const notion = new NotionAPI();
 
@@ -91,8 +91,8 @@ export default async function Page({ params }) {
          <Head/>
          {/* <Main/> */}
          
-         <List currentPage={currentPage||1}/>
-         <p>第{currentPage|1}页</p>
+         <List currentPage={slug||1}/>
+         <p>第{slug|1}页</p>
          {/* <IconPreview/> */}
          
          {/* <Main view={posts[0]} posts={list} />
