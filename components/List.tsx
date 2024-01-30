@@ -34,11 +34,12 @@ export default async function List(props) {
    })
    // const [value] = useState("精选");
    //posts.shift()
+   
    const postsp = paginate(star.concat(posts), Number(props.currentPage), 10);
    console.log("Y" + props.currentPage)
 
    const listItems = postsp.map((list) =>
-      <a className={styles.posts_item} href={list.id} target='_blank'>
+      <a className={styles.posts_item} href={"/blog/"+list.id} target='_blank'>
          <div className={styles.posts_heart}>
             {list.type == "精选" ?
                <svg xmlns="http://www.w3.org/2000/svg" fill="none" version="1.1" width="16.000003814697266" height="22.30051803588867" viewBox="0 0 35.000003814697266 47.30051803588867">
@@ -86,7 +87,7 @@ export default async function List(props) {
                   {/* <Pagination totalPages={1} /> */}
                   <Pagination
                      items={posts.length} // 100
-                     // currentPage={1} // 1
+                     currentPage={1} // 1
                      pageSize={10} // 10
                      onPageChange={1} />
                </div>

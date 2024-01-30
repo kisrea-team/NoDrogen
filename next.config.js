@@ -4,11 +4,24 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withBundleAnalyzer({
+  output: 'export',
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/1',
+        permanent: true,
+      },
+    ]
+  },
+
+
   staticPageGenerationTimeout: 300,
   compiler: {
     styledComponents: true,
   },
   images: {
+    unoptimized: true,
     domains: [
       'www.notion.so',
       'notion.so',

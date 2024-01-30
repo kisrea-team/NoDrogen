@@ -1,22 +1,22 @@
 
-'use client';
 
 import styles from "../ui/Pagination.module.css";
-import { useSearchParams } from 'next/navigation';
 
 
-const Pagination = ({ items, pageSize, onPageChange }) => {
+
+const Pagination = ({ items, currentPage, pageSize, onPageChange }) => {
    const pagesCount = Math.ceil(items / pageSize); // 100/10
-   if (pagesCount === 1) return null;
+   //if (pagesCount === 1) return null;
    const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
    console.log(pages);//1，2
-   const searchParams = useSearchParams();
-   const currentPage = Number(searchParams.get('page')) || 1;
-   console.log(currentPage)
+   // const searchParams = useSearchParams();
+
+   // const currentPage = Number(searchParams.get('page')) || 1;
+   currentPage=Number(currentPage)
    return (
       <div className="flex  gap-3">
          <ul className={styles.line}>
-            <a href={"?page=" + String(currentPage - 1)}>
+            <a href={"/" + String(currentPage - 1)}>
                <svg width="20" height="20" viewBox="0 0 87 157" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.icon}>
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M73.3744 154.725C76.3033 157.654 81.052 157.654 83.981 154.725C86.9099 151.796 86.9099 147.047 83.981 144.118L18.5901 78.7272L84.014 13.3033C86.9429 10.3744 86.9429 5.62563 84.014 2.69671C81.0851 -0.232232 76.3363 -0.232232 73.4074 2.69671L3.1017 73.0024C2.9517 73.1305 2.80556 73.2655 2.66369 73.4074C-0.265246 76.3363 -0.265246 81.0851 2.66369 84.014L73.3744 154.725Z" fill="white" />
                </svg>
@@ -33,14 +33,14 @@ const Pagination = ({ items, pageSize, onPageChange }) => {
                         : styles.pageItem
                   }
                >
-                  <a className={styles.pageLink} href={"?page=" + page}>
+                  <a className={styles.pageLink} href={"/" + page}>
                      {page}
                   </a>
                </li>
             ))}
          </ul>
          <ul className={styles.line}>
-            <a href={"?page=" + String(currentPage + 1)}>
+            <a href={"/" + String(currentPage + 1)}>
                <svg width="20" height="20" viewBox="0 0 87 157" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.icon}>
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3033 2.6967C10.3744 -0.232228 5.62563 -0.232228 2.6967 2.6967C-0.232232 5.62564 -0.232232 10.3744 2.6967 13.3033L68.0876 78.6942L2.66369 144.118C-0.265239 147.047 -0.265239 151.796 2.66369 154.725C5.59262 157.654 10.3414 157.654 13.2703 154.725L83.576 84.419C83.726 84.2909 83.8721 84.1559 84.014 84.014C86.9429 81.0851 86.9429 76.3363 84.014 73.4074L13.3033 2.6967Z" fill="white" />
                </svg>
