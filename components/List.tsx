@@ -1,16 +1,14 @@
+import Image from 'next/image'
 import { getAllPosts } from '../lib/notion/getData'
 import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
 import { setDataToCache, getDataFromCache } from '../lib/cache'
+import { paginate } from '../lib/notion/getData'
+
 import styles from '../components/list.module.css'
-import Pagination from './ui/Pagination'
-import {paginate} from '../lib/notion/getData'
 
 import Time from '../components/Time'
-//import abc from '../public/social.jpg'
+import Pagination from './ui/Pagination'
 
-//import React, { useState } from 'react'
-import Image from 'next/image'
-// import { list } from 'postcss';
 export default async function List(props) {
    let posts
 
@@ -34,13 +32,13 @@ export default async function List(props) {
    })
    // const [value] = useState("精选");
    //posts.shift()
-   //const postsp = star.concat(posts);
-   const postsp = paginate(star.concat(posts),Number(props.currentPage),10);
-   console.log("Y"+props.currentPage)
-   const listItems = postsp.map((list) =>
-      <a className={styles.posts_item} href={list.id} target='_blank'>
-         <div className={styles.posts_heart}>
+   
+   const postsp = paginate(star.concat(posts), Number(props.currentPage), 10);
+   console.log("Y" + props.currentPage)
 
+   const listItems = postsp.map((list) =>
+      <a className={styles.posts_item} href={"/blog/"+list.id} target='_blank'>
+         <div className={styles.posts_heart}>
             {list.type == "精选" ?
                <svg xmlns="http://www.w3.org/2000/svg" fill="none" version="1.1" width="16.000003814697266" height="22.30051803588867" viewBox="0 0 35.000003814697266 47.30051803588867">
                   <path d="M0,45.9367L0,0L35,0L35,45.9367C35,47.1162,33.6172,47.7374,32.7517,46.9469L18.4022,33.8438C17.8898,33.3758,17.1102,33.3758,16.5978,33.8438L2.2484,46.9469C1.38265,47.7374,0,47.1162,0,45.9367Z" fill="#838383" fill-opacity="0.27000001072883606" /> </svg>
@@ -48,21 +46,19 @@ export default async function List(props) {
 
          </div>
          <div className={styles.posts_cover}>
-            {/* <p>图片</p> */}
             <Image
                className={styles.cover}
                src={list.cover}
-               // width={1000}
-               // height={1000}
                alt='cover'
                fill={true}
             />
          </div>
          <div className={styles.posts_info}>
-            <p className={styles.posts_title}>
-               <span>{list.icon}</span>{list.title}{list.type}
-            </p>
+            <span>{list.icon}</span>
             <div className={styles.posts_secondary}>
+               <p className={styles.posts_title}>
+                  {list.title}
+               </p>
                <span>{list.date}</span>
                <div className={styles.list_tags}>
                   {list.tags?.map((item) => (
@@ -74,7 +70,6 @@ export default async function List(props) {
                <span>{list.summary}</span>
             </div>
          </div>
-         {/* </div> */}
       </a>);
    const tagsitem = tags?.map((tag) => (
       <span className={`${styles.tags} rounded-md leading-8 m-1 notion-${tag.color}_background`}>
@@ -85,47 +80,42 @@ export default async function List(props) {
       <div>
          <div className={`${styles.list_container}`}>
             <div className={styles.list_items}>
-
                {listItems}
+               <div className="mt-5 flex w-full justify-center">
+                  {/* <Pagination totalPages={1} /> */}
+                  <Pagination
+                     items={posts.length} // 100
+                     currentPage={1} // 1
+                     pageSize={10} // 10
+                     onPageChange={1} />
+               </div>
             </div>
             <aside className={styles.sticky}>
-               <div>
-                  <div className={styles.tags_card}>
-                     <Time />
-                     <div className={styles.info_card}>
-                        <div className={styles.name_info}>
-                           <h1 className={styles.title}>{view?.['user']?.[1]?.name}</h1>
-                        </div>
-                        <div className={styles.avatar_info}>
-                           <Image
-                              className={styles.avatar}
-                              src={view?.['user']?.[1]?.profile_photo}
-                              width={100}
-                              height={100}
-                              alt='牛' />
-                        </div>
+               <div className={styles.auther_card}>
+                  <Time />
+                  <div className={styles.auther_info}>
+                     <div className={styles.auther_name}>
+                        <p>
+                           {view?.['user']?.[0]?.[0]?.name}
+                        </p>
                      </div>
-
+                     <div className={styles.auther_avatar}>
+                        <Image
+                           src={view?.['user']?.[0]?.[0]?.profile_photo}
+                           width={100}
+                           height={100}
+                           alt='牛' />
+                     </div>
+                     <p>{view.description}</p>
                   </div>
                </div>
-               <div className={styles.tags_card}>
+               <div className={styles.card_info}>
                   <h1 className={styles.title}>标签</h1>
                   <div className={styles.tags_item}>
                      {tagsitem}
                   </div>
                </div>
             </aside>
-
-         </div>
-         <div className="mt-5 flex w-full justify-center">
-            {/* <Pagination totalPages={1} /> */}
-            <Pagination
-               items={posts.length} // 100
-               currentPage={1} // 1
-               pageSize={10} // 10
-               onPageChange={1}
-
-            />
          </div>
       </div>
    )

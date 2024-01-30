@@ -2,17 +2,21 @@
 
 import * as React from 'react'
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
 // import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 
 import { ExtendedRecordMap } from 'notion-types'
-import { getPageTitle } from 'notion-utils'
 import { NotionRenderer } from 'react-notion-x'
 import TweetEmbed from 'react-tweet-embed'
 import 'react-notion-x/src/styles.css'
+import '../app/globals.css'
+import '../components/ui/prism-vsc-dark-plus.css'
+
+
+
+// import '../components/ui/Notion.module.css'
 
 import { Loading } from './Loading'
 
@@ -27,6 +31,19 @@ export async function getStaticPaths() {
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
+// const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)"); // 是深色
+// let x
+// if (isDarkTheme.matches) { // 是深色
+//    // 主题设置为深色。
+//     x = new Boolean(true);
+
+//  } else { // 不是深色
+//    // 主题设置为浅色。
+//     x = new Boolean(false);
+//  }
+//  console.log(x)
+
+
 
 const Code = dynamic(() =>
    import('react-notion-x/build/third-party/code').then(async (m) => {
@@ -108,12 +125,37 @@ export const NotionPage = ({
 
 
 
+   // let isDarkTheme
+   // type ThemeName = "light" | "dark"
+
+   //const [themeName, setThemeName] = useState("dark")
+
+   // const [dark, setDark] = useState<boolean>(false)
+   // useEffect(() => {
+   //    const darkMode =
+   //       window?.matchMedia &&
+   //       window.matchMedia('(prefers-color-scheme: dark)').matches
+   //    console.log(window?.matchMedia)
+   //    setDark(darkMode)
+   //    if(dark)
+   //    {
+   //    document.getElementsByTagName('html')[0].setAttribute('class', 'dark-mode')
+     
+   //    }
+   //    else
+   //    {
+         
+   //       document.getElementsByTagName('html')[0].setAttribute('class', 'light-mode')
+   //    }
+   // }, [dark])
+
+   // console.log(dark)
    if (!recordMap) {
       return null
    }
 
-   const title = getPageTitle(recordMap)
-   console.log(title, recordMap)
+   // const title = getPageTitle(recordMap)
+   // console.log(title, recordMap)
 
    // useful for debugging from the dev console
    if (typeof window !== 'undefined') {
@@ -124,45 +166,21 @@ export const NotionPage = ({
       g.block = block
    }
 
-   const socialDescription = 'React Notion X Demo'
-   const socialImage =
-      'https://react-notion-x-demo.transitivebullsh.it/social.jpg'
+   
 
    return (
       <>
-         <Head>
-            {socialDescription && (
-               <>
-                  <meta name='description' content={socialDescription} />
-                  <meta property='og:description' content={socialDescription} />
-                  <meta name='twitter:description' content={socialDescription} />
-               </>
-            )}
+       
 
-            {socialImage ? (
-               <>
-                  <meta name='twitter:card' content='summary_large_image' />
-                  <meta name='twitter:image' content={socialImage} />
-                  <meta property='og:image' content={socialImage} />
-               </>
-            ) : (
-               <meta name='twitter:card' content='summary' />
-            )}
-
-            <title>{title}</title>
-            <meta property='og:title' content={title} />
-            <meta name='twitter:title' content={title} />
-            <meta name='twitter:creator' content='@transitive_bs' />
-            <link rel='icon' href='/favicon.ico' />
-         </Head>
-
+         
+         {/* <button onClick={() => setDark(false)}>update</button> */}
          <NotionRenderer
             recordMap={recordMap}
             fullPage={true}
-            darkMode={false}
+            // darkMode={false}
             rootDomain={rootDomain}
             rootPageId={rootPageId}
-            previewImages={previewImagesEnabled}
+            previewImages={true}
             components={{
                // NOTE (transitive-bullshit 3/12/2023): I'm disabling next/image for this repo for now because the amount of traffic started costing me hundreds of dollars a month in Vercel image optimization costs. I'll probably re-enable it in the future if I can find a better solution.
                // nextImage: Image,
@@ -180,4 +198,8 @@ export const NotionPage = ({
          />
       </>
    )
+
+
+
+
 }

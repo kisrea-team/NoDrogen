@@ -1,3 +1,4 @@
+[![license](https://img.shields.io/badge/License-MIT-blue)]([https://github.com/poloclub/supernova/blob/master/LICENSE](https://github.com/kisrea-team/NoDrogen/blob/main/LICENSE))
 ### 实验性版本在dev分支。(https://github.com/kisrea-team/Notion-New/tree/dev)
 ![20240124112925](https://github.com/kisrea-team/NoDrogen/assets/49295983/9de398a1-60b8-45de-8e06-25034ab2ed12)
 
@@ -38,10 +39,23 @@ npm run start
 4.修改环境变量<br />
 ![20240125161352](https://github.com/kisrea-team/NoDrogen/assets/49295983/01e78939-e269-47ca-886f-a0b2894e491a)
 5.Deloy
-### Github Pages
+### Github Pages 或 静态导出
+Nodrogen全面支持静态导出。
+```shell
+npm run build
+```
+可导出静态导出out文件夹。
+对于Nginx，可设置Nginx Rewrite以实现完美的路由。
+```shell
+location / {
+  if (!-e $request_filename){
+      rewrite ^(.*)$ /$1.html last;
+      break;
+  }
+}
+```
+
 ## License
-react-notion-x(https://github.com/NotionX/react-notion-x?tab=MIT-1-ov-file#readme)
-
-nobelium(https://github.com/craigary/nobelium?tab=MIT-1-ov-file#readme)
-
-notionnext(https://github.com/tangly1024/NotionNext?tab=MIT-1-ov-file#readme)
+[React-notion-x](https://github.com/NotionX/react-notion-x?tab=MIT-1-ov-file#readme)
+[Nobelium](https://github.com/craigary/nobelium?tab=MIT-1-ov-file#readme)
+[Notionnext](https://github.com/tangly1024/NotionNext?tab=MIT-1-ov-file#readme)
