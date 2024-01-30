@@ -1,16 +1,14 @@
+import Image from 'next/image'
 import { getAllPosts } from '../lib/notion/getData'
 import { getAllTagsFromPosts } from '../lib/notion/getAllTagsFromPosts'
 import { setDataToCache, getDataFromCache } from '../lib/cache'
-import styles from '../components/list.module.css'
-import Pagination from './ui/Pagination'
 import { paginate } from '../lib/notion/getData'
 
-import Time from '../components/Time'
-//import abc from '../public/social.jpg'
+import styles from '../components/list.module.css'
 
-//import React, { useState } from 'react'
-import Image from 'next/image'
-// import { list } from 'postcss';
+import Time from '../components/Time'
+import Pagination from './ui/Pagination'
+
 export default async function List(props) {
    let posts
 
