@@ -1,3 +1,4 @@
+[![license](https://img.shields.io/badge/License-MIT-blue)]([https://github.com/poloclub/supernova/blob/master/LICENSE](https://github.com/kisrea-team/NoDrogen/blob/main/LICENSE))
 ### 实验性版本在dev分支。(https://github.com/kisrea-team/Notion-New/tree/dev)
 ![20240124112925](https://github.com/kisrea-team/NoDrogen/assets/49295983/9de398a1-60b8-45de-8e06-25034ab2ed12)
 
