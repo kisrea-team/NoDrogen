@@ -10,6 +10,9 @@ import { getAllPosts } from '../../lib/notion/getData'
 import '../globals.css'
 import { lazy } from 'react';
 
+// import 'katex/dist/katex.min.css'
+// import 'prismjs/themes/prism-tomorrow.css'
+
 // // core styles shared by all of react-notion-x (required)
 // import 'react-notion-x/src/styles.css'
 

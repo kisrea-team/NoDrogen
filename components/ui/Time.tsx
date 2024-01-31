@@ -54,7 +54,7 @@ class GreetingMessage extends React.Component {
    render() {
       return (
          <div>
-            <p className='times'>{this.state.message}</p>
+            <p className='time'>{this.state.message}</p>
          </div>
       );
    }

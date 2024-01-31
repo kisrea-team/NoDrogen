@@ -6,7 +6,7 @@ import { paginate } from '../lib/notion/getData'
 
 import styles from '../components/list.module.css'
 
-import Time from '../components/Time'
+import Time from './ui/Time'
 import Pagination from './ui/Pagination'
 
 export default async function List(props) {
@@ -109,7 +109,7 @@ export default async function List(props) {
                      <p>{view.description}</p>
                   </div>
                </div>
-               <div className={styles.card_info}>
+               <div className={styles.tags_card}>
                   <h1 className={styles.title}>标签</h1>
                   <div className={styles.tags_item}>
                      {tagsitem}

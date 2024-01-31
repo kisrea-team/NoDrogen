@@ -7,16 +7,19 @@
 }
 
 :root {
-   --radius: 8px;
+
    --gray: #8f8f8f;
    --white: #fff;
-   --black:#202020;
+   --black: #202020;
    --bg_light: #ffffff;
    --bg_dark: #202020;
    --bg_item_dark: #242424;
    --bg_item_dark_hover: #202224;
    --shadow: rgba(0, 0, 0, 0.08);
    --shadow_2: rgba(0, 0, 0, 0.16);
+
+   --px: 10px;
+   --radius: 8px;
    --font_size: 18px;
    --font_height: 1.5rem;
    --bar_border: 1.2px solid var(--shadow);
@@ -31,7 +34,9 @@ body {
 ::-webkit-scrollbar {
    display: none;
 }
-p,span{
+
+p,
+span {
    user-select: none;
    text-wrap: wrap;
 }
@@ -40,8 +45,8 @@ p,span{
    display: inline-block;
 }
 
-.times {
-   background-color: rgba(255, 255, 255, 0.2);
+.time {
+   background-color:rgba(255, 255, 255, 0.2);
    color: var(--white);
    border-radius: 10px;
    width: fit-content;
@@ -143,7 +148,7 @@ p,span{
       --notion-orange_background_co: rgba(89, 74, 58, 0.3);
       --notion-brown_background_co: rgba(67, 64, 64, 0.3);
       --notion-gray_background_co: rgba(69, 75, 78, 0.3);
-  }
+   }
 
    body {
       background-color: var(--bg_dark);
@@ -157,37 +162,14 @@ p,span{
       color: var(--bg_light);
    }
 
-   .btn-menu::after,
-   .btn-menu::before {
-      background: #ffffff;
-   }
-
-   .btn-menu::before {
-
-      box-shadow: 0 10px #ffffff;
-   }
-
-   .posts .posts-secondary {
-      color: var(--gray);
-   }
-
-   .posts-item,
-   .tags-card {
-      background-color: var(--bg_item_dark);
-   }
-
-   .posts-item:hover {
-      background-color: var(--bg_dark_hover);
-   }
-
    :root {
       --foreground-rgb: 255, 255, 255;
       --background-start-rgb: 0, 0, 0;
       --background-end-rgb: 0, 0, 0;
    }
 
-   /* 
-   .tags {
-      color: #E3DACD;
-   } */
+   .time {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: var(--white);
+   }
 }
