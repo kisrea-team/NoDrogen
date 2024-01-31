@@ -125,7 +125,7 @@
    color: #6B5449;
 }
 
-.list_tags {
+.post_tags {
    width: 220px;
 }
 
@@ -150,6 +150,10 @@
 }
 
 @media(min-width: 375px) and (max-width: 427px) {
+   .list_container{
+      display: block;
+      max-width: 95%;
+   }
    .posts_item {
       margin: auto;
       flex-direction: column;
@@ -166,6 +170,18 @@
 
    .posts_info {
       width: 100%;
+      padding-left: 20px;
+      padding-right: .5rem;
+   }
+   .posts_info .icon{
+      font-size: 21px;
+   }
+   .date{
+      font-size: 13px;
+      color: var(--gray);
+   }
+   .post_tags{
+      width: 100%;
    }
 
    .list_items {
@@ -177,8 +193,8 @@
    }
 
    .posts_title {
-      font-weight: medium;
-      font-size: calc(var(--font_size) - .5rem);
+      font-weight: normal;
+      font-size: var(--font_size);
       line-height: var(--font_height);
    }
 }

@@ -16,11 +16,11 @@ export default async function List(props) {
    if (await getDataFromCache("posts") == null) {
       posts = await getAllPosts(0, 0, 0)
       await setDataToCache("posts", posts)
-      console.log("no")
+      console.log("N")
    }
    else {
       posts = await getDataFromCache("posts")
-      console.log('yes')
+      console.log('Y')
    }
    const view = posts[0];
    posts = posts.slice(1);
@@ -34,7 +34,7 @@ export default async function List(props) {
    //posts.shift()
    
    const postsp = paginate(star.concat(posts), Number(props.currentPage), 10);
-   console.log("Y" + props.currentPage)
+   console.log("page:" + props.currentPage)
 
    const listItems = postsp.map((list) =>
       <a className={styles.posts_item} href={"/blog/"+list.id} target='_blank'>
@@ -54,20 +54,20 @@ export default async function List(props) {
             />
          </div>
          <div className={styles.posts_info}>
-            <span>{list.icon}</span>
+            <span className={styles.icon}>{list.icon}</span>
             <div className={styles.posts_secondary}>
                <p className={styles.posts_title}>
                   {list.title}
                </p>
-               <span>{list.date}</span>
-               <div className={styles.list_tags}>
+               <p className={styles.date}>{list.date}</p>
+               <p>{list.summary}</p>
+               <div className={styles.post_tags}>
                   {list.tags?.map((item) => (
                      <span className={`${styles.tags} rounded-md leading-8 m-1 notion-${item.color}_background`}>
                         {item.name}
                      </span>
                   ))}
                </div>
-               <span>{list.summary}</span>
             </div>
          </div>
       </a>);
@@ -85,7 +85,7 @@ export default async function List(props) {
                   {/* <Pagination totalPages={1} /> */}
                   <Pagination
                      items={posts.length} // 100
-                     currentPage={1} // 1
+                     currentPage={props.currentPage} // 1
                      pageSize={10} // 10
                      onPageChange={1} />
                </div>
