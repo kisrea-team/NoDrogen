@@ -73,7 +73,7 @@ export default async function Page({ params }) {
          {/* <Main/> */}
          
          <List currentPage={slug||1}/>
-         <p>第{slug|1}页</p>
+         <p>第{slug||1}页</p>
          {/* <IconPreview/> */}
          </Suspense>
       </main>
@@ -99,9 +99,9 @@ export async function generateMetadata() {
 //  <link rel="icon" href={`data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${posts[0]['icon']}</text></svg>`}/>
 
    return{ 
-   title:posts[0]['name'],
-   icons: icon,
-   description:posts[0]['description']
+      title:posts[0]['name'],
+      icons: icon,
+      description:posts[0]['description']
 
    };
 }
