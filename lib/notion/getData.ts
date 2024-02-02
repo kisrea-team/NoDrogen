@@ -1,3 +1,46 @@
+
+/***
+ *               ii.                                         ;9ABH,          
+ *              SA391,                                    .r9GG35&G          
+ *              &#ii13Gh;                               i3X31i;:,rB1         
+ *              iMs,:,i5895,                         .5G91:,:;:s1:8A         
+ *               33::::,,;5G5,                     ,58Si,,:::,sHX;iH1        
+ *                Sr.,:;rs13BBX35hh11511h5Shhh5S3GAXS:.,,::,,1AG3i,GG        
+ *                .G51S511sr;;iiiishS8G89Shsrrsh59S;.,,,,,..5A85Si,h8        
+ *               :SB9s:,............................,,,.,,,SASh53h,1G.       
+ *            .r18S;..,,,,,,,,,,,,,,,,,,,,,,,,,,,,,....,,.1H315199,rX,       
+ *          ;S89s,..,,,,,,,,,,,,,,,,,,,,,,,....,,.......,,,;r1ShS8,;Xi       
+ *        i55s:.........,,,,,,,,,,,,,,,,.,,,......,.....,,....r9&5.:X1       
+ *       59;.....,.     .,,,,,,,,,,,...        .............,..:1;.:&s       
+ *      s8,..;53S5S3s.   .,,,,,,,.,..      i15S5h1:.........,,,..,,:99       
+ *      93.:39s:rSGB@A;  ..,,,,.....    .SG3hhh9G&BGi..,,,,,,,,,,,,.,83      
+ *      G5.G8  9#@@@@@X. .,,,,,,.....  iA9,.S&B###@@Mr...,,,,,,,,..,.;Xh     
+ *      Gs.X8 S@@@@@@@B:..,,,,,,,,,,. rA1 ,A@@@@@@@@@H:........,,,,,,.iX:    
+ *     ;9. ,8A#@@@@@@#5,.,,,,,,,,,... 9A. 8@@@@@@@@@@M;    ....,,,,,,,,S8    
+ *     X3    iS8XAHH8s.,,,,,,,,,,...,..58hH@@@@@@@@@Hs       ...,,,,,,,:Gs   
+ *    r8,        ,,,...,,,,,,,,,,.....  ,h8XABMMHX3r.          .,,,,,,,.rX:  
+ *   :9, .    .:,..,:;;;::,.,,,,,..          .,,.               ..,,,,,,.59  
+ *  .Si      ,:.i8HBMMMMMB&5,....                    .            .,,,,,.sMr
+ *  SS       :: h@@@@@@@@@@#; .                     ...  .         ..,,,,iM5
+ *  91  .    ;:.,1&@@@@@@MXs.                            .          .,,:,:&S
+ *  hS ....  .:;,,,i3MMS1;..,..... .  .     ...                     ..,:,.99
+ *  ,8; ..... .,:,..,8Ms:;,,,...                                     .,::.83
+ *   s&: ....  .sS553B@@HX3s;,.    .,;13h.                            .:::&1
+ *    SXr  .  ...;s3G99XA&X88Shss11155hi.                             ,;:h&,
+ *     iH8:  . ..   ,;iiii;,::,,,,,.                                 .;irHA  
+ *      ,8X5;   .     .......                                       ,;iihS8Gi
+ *         1831,                                                 .,;irrrrrs&@
+ *           ;5A8r.                                            .:;iiiiirrss1H
+ *             :X@H3s.......                                .,:;iii;iiiiirsrh
+ *              r#h:;,...,,.. .,,:;;;;;:::,...              .:;;;;;;iiiirrss1
+ *             ,M8 ..,....,.....,,::::::,,...         .     .,;;;iiiiiirss11h
+ *             8B;.,,,,,,,.,.....          .           ..   .:;;;;iirrsss111h
+ *            i@5,:::,,,,,,,,.... .                   . .:::;;;;;irrrss111111
+ *            9Bi,:,,,,......                        ..r91;;;;;iirrsss1ss1111
+ */
+
+
+
 //import { config as BLOG } from '@/lib/server/config'
 import { NotionAPI } from 'notion-client'
 import { idToUuid } from 'notion-utils'
@@ -13,11 +56,14 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 
-import 'dayjs/locale/en';
-
+import 'dayjs/locale/zh-cn';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime); // 相对时间
 dayjs.extend(utc);
 dayjs.extend(timezone);
-dayjs.locale('en');
+// dayjs.locale('en');
+dayjs.locale('zh-cn'); // 使用本地化语言
+
 //截至
 
 /**
@@ -38,6 +84,14 @@ export async function getAllPosts(item, source, type) {
 
    //console.log(collection)//断点这个获取的信息特别乱，不过也可以看看
    //追求模块化、需要再取
+
+
+   function getLastTimeStr(time: string, friendly: boolean) {
+      if (friendly) {
+        return dayjs(time).fromNow().replace(' ', '');
+      }
+      return dayjs(new Date(time)).format('YYYY-MM-DD HH:mm');
+    }
 
    const mapImgUrl = (img, block) => {
       let ret = null
@@ -123,7 +177,7 @@ export async function getAllPosts(item, source, type) {
             // 构造数据
             const pageIds = getAllPageIds(collectionQuery)
             //获取所有page的id（yy）
-            const data = []
+            let data = []
             //遍历所有的page
             for (let i = 0; i < pageIds.length; i++) {
                const id = pageIds[i]
@@ -136,11 +190,15 @@ export async function getAllPosts(item, source, type) {
                properties['fullWidth'] = block[id].value?.format?.page_full_width ?? false
                //设置页面格式的属性
                // Convert date (with timezone) to unix milliseconds timestamp
-               properties['date'] = (
+               
+
+               properties['start_date'] = 
                   properties['date']?.start_date
-                     ? dayjs.tz(properties['date']?.start_date).format('YYYY年MM月DD日')
-                     : dayjs(block[id].value?.created_time).format('YYYY年MM月DD日')
-               ).valueOf()
+                     ? dayjs(properties['date']?.start_date).valueOf()
+                     : block[id].value?.created_time
+               
+
+               properties['date'] = getLastTimeStr(properties['start_date'],true)
                if (block[id].value?.format?.page_icon) {
                   properties['icon'] = mapImgUrl(block[id].value?.format?.page_icon, block[id].value)
                }
@@ -164,6 +222,9 @@ export async function getAllPosts(item, source, type) {
 
                //把页面的属性推给data
             }
+            data = data.sort(
+               (objA, objB) => objB.start_date - objA.start_date,
+             );
             const wiki = { "icon": icon, "cover": pageCover, name: collection['name'][0][0], description: collection['description'][0][0], user: notion_users };
             data.unshift(wiki)
             // remove all the the items doesn't meet requirements
