@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 // import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import cs from 'classnames'
 
 
 import { ExtendedRecordMap } from 'notion-types'
@@ -13,6 +14,8 @@ import TweetEmbed from 'react-tweet-embed'
 import 'react-notion-x/src/styles.css'
 import '../app/globals.css'
 import '../components/ui/prism-vsc-dark-plus.css'
+import styles from '../components/ui/styles.module.css'
+import { Footer } from './Footer'
 
 
 
@@ -110,6 +113,8 @@ const Tweet = ({ id }: { id: string }) => {
    return <TweetEmbed tweetId={id} />
 }
 
+
+
 export const NotionPage = ({
    recordMap,
    previewImagesEnabled,
@@ -123,6 +128,7 @@ export const NotionPage = ({
 }) => {
    const router = useRouter()
 
+   const footer = React.useMemo(() => <Footer />, [])
 
 
    // let isDarkTheme
@@ -175,8 +181,12 @@ export const NotionPage = ({
          
          {/* <button onClick={() => setDark(false)}>update</button> */}
          <NotionRenderer
+          bodyClassName={cs(
+            styles.container,
+            
+          )}
             recordMap={recordMap}
-            fullPage={true}
+            fullPage={false}
             // darkMode={false}
             rootDomain={rootDomain}
             rootPageId={rootPageId}
@@ -192,7 +202,7 @@ export const NotionPage = ({
                Modal,
                Tweet
             }}
-
+            footer={footer}
          // NOTE: custom images will only take effect if previewImages is true and
          // if the image has a valid preview image defined in recordMap.preview_images[src]
          />

@@ -8,6 +8,7 @@ import getAllPageIds from '../../../lib/notion/getAllPageIds'
 // import { getAllPosts } from '../../lib/notion/getData'
 // import postcss from 'postcss';
 import { getPageTitle, getPageProperty } from 'notion-utils'
+import { Footer } from '../../../components/Footer'
 export async function generateStaticParams() {
    const { NOTION_ACCESS_TOKEN } = process.env
    const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN })
@@ -42,6 +43,7 @@ export default async function Page({ params }) {
 
          <main >
             <NotionPage recordMap={recordMap} />
+            <Footer/>
          </main>
       </>
    );
