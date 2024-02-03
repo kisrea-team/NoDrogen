@@ -12,12 +12,12 @@ import { ExtendedRecordMap } from 'notion-types'
 import { NotionRenderer } from 'react-notion-x'
 import TweetEmbed from 'react-tweet-embed'
 import 'react-notion-x/src/styles.css'
+import '../components/notion.css'
 import '../app/globals.css'
 import '../components/ui/prism-vsc-dark-plus.css'
 import styles from '../components/ui/styles.module.css'
+
 import { Footer } from './Footer'
-
-
 
 // import '../components/ui/Notion.module.css'
 
@@ -29,25 +29,6 @@ export async function getStaticPaths() {
       fallback: <Loading></Loading>
    };
 }
-
-
-// -----------------------------------------------------------------------------
-// dynamic imports for optional components
-// -----------------------------------------------------------------------------
-// const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)"); // 是深色
-// let x
-// if (isDarkTheme.matches) { // 是深色
-//    // 主题设置为深色。
-//     x = new Boolean(true);
-
-//  } else { // 不是深色
-//    // 主题设置为浅色。
-//     x = new Boolean(false);
-//  }
-//  console.log(x)
-
-
-
 const Code = dynamic(() =>
    import('react-notion-x/build/third-party/code').then(async (m) => {
       // additional prism syntaxes
@@ -108,12 +89,9 @@ const Modal = dynamic(
       ssr: false
    }
 )
-
 const Tweet = ({ id }: { id: string }) => {
    return <TweetEmbed tweetId={id} />
 }
-
-
 
 export const NotionPage = ({
    recordMap,
@@ -129,41 +107,10 @@ export const NotionPage = ({
    const router = useRouter()
 
    const footer = React.useMemo(() => <Footer />, [])
-
-
-   // let isDarkTheme
-   // type ThemeName = "light" | "dark"
-
-   //const [themeName, setThemeName] = useState("dark")
-
-   // const [dark, setDark] = useState<boolean>(false)
-   // useEffect(() => {
-   //    const darkMode =
-   //       window?.matchMedia &&
-   //       window.matchMedia('(prefers-color-scheme: dark)').matches
-   //    console.log(window?.matchMedia)
-   //    setDark(darkMode)
-   //    if(dark)
-   //    {
-   //    document.getElementsByTagName('html')[0].setAttribute('class', 'dark-mode')
-     
-   //    }
-   //    else
-   //    {
-         
-   //       document.getElementsByTagName('html')[0].setAttribute('class', 'light-mode')
-   //    }
-   // }, [dark])
-
-   // console.log(dark)
    if (!recordMap) {
       return null
    }
 
-   // const title = getPageTitle(recordMap)
-   // console.log(title, recordMap)
-
-   // useful for debugging from the dev console
    if (typeof window !== 'undefined') {
       const keys = Object.keys(recordMap?.block || {})
       const block = recordMap?.block?.[keys[0]]?.value
@@ -171,23 +118,16 @@ export const NotionPage = ({
       g.recordMap = recordMap
       g.block = block
    }
-
-   
-
    return (
       <>
-       
-
-         
          {/* <button onClick={() => setDark(false)}>update</button> */}
          <NotionRenderer
           bodyClassName={cs(
             styles.container,
-            
           )}
             recordMap={recordMap}
-            fullPage={false}
-            // darkMode={false}
+            fullPage={true}
+            // darkMode={true}
             rootDomain={rootDomain}
             rootPageId={rootPageId}
             previewImages={true}

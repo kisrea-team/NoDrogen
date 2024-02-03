@@ -43,7 +43,7 @@ export default async function Page({ params }) {
 
          <main >
             <NotionPage recordMap={recordMap} />
-            <Footer/>
+            {/* <Footer/> */}
          </main>
       </>
    );
