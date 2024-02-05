@@ -111,6 +111,7 @@ export async function getAllPosts(item, source, type) {
         );
       });
       return posts;
+      break
     default:
       const { NOTION_ACCESS_TOKEN } = process.env;
       const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN });
