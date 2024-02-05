@@ -156,6 +156,10 @@ export async function getAllPosts(item, source, type) {
 
           properties["date"] = getLastTimeStr(properties["start_date"], true);
 
+
+          properties['start_date'] = (
+               dayjs(properties['start_date']).format('YYYY年MM月DD日')
+          ).valueOf()
           if (block[id].value?.format?.page_icon) {
             properties["icon"] = mapImgUrl(
               block[id].value?.format?.page_icon,
