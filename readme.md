@@ -3,8 +3,9 @@
 ![20240124112925](https://github.com/kisrea-team/NoDrogen/assets/49295983/9de398a1-60b8-45de-8e06-25034ab2ed12)
 
 ## 基本特性
-# 轻量化、主题可拔插（暂未完成）
-## 迁移notion已有文章到nodrogen
+# 稳定、轻量化、主题可拔插（暂未完成）
+Nodrogen支持几乎所有react-notion-x的块，并支持几乎所有Mermaid代码的渲染。
+## 迁移Notion已有文章到Nodrogen
 你可以先Duplicate下面的模板，然后从原数据库导出你的文章CSV文件，然后导入CSV文件，Move To新模板。
 ## 快速构建
 1.Duplicate以下的notion模板<br />
@@ -12,10 +13,13 @@ Nodrogen模板(https://www.notion.so/kisrea/1ac8cfb2dde44bbc8f6ed18d2acb1e3b?v=8
 2.点击右上角，选择Publish选项卡，点击Publish to web<br />
 ![20240124114207](https://github.com/kisrea-team/NoDrogen/assets/49295983/7d184aad-0a8e-4486-88c6-6e289405b091)
 
-<br />你可以修改下面的文件以做到显示你的notion文章。
+<br />你可以修改下面的文件以做到显示你的Notion文章。
 ### .env.local
 ```.env.local
 VIEW_ID=1ac8cfb2dde44bbc8f6ed18d2acb1e3b
+X=zitons
+ZHIHU=try20
+GITHUB=zitons
 ```
 查看view_id（文章视图id）：
 ![c4956ee8cef729ad06aa923d86182a72](https://github.com/kisrea-team/NoDrogen/assets/49295983/e59f9430-bd7d-4205-a8b7-60a4a55d63c3)
@@ -56,6 +60,6 @@ location / {
 ```
 
 ## License
-[React-notion-x](https://github.com/NotionX/react-notion-x?tab=MIT-1-ov-file#readme)
+[React-Notion-X](https://github.com/NotionX/react-notion-x?tab=MIT-1-ov-file#readme)
 [Nobelium](https://github.com/craigary/nobelium?tab=MIT-1-ov-file#readme)
 [Notionnext](https://github.com/tangly1024/NotionNext?tab=MIT-1-ov-file#readme)
