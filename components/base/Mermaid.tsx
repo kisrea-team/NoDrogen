@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect } from 'react'
 import mermaid from 'mermaid'
 import { getTextContent } from 'notion-utils'
-import '../app/globals.css'
+import '../../app/globals.css'
 
 export default async function Mermaid (props) {
   console.log(props)

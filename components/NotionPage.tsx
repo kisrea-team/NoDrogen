@@ -79,7 +79,7 @@ const Code =  dynamic(async () => {
      switch (getTextContent(props['block']['properties']['language'])) {
        case 'Mermaid':
 
-         return import('../components/Mermaid').then(module => {
+         return import('../components/base/Mermaid').then(module => {
             const { default: Mermaid } = module
             
             return <Mermaid block={props} />
@@ -151,8 +151,15 @@ const Collection = dynamic(() =>
       (m) => m.Collection
    )
 )
+// const Equation = dynamic(() =>
+//    import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
+// )
 const Equation = dynamic(() =>
-   import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
+  import('../components/base/Equation').then(async (m) => {
+    // 化学方程式
+   //  await import('@/lib/mhchem')
+    return m.Equation
+  }), { ssr: false }
 )
 // const Pdf = dynamic(
 //   () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
