@@ -1,7 +1,8 @@
 [![license](https://img.shields.io/badge/License-MIT-blue)]([https://github.com/poloclub/supernova/blob/master/LICENSE](https://github.com/kisrea-team/NoDrogen/blob/main/LICENSE))
 ### 实验性版本在dev分支。(https://github.com/kisrea-team/Notion-New/tree/dev)
 ![20240124112925](https://github.com/kisrea-team/NoDrogen/assets/49295983/9de398a1-60b8-45de-8e06-25034ab2ed12)
-
+## 这是什么
+# 使用Nextjs开发、React-Notion-X渲染的Notion写作的博客系统。Notion上的写作内容可自由同步至部署。
 ## 基本特性
 # 稳定、轻量化、主题可拔插（暂未完成）
 * Nodrogen支持几乎所有React-Notion-X的块，并支持几乎所有Mermaid代码的渲染。</br>最快每一个月每个出一个二级版本，同等二级版本(1.2.3中的1.2.x)都能随意兼容。每个二级版本都经过多次测试后发布。
