@@ -17,6 +17,7 @@
   "dependencies": {
     "@heroicons/react": "^2.1.1",
     "@notionhq/client": "^1.0.4",
+    "@svgr/webpack": "^8.1.0",
     "@types/react-dom": "^18.2.18",
     "classnames": "^2.3.1",
     "clsx": "^2.1.0",
@@ -26,8 +27,8 @@
     "heroicons": "^2.1.1",
     "lqip-modern": "^1.2.0",
     "memory-cache": "^0.2.0",
+    "mermaid": "10.6.1",
     "next": "^14.0.0",
-    "next-seo": "^6.4.0",
     "notion-client": "^6.16.0",
     "notion-compat": "^6.16.0",
     "notion-utils": "^6.16.0",

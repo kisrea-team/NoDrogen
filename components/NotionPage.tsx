@@ -85,6 +85,13 @@ const Code =  dynamic(async () => {
             return <Mermaid block={props} />
             
          })
+         
+         // return h(
+         //    dynamic(() => {
+         //      return import('./Mindmap').then(module => module.default)
+         //    }, { ssr: false }),
+         //    props
+         //  )
          // return (
          //   dynamic(() => {
          //     return import('../components/Mermaid').then(module => module.default)
@@ -195,9 +202,9 @@ export const NotionPage = ({
       <>
          {/* <button onClick={() => setDark(false)}>update</button> */}
          <NotionRenderer
-          bodyClassName={cs(
-            styles.container,
-          )}
+         //  bodyClassName={cs(
+         //    styles.container,
+         //  )}
             recordMap={recordMap}
             fullPage={true}
             // darkMode={true}
