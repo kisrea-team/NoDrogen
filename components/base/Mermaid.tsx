@@ -15,15 +15,9 @@ export default async function Mermaid (props) {
 
   useEffect(() => {
     mermaid.initialize({ startOnLoad: false,
-      theme: "default",
-      flowchart: {
-        diagramPadding: 8,
-        htmlLabels: true,
-        curve: 'basis',
-        wrappingWidth:400,
-        useMaxWidth :true,
-        useWidth:1000
-      },
+      theme: "neutral",
+      securityLevel: 'loose',
+      htmlLabels:true,
      });
     mermaid.run({
       querySelector: '.someOtherClass',

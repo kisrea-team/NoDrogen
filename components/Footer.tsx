@@ -5,6 +5,7 @@ import { IoMoonSharp, IoSunnyOutline } from "react-icons/io5";
 import styles from '../components/ui/styles.module.css'
 
 export const FooterImpl: React.FC = () => {
+  
   return (
     <footer className={styles.footer}>
       <div className={styles.nodrogen}>基于 Nodrogen 开源项目</div>

@@ -1,4 +1,10 @@
-
+/*
+ * @Author: zitons
+ * @Date: 2024-02-05 16:18:05
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-02-08 10:24:27
+ * @Description: 简介
+ */
 //import * as React from 'react'
 import { NotionPage } from '../../../components/NotionPage'
 import { idToUuid } from 'notion-utils'
@@ -9,6 +15,8 @@ import getAllPageIds from '../../../lib/notion/getAllPageIds'
 // import postcss from 'postcss';
 import { getPageTitle, getPageProperty } from 'notion-utils'
 import { Footer } from '../../../components/Footer'
+import dynamic from 'next/dynamic'
+import { Twikoo } from '../../../components/Twikoo'
 export async function generateStaticParams() {
    const { NOTION_ACCESS_TOKEN } = process.env
    const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN })
@@ -33,6 +41,7 @@ export default async function Page({ params }) {
       return;
    }
    const description = getPageProperty("summary", recordMap['block'][slug]['value'], recordMap)
+
    // console.log(description)
    return (
       <>
@@ -45,6 +54,9 @@ export default async function Page({ params }) {
             <NotionPage recordMap={recordMap} />
             {/* <Footer/> */}
          </main>
+
+         {/* // <Twikoo /> */}
+
       </>
    );
    // console.log(posts)

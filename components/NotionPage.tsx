@@ -180,6 +180,13 @@ const Tweet = ({ id }: { id: string }) => {
    return <TweetEmbed tweetId={id} />
 }
 
+const Twikoo = dynamic(() =>
+import('../components/Twikoo').then(
+   (m) => m.Twikoo
+)
+)
+
+
 export const NotionPage = ({
    recordMap,
    previewImagesEnabled,
@@ -228,12 +235,17 @@ export const NotionPage = ({
                Equation,
                // Pdf,
                Modal,
-               Tweet
+               Tweet,
+               
             }}
             footer={footer}
+            
          // NOTE: custom images will only take effect if previewImages is true and
          // if the image has a valid preview image defined in recordMap.preview_images[src]
          />
+         <div className={styles.container}>
+         <Twikoo/>
+         </div>
       </>
    )
 
