@@ -1,10 +1,16 @@
+/*
+ * @Author: zitons
+ * @Date: 2024-02-07 17:58:50
+ * @LastEditors: 
+ * @LastEditTime: 2024-02-08 12:16:32
+ * @Description: 简介
+ */
 import { useEffect } from 'react'
 import mermaid from 'mermaid'
 import { getTextContent } from 'notion-utils'
 import '../../app/globals.css'
 
 export default async function Mermaid (props) {
-  console.log(props)
   const source = getTextContent(props['block']['block']['properties']['title'])
   // const container = useRef(null)
   // const [svg, setSVG] = useState('')

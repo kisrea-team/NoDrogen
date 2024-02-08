@@ -16,7 +16,7 @@ import '../components/notion.css'
 import '../app/globals.css'
 import '../components/ui/prism-vsc-dark-plus.css'
 import styles from '../components/ui/styles.module.css'
-import { Footer } from './Footer'
+// import { Footer } from './Footer'
 // import '../components/ui/Notion.module.css'
 import { Loading } from './Loading'
 import { createElement as h } from 'react'
@@ -186,6 +186,11 @@ import('../components/Twikoo').then(
 )
 )
 
+const Footer = dynamic(() =>
+import('../components/Footer').then(
+   (m) => m.Footer
+)
+)
 
 export const NotionPage = ({
    recordMap,
@@ -238,12 +243,14 @@ export const NotionPage = ({
                Tweet,
                
             }}
-            footer={footer}
+            // footer={footer}
             
          // NOTE: custom images will only take effect if previewImages is true and
          // if the image has a valid preview image defined in recordMap.preview_images[src]
          />
+         <Footer/>
          <div className={styles.container}>
+         
          <Twikoo/>
          </div>
       </>
