@@ -20,7 +20,7 @@ import { getPageTitle, getPageProperty } from "notion-utils";
 export async function generateStaticParams() {
   const { NOTION_ACCESS_TOKEN } = process.env;
   const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN });
-  const id = idToUuid(process.env.VIEW_ID);
+  const id = idToUuid(process.env.PAGE_ID);
   //视图号
   const response = await client.getPage(id);
   const collectionQuery = response.collection_query;
