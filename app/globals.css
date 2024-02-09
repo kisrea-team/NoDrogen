@@ -7,7 +7,6 @@
 }
 
 :root {
-
    --gray: #8f8f8f;
    --white: #fff;
    --black: #202020;
@@ -17,7 +16,7 @@
    --bg_item_dark_hover: #202224;
    --shadow: rgba(0, 0, 0, 0.08);
    --shadow_2: rgba(0, 0, 0, 0.16);
-
+   --shadow_3: rgba(0, 0, 0, 0.20);
    --px: 10px;
    --radius: 8px;
    --font_size: 18px;
@@ -40,7 +39,7 @@ body {
 }
 
 .time {
-   background-color:rgba(255, 255, 255, 0.2);
+   background-color: rgba(255, 255, 255, 0.2);
    color: var(--white);
    border-radius: 10px;
    width: fit-content;
@@ -48,18 +47,19 @@ body {
    text-align: right;
 }
 
-
-
-
 @media (min-width: 375px) {
 
    .container {
+      display: flex;
+      flex-direction: column;
       max-width: 100%;
+      gap: 15px;
+      padding: calc(var(--px)*1.5);
+      padding-top: calc(var(--px)*2.5);
    }
 }
 
 @media (min-width: 428px) {
-
    .container {
       max-width: 100%;
    }

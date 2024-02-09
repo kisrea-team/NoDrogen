@@ -61,22 +61,32 @@ export default async function List(props) {
           alt="cover"
           fill={true}
         />
+        <div className={styles.time_down}>
+          <p>test</p>
+        </div>
       </div>
       <div className={styles.posts_info}>
-        <span className={styles.icon}>{list.icon}</span>
         <div className={styles.posts_secondary}>
-          <p className={styles.posts_title}>{list.title}</p>
-          <p className={styles.date}>{list.date}</p>
-          <p className={styles.date}>{list.start_date}</p>
-          <p>{list.summary}</p>
-          <div className={styles.post_tags}>
-            {list.tags?.map((item) => (
-              <span
-                className={`${styles.tags} rounded-md leading-8 m-1 notion-${item.color}_background`}
-              >
-                {item.name}
-              </span>
-            ))}
+          <p className={styles.posts_title}>
+            {list.icon}
+            {list.title}
+          </p>
+          <div className={styles.posts_wrapper}>
+            <p className={styles.date}>
+              {list.type}|{list.date}
+            </p>
+            {/* <p className={styles.date}>{list.start_date}</p> */}
+            {/* <p>{list.type}</p> */}
+            <p>{list.summary}</p>
+            <div className={styles.post_tags}>
+              {list.tags?.map((item) => (
+                <span
+                  className={`${styles.tags} rounded-md leading-8 m-1 notion-${item.color}_background`}
+                >
+                  {item.name}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -91,43 +101,41 @@ export default async function List(props) {
   ));
 
   return (
-    <div>
-      <div className={`${styles.list_container}`}>
-        <div className={styles.list_items}>
-          {ListItems}
-          <div className="mt-5 flex w-full justify-center">
-            <Pagination
-              items={posts.length} // 100
-              currentPage={props.currentPage} // 1
-              pageSize={10} // 10
-              onPageChange={1}
-            />
+    <div className={`${styles.list_container}`}>
+      <div className={styles.list_items}>
+        {ListItems}
+        <div className="mt-5 flex w-full justify-center">
+          <Pagination
+            items={posts.length} // 100
+            currentPage={props.currentPage} // 1
+            pageSize={10} // 10
+            onPageChange={1}
+          />
+        </div>
+      </div>
+      <aside className={styles.sticky}>
+        <div className={styles.auther_card}>
+          <Time />
+          <div className={styles.auther_info}>
+            <div className={styles.auther_name}>
+              <p>{view?.["user"]?.[0]?.[0]?.name}</p>
+            </div>
+            <div className={styles.auther_avatar}>
+              <Image
+                src={view?.["user"]?.[0]?.[0]?.profile_photo}
+                width={100}
+                height={100}
+                alt="牛"
+              />
+            </div>
+            <p>{view.description}</p>
           </div>
         </div>
-        <aside className={styles.sticky}>
-          <div className={styles.auther_card}>
-            <Time />
-            <div className={styles.auther_info}>
-              <div className={styles.auther_name}>
-                <p>{view?.["user"]?.[0]?.[0]?.name}</p>
-              </div>
-              <div className={styles.auther_avatar}>
-                <Image
-                  src={view?.["user"]?.[0]?.[0]?.profile_photo}
-                  width={100}
-                  height={100}
-                  alt="牛"
-                />
-              </div>
-              <p>{view.description}</p>
-            </div>
-          </div>
-          <div className={styles.tags_card}>
-            <h1 className={styles.title}>标签</h1>
-            <div className={styles.tags_item}>{tagsitem}</div>
-          </div>
-        </aside>
-      </div>
+        <div className={styles.tags_card}>
+          <h1 className={styles.title}>标签</h1>
+          <div className={styles.tags_item}>{tagsitem}</div>
+        </div>
+      </aside>
     </div>
   );
 }

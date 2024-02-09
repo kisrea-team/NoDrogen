@@ -4,7 +4,6 @@
 
 .head {
    display: flex;
-   padding-top: 1rem;
    user-select: none;
 }
 
@@ -78,12 +77,7 @@
    text-align: center;
 }
 
-@media (min-width: 375px) {
-   .head{
-      padding-left: 10px;
-      padding-right: 10px;
-   }
-}
+@media (min-width: 375px) {}
 
 @media (min-width: 428px) {}
 
@@ -103,9 +97,11 @@
    .btn_menu::before {
       background: #FFFFFF;
    }
+
    .btn_menu::before {
       box-shadow: 0 10px #FFFFFF;
    }
+
    .bar {
       background-color: #292A27;
    }
