@@ -1,5 +1,5 @@
-import KaTeX from 'katex'
-import { memo, useEffect, useState } from 'react'
+import KaTeX from "katex";
+import { memo, useEffect, useState } from "react";
 
 /**
  * 数学公式
@@ -16,9 +16,9 @@ const TeX = ({
   as: asComponent,
   ...props
 }) => {
-  const Component = asComponent || (block ? 'div' : 'span')
-  const content = (children ?? math)
-  const [state, setState] = useState({ innerHtml: '' })
+  const Component = asComponent || (block ? "div" : "span");
+  const content = children ?? math;
+  const [state, setState] = useState({ innerHtml: "" });
 
   useEffect(() => {
     try {
@@ -26,34 +26,33 @@ const TeX = ({
         displayMode: true,
         errorColor,
         throwOnError: !!renderError,
-        ...settings
-      })
+        ...settings,
+      });
 
-      setState({ innerHtml })
+      setState({ innerHtml });
     } catch (error) {
       if (error instanceof KaTeX.ParseError || error instanceof TypeError) {
         if (renderError) {
-          setState({ errorElement: renderError(error) })
+          setState({ errorElement: renderError(error) });
         } else {
-          setState({ innerHtml: error.message })
+          setState({ innerHtml: error.message });
         }
       } else {
-        throw error
+        throw error;
       }
     }
-  }, [block, content, errorColor, renderError, settings])
+  }, [block, content, errorColor, renderError, settings]);
 
-  if ('errorElement' in state) {
-    return state.errorElement
+  if ("errorElement" in state) {
+    return state.errorElement;
   }
 
   return (
-    
     <Component
       {...props}
       dangerouslySetInnerHTML={{ __html: state.innerHtml }}
     />
-  )
-}
+  );
+};
 
-export default memo(TeX)
+export default memo(TeX);

@@ -1,29 +1,37 @@
-import * as React from 'react'
+import * as React from "react";
 
-import Katex from './KatexReact'
-import { getBlockTitle } from 'notion-utils'
+import Katex from "./KatexReact";
+import { getBlockTitle } from "notion-utils";
 
 const katexSettings = {
   throwOnError: false,
-  strict: false
-}
+  strict: false,
+};
 
 /**
  * 数学公式
  * @param {} param0
  * @returns
  */
-export const Equation = ({ block, math, inline = false, className, ...rest }) => {
-  math = math || getBlockTitle(block, null)
-  if (!math) return null
+export const Equation = ({
+  block,
+  math,
+  inline = false,
+  className,
+  ...rest
+}) => {
+  math = math || getBlockTitle(block, null);
+  if (!math) return null;
 
   return (
     <span
-      role='button'
+      role="button"
       tabIndex={0}
-      className={`notion-equation ${inline ? 'notion-equation-inline' : 'notion-equation-block'}`}
+      className={`notion-equation ${
+        inline ? "notion-equation-inline" : "notion-equation-block"
+      }`}
     >
       <Katex math={math} settings={katexSettings} {...rest} />
     </span>
-  )
-}
+  );
+};

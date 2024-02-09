@@ -111,11 +111,11 @@ export async function getAllPosts(item, source, type) {
         );
       });
       return posts;
-      break
+      break;
     default:
       const { NOTION_ACCESS_TOKEN } = process.env;
       const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN });
-      const id = idToUuid(process.env.VIEW_ID);
+      const id = idToUuid(process.env.Page_ID);
       const response = await client.getPage(id);
       const users = response?.notion_user;
       const notion_users = [];
@@ -157,10 +157,9 @@ export async function getAllPosts(item, source, type) {
 
           properties["date"] = getLastTimeStr(properties["start_date"], true);
 
-
-          properties['start_date'] = (
-               dayjs(properties['start_date']).format('YYYY年MM月DD日')
-          ).valueOf()
+          properties["start_date"] = dayjs(properties["start_date"])
+            .format("YYYY年MM月DD日")
+            .valueOf();
           if (block[id].value?.format?.page_icon) {
             properties["icon"] = mapImgUrl(
               block[id].value?.format?.page_icon,
