@@ -115,7 +115,7 @@ export async function getAllPosts(item, source, type) {
     default:
       const { NOTION_ACCESS_TOKEN } = process.env;
       const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN });
-      const id = idToUuid(process.env.Page_ID);
+      const id = idToUuid(process.env.PAGE_ID);
       const response = await client.getPage(id);
       const users = response?.notion_user;
       const notion_users = [];
