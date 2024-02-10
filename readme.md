@@ -6,7 +6,7 @@ Nodrogen是使用Next.js和React-Notion-X开发的Notion写作博客系统
 [![license](https://img.shields.io/badge/License-MIT-blue)]([https://github.com/poloclub/supernova/blob/master/LICENSE](https://github.com/kisrea-team/NoDrogen/blob/main/LICENSE))
 
 演示网站 https://nodrogen.vercel.app/1
-## 实验性版本在[dev](https://github.com/kisrea-team/Notion-New/tree/dev)分支
+## 实验性版本在[dev分支](https://github.com/kisrea-team/Notion-New/tree/dev)
 ![预览](https://i0.imgs.ovh/2024/02/08/bapfO.png)
 
 ## 基本特性
@@ -24,9 +24,9 @@ Nodrogen是使用Next.js和React-Notion-X开发的Notion写作博客系统
 * [Fork](https://github.com/kisrea-team/NoDrogen/fork)此仓库
 * 复制[Nodrogen模板](<https://www.notion.so/kisrea/1ac8cfb2dde44bbc8f6ed18d2acb1e3b?v=86c74e71bd524a29b5dc0fa1a1cf4fce>)并公之于众
 * 部署在[Vercel](https://vercel.com/)上设置环境变量→
-`Page_ID`
+`PAGE_ID`
 
-<details><summary>Page_ID在哪里？</summary>
+<details><summary>PAGE_ID在哪里？</summary>
 打码处就是啦
   <img src="https://i0.imgs.ovh/2024/02/08/baeyd.png">
 </details>
