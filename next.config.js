@@ -1,3 +1,10 @@
+/*
+ * @Author: zitons
+ * @Date: 2024-02-10 10:30:55
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-02-10 12:43:47
+ * @Description: 简介
+ */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
    enabled: process.env.ANALYZE === 'true'
@@ -24,7 +31,7 @@ module.exports = withBundleAnalyzer({
    },
 
 
-   staticPageGenerationTimeout: 300,
+   staticPageGenerationTimeout: 1800,
    compiler: {
       styledComponents: true,
    },

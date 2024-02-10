@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-05 16:18:05
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-08 12:33:19
+ * @LastEditTime: 2024-02-10 11:39:17
  * @Description: 简介
  */
 //import * as React from 'react'
@@ -60,11 +60,18 @@ export async function generateMetadata({ params }) {
 
   // const recordMap = await notion.getPage("1ac8cfb2dde44bbc8f6ed18d2acb1e3b");
   let icon = getBlockIcon(rawMetadata, recordMap);
-  if (icon.startsWith("http") <= 0) {
-    icon =
-      "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>" +
-      icon +
-      "</text></svg>";
+  if(icon) {
+   if (icon.startsWith("http") <= 0) {
+      icon =
+         "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>" +
+         icon +
+         "</text></svg>";
+   }
+  }
+  else {
+   icon="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>" +
+   "🛩️" +
+   "</text></svg>";
   }
   return {
     title: title,
