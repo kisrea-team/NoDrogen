@@ -39,6 +39,7 @@
 }
 
 .footer {
+   color: var(--gray_200);
    display: flex;
    width: 100%;
    max-width: 90%;
@@ -47,6 +48,11 @@
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
+}
+
+.footer_text {
+   color: var(--gray_200);
+   font-size: calc(var(--px)*.1.4);
 }
 
 .nodrogen {
@@ -217,8 +223,4 @@
    visibility: hidden;
 }
 
-@media (prefers-color-scheme: dark) {
-   .container {
-      /* color: #e5f2e8; */
-   }
-}
+@media (prefers-color-scheme: dark) {}

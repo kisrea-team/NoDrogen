@@ -1,26 +1,26 @@
 "use client";
-
 import * as React from "react";
 import dynamic from "next/dynamic";
 // import Image from 'next/image'
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import cs from "classnames";
-
 import { getTextContent } from "notion-utils";
 import { ExtendedRecordMap } from "notion-types";
 import { NotionRenderer } from "react-notion-x";
 import TweetEmbed from "react-tweet-embed";
+
 import "react-notion-x/src/styles.css";
 import "../components/notion.css";
 import "../app/globals.css";
 import "../components/ui/prism-vsc-dark-plus.css";
+
 import styles from "../components/ui/styles.module.css";
-// import { Footer } from './Footer'
-// import '../components/ui/Notion.module.css'
+
 import { Loading } from "./Loading";
+import Footer from "../components/ui/Footer";
 import { createElement as h } from "react";
-//此处参考：https://github.com/craigary/nobelium/blob/36f67d642b0488f956515cffb17a0f8da785701b/components/NotionRenderer.js#L15
+
 export async function getStaticPaths() {
   return {
     paths: [],
@@ -135,9 +135,7 @@ const Twikoo = dynamic(() =>
   import("../components/Twikoo").then((m) => m.Twikoo)
 );
 
-const Footer = dynamic(() =>
-  import("../components/Footer").then((m) => m.Footer)
-);
+// const Footer = dynamic(() => import("./ui/Footer").then((m) => m.Footer));
 
 export const NotionPage = ({
   recordMap,
@@ -152,7 +150,7 @@ export const NotionPage = ({
 }) => {
   const router = useRouter();
 
-  const footer = React.useMemo(() => <Footer />, []);
+  //   const footer = React.useMemo(() => <Footer />, []);
   if (!recordMap) {
     return null;
   }
@@ -166,11 +164,7 @@ export const NotionPage = ({
   }
   return (
     <>
-      {/* <button onClick={() => setDark(false)}>update</button> */}
       <NotionRenderer
-        //  bodyClassName={cs(
-        //    styles.container,
-        //  )}
         recordMap={recordMap}
         fullPage={true}
         // darkMode={true}
@@ -178,10 +172,7 @@ export const NotionPage = ({
         rootPageId={rootPageId}
         previewImages={true}
         components={{
-          // NOTE (transitive-bullshit 3/12/2023): I'm disabling next/image for this repo for now because the amount of traffic started costing me hundreds of dollars a month in Vercel image optimization costs. I'll probably re-enable it in the future if I can find a better solution.
-          // nextImage: Image,
           nextLink: Link,
-
           Code,
           Collection,
           Equation,
@@ -189,10 +180,6 @@ export const NotionPage = ({
           Modal,
           Tweet,
         }}
-        // footer={footer}
-
-        // NOTE: custom images will only take effect if previewImages is true and
-        // if the image has a valid preview image defined in recordMap.preview_images[src]
       />
       <Footer />
       <div className={styles.container}>

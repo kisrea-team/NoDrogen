@@ -10,13 +10,7 @@ import { NotionPage } from "../../../components/NotionPage";
 import { idToUuid, getBlockIcon } from "notion-utils";
 import { NotionAPI } from "notion-client";
 import getAllPageIds from "../../../lib/notion/getAllPageIds";
-// import * as notion from '../../../lib/notion'
-// import { getAllPosts } from '../../lib/notion/getData'
-// import postcss from 'postcss';
 import { getPageTitle, getPageProperty } from "notion-utils";
-// import { Footer } from '../../../components/Footer'
-// import dynamic from 'next/dynamic'
-// import { Twikoo } from '../../../components/Twikoo'
 export async function generateStaticParams() {
   const { NOTION_ACCESS_TOKEN } = process.env;
   const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN });

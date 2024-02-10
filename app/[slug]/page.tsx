@@ -13,6 +13,7 @@ import { lazy } from "react";
 import Head from "../../components/Head";
 // import Main from "../../components/Main";
 //import List from '../components/List'
+import Footer from "../../components/ui/Footer";
 import { Loading } from "../../components/Loading";
 
 export async function generateStaticParams() {
@@ -43,7 +44,8 @@ export default async function Page({ params }) {
         <Head />
         {/* <Main/> */}
         <List currentPage={slug || 1} />
-        <p>第{slug || 1}页</p>
+        {/* <p>第{slug || 1}页</p> */}
+        <Footer />
       </Suspense>
     </main>
   );

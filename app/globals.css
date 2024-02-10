@@ -8,6 +8,7 @@
 
 :root {
    --gray: #8f8f8f;
+   --gray_200: rgb(107, 114, 128);
    --white: #fff;
    --black: #202020;
    --bg_light: #ffffff;
@@ -38,6 +39,12 @@ body {
    display: inline-block;
 }
 
+.container {
+   display: flex;
+   flex-direction: column;
+   gap: calc(var(--px)*1.5);
+}
+
 .time {
    background-color: rgba(255, 255, 255, 0.2);
    color: var(--white);
@@ -47,7 +54,7 @@ body {
    text-align: right;
 }
 
-@media (min-width: 375px) {
+@media(min-width: 375px) and (max-width: 427px) {
 
    .container {
       display: flex;
@@ -59,34 +66,34 @@ body {
    }
 }
 
-@media (min-width: 428px) {
+@media (min-width: 428px) and (max-width: 639px) {
    .container {
       max-width: 100%;
    }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 640px) and (max-width: 767px) {
 
    .container {
       max-width: 540px;
    }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
 
    .container {
       max-width: 728px;
    }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (max-width: 1279px) {
 
    .container {
       max-width: 924px;
    }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1280px) and (max-width: 1535px) {
 
    .container {
       max-width: 1180px;
@@ -97,6 +104,7 @@ body {
 
    .container {
       max-width: 1436px;
+      margin-top: calc(var(--px)*2.5);
    }
 }
 

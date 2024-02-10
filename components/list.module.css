@@ -177,6 +177,7 @@
    .list_container {
       display: block;
       max-width: 100%;
+      margin: 0;
    }
 
    .posts_item {
@@ -303,7 +304,7 @@
    }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (max-width: 1279px) {
    .posts_item {
       flex-direction: initial;
       width: 500px;
@@ -316,7 +317,7 @@
 
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1280px) and (max-width: 1535px) {
 
    .posts_item {
       flex-direction: initial;
@@ -357,10 +358,10 @@
 
       box-shadow: 0 10px #ffffff;
    }
-
-   .posts .posts_secondary {
+/* 
+   .posts {
       color: var(--gray);
-   }
+   } */
 
    .posts_item,
    .tags_card,

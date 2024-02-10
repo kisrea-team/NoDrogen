@@ -31,7 +31,6 @@ export default async function List(props) {
 
   const postsp = paginate(star.concat(posts), Number(props.currentPage), 10);
   console.log("page:" + props.currentPage);
-
   const ListItems = postsp.map((list) => (
     <a className={styles.posts_item} href={"/blog/" + list.id} target="_blank">
       <div className={styles.posts_heart}>
