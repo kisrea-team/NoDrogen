@@ -9,22 +9,20 @@ import { getTextContent } from "notion-utils";
 import { ExtendedRecordMap } from "notion-types";
 import { NotionRenderer } from "react-notion-x";
 import TweetEmbed from "react-tweet-embed";
-
 import "react-notion-x/src/styles.css";
 import "../components/notion.css";
 import "../app/globals.css";
 import "../components/ui/prism-vsc-dark-plus.css";
-
 import styles from "../components/ui/styles.module.css";
-
-import { Loading } from "./Loading";
 import Footer from "../components/ui/Footer";
 import { createElement as h } from "react";
+import { Loading } from "../components/Loading";
+import { Suspense } from "react";
 
 export async function getStaticPaths() {
   return {
     paths: [],
-    fallback: <Loading></Loading>,
+    fallback: <Loading />,
   };
 }
 const Code = dynamic(async () => {
@@ -135,18 +133,23 @@ const Twikoo = dynamic(() =>
   import("../components/Twikoo").then((m) => m.Twikoo)
 );
 
-// const Footer = dynamic(() => import("./ui/Footer").then((m) => m.Footer));
+
+
+
+
 
 export const NotionPage = ({
   recordMap,
   previewImagesEnabled,
   rootPageId,
   rootDomain,
+  name
 }: {
   recordMap: ExtendedRecordMap;
   previewImagesEnabled?: boolean;
   rootPageId?: string;
   rootDomain?: string;
+  name: string
 }) => {
   const router = useRouter();
 
@@ -164,6 +167,13 @@ export const NotionPage = ({
   }
   return (
     <>
+      <Suspense
+        fallback={
+          <div>
+            <Loading />
+          </div>
+        }
+      >
       <NotionRenderer
         recordMap={recordMap}
         fullPage={true}
@@ -181,10 +191,11 @@ export const NotionPage = ({
           Tweet,
         }}
       />
-      <Footer />
+      <Footer name={name}/>
       <div className={styles.container}>
         <Twikoo />
       </div>
+      </Suspense>
     </>
   );
 };

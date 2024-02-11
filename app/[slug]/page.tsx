@@ -1,3 +1,10 @@
+/*
+ * @Author: zitons
+ * @Date: 2024-02-11 14:16:42
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-02-11 17:01:27
+ * @Description: 简介
+ */
 /* _  __  _
  *| |/ / (_)  ___   _ __    ___    __ _
  *| ' /  | | / __| | '__|  / _ \  / _` |
@@ -15,7 +22,6 @@ import Head from "../../components/Head";
 //import List from '../components/List'
 import Footer from "../../components/ui/Footer";
 import { Loading } from "../../components/Loading";
-
 export async function generateStaticParams() {
   let posts;
   posts = await getAllPosts(0, 0, 0);
@@ -45,7 +51,7 @@ export default async function Page({ params }) {
         {/* <Main/> */}
         <List currentPage={slug || 1} />
         {/* <p>第{slug || 1}页</p> */}
-        <Footer />
+        {/* <Footer /> */}
       </Suspense>
     </main>
   );

@@ -1,6 +1,13 @@
+/*
+ * @Author: zitons
+ * @Date: 2024-02-10 10:30:55
+ * @LastEditors: 
+ * @LastEditTime: 2024-02-11 17:19:58
+ * @Description: 简介
+ */
 import { getTextContent, getDateValue } from "notion-utils";
 import { NotionAPI } from "notion-client";
-import { Decoration } from "notion-types";
+// import { Decoration } from "notion-types";
 
 const { NOTION_ACCESS_TOKEN } = process.env;
 

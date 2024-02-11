@@ -2,14 +2,17 @@
  * @Author: zitons
  * @Date: 2024-02-05 16:18:05
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-10 11:39:17
+ * @LastEditTime: 2024-02-11 17:16:10
  * @Description: 简介
  */
 //import * as React from 'react'
 import { NotionPage } from "../../../components/NotionPage";
 import { idToUuid, getBlockIcon } from "notion-utils";
 import { NotionAPI } from "notion-client";
+import { getMainUser }  from '../../../lib/notion/getData'
 import getAllPageIds from "../../../lib/notion/getAllPageIds";
+// import * as notion from '../../../lib/notion'
+// import postcss from 'postcss';
 import { getPageTitle, getPageProperty } from "notion-utils";
 export async function generateStaticParams() {
   const { NOTION_ACCESS_TOKEN } = process.env;
@@ -19,7 +22,6 @@ export async function generateStaticParams() {
   const response = await client.getPage(id);
   const collectionQuery = response.collection_query;
   const pageIds = getAllPageIds(collectionQuery);
-  console.log(pageIds);
   return pageIds.map((post) => ({
     slug: post,
   }));
@@ -28,16 +30,19 @@ export default async function Page({ params }) {
   const { slug } = params;
   const notion = new NotionAPI();
   const recordMap = await notion.getPage(slug);
-  const block = recordMap.block;
-  const rawMetadata = block[slug].value;
+  const block0 = recordMap.block;
+  const rawMetadata = block0[slug].value;
   const title = getPageTitle(recordMap);
+  // console.log(recordMap)
+
+ 
   if (!title) {
     return;
   }
   return (
     <>
       <main>
-        <NotionPage recordMap={recordMap} />
+        <NotionPage recordMap={recordMap} name={await getMainUser()} />
       </main>
     </>
   );

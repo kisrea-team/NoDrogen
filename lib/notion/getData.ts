@@ -66,6 +66,32 @@ export function paginate(items, pageNumber, pageSize) {
   return items.slice(startIndex, startIndex + pageSize);
 }
 
+
+
+export async function getMainUser() {
+  const { NOTION_ACCESS_TOKEN } = process.env;
+  const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN });
+  const id = idToUuid(process.env.PAGE_ID);
+  //视图号
+  const response = await client.getPage(id);
+  const collectionQuery = response.collection_query;
+  const pageIds = getAllPageIds(collectionQuery);
+  const block = response.block;
+  const collection = Object.values(response.collection)[0]?.["value"];
+  const schema = collection?.schema;
+  for (let i = 0; i < pageIds.length; i++) {
+    const id = pageIds[i];
+    const properties =
+      (await getPageProperties(id, block, schema)) || null;
+    if (!properties["title"]) {
+      continue;
+    }
+    if (properties["Person"]) {
+      return properties["Person"][0]['name']
+    }
+  }
+}
+
 /**
  * Gets all posts based on specified criteria.
  * @param item Type of item to retrieve (1 for posts, others for collection views)

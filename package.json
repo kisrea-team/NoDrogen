@@ -29,6 +29,7 @@
     "memory-cache": "^0.2.0",
     "mermaid": "10.6.1",
     "next": "^14.0.0",
+    "next-absolute-url": "^1.2.2",
     "notion-client": "^6.16.0",
     "notion-compat": "^6.16.0",
     "notion-utils": "^6.16.0",
