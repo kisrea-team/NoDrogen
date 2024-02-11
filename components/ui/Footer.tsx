@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-11 14:16:43
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-11 16:58:00
+ * @LastEditTime: 2024-02-11 17:40:14
  * @Description: 简介
  */
 import * as React from "react";
@@ -19,7 +19,7 @@ import {
 } from "react-icons/fa";
 import { IoMoonSharp, IoSunnyOutline } from "react-icons/io5";
 // import * as config from '@/lib/config'
-import styles from "../../components/ui/Styles.module.css";
+import styles from "../../components/ui/styles.module.css";
 export default async function Footer(props)
 {
   // headersList.get('host'); // to get domain
