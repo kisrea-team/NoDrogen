@@ -70,8 +70,8 @@ location / {
 }
 ```
 
-## License
+## 致谢
 
-[React-Notion-X](https://github.com/NotionX/react-notion-x?tab=MIT-1-ov-file#readme)
-[Nobelium](https://github.com/craigary/nobelium?tab=MIT-1-ov-file#readme)
-[NotionNext](https://github.com/tangly1024/NotionNext?tab=MIT-1-ov-file#readme)
+[React-Notion-X](https://github.com/NotionX/react-notion-x)
+[Nobelium](https://github.com/craigary/nobelium)
+[NotionNext](https://github.com/tangly1024/NotionNext)
