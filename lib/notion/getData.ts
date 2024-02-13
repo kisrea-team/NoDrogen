@@ -65,9 +65,6 @@ export function paginate(items, pageNumber, pageSize) {
   const startIndex = (pageNumber - 1) * pageSize;
   return items.slice(startIndex, startIndex + pageSize);
 }
-
-
-
 export async function getMainUser() {
   const { NOTION_ACCESS_TOKEN } = process.env;
   const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN });
@@ -81,13 +78,12 @@ export async function getMainUser() {
   const schema = collection?.schema;
   for (let i = 0; i < pageIds.length; i++) {
     const id = pageIds[i];
-    const properties =
-      (await getPageProperties(id, block, schema)) || null;
+    const properties = (await getPageProperties(id, block, schema)) || null;
     if (!properties["title"]) {
       continue;
     }
     if (properties["Person"]) {
-      return properties["Person"][0]['name']
+      return properties["Person"][0]["name"];
     }
   }
 }

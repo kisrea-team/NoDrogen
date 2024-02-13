@@ -1,0 +1,14 @@
+.header {
+   display: flex;
+   position: sticky;
+   top: 0;
+   left: 0;
+   z-index: 200;
+   width: 100%;
+   max-width: 100vw;
+   overflow: hidden;
+   height: 50px;
+   min-height: 50px;
+   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+   /* background: var(--bg-color); */
+}

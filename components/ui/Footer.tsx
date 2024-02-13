@@ -20,8 +20,7 @@ import {
 import { IoMoonSharp, IoSunnyOutline } from "react-icons/io5";
 // import * as config from '@/lib/config'
 import styles from "../../components/ui/styles.module.css";
-export default async function Footer(props)
-{
+export default async function Footer(props) {
   // headersList.get('host'); // to get domain
 
   return (
@@ -38,5 +37,4 @@ export default async function Footer(props)
       </div>
     </footer>
   );
-};
-
+}
