@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "product": "next build && next start",
     "analyze": "cross-env ANALYZE=true next build",
@@ -30,6 +31,7 @@
     "mermaid": "10.6.1",
     "next": "^14.0.0",
     "next-absolute-url": "^1.2.2",
+    "next-sitemap": "^4.2.3",
     "notion-client": "^6.16.0",
     "notion-compat": "^6.16.0",
     "notion-utils": "^6.16.0",
