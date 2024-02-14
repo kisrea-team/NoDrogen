@@ -1,4 +1,4 @@
-[![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/kisrea-team/NoDrogen/blob/main/LICENSE)
+自豪地开源：[![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/kisrea-team/NoDrogen/blob/main/LICENSE)
 <img src="https://i0.imgs.ovh/2024/02/08/ba1c2.png" width="200" height="200">
 
 # NoDrogen
