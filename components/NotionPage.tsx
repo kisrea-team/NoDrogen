@@ -9,12 +9,15 @@ import { getTextContent } from "notion-utils";
 import { ExtendedRecordMap } from "notion-types";
 import { NotionRenderer } from "react-notion-x";
 import TweetEmbed from "react-tweet-embed";
+
 import "react-notion-x/src/styles.css";
 import "../components/notion.css";
 import "../app/globals.css";
 import "../components/ui/prism-vsc-dark-plus.css";
 import styles from "../components/ui/styles.module.css";
+
 import Footer from "../components/ui/Footer";
+import Header from "../components/ui/PageHeader";
 import { createElement as h } from "react";
 import { Loading } from "../components/Loading";
 import { Suspense } from "react";
@@ -133,26 +136,25 @@ const Twikoo = dynamic(() =>
   import("../components/Twikoo").then((m) => m.Twikoo)
 );
 
-
-
-
-
-
 export const NotionPage = ({
   recordMap,
   previewImagesEnabled,
   rootPageId,
   rootDomain,
-  name
+  name,
+  title,
+  tags,
 }: {
   recordMap: ExtendedRecordMap;
   previewImagesEnabled?: boolean;
   rootPageId?: string;
   rootDomain?: string;
-  name: string
+  name: string;
+  title: string;
+  tags: Object;
 }) => {
   const router = useRouter();
-
+console.log(tags)
   //   const footer = React.useMemo(() => <Footer />, []);
   if (!recordMap) {
     return null;
@@ -174,27 +176,30 @@ export const NotionPage = ({
           </div>
         }
       >
-      <NotionRenderer
-        recordMap={recordMap}
-        fullPage={true}
-        // darkMode={true}
-        rootDomain={rootDomain}
-        rootPageId={rootPageId}
-        previewImages={true}
-        components={{
-          nextLink: Link,
-          Code,
-          Collection,
-          Equation,
-          // Pdf,
-          Modal,
-          Tweet,
-        }}
-      />
-      <Footer name={name}/>
-      <div className={styles.container}>
-        <Twikoo />
-      </div>
+        <div>
+          <Header title={title} tags={tags}/>
+          <NotionRenderer
+            recordMap={recordMap}
+            fullPage={true}
+            // darkMode={true}
+            rootDomain={rootDomain}
+            rootPageId={rootPageId}
+            previewImages={true}
+            components={{
+              nextLink: Link,
+              Code,
+              Collection,
+              Equation,
+              // Pdf,
+              Modal,
+              Tweet,
+            }}
+          />
+        </div>
+        <Footer name={name} />
+        <div className={styles.container}>
+          <Twikoo />
+        </div>
       </Suspense>
     </>
   );

@@ -1,6 +1,9 @@
+// "use client";
 import { getAllPosts } from "../lib/notion/getData";
 import { setDataToCache, getDataFromCache } from "../lib/cache";
 import styles from "../components/Head.module.css";
+
+import DarkButton from "./ui/Dark";
 
 export default async function Head() {
   let posts;
@@ -20,6 +23,7 @@ export default async function Head() {
       <div className={styles.head}>
         <p className={styles.title}>{posts["0"]["name"]}</p>
         <p className={styles.grow}></p>
+        <DarkButton/>
         <div id={styles.btn_menu} className={styles.btn_menu}></div>
       </div>
       <div className={styles.bar}>

@@ -100,43 +100,43 @@ export default async function List(props) {
 
   return (
     <>
-    <div className={`${styles.list_container}`}>
-      <div className={styles.list_items}>
-        {ListItems}
-        <div className="mt-5 flex w-full justify-center">
-          <Pagination
-            items={posts.length} // 100
-            currentPage={props.currentPage} // 1
-            pageSize={10} // 10
-            onPageChange={1}
-          />
-        </div>
-      </div>
-      <aside className={styles.sticky}>
-        <div className={styles.auther_card}>
-          <Time />
-          <div className={styles.auther_info}>
-            <div className={styles.auther_name}>
-              <p>{view?.["user"]?.[0]?.[0]?.name}</p>
-            </div>
-            <div className={styles.auther_avatar}>
-              <Image
-                src={view?.["user"]?.[0]?.[0]?.profile_photo}
-                width={100}
-                height={100}
-                alt="牛"
-              />
-            </div>
-            <p>{view.description}</p>
+      <div className={`${styles.list_container}`}>
+        <div className={styles.list_items}>
+          {ListItems}
+          <div className="mt-5 flex w-full justify-center">
+            <Pagination
+              items={posts.length} // 100
+              currentPage={props.currentPage} // 1
+              pageSize={10} // 10
+              onPageChange={1}
+            />
           </div>
         </div>
-        <div className={styles.tags_card}>
-          <h1 className={styles.title}>标签</h1>
-          <div className={styles.tags_item}>{tagsitem}</div>
-        </div>
-      </aside>
-    </div>
-    <Footer name={view?.["user"]?.[0]?.[0]?.name}/>
+        <aside className={styles.sticky}>
+          <div className={styles.auther_card}>
+            <Time />
+            <div className={styles.auther_info}>
+              <div className={styles.auther_name}>
+                <p>{view?.["user"]?.[0]?.[0]?.name}</p>
+              </div>
+              <div className={styles.auther_avatar}>
+                <Image
+                  src={view?.["user"]?.[0]?.[0]?.profile_photo}
+                  width={100}
+                  height={100}
+                  alt="牛"
+                />
+              </div>
+              <p>{view.description}</p>
+            </div>
+          </div>
+          <div className={styles.tags_card}>
+            <h1 className={styles.title}>标签</h1>
+            <div className={styles.tags_item}>{tagsitem}</div>
+          </div>
+        </aside>
+      </div>
+      <Footer name={view?.["user"]?.[0]?.[0]?.name} />
     </>
   );
 }
