@@ -11,9 +11,6 @@ Nodrogen是使用Next.js开发、React-Notion-X渲染的Notion写作博客系统
 ## 基本特性
 * Nodrogen支持几乎所有React-Notion-X的块，并支持几乎所有Mermaid代码的渲染。</br>最快每一个月每个出一个二级版本，同等二级版本(1.2.3中的1.2.x)都能随意兼容。每个二级版本都经过多次测试后发布。
 * 核心大小仅300kb，每个软件包都经过认真考虑引入。专注于Notion内容渲染。
-## 迁移Notion已有文章到Nodrogen
-
-你可以先复制下面的模板，然后从原数据库导出你的文章CSV文件，然后导入CSV文件，Move To新模板。
 
 # 快速构建
 ## 前提配置
@@ -33,7 +30,16 @@ BLOG=https://zitons.kisrea.com/
 打码处就是啦
   <img src="https://i0.imgs.ovh/2024/02/08/baeyd.png">
 </details>
-TWIKOO_ID用于调用评论系统，BLOG用于生成站点地图。
+
+`TWIKOO_ID`
+
+用于调用评论系统
+
+`TWIKOO_ID`
+
+用于生成站点地图
+
+
 ### 自有服务器
 
 ```shell
