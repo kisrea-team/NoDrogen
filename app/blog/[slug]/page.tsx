@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-05 16:18:05
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-11 17:16:10
+ * @LastEditTime: 2024-02-14 15:06:44
  * @Description: 简介
  */
 //import * as React from 'react'
@@ -36,12 +36,24 @@ export default async function Page({ params }) {
 
   const collection = Object.values(recordMap.collection)[0]?.["value"];
   const schema = collection?.schema;
-  const tags = await getPageProperties(slug, block, schema)
+  let data = await getPageProperties(slug, block, schema)
   // const tags = await getPageProperty(
   //   "tags",
   //   recordMap["block"][slug]["value"],
   //   recordMap
   // )
+
+  const tagSchema = Object.values(schema);
+  const tagOptions = tagSchema?.[3]?.["options"];
+  data["tags"] =
+  data?.["tags"]?.map((tag) => {
+    return {
+      name: tag,
+      color:
+        tagOptions?.find((t) => t.value === tag)?.color || "gray",
+    };
+  }) || [];
+
   const title = getPageTitle(recordMap);
   // console.log(recordMap)
   // console.log(tags)
@@ -51,7 +63,7 @@ export default async function Page({ params }) {
   return (
     <>
       <main>
-        <NotionPage recordMap={recordMap} name={await getMainUser()} title={title} tags={tags}/>
+        <NotionPage recordMap={recordMap} name={await getMainUser()} title={title} data={data}/>
       </main>
     </>
   );

@@ -143,7 +143,7 @@ export const NotionPage = ({
   rootDomain,
   name,
   title,
-  tags,
+  data,
 }: {
   recordMap: ExtendedRecordMap;
   previewImagesEnabled?: boolean;
@@ -151,10 +151,10 @@ export const NotionPage = ({
   rootDomain?: string;
   name: string;
   title: string;
-  tags: Object;
+  data: Object;
 }) => {
   const router = useRouter();
-console.log(tags)
+  console.log(data)
   //   const footer = React.useMemo(() => <Footer />, []);
   if (!recordMap) {
     return null;
@@ -177,7 +177,7 @@ console.log(tags)
         }
       >
         <div>
-          <Header title={title} tags={tags}/>
+          <Header title={title} data={data}/>
           <NotionRenderer
             recordMap={recordMap}
             fullPage={true}
