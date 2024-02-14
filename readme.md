@@ -1,4 +1,4 @@
-自豪地开源：[![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/kisrea-team/NoDrogen/blob/main/LICENSE)
+自豪地开源：<br/>[![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/kisrea-team/NoDrogen/blob/main/LICENSE)
 <img src="https://i0.imgs.ovh/2024/02/08/ba1c2.png" width="200" height="200">
 
 # NoDrogen
@@ -28,7 +28,10 @@ Nodrogen是使用Next.js开发、React-Notion-X渲染的Notion写作博客系统
 打码处就是啦
   <img src="https://i0.imgs.ovh/2024/02/08/baeyd.png">
 </details>
+`BLOG`
+<details><summary>用于生成站点地图</summary>
 
+</details>
 ### 自有服务器
 
 ```shell
@@ -50,7 +53,7 @@ npm run start
 ![20240125161352](https://github.com/kisrea-team/NoDrogen/assets/49295983/01e78939-e269-47ca-886f-a0b2894e491a)
 5.Deloy
 
-### Github Pages 或 静态导出
+### 静态导出
 
 Nodrogen全面支持静态导出。
 
