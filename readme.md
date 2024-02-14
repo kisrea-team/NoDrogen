@@ -21,17 +21,19 @@ Nodrogen是使用Next.js开发、React-Notion-X渲染的Notion写作博客系统
 
 * [Fork](https://github.com/kisrea-team/NoDrogen/fork)此仓库
 * 复制[Nodrogen模板](<https://www.notion.so/kisrea/1ac8cfb2dde44bbc8f6ed18d2acb1e3b?v=86c74e71bd524a29b5dc0fa1a1cf4fce>)并公之于众
-* 设置环境变量（使用Vercel部署时在Deloy之前设置）→
+* 设置环境变量（使用Vercel部署时在Deloy之前设置）
+```.env.local
+PAGE_ID=98f7af9c0c8f403cab2e918b4aa630c0
+TWIKOO_ID=https://zitons-nodrogen.hf.space
+BLOG=https://zitons.kisrea.com/
+```
 `PAGE_ID`
 
 <details><summary>PAGE_ID在哪里？</summary>
 打码处就是啦
   <img src="https://i0.imgs.ovh/2024/02/08/baeyd.png">
 </details>
-`BLOG`
-<details><summary>用于生成站点地图</summary>
-
-</details>
+TWIKOO_ID用于调用评论系统，BLOG用于生成站点地图。
 ### 自有服务器
 
 ```shell
