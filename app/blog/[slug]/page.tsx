@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-05 16:18:05
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-14 15:06:44
+ * @LastEditTime: 2024-02-14 16:25:42
  * @Description: 简介
  */
 //import * as React from 'react'
@@ -15,6 +15,8 @@ import getAllPageIds from "../../../lib/notion/getAllPageIds";
 // import postcss from 'postcss';
 import { getPageTitle, getPageProperty } from "notion-utils";
 import getPageProperties from "../../../lib/notion/getPageProperties";
+import dayjs from "dayjs";
+
 export async function generateStaticParams() {
   const { NOTION_ACCESS_TOKEN } = process.env;
   const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN });
@@ -53,7 +55,11 @@ export default async function Page({ params }) {
         tagOptions?.find((t) => t.value === tag)?.color || "gray",
     };
   }) || [];
-
+  data['date'] = data["date"]?.start_date
+  ? data["date"]?.start_date
+  : dayjs(block[slug].value?.created_time)
+            .format("YYYY年MM月DD日")
+            .valueOf();
   const title = getPageTitle(recordMap);
   // console.log(recordMap)
   // console.log(tags)

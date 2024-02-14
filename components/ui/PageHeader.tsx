@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-14 14:40:26
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-14 15:51:33
+ * @LastEditTime: 2024-02-14 16:24:34
  * @Description: 简介
  */
 import styles from "../../components/list.module.css";
@@ -18,7 +18,7 @@ export default async function PageHeader(props) {
   return (
     <>
       <header className={Styles.header}>
-        <p>{props.title} {props.data.summary} 发布于 {props.data.date.start_date} {props.data.Person[0].name}</p>
+        <p>{props.title} {props.data?.summary} 发布于 {props.data.date} {props.data?.Person?.[0]?.name}</p>
         {props.data.tags.map((item) => (
                 <span
                   className={`${styles.tags} rounded-md leading-8 m-1 notion-${item.color}_background`}
