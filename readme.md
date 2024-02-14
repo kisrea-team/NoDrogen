@@ -9,8 +9,9 @@ Nodrogen是使用Next.js开发、React-Notion-X渲染的Notion写作博客系统
 ![预览](https://i0.imgs.ovh/2024/02/08/bapfO.png)
 
 ## 基本特性
-* Nodrogen支持几乎所有React-Notion-X的块，并支持几乎所有Mermaid代码的渲染。</br>最快每一个月每个出一个二级版本，同等二级版本(1.2.3中的1.2.x)都能随意兼容。每个二级版本都经过多次测试后发布。
-* 核心大小仅300kb，每个软件包都经过认真考虑引入。专注于Notion内容渲染。
+* Nodrogen支持几乎所有Notion的块。</br>最快每一个月一个二级版本，相同二级版本之间(1.2.x)都能任意兼容。
+* 核心大小仅300kb，专注于Notion内容渲染。
+* 重视SEO
 
 # 快速构建
 ## 前提配置
