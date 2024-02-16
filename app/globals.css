@@ -121,7 +121,9 @@ body.dark {
    }
 }
 
-@media (prefers-color-scheme: dark) {
+
+
+[data-theme="dark"] {
    * {
       --bg-color: #202020;
       --zi-color: #ffffff;
@@ -190,3 +192,8 @@ body.dark {
       color: var(--white);
    }
 }
+
+
+
+
+

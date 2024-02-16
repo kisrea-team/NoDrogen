@@ -69,7 +69,7 @@
    background-color: var(--notion-default);
 }
 
-@media (prefers-color-scheme: dark) {
+[data-theme="dark"] {
 
    .notion-red_background {
       background-color: var(--notion-dark-red);

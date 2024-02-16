@@ -1,3 +1,10 @@
+/*
+ * @Author: zitons
+ * @Date: 2024-02-16 14:41:22
+ * @LastEditors: 
+ * @LastEditTime: 2024-02-16 17:42:41
+ * @Description: 简介
+ */
 // "use client";
 import React from "react";
 import { getAllPosts } from "../lib/notion/getData";

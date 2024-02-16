@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-11 14:16:42
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-11 17:01:27
+ * @LastEditTime: 2024-02-16 17:35:49
  * @Description: 简介
  */
 /* _  __  _
@@ -17,9 +17,9 @@ import { getAllPosts } from "../../lib/notion/getData";
 import "../globals.css";
 import { lazy } from "react";
 
-import Head from "../../components/Head";
+// import Head from "../../components/Head";
 // import Main from "../../components/Main";
-//import List from '../components/List'
+import List from '../../components/List'
 import Footer from "../../components/ui/Footer";
 import { Loading } from "../../components/Loading";
 export async function generateStaticParams() {
@@ -37,7 +37,10 @@ export async function generateStaticParams() {
 }
 export default async function Page({ params }) {
   const { slug } = params;
-  const List = lazy(() => import("../../components/List"));
+  // const List = lazy(() => import("../../components/List"));
+  const Head = lazy(() => import("../../components/Head"));
+  // const Dark = lazy(() => import("../../components/ui/Dark"));
+
   return (
     <main className="container mx-auto">
       <Suspense
@@ -52,6 +55,7 @@ export default async function Page({ params }) {
         <List currentPage={slug || 1} />
         {/* <p>第{slug || 1}页</p> */}
         {/* <Footer /> */}
+        {/* <Dark/> */}
       </Suspense>
     </main>
   );

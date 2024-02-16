@@ -375,37 +375,5 @@
    }
 }
 
-@media (prefers-color-scheme: dark) {
 
-   /* .posts_title {
-      color: var(--bg-color);
-   } */
 
-   .btn-menu::after,
-   .btn-menu::before {
-      background: #ffffff;
-   }
-
-   .btn-menu::before {
-
-      box-shadow: 0 10px #ffffff;
-   }
-
-   .bar {
-      background-color: #292A27;
-   }
-
-   .posts_item,
-   .tags_card,
-   .auther_card {
-      background-color: var(--bg_item_dark);
-   }
-
-   .posts_item:hover {
-      background-color: var(--bg_dark_hover);
-   }
-
-   .tags {
-      color: #E3DACD;
-   }
-}

@@ -41,17 +41,17 @@
    height: 1.9rem;
 }
 
-@media (prefers-color-scheme: dark) {
-   .pageLink:hover {
-      border-radius: calc(var(--radius) - 4px);
-      background-color: hsl(240, 3%, 24%);
-   }
-
-   .pageItemActive {
-      --tw-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.1);
-   }
-
-   .icon path {
-      fill: var(--white);
-   }
+/* @media (prefers-color-scheme: dark) { */
+[data-theme='dark'] .pageLink:hover {
+   border-radius: calc(var(--radius) - 4px);
+   background-color: hsl(240, 3%, 24%);
 }
+
+[data-theme='dark'] .pageItemActive {
+   --tw-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .icon path {
+   fill: var(--white);
+}
+/* } */
