@@ -2,9 +2,10 @@
 .notion-page-cover-wrapper,
 .notion-page-icon-hero,
 .notion-page-icon-span,
-/* .notion-collection-page-properties, */
+.notion-collection-page-properties,
 .notion-header,
-.notion-collection-column-title {
+.notion-collection-column-title,
+.notion-title {
    display: none !important;
 }
 

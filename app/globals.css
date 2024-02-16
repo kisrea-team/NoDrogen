@@ -11,7 +11,9 @@
    --gray_200: rgb(107, 114, 128);
    --white: #fff;
    --black: #202020;
-   --bg_light: #ffffff;
+   --bg-color: #ffffff;
+   --zi-color: #202020;
+   /* --bg-color: #ffffff; */
    --bg_dark: #202020;
    --bg_item_dark: #242424;
    --bg_item_dark_hover: #202224;
@@ -30,6 +32,17 @@ body {
    padding: 0;
    margin: 0;
 }
+
+body.light {
+   background-color: #ffffff;
+   color: #000000;
+}
+
+body.dark {
+   background-color: #000000;
+   color: #ffffff;
+}
+
 
 ::-webkit-scrollbar {
    display: none;
@@ -110,6 +123,8 @@ body {
 
 @media (prefers-color-scheme: dark) {
    * {
+      --bg-color: #202020;
+      --zi-color: #ffffff;
       --fg-color: rgba(255, 255, 255, 0.9);
       --fg-color-0: var(--fg-color);
       --fg-color-1: var(--fg-color);
@@ -119,7 +134,7 @@ body {
       --fg-color-5: rgba(255, 255, 255, 0.7);
       --fg-color-6: #fff;
       --fg-color-icon: #fff;
-      --bg-color: #2f3437;
+      /* --bg-color: #2f3437; */
       --bg-color-0: rgb(71, 76, 80);
       --bg-color-1: rgb(63, 68, 71);
       --bg-color-2: rgba(135, 131, 120, 0.15);
@@ -161,7 +176,7 @@ body {
    h2,
    span,
    a {
-      color: var(--bg_light);
+      color: var(--zi-color);
    }
 
    :root {

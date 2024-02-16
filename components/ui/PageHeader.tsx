@@ -18,19 +18,20 @@ export default async function PageHeader(props) {
   return (
     <>
       <header className={Styles.header}>
-        <p>{props.title} {props.data?.summary} 发布于 {props.data.date} {props.data?.Person?.[0]?.name}</p>
+        <p>
+          {props.title} {props.data?.summary} 发布于 {props.data.date}{" "}
+          {props.data?.Person?.[0]?.name}
+        </p>
         {props.data.tags.map((item) => (
-                <span
-                  className={`${styles.tags} rounded-md leading-8 m-1 notion-${item.color}_background`}
-                >
-                  {item.name}
-                </span>
-              ))}
+          <span
+            className={`${styles.tags} rounded-md leading-8 m-1 notion-${item.color}_background`}
+          >
+            {item.name}
+          </span>
+        ))}
         <span
-         //  className={`${Styles.tags} rounded-md leading-8 m-1 notion-${tags.color}_background`}
-         
-        >
-        </span>
+        //  className={`${Styles.tags} rounded-md leading-8 m-1 notion-${tags.color}_background`}
+        ></span>
       </header>
     </>
   );

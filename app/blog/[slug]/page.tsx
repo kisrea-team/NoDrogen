@@ -38,7 +38,7 @@ export default async function Page({ params }) {
 
   const collection = Object.values(recordMap.collection)[0]?.["value"];
   const schema = collection?.schema;
-  let data = await getPageProperties(slug, block, schema)
+  let data = await getPageProperties(slug, block, schema);
   // const tags = await getPageProperty(
   //   "tags",
   //   recordMap["block"][slug]["value"],
@@ -48,18 +48,15 @@ export default async function Page({ params }) {
   const tagSchema = Object.values(schema);
   const tagOptions = tagSchema?.[3]?.["options"];
   data["tags"] =
-  data?.["tags"]?.map((tag) => {
-    return {
-      name: tag,
-      color:
-        tagOptions?.find((t) => t.value === tag)?.color || "gray",
-    };
-  }) || [];
-  data['date'] = data["date"]?.start_date
-  ? data["date"]?.start_date
-  : dayjs(block[slug].value?.created_time)
-            .format("YYYY年MM月DD日")
-            .valueOf();
+    data?.["tags"]?.map((tag) => {
+      return {
+        name: tag,
+        color: tagOptions?.find((t) => t.value === tag)?.color || "gray",
+      };
+    }) || [];
+  data["date"] = data["date"]?.start_date
+    ? data["date"]?.start_date
+    : dayjs(block[slug].value?.created_time).format("YYYY年MM月DD日").valueOf();
   const title = getPageTitle(recordMap);
   // console.log(recordMap)
   // console.log(tags)
@@ -69,7 +66,12 @@ export default async function Page({ params }) {
   return (
     <>
       <main>
-        <NotionPage recordMap={recordMap} name={await getMainUser()} title={title} data={data}/>
+        <NotionPage
+          recordMap={recordMap}
+          name={await getMainUser()}
+          title={title}
+          data={data}
+        />
       </main>
     </>
   );

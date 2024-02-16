@@ -1,16 +1,51 @@
-"use client";
-export default function DarkButton() {
-  function Dark() {
-    if (document.body.classList.contains("dark"))
-      document.body.classList.remove("dark");
-    else document.body.classList.add("dark");
-  }
+import { useTheme } from "next-themes";
+import React, { useEffect } from "react";
+import styles from "../ui/ThemeSwitcher.module.css";
+
+export const ThemeChanger = () => {
+  const { theme, setTheme } = useTheme();
+  let isLightChecked = theme == "light" ? "checked" : null;
+  let isDarkChecked = theme == "dark" ? "checked" : null;
+  let isAutoChecked = theme == "system" ? "checked" : null;
+
   return (
-    <button
-      onClick={Dark}
-      className="px-3 py-1 border border-stone-200 rounded-full drop-shadow-sm text-sm text-stone-800 dark:text-white bg-white/40 dark:bg-black/40 backdrop-blur-lg hover:border-stone-300 transition-colors dark:border-stone-500 dark:hover:border-stone-400"
-    >
-      Toggle Theme
-    </button>
+    <div>
+      <div className={styles.tabs}>
+        <input
+          className={styles.input}
+          type="radio"
+          id="radio-1"
+          name="tabs"
+          onChange={() => setTheme("light")}
+          checked={isLightChecked}
+        />
+        <label className={styles.tab} htmlFor="radio-1">
+          Light
+        </label>
+        <input
+          className={styles.input}
+          type="radio"
+          id="radio-2"
+          name="tabs"
+          onChange={() => setTheme("dark")}
+          checked={isDarkChecked}
+        />
+        <label className={styles.tab} htmlFor="radio-2">
+          Dark
+        </label>
+        <input
+          className={styles.input}
+          type="radio"
+          id="radio-3"
+          name="tabs"
+          onChange={() => setTheme("system")}
+          checked={isAutoChecked}
+        />
+        <label className={styles.tab} htmlFor="radio-3">
+          Auto
+        </label>
+        <span className={styles.glider}></span>
+      </div>
+    </div>
   );
-}
+};
