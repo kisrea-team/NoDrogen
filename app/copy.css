@@ -1,4 +1,4 @@
-:root {
+/* :root {
    --foreground-rgb: 0, 0, 0;
    --background-start-rgb: 214, 219, 220;
    --background-end-rgb: 255, 255, 255;
@@ -25,7 +25,22 @@
    --notion-dark-default: rgb(55, 55, 55);
 }
 
-.notion-red_background {
+[data-theme=dark] {
+   --foreground-rgb: 0, 0, 0;
+   --background-start-rgb: 214, 219, 220;
+   --background-end-rgb: 255, 255, 255;
+   --notion-red: rgb(110, 54, 48);
+   --notion-pink: rgb(105, 49, 76);
+   --notion-blue: rgb(40, 69, 108);
+   --notion-purple: rgb(73, 47, 100);
+   --notion-green: rgb(43, 89, 63);
+   --notion-yellow: rgb(137, 99, 42);
+   --notion-orange: rgb(133, 76, 29);
+   --notion-brown: rgb(96, 59, 44);
+   --notion-gray: rgb(90, 90, 90);
+   --notion-default: rgb(55, 55, 55);
+} */
+ .notion-red_background {
    background-color: var(--notion-red);
 }
 
@@ -68,7 +83,7 @@
 .notion-default_background {
    background-color: var(--notion-default);
 }
-
+/*
 [data-theme="dark"] {
 
    .notion-red_background {
@@ -114,4 +129,4 @@
    .notion-default_background {
       background-color: var(--notion-dark-default);
    }
-}
+} */

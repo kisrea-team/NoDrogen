@@ -4,7 +4,7 @@
    width: 100%;
    max-width: 100%;
    margin: auto;
-   gap: var(--px);
+   gap: calc(var(--px)*2);
 }
 
 .list_container p {
@@ -177,7 +177,7 @@
 .tags {
    font-size: .8rem;
    padding: 3px 5px;
-   color: #6B5449;
+   color: var(--tag-color);
 }
 
 .sidebar_name {
@@ -374,6 +374,3 @@
       display: flex;
    }
 }
-
-
-

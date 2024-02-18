@@ -5,38 +5,89 @@
  * @LastEditTime: 2024-02-16 15:33:08
  * @Description: 简介
  */
-"use client"
+"use client";
 import { useTheme } from "next-themes";
 import React, { useEffect } from "react";
 import styles from "../ui/ThemeSwitcher.module.css";
-import { useMedia } from 'react-use'
-import { useState } from 'react'
-
-
+import { useMedia } from "react-use";
+import { useState } from "react";
 
 const ThemeSwitch = () => {
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  let isLightChecked = theme == "light";
+  let isDarkChecked = theme == "dark";
+  let isAutoChecked = theme == "system";
 
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
-    return null
+    return null;
   }
 
   return (
-    <select value={theme} onChange={e => setTheme(e.target.value)}>
-      <option value="system">System</option>
-      <option value="dark">Dark</option>
-      <option value="light">Light</option>
-    </select>
-  )
-}
+    <>
+      {/* <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+        <option value="system">System</option>
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select> */}
+      {/* <input type="radio" checked={isLightChecked}>aas</input> */}
+      <div>
+        <div className={styles.tabs}>
+          <input
+            className={styles.input}
+            type="radio"
+            id="radio-1"
+            name="tabs"
+            onChange={() => setTheme("light")}
+            checked={isLightChecked}
+          />
+          <label
+            className={styles.tab}
+            htmlFor="radio-1"
+            data-hide-on-theme="light"
+          >
+            Light
+          </label>
+          <input
+            className={styles.input}
+            type="radio"
+            id="radio-2"
+            name="tabs"
+            onChange={() => setTheme("dark")}
+            checked={isDarkChecked}
+          />
+          <label
+            className={styles.tab}
+            htmlFor="radio-2"
+            data-hide-on-theme="dark"
+          >
+            Dark
+          </label>
+          <input
+            className={styles.input}
+            type="radio"
+            id="radio-3"
+            name="tabs"
+            onChange={() => setTheme("system")}
+            checked={isAutoChecked}
+          />
+          <label className={styles.tab} htmlFor="radio-3">
+            Auto
+          </label>
+          <span className={styles.glider}></span>
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default ThemeSwitch
+export default ThemeSwitch;
 // }
 // export default async function ThemeSwitcher() {
 //   // const { theme, setTheme } = useTheme();

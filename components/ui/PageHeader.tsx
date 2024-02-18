@@ -7,7 +7,7 @@
  */
 import styles from "../../components/list.module.css";
 import Styles from "./PageHeader.module.css";
-import ThemeSwitcher from "./Dark";
+import ThemeSwitcher from "./ThemeSwitch";
 export default async function PageHeader(props) {
   // const tagsitem = props.data.tags?.map((tag) => (
   //   <span

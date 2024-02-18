@@ -11,15 +11,13 @@
  *| . \  | | \__ \ | |    |  __/ | (_| |
  *|_|\_\ |_| |___/ |_|     \___|  \__,_|
  */
+//  "use client";
 import { Suspense } from "react";
 import { setDataToCache, getDataFromCache } from "../../lib/cache";
 import { getAllPosts } from "../../lib/notion/getData";
 import "../globals.css";
 import { lazy } from "react";
-
-// import Head from "../../components/Head";
-// import Main from "../../components/Main";
-import List from '../../components/List'
+import Main from "../../components/Main";
 import Footer from "../../components/ui/Footer";
 import { Loading } from "../../components/Loading";
 export async function generateStaticParams() {
@@ -38,7 +36,7 @@ export async function generateStaticParams() {
 export default async function Page({ params }) {
   const { slug } = params;
   // const List = lazy(() => import("../../components/List"));
-  const Head = lazy(() => import("../../components/Head"));
+  // const Head = lazy(() => import("../../components/Head"));
   // const Dark = lazy(() => import("../../components/ui/Dark"));
 
   return (
@@ -50,9 +48,7 @@ export default async function Page({ params }) {
           </div>
         }
       >
-        <Head />
-        {/* <Main/> */}
-        <List currentPage={slug || 1} />
+        <Main/>
         {/* <p>第{slug || 1}页</p> */}
         {/* <Footer /> */}
         {/* <Dark/> */}
