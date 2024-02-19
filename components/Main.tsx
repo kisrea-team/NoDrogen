@@ -1,71 +1,100 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
-import { useCallback } from 'react';
+import { useCallback } from "react";
 import Head from "./Head";
-import List from './List'
+import List from "./Home";
 // import { getAllPosts } from "../lib/notion/getData";
 // import { setDataToCache, getDataFromCache } from "../lib/cache";
 
+// let posts;
+// if ((await getDataFromCache("posts")) == null) {
+//   posts = await getAllPosts(0, 0, 0);
+//   await setDataToCache("posts", posts);
+//   console.log("N");
+// } else {
+//   posts = await getDataFromCache("posts");
+//   console.log("Y");
+// }
+// const view = posts["0"];
+
+export default function Main({ children }: { children: React.ReactNode }) {
 
 
-  // let posts;
-  // if ((await getDataFromCache("posts")) == null) {
-  //   posts = await getAllPosts(0, 0, 0);
-  //   await setDataToCache("posts", posts);
-  //   console.log("N");
-  // } else {
-  //   posts = await getDataFromCache("posts");
-  //   console.log("Y");
-  // }
-  // const view = posts["0"];
 
-
-export default function Main() {
+  
   // const posts = await getAllPosts({ includePages: false })
   //const view = await getAllPosts(0,0)
 
+  // const [y, setY] = useState(window.scrollY);
 
+  // const handleNavigation = useCallback(
+  //   (e) => {
+  //     const window = e.currentTarget;dui
+  //     if (y > window.scrollY) {
+  //       console.log("scrolling up");
+  //     } else if (y < window.scrollY) {
+  //       console.log("scrolling down");
+  //     }
+  //     setY(window.scrollY);
+  //   },
+  //   [y]
+  // );
 
-  let oldScrollY = 0;
+  //   useEffect(() => {
+  //     setY(window.scrollY);
+  //     window.addEventListener("scroll", handleNavigation);
 
-  const [direction, setDirection] = useState('up');
-  
-  const controlDirection = () => {
-      if(window.scrollY > oldScrollY) {
-          setDirection('down');
-      } else {
-          setDirection('up');
-      }
-      oldScrollY = window.scrollY;
-  }
-  
-  useEffect(() => {
-      window.addEventListener('scroll', controlDirection);
-      return () => {
-          window.removeEventListener('scroll', controlDirection);
-      };
-  },[]);
+  //     return () => {
+  //       window.removeEventListener("scroll", handleNavigation);
+  //     };
+  //   }, [handleNavigation]);
 
-  return (
-    <div>
-        <Head />
-        {/* <Main/> */}
-        {/* <List currentPage={1} /> */}
-      {/* <Head>
-         <link rel="icon" href={`data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${posts[1].icon}</text></svg>`}/>
-      </Head> */}
+  // const [scrolled, setScrolled] = useState(false);
+  //   useEffect(() => {
+  //     window.addEventListener("scroll", gun);
+  //     return () => {
+  //       window.removeEventListener("scroll", gun);
+  //     };
+  //   });
+  //   const gun = () => {
+  //     var add = document.getElementById("scrolled");
+  //     if (window.scrollY > 100) {
+  //       // add.style.backgroundColor = "black";
+  //       setScrollStyle(true);
+  //       // setAttribute("scrolled", "scrolled", "");
+  //     } else {
+  //       // add.style.backgroundColor = "pink";
+  //       setScrollStyle(false);
+  //     }
+  //   };
 
-      {/* <div className='relative cover'>
-            <Image
-               className=''
-               src={posts['0']['cover']}
-               // width={1000}
-               // height={1000}
-               alt='cover'
-               fill={true}
-            />
-            <div className=' absolute text-center'>{view['0']['description']}</div>
-         </div> */}
-    </div>
-  );
+  // const handleScroll = () => {
+  //   const offset = window.scrollY;
+  //   if (offset > 50) {
+  //     // 假设滚动超过50px就更改样式
+  //     setScrolled(true);
+  //   } else {
+  //     setScrolled(false);
+  //   }
+  // };
+
+  // // 使用useEffect来添加和清理事件监听器
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
+
+  //   // 清理函数
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []); // 空数组表示这个effect只在组件挂载和卸载时运行
+
+  // // 根据scrolled状态动态添加或移除样式类
+  // var headerClasses = "header";
+  // if (scrolled) {
+  //   headerClasses += " scrolled";
+  // }
+  return <>{children}</>;
 }
+// function setAttribute(arg0: string, arg1: string, arg2: string) {
+//   throw new Error("Function not implemented.");
+// }

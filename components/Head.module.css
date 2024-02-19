@@ -2,11 +2,9 @@
    position: sticky;
    top: 0;
    left: 0;
-   z-index: 0;
+   z-index: 1;
    width: 100%;
-}
-.scrolled{
-  background-color: aqua; 
+   background-color: var(--header-color);
 }
 
 .head {
@@ -87,6 +85,7 @@
    box-shadow: 0 10px #FFFFFF;
    background: #FFFFFF;
 }
+
 [data-theme='dark'].btn_menu:hover {
    box-shadow: none;
 }

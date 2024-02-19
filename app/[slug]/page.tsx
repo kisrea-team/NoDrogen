@@ -17,9 +17,13 @@ import { setDataToCache, getDataFromCache } from "../../lib/cache";
 import { getAllPosts } from "../../lib/notion/getData";
 import "../globals.css";
 import { lazy } from "react";
-import Main from "../../components/Main";
+// import Main from "../../components/Main";
+import Head from "../../components/Head";
+import List from "../../components/Home";
 import Footer from "../../components/ui/Footer";
 import { Loading } from "../../components/Loading";
+import dynamic from 'next/dynamic';
+
 export async function generateStaticParams() {
   let posts;
   posts = await getAllPosts(0, 0, 0);
@@ -38,6 +42,7 @@ export default async function Page({ params }) {
   // const List = lazy(() => import("../../components/List"));
   // const Head = lazy(() => import("../../components/Head"));
   // const Dark = lazy(() => import("../../components/ui/Dark"));
+  const Main = dynamic(() => import('../../components/Main'), { ssr: false })
 
   return (
     <main className="container mx-auto">
@@ -48,7 +53,10 @@ export default async function Page({ params }) {
           </div>
         }
       >
-        <Main/>
+        <Main>
+          <Head/>
+          <List currentPage={slug || 1} />
+        </Main>
         {/* <p>第{slug || 1}页</p> */}
         {/* <Footer /> */}
         {/* <Dark/> */}

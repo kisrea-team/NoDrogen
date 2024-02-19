@@ -6,7 +6,7 @@
  * @Description: 简介
  */
 import "../app/copy.css";
-import { Providers } from './providers'
+import { Providers } from "./providers";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,10 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning>
-    <head />
-    <body className={inter.className}>
-      <Providers>{children}</Providers>
-    </body>
-  </html>
+      <head />
+      <body className={inter.className}>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
   );
 }

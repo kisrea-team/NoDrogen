@@ -18,6 +18,7 @@ import styles from "../components/ui/styles.module.css";
 
 import Footer from "../components/ui/Footer";
 import Header from "../components/ui/PageHeader";
+// import Headers from "../components/Head";
 import { createElement as h } from "react";
 import { Loading } from "../components/Loading";
 import { Suspense } from "react";
@@ -154,7 +155,7 @@ export const NotionPage = ({
   data: Object;
 }) => {
   const router = useRouter();
-  console.log(data)
+  console.log(data);
   //   const footer = React.useMemo(() => <Footer />, []);
   if (!recordMap) {
     return null;
@@ -176,26 +177,26 @@ export const NotionPage = ({
           </div>
         }
       >
-        <div>
-          <Header title={title} data={data}/>
-          <NotionRenderer
-            recordMap={recordMap}
-            fullPage={true}
-            // darkMode={true}
-            rootDomain={rootDomain}
-            rootPageId={rootPageId}
-            previewImages={true}
-            components={{
-              nextLink: Link,
-              Code,
-              Collection,
-              Equation,
-              // Pdf,
-              Modal,
-              Tweet,
-            }}
-          />
-        </div>
+         {/* <Headers/> */}
+        <Header title={title} data={data} />
+        <NotionRenderer
+          recordMap={recordMap}
+          fullPage={true}
+          // darkMode={true}
+          rootDomain={rootDomain}
+          rootPageId={rootPageId}
+          previewImages={true}
+          components={{
+            nextLink: Link,
+            Code,
+            Collection,
+            Equation,
+            // Pdf,
+            Modal,
+            Tweet,
+          }}
+        />
+
         <Footer name={name} />
         <div className={styles.container}>
           <Twikoo />

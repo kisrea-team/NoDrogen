@@ -1,82 +1,31 @@
-.container {
-   position: absolute;
-   left: 0;
-   top: 0;
-   right: 0;
-   bottom: 0;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   box-sizing: border-box;
- }
- 
- .tabs {
+.tabs {
    box-sizing: border-box;
    display: flex;
    position: relative;
    background-color: var(--tabbg);
    padding: 2.5px;
    border-radius: 8px;
- }
- 
- .tabs * {
+}
+
+.tabs * {
    z-index: 2;
- }
- 
- .input[type="radio"] {
+}
+
+.input {
    display: none;
- }
- 
- .tab {
-   box-shadow: 1px 1px 0px 0px var(--shadow_3);
-   box-sizing: border-box;
+}
+
+.tab {
    display: flex;
    align-items: center;
    justify-content: center;
-   height: 1.75rem;
-   width: 74.07px;
-   font-size: 0.825rem;
-   font-weight: 500;
-   color: var(--menuLabel);
-   border-radius: 6px;
-   cursor: pointer;
-   transition: color 0.15s ease-in;
- }
- /* .tab:hover {
-   color: var(--gray12);
- } */
- .input[type="radio"]:checked + label {
-   color: var(--menuLabel);
- }
- 
- .input[id="radio-1"]:checked ~ .glider {
-   transform: translateX(0);
- }
- 
- .input[id="radio-2"]:checked ~ .glider {
-   transform: translateX(100%);
- }
- 
- .input[id="radio-3"]:checked ~ .glider {
-   transform: translateX(200%);
- }
- 
- .glider {
-   position: absolute;
-   display: flex;
-   height: 1.75rem;
-   width: 74.07px;
-   background-color: var(--highlight);
- 
-   z-index: 1;
-   border-radius: 6px;
-   transition: 0.2s ease-in-out;
- }
- 
- @media (max-width: 700px) {
-   .tabs {
-     transform: scale(1.15);
-     margin-left: 2rem;
-     margin-right: 2rem;
-   }
- }
+   width: 40px;
+   height: 40px;
+   border-radius: 100%;
+}
+
+.tab:hover {
+   background-color: #425AEF;
+   color: white;
+   transition: 0.3s;
+}

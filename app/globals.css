@@ -8,6 +8,7 @@
 
 :root {
    --body-color: #ffffff;
+   --header-color: #ffffff;
    --bg-color: #ffffff;
    --zi-color: #202020;
    --gray: #8f8f8f;
@@ -27,7 +28,7 @@
    --bar_border: 1.2px solid var(--shadow);
    --bar_border_hover: 2px solid var(--shadow);
    /* 以下为notion Tags颜色 */
-   --tag-color:#6B5449;
+   --tag-color: #6B5449;
    --notion-red: rgb(255, 226, 221);
    --notion-pink: rgb(245, 224, 233);
    --notion-blue: rgb(211, 229, 239);
@@ -43,6 +44,7 @@
 
 [data-theme="dark"] {
    --body-color: #18171d;
+   --header-color: #202020;
    --bg-color: #242424;
    --zi-color: #ffffff;
    --bg_item_dark: #242424;
@@ -60,7 +62,7 @@
    --bg-color-1: rgb(63, 68, 71);
    --bg-color-2: rgba(135, 131, 120, 0.15);
    /* 以下为notion Tags颜色(Dark)*/
-   --tag-color:#bcbbbb;
+   --tag-color: #bcbbbb;
    --notion-red: rgb(110, 54, 48);
    --notion-pink: rgb(105, 49, 76);
    --notion-blue: rgb(40, 69, 108);
@@ -76,7 +78,7 @@
 
 [data-theme='dark'] [data-hide-on-theme='dark'],
 [data-theme='light'] [data-hide-on-theme='light'] {
-  display: none;
+   display: none;
 }
 
 body {
@@ -106,6 +108,19 @@ body {
    width: fit-content;
    padding: 0 10px;
    text-align: right;
+}
+
+.header {
+   position: sticky;
+   top: 0;
+   left: 0;
+   z-index: 1;
+   width: 100%;
+}
+
+
+.header.scrolled {
+   background-color: aquamarine;
 }
 
 @media(min-width: 375px) and (max-width: 427px) {
@@ -158,7 +173,6 @@ body {
 
    .container {
       max-width: 1436px;
-      margin-top: calc(var(--px)*2.5);
    }
 }
 
@@ -175,5 +189,3 @@ a {
    background-color: rgba(255, 255, 255, 0.2);
    color: var(--white);
 }
-
-

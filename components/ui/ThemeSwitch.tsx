@@ -12,6 +12,10 @@ import styles from "../ui/ThemeSwitcher.module.css";
 import { useMedia } from "react-use";
 import { useState } from "react";
 
+import { MdLightMode } from "react-icons/md";
+import { LuMoonStar } from "react-icons/lu";
+import { HiMoon } from "react-icons/hi2";
+
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -31,12 +35,6 @@ const ThemeSwitch = () => {
 
   return (
     <>
-      {/* <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-        <option value="system">System</option>
-        <option value="dark">Dark</option>
-        <option value="light">Light</option>
-      </select> */}
-      {/* <input type="radio" checked={isLightChecked}>aas</input> */}
       <div>
         <div className={styles.tabs}>
           <input
@@ -52,7 +50,8 @@ const ThemeSwitch = () => {
             htmlFor="radio-1"
             data-hide-on-theme="light"
           >
-            Light
+            {/* <BeakerIcon className="h-6 w-6 text-blue-500" /> */}
+            <MdLightMode className=" h-7 w-7" />
           </label>
           <input
             className={styles.input}
@@ -67,7 +66,7 @@ const ThemeSwitch = () => {
             htmlFor="radio-2"
             data-hide-on-theme="dark"
           >
-            Dark
+            <HiMoon className="h-7 w-7" />
           </label>
           <input
             className={styles.input}
@@ -78,7 +77,8 @@ const ThemeSwitch = () => {
             checked={isAutoChecked}
           />
           <label className={styles.tab} htmlFor="radio-3">
-            Auto
+            {/* Auto */}
+            <MdLightMode className="h-7 w-7" />
           </label>
           <span className={styles.glider}></span>
         </div>
@@ -88,52 +88,3 @@ const ThemeSwitch = () => {
 };
 
 export default ThemeSwitch;
-// }
-// export default async function ThemeSwitcher() {
-//   // const { theme, setTheme } = useTheme();
-//   // let isLightChecked = theme == "light" ? "checked" : null;
-//   // let isDarkChecked = theme == "dark" ? "checked" : null;
-//   // let isAutoChecked = theme == "system" ? "checked" : null;
-//   const prefersDark = useMedia('(prefers-color-scheme: dark)', null)
-//   console.log(prefersDark)
-//   return (
-//     <div>
-//       <div className={styles.tabs}>
-//         <input
-//           className={styles.input}
-//           type="radio"
-//           id="radio-1"
-//           name="tabs"
-//           // onChange={() => setTheme("light")}
-//           // checked={isLightChecked}
-//         />
-//         <label className={styles.tab} htmlFor="radio-1">
-//           Light
-//         </label>
-//         <input
-//           className={styles.input}
-//           type="radio"
-//           id="radio-2"
-//           name="tabs"
-//           // onChange={() => setTheme("dark")}
-//           // checked={isDarkChecked}
-//         />
-//         <label className={styles.tab} htmlFor="radio-2">
-//           Dark
-//         </label>
-//         <input
-//           className={styles.input}
-//           type="radio"
-//           id="radio-3"
-//           name="tabs"
-//           // onChange={() => setTheme("system")}
-//           // checked={isAutoChecked}
-//         />
-//         <label className={styles.tab} htmlFor="radio-3">
-//           Auto
-//         </label>
-//         <span className={styles.glider}></span>
-//       </div>
-//     </div>
-//   );
-// };

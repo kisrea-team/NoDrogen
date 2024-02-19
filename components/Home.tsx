@@ -3,8 +3,8 @@ import { getAllPosts } from "../lib/notion/getData";
 import { getAllTagsFromPosts } from "../lib/notion/getAllTagsFromPosts";
 import { setDataToCache, getDataFromCache } from "../lib/cache";
 import { paginate } from "../lib/notion/getData";
-import styles from "../components/list.module.css";
-import Footer from "../components/ui/Footer";
+import styles from "../components/Home.module.css";
+import Footer from "./ui/Footer";
 import Time from "./ui/Time";
 import Pagination from "./ui/Pagination";
 
@@ -100,7 +100,7 @@ export default async function List(props) {
 
   return (
     <>
-      <div className={`${styles.list_container}`}>
+      <div className={`${styles.container}`}>
         <div className={styles.bar}>
           <p className={styles.bar_text}>{view.description}</p>
         </div>

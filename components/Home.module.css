@@ -1,13 +1,14 @@
-.list_container {
+.container {
    display: flex;
    flex-direction: column;
    width: 100%;
    max-width: 100%;
    margin: auto;
+   margin-top: 50px;
    gap: calc(var(--px)*2);
 }
 
-.list_container p {
+.container p {
    cursor: pointer;
 }
 

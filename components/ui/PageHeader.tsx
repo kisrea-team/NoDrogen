@@ -5,9 +5,10 @@
  * @LastEditTime: 2024-02-16 17:52:19
  * @Description: 简介
  */
-import styles from "../../components/list.module.css";
+
 import Styles from "./PageHeader.module.css";
 import ThemeSwitcher from "./ThemeSwitch";
+
 export default async function PageHeader(props) {
   // const tagsitem = props.data.tags?.map((tag) => (
   //   <span
@@ -16,25 +17,28 @@ export default async function PageHeader(props) {
   //     {tag.name}
   //   </span>
   // ));
+  console.log(props.data);
   return (
     <>
       <header className={Styles.header}>
-        <ThemeSwitcher/>
         <p>
-          {props.title} {props.data?.summary} <br/> 发布于 {props.data.date} <br/>
+          {props.title} {props.data?.summary} <br /> 发布于 {props.data.date}{" "}
+          <br />
           {props.data?.Person?.[0]?.name}
+          {/* {props.data?.["0"]["name"]} */}
         </p>
-        
+
         {props.data.tags.map((item) => (
-          <span
-            className={`${styles.tags} rounded-md leading-8 m-1 notion-${item.color}_background`}
-          >
-            {item.name}
-          </span>
+          <div>
+            <span
+              className={`${Styles.tags} rounded-md leading-8 m-1 notion-${item.color}_background`}
+            >
+              {item.name}
+            </span>
+          </div>
         ))}
-        <span
-        //  className={`${Styles.tags} rounded-md leading-8 m-1 notion-${tags.color}_background`}
-        ></span>
+        <div className="flex-grow"></div>
+        <ThemeSwitcher />
       </header>
     </>
   );

@@ -1,5 +1,6 @@
 .header {
    display: flex;
+   flex-grow: 1;
    position: sticky;
    top: 0;
    left: 0;
@@ -10,5 +11,11 @@
    height: 50px;
    min-height: 50px;
    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-   /* background: var(--bg-color); */
+   background-color: var(--bg-color);
+}
+
+.tags {
+   font-size: .8rem;
+   padding: 3px 5px;
+   color: var(--tag-color);
 }
