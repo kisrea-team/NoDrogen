@@ -50,7 +50,6 @@ const ThemeSwitch = () => {
             htmlFor="radio-1"
             data-hide-on-theme="light"
           >
-            {/* <BeakerIcon className="h-6 w-6 text-blue-500" /> */}
             <MdLightMode className=" h-7 w-7" />
           </label>
           <input
@@ -68,7 +67,7 @@ const ThemeSwitch = () => {
           >
             <HiMoon className="h-7 w-7" />
           </label>
-          <input
+          {/* <input
             className={styles.input}
             type="radio"
             id="radio-3"
@@ -77,10 +76,9 @@ const ThemeSwitch = () => {
             checked={isAutoChecked}
           />
           <label className={styles.tab} htmlFor="radio-3">
-            {/* Auto */}
             <MdLightMode className="h-7 w-7" />
           </label>
-          <span className={styles.glider}></span>
+          <span className={styles.glider}></span> */}
         </div>
       </div>
     </>

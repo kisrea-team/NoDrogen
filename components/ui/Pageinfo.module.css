@@ -1,0 +1,21 @@
+.pageinfo {
+   margin: 30px auto auto;
+   gap: initial;
+}
+.index{
+   z-index: 1;
+}
+
+.title {
+   font-size: calc(var(--px)*5);
+}
+
+.meta {
+   display: flex;
+   align-items: center;
+}
+
+.img {
+   position: absolute;
+   filter: blur(10px);
+}

@@ -12,12 +12,9 @@
    cursor: pointer;
 }
 
-/* .list_items {
-   padding-right: 20px;
-} */
 .layout {
    display: flex;
-   max-width: 80%;
+   /* max-width: 97%; */
    margin: auto;
    gap: calc(var(--px) * 4);
 }
@@ -27,19 +24,18 @@
    background-color: var(--bg-color);
    height: var(--px);
    border-radius: var(--radius);
-   /* align-items: center; */
    line-height: var(--px);
    text-align: center;
    border-color: var(--shadow);
    border: var(--bar_border);
-   box-shadow: 0px 0px 20px 2px var(--shadow);
+   box-shadow: 0 0 20px 2px var(--shadow);
    transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
 }
 
 .bar:hover {
    /* transform: scale(1.02, 1.02); */
    border: var(--bar_border_hover);
-   box-shadow: 0px 0px 20px 2px var(--shadow_2);
+   box-shadow: 0 0px 20px 2px var(--shadow_2);
 }
 
 .bar_text {

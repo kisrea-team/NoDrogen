@@ -16,9 +16,10 @@ import "../app/globals.css";
 import "../components/ui/prism-vsc-dark-plus.css";
 import styles from "../components/ui/styles.module.css";
 
-import Footer from "../components/ui/Footer";
 import Header from "../components/ui/PageHeader";
-// import Headers from "../components/Head";
+import Pageinfo from "./ui/Pageinfo";
+import Footer from "../components/ui/Footer";
+
 import { createElement as h } from "react";
 import { Loading } from "../components/Loading";
 import { Suspense } from "react";
@@ -179,8 +180,8 @@ export const NotionPage = ({
           </div>
         }
       >
-         {/* <Headers/> */}
         <Header title={title} data={data} mainTitle={mainTitle} />
+        <Pageinfo title={title} data={data} />
         <NotionRenderer
           recordMap={recordMap}
           fullPage={true}
@@ -198,11 +199,10 @@ export const NotionPage = ({
             Tweet,
           }}
         />
-
-        <Footer name={name} />
         <div className={styles.container}>
           <Twikoo />
         </div>
+        <Footer name={name} />
       </Suspense>
     </>
   );

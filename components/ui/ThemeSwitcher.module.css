@@ -25,7 +25,7 @@
 }
 
 .tab:hover {
-   background-color: #425AEF;
-   color: white;
+   background-color: #11659a;
+   color: var(--bg-color);
    transition: 0.3s;
 }

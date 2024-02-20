@@ -16,7 +16,28 @@ import getAllPageIds from "../../../lib/notion/getAllPageIds";
 import { getPageTitle, getPageProperty } from "notion-utils";
 import getPageProperties from "../../../lib/notion/getPageProperties";
 import dayjs from "dayjs";
+const mapImgUrl = (img, block) => {
+  let ret = null;
 
+  if (img.startsWith("/")) {
+    ret = "https://www.notion.so" + img;
+  } else {
+    ret = img;
+  }
+
+  if (ret.indexOf("amazonaws.com") > 0) {
+    ret =
+      "https://www.notion.so" +
+      "/image/" +
+      encodeURIComponent(ret) +
+      "?table=" +
+      "collection" +
+      "&id=" +
+      block.collection_id;
+  }
+
+  return ret;
+};
 export async function generateStaticParams() {
   const { NOTION_ACCESS_TOKEN } = process.env;
   const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN });
@@ -43,7 +64,7 @@ export default async function Page({ params }) {
   //   "tags",
   //   recordMap["block"][slug]["value"],
   //   recordMap
-  // )
+  // )properties
   
   const tagSchema = Object.values(schema);
   const tagOptions = tagSchema?.[3]?.["options"];
@@ -57,6 +78,16 @@ export default async function Page({ params }) {
   data["date"] = data["date"]?.start_date
     ? data["date"]?.start_date
     : dayjs(block[slug].value?.created_time).format("YYYY年MM月DD日").valueOf();
+    
+  if (block[slug].value?.format?.page_cover) {
+    data["cover"] =
+      mapImgUrl(block[slug].value?.format?.page_cover, block[slug].value) ??
+      "";
+  } 
+  else {
+    data["cover"] =
+      "https://www.notion.so/images/page-cover/met_fitz_henry_lane.jpg";
+  }
   const title = getPageTitle(recordMap);
   // console.log(recordMap)
   // console.log(tags)
