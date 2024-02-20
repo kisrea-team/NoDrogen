@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-05 16:18:05
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-14 16:25:42
+ * @LastEditTime: 2024-02-20 10:43:31
  * @Description: 简介
  */
 //import * as React from 'react'
@@ -44,7 +44,7 @@ export default async function Page({ params }) {
   //   recordMap["block"][slug]["value"],
   //   recordMap
   // )
-
+  
   const tagSchema = Object.values(schema);
   const tagOptions = tagSchema?.[3]?.["options"];
   data["tags"] =
@@ -70,6 +70,7 @@ export default async function Page({ params }) {
           recordMap={recordMap}
           name={await getMainUser()}
           title={title}
+          mainTitle={collection["name"][0][0]}
           data={data}
         />
       </main>

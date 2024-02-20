@@ -144,6 +144,7 @@ export const NotionPage = ({
   rootDomain,
   name,
   title,
+  mainTitle,
   data,
 }: {
   recordMap: ExtendedRecordMap;
@@ -152,6 +153,7 @@ export const NotionPage = ({
   rootDomain?: string;
   name: string;
   title: string;
+  mainTitle: string;
   data: Object;
 }) => {
   const router = useRouter();
@@ -178,7 +180,7 @@ export const NotionPage = ({
         }
       >
          {/* <Headers/> */}
-        <Header title={title} data={data} />
+        <Header title={title} data={data} mainTitle={mainTitle} />
         <NotionRenderer
           recordMap={recordMap}
           fullPage={true}

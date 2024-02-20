@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-16 14:41:22
- * @LastEditors:
- * @LastEditTime: 2024-02-16 17:42:41
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-02-20 11:11:50
  * @Description: 简介
  */
 // "use client";
@@ -29,13 +29,13 @@ export default async function Head() {
   return (
     <header
       // className={`${headerClasses}`}
-      className={styles.header}
-      // id="scrolled"
+      className={styles.header} 
+      id="scrolled"
     >
       {/* <title>{posts['0']['name']}</title>
          <meta name="description" content={view. description}/> */}
       <div className={styles.head}>
-        <p className={styles.title}>{posts["0"]["name"]}</p>
+        <p className={styles.title} id="title">{posts["0"]["name"]}</p>
         <p className={styles.grow}></p>
         <ThemeSwitcher />
         <div id={styles.btn_menu} className={styles.btn_menu}></div>
