@@ -49,6 +49,7 @@ import "dayjs/locale/zh-cn";
 import relativeTime from "dayjs/plugin/relativeTime";
 import getAllPageIds from "./getAllPageIds";
 import getPageProperties from "./getPageProperties";
+import { setDataToCache, getDataFromCache } from "../cache";
 
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
@@ -65,6 +66,20 @@ export function paginate(items, pageNumber, pageSize) {
   const startIndex = (pageNumber - 1) * pageSize;
   return items.slice(startIndex, startIndex + pageSize);
 }
+
+
+export async function getDataClient() {
+  let posts;
+  if ((await getDataFromCache("posts")) == null) {
+    posts = await getAllPosts(0, 0, 0);
+    await setDataToCache("posts", posts);
+    console.log("N");
+  } else {
+    posts = await getDataFromCache("posts");
+    console.log("Y");
+  }
+}
+
 export async function getMainUser() {
   const { NOTION_ACCESS_TOKEN } = process.env;
   const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN });

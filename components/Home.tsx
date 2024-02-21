@@ -79,7 +79,7 @@ export default async function List(props) {
             <div className={styles.post_tags}>
               {list.tags?.map((item) => (
                 <span
-                  className={`${styles.tags} rounded-md leading-8 m-1 notion-${item.color}_background`}
+                  className={`${styles.tags} rounded-md m-1 notion-${item.color}_background`}
                 >
                   {item.name}
                 </span>
@@ -92,7 +92,7 @@ export default async function List(props) {
   ));
   const tagsitem = tags?.map((tag) => (
     <span
-      className={`${styles.tags} rounded-md leading-8 m-1 notion-${tag.color}_background`}
+      className={`${styles.tags} rounded-md m-1 notion-${tag.color}_background`}
     >
       {tag.name}
     </span>

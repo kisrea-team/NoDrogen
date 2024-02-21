@@ -4,7 +4,6 @@
    width: 100%;
    max-width: 100%;
    margin: auto;
-   margin-top: 50px;
    gap: calc(var(--px)*2);
 }
 
@@ -168,10 +167,13 @@
 }
 
 .tags_item {
+   display: flex;
+   flex-wrap: wrap;
    padding-top: 8px;
 }
 
 .tags {
+   height: calc(var(--px) * 2.5);
    font-size: .8rem;
    padding: 3px 5px;
    color: var(--tag-color);

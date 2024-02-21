@@ -6,15 +6,16 @@
  * @Description: 简介
  */
 // "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { getAllPosts } from "../lib/notion/getData";
 import { setDataToCache, getDataFromCache } from "../lib/cache";
 import styles from "../components/Head.module.css";
+import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 
 import ThemeSwitcher from "./ui/ThemeSwitch";
 import headerClasses from "././Main";
 
-export default async function Head() {
+export const getServerSideProps: GetServerSideProps = async context => {
   let posts;
   if ((await getDataFromCache("posts")) == null) {
     posts = await getAllPosts(0, 0, 0);
@@ -24,22 +25,42 @@ export default async function Head() {
     posts = await getDataFromCache("posts");
     console.log("Y");
   }
-  const view = posts["0"];
+  return {
+      props: {posts}
+  };
+};
+
+
+export default function Head({
+  posts,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  // const view = props.posts["0"];
+  //   useEffect(() => {
+  //     const but = document.querySelector(".land");
+  //     but.addEventListener("click", () => {
+  //       but.classList.add("haha");
+  //     });
+  //   });
+  console.log(posts)
+  const btn = () => {
+    document.getElementById("land").classList.add("haha");
+  };
 
   return (
-    <header
-      // className={`${headerClasses}`}
-      className={styles.header} 
-      id="scrolled"
-    >
-      {/* <title>{posts['0']['name']}</title>
-         <meta name="description" content={view. description}/> */}
-      <div className={styles.head}>
-        <p className={styles.title} id="title">{posts["0"]["name"]}</p>
-        <p className={styles.grow}></p>
-        <ThemeSwitcher />
-        <div id={styles.btn_menu} className={styles.btn_menu}></div>
+    <>
+      <div className={styles.land}>
+        <p>sadasd</p>
       </div>
-    </header>
+      <header className={styles.header} id="scrolled">
+        <p className={styles.title}>{posts["0"]["name"]}</p>
+        <div className={styles.grow}></div>
+        <div className={styles.right}>
+          <ThemeSwitcher />
+          <div id={styles.btn_menu} className={styles.btn_menu}>
+            <p onClick={btn}></p>
+          </div>
+        </div>
+      </header>
+    </>
   );
 }

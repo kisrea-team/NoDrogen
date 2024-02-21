@@ -7,24 +7,6 @@
  */
 "use client";
 import React, { useEffect, useState } from "react";
-import { useRef } from "react";
-import { useCallback } from "react";
-import Head from "./Head";
-import List from "./Home";
-// import { getAllPosts } from "../lib/notion/getData";
-// import { setDataToCache, getDataFromCache } from "../lib/cache";
-
-// let posts;
-// if ((await getDataFromCache("posts")) == null) {
-//   posts = await getAllPosts(0, 0, 0);
-//   await setDataToCache("posts", posts);
-//   console.log("N");
-// } else {
-//   posts = await getDataFromCache("posts");
-//   console.log("Y");
-// }
-// const view = posts["0"];
-
 export default function Main({ children }: { children: React.ReactNode }) {
   let oldScrollY = 0;
 
@@ -51,14 +33,13 @@ export default function Main({ children }: { children: React.ReactNode }) {
     if (y > 100) {
       document.getElementById("scrolled").classList.add("niubi");
     } else {
-      //   document.getElementById("scrolled").style.backgroundColor="pink";
       document.getElementById("scrolled").classList.remove("niubi");
     }
-    //document.title = `${y} times`;
   }, [direction, y]);
 
+  //   useEffect(() => {
+
+
+  //   });
   return <>{children}</>;
 }
-// function setAttribute(arg0: string, arg1: string, arg2: string) {
-//   throw new Error("Function not implemented.");
-// }

@@ -22,7 +22,7 @@ import Head from "../../components/Head";
 import List from "../../components/Home";
 import Footer from "../../components/ui/Footer";
 import { Loading } from "../../components/Loading";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
 export async function generateStaticParams() {
   let posts;
@@ -42,10 +42,10 @@ export default async function Page({ params }) {
   // const List = lazy(() => import("../../components/List"));
   // const Head = lazy(() => import("../../components/Head"));
   // const Dark = lazy(() => import("../../components/ui/Dark"));
-  const Main = dynamic(() => import('../../components/Main'), { ssr: false })
+  const Main = dynamic(() => import("../../components/Main"), { ssr: false });
 
   return (
-    <main className="container mx-auto">
+    <main>
       <Suspense
         fallback={
           <div>
@@ -53,10 +53,12 @@ export default async function Page({ params }) {
           </div>
         }
       >
-        <Main>
-          <Head/>
-          <List currentPage={slug || 1} />
-        </Main>
+        <Head />
+        <div className="container mx-auto">
+          <Main>
+            <List currentPage={slug || 1} />
+          </Main>
+        </div>
         {/* <p>第{slug || 1}页</p> */}
         {/* <Footer /> */}
         {/* <Dark/> */}
