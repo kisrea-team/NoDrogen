@@ -1,7 +1,14 @@
+/*
+ * @Author: zitons
+ * @Date: 2024-02-21 09:19:46
+ * @LastEditors: 
+ * @LastEditTime: 2024-02-21 09:20:10
+ * @Description: 简介
+ */
 import Image from "next/image";
 import { HiMiniClock, HiMiniUserCircle } from "react-icons/hi2";
 
-import Style from "./pageinfo.module.css";
+import Style from "./Pageinfo.module.css";
 import { ST } from "next/dist/shared/lib/utils";
 const Pageinfo = (props) => {
   return (
