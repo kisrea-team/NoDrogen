@@ -8,27 +8,32 @@ import Footer from "./ui/Footer";
 import Time from "./ui/Time";
 import Pagination from "./ui/Pagination";
 
-export default async function List(props) {
-  let posts;
-
-  if ((await getDataFromCache("posts")) == null) {
-    posts = await getAllPosts(0, 0, 0);
-    await setDataToCache("posts", posts);
-    console.log("N");
-  } else {
-    posts = await getDataFromCache("posts");
-    console.log("Y");
+async function getData() {
+  const res = await fetch(process.env.NEXT_PUBLIC_BLOG+"api")
+  
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+ 
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
   }
-  const view = posts[0];
-  posts = posts.slice(1);
+ 
+  return res.json()
+}
+export default async function List(props) {
+  let d;
+  d = await getData();
+  const view = d.posts[0];
+  d.posts = d.posts.slice(1);
 
-  const tags = await getAllTagsFromPosts(posts);
-  const star = await getAllPosts(1, posts, "精选");
-  posts = posts.filter((post) => {
+  const tags = await getAllTagsFromPosts(d.posts);
+  const star = await getAllPosts(1, d.posts, "精选");
+  d.posts = d.posts.filter((post) => {
     return post?.type?.[0] != "精选";
   });
 
-  const postsp = paginate(star.concat(posts), Number(props.currentPage), 10);
+  const postsp = paginate(star.concat(d.posts), Number(props.currentPage), 10);
   console.log("page:" + props.currentPage);
   const ListItems = postsp.map((list) => (
     <a className={styles.posts_item} href={"/blog/" + list.id} target="_blank">
@@ -100,6 +105,10 @@ export default async function List(props) {
 
   return (
     <>
+        
+        <div className={styles.land} id="land">
+        <p>sadasd</p>
+      </div>
       <div className={`${styles.container}`}>
         <div className={styles.bar}>
           <p className={styles.bar_text}>{view.description}</p>
@@ -109,7 +118,7 @@ export default async function List(props) {
             {ListItems}
             <div className="mt-5 flex w-full justify-center">
               <Pagination
-                items={posts.length} // 100
+                items={d.posts.length} // 100
                 currentPage={props.currentPage} // 1
                 pageSize={10} // 10
                 onPageChange={1}

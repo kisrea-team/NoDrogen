@@ -123,8 +123,11 @@ body {
 }
 
 .haha {
-   transform: translateY(0%);
+   transform: translateY(0%)!important;
+   transition: transform .6s cubic-bezier(.19,1,.22,1);
 }
+
+
 
 @media(min-width: 375px) and (max-width: 427px) {
 

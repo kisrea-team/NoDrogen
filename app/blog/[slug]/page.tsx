@@ -2,107 +2,53 @@
  * @Author: zitons
  * @Date: 2024-02-05 16:18:05
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-20 10:43:31
+ * @LastEditTime: 2024-02-22 17:32:44
  * @Description: 简介
  */
 //import * as React from 'react'
 import { NotionPage } from "../../../components/NotionPage";
 import { idToUuid, getBlockIcon } from "notion-utils";
 import { NotionAPI } from "notion-client";
-import { getMainUser } from "../../../lib/notion/getData";
-import getAllPageIds from "../../../lib/notion/getAllPageIds";
+import { getMainUser, pagesStaticParam } from "../../../lib/notion/getData";
+// import getAllPageIds from "../../../lib/notion/getAllPageIds";
 // import * as notion from '../../../lib/notion'
 // import postcss from 'postcss';
 import { getPageTitle, getPageProperty } from "notion-utils";
-import getPageProperties from "../../../lib/notion/getPageProperties";
-import dayjs from "dayjs";
-const mapImgUrl = (img, block) => {
-  let ret = null;
-
-  if (img.startsWith("/")) {
-    ret = "https://www.notion.so" + img;
-  } else {
-    ret = img;
+// import getPageProperties from "../../../lib/notion/getPageProperties";
+// import dayjs from "dayjs";
+async function getData(slug) {
+  const res = await fetch(process.env.NEXT_PUBLIC_BLOG+"api/blog/5fe60377-b3c1-4ede-b3e2-8bc4d312a893")
+  
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+ 
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
   }
-
-  if (ret.indexOf("amazonaws.com") > 0) {
-    ret =
-      "https://www.notion.so" +
-      "/image/" +
-      encodeURIComponent(ret) +
-      "?table=" +
-      "collection" +
-      "&id=" +
-      block.collection_id;
-  }
-
-  return ret;
-};
+ 
+  return res.json()
+}
 export async function generateStaticParams() {
-  const { NOTION_ACCESS_TOKEN } = process.env;
-  const client = new NotionAPI({ authToken: NOTION_ACCESS_TOKEN });
-  const id = idToUuid(process.env.PAGE_ID);
-  //视图号
-  const response = await client.getPage(id);
-  const collectionQuery = response.collection_query;
-  const pageIds = getAllPageIds(collectionQuery);
-  return pageIds.map((post) => ({
-    slug: post,
-  }));
+  return pagesStaticParam()
 }
 export default async function Page({ params }) {
   const { slug } = params;
-  const notion = new NotionAPI();
-  const recordMap = await notion.getPage(slug);
-  const block = recordMap.block;
-  const rawMetadata = block[slug].value;
-
-  const collection = Object.values(recordMap.collection)[0]?.["value"];
-  const schema = collection?.schema;
-  let data = await getPageProperties(slug, block, schema);
-  // const tags = await getPageProperty(
-  //   "tags",
-  //   recordMap["block"][slug]["value"],
-  //   recordMap
-  // )properties
-  
-  const tagSchema = Object.values(schema);
-  const tagOptions = tagSchema?.[3]?.["options"];
-  data["tags"] =
-    data?.["tags"]?.map((tag) => {
-      return {
-        name: tag,
-        color: tagOptions?.find((t) => t.value === tag)?.color || "gray",
-      };
-    }) || [];
-  data["date"] = data["date"]?.start_date
-    ? data["date"]?.start_date
-    : dayjs(block[slug].value?.created_time).format("YYYY年MM月DD日").valueOf();
-    
-  if (block[slug].value?.format?.page_cover) {
-    data["cover"] =
-      mapImgUrl(block[slug].value?.format?.page_cover, block[slug].value) ??
-      "";
-  } 
-  else {
-    data["cover"] =
-      "https://www.notion.so/images/page-cover/met_fitz_henry_lane.jpg";
-  }
-  const title = getPageTitle(recordMap);
+  const d = await getData(slug)
   // console.log(recordMap)
   // console.log(tags)
-  if (!title) {
+  if (!d.data.title) {
     return;
   }
   return (
     <>
       <main>
         <NotionPage
-          recordMap={recordMap}
+          recordMap={d.data.recordMap}
           name={await getMainUser()}
-          title={title}
-          mainTitle={collection["name"][0][0]}
-          data={data}
+          title={d.data.title}
+          mainTitle={d.data.mainTitle}
+          data={d.data}
         />
       </main>
     </>
