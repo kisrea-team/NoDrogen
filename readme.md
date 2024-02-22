@@ -23,7 +23,7 @@ Nodrogen是使用Next.js开发、React-Notion-X渲染的Notion写作博客系统
 ```.env.local
 PAGE_ID=98f7af9c0c8f403cab2e918b4aa630c0
 TWIKOO_ID=https://zitons-nodrogen.hf.space
-BLOG=https://zitons.kisrea.com/
+NEXT_PUBLIC_BLOG=https://zitons.kisrea.com/
 ```
 `PAGE_ID`
 
