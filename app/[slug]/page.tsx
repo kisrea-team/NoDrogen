@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-11 14:16:42
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-22 14:41:38
+ * @LastEditTime: 2024-02-22 22:14:38
  * @Description: 简介
  */
 /* _  __  _
@@ -18,11 +18,14 @@ import { getAllPosts } from "../../lib/notion/getData";
 import "../globals.css";
 import { lazy } from "react";
 // import Main from "../../components/Main";
-import Head from "../../components/Head";
+// import Head from "../../components/Head";
 import List from "../../components/Home";
 import Footer from "../../components/ui/Footer";
 import { Loading } from "../../components/Loading";
 import dynamic from "next/dynamic";
+import { title } from "process";
+import Head from "../../components/Head";
+import { getData } from "../../components/base/Node";
 
 export async function generateStaticParams() {
   let posts;
@@ -43,6 +46,10 @@ export default async function Page({ params }) {
   // const Head = lazy(() => import("../../components/Head"));
   // const Dark = lazy(() => import("../../components/ui/Dark"));
   const Main = dynamic(() => import("../../components/Main"), { ssr: false });
+  // const Head = dynamic(() => import("../../components/Head"), { ssr: false });
+
+  const d = await getData("api");
+
 
   return (
     <main>
@@ -53,7 +60,7 @@ export default async function Page({ params }) {
           </div>
         }
       >
-        <Head />
+        <Head title={d["posts"]["0"]["name"]}/>
         <div className="container mx-auto">
           <Main>
             <List currentPage={slug || 1} />

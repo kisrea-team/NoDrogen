@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-10 10:30:55
- * @LastEditors: 
- * @LastEditTime: 2024-02-11 17:19:58
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-02-22 21:07:13
  * @Description: 简介
  */
 import { getTextContent, getDateValue } from "notion-utils";
@@ -68,6 +68,7 @@ async function getPageProperties(id, block, schema) {
       }
     }
   }
+  
   return properties;
 }
 

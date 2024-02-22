@@ -16,7 +16,7 @@ import "../app/globals.css";
 import "../components/ui/prism-vsc-dark-plus.css";
 import styles from "../components/ui/styles.module.css";
 
-import Header from "../components/ui/PageHeader";
+import Header from "../components/Head";
 import Pageinfo from "./ui/Pageinfo";
 import Footer from "../components/ui/Footer";
 
@@ -180,7 +180,7 @@ export const NotionPage = ({
           </div>
         }
       >
-        <Header title={title} data={data} mainTitle={mainTitle} />
+        <Header title={title}/>
         <Pageinfo title={title} data={data} />
         <NotionRenderer
           recordMap={recordMap}

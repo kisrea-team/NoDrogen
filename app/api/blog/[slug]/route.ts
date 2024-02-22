@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-22 16:04:10
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-22 17:23:37
+ * @LastEditTime: 2024-02-22 21:08:47
  * @Description: 页面详细报告
  */
 
@@ -15,6 +15,7 @@ import { idToUuid, getBlockIcon } from "notion-utils";
 // import postcss from 'postcss';
 import { getPageTitle, getPageProperty } from "notion-utils";
 import { pagesStaticParam } from "../../../../lib/notion/getData";
+import getAllPageIds from "../../../../lib/notion/getAllPageIds";
 
 const mapImgUrl = (img, block) => {
     let ret = null;
@@ -47,7 +48,7 @@ export async function GET(
   { params }: { params: { slug: string } }
 ) {
   const slug = params.slug // 'a', 'b', or 'c'
-  
+  //获取页面信息
   let data;
   if ((await getDataFromCache(slug)) == null) {
       const notion = new NotionAPI();
@@ -91,8 +92,24 @@ export async function GET(
       data['mainTitle'] = collection["name"][0][0];
       data["recordMap"] = recordMap;
 
-
-
+      //获取第一个用户
+      const id = idToUuid(process.env.PAGE_ID);
+      //视图号
+      const response = await notion.getPage(id);
+      const collectionQuery = response.collection_query;
+      const pageIds = getAllPageIds(collectionQuery);
+      
+      for (let i = 0; i < pageIds.length; i++) {
+        const id = pageIds[i];
+        const properties = (await getPageProperties(id, block, schema)) || null;
+        if (!properties["title"]) {
+          continue;
+        }
+        if (properties["Person"]) {
+          data['mainUser'] = properties["Person"][0]["name"];
+          break;
+        }
+      }
 
 
       

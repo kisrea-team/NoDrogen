@@ -1,13 +1,15 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-20 10:39:14
- * @LastEditors:
- * @LastEditTime: 2024-02-20 11:20:36
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-02-22 22:12:23
  * @Description: 简介
  */
 "use client";
 import React, { useEffect, useState } from "react";
+
 export default function Main({ children }: { children: React.ReactNode }) {
+
   let oldScrollY = 0;
 
   const [direction, setDirection] = useState("up");
@@ -41,5 +43,6 @@ export default function Main({ children }: { children: React.ReactNode }) {
 
 
   //   });
+  
   return <>{children}</>;
 }

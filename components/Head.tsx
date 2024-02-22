@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-16 14:41:22
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-22 17:18:44
+ * @LastEditTime: 2024-02-22 22:04:52
  * @Description: 简介
  */
 "use client";
@@ -12,22 +12,10 @@ import { Component } from 'react';
 import ThemeSwitcher from "./ui/ThemeSwitch";
 import headerClasses from "././Main";
 import ReactDOM from 'react-dom';
+import { title } from "process";
+import { getData } from "../components/base/Node";
 
-async function getData() {
-
-  const res = await fetch(process.env.NEXT_PUBLIC_BLOG+"api")
-  
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
- 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
- 
-  return res.json()
-}
-export default async function Head() {
+export default async function Head(props) {
   // const view = props.posts["0"];
   //   useEffect(() => {
   //     const but = document.querySelector(".land");
@@ -36,27 +24,26 @@ export default async function Head() {
   //     });
   //   });
 
-  const d = await getData()
-  
+
   const btn = () => {
     // console.log(document.getElementById("land").classList.contains("haha"))
-    
-    if(document.getElementById("land").classList.contains("haha")){
+
+    if (document.getElementById("land").classList.contains("haha")) {
       document.getElementById("land").classList.remove("haha");
-    }else{
+    } else {
       document.getElementById("land").classList.add("haha");
     }
   };
- 
+
 
   return (
     <>
-{/*     
+      {/*     
       <div className={styles.land} id="land">
         <p>sadasd</p>
       </div> */}
       <header className={styles.header} id="scrolled">
-        <p className={styles.title}>{d["posts"]["0"]["name"]}</p>
+        <p className={styles.title}>{props.title}</p>
         <div className={styles.grow}></div>
         <div className={styles.right}>
           <ThemeSwitcher />
@@ -65,7 +52,7 @@ export default async function Head() {
           </div>
         </div>
       </header>
-     
+
     </>
   );
 }

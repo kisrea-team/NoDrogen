@@ -7,23 +7,24 @@ import styles from "../components/Home.module.css";
 import Footer from "./ui/Footer";
 import Time from "./ui/Time";
 import Pagination from "./ui/Pagination";
+import { getData } from "../components/base/Node";
 
-async function getData() {
-  const res = await fetch(process.env.NEXT_PUBLIC_BLOG+"api")
+// async function getData() {
+//   const res = await fetch(process.env.NEXT_PUBLIC_BLOG+"api")
   
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
+//   // The return value is *not* serialized
+//   // You can return Date, Map, Set, etc.
  
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
+//   if (!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error('Failed to fetch data')
+//   }
  
-  return res.json()
-}
+//   return res.json()
+// }
 export default async function List(props) {
   let d;
-  d = await getData();
+  d = await getData("api");
   const view = d.posts[0];
   d.posts = d.posts.slice(1);
 

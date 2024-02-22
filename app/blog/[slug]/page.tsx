@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-05 16:18:05
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-22 17:32:44
+ * @LastEditTime: 2024-02-22 21:14:27
  * @Description: 简介
  */
 //import * as React from 'react'
@@ -14,27 +14,28 @@ import { getMainUser, pagesStaticParam } from "../../../lib/notion/getData";
 // import * as notion from '../../../lib/notion'
 // import postcss from 'postcss';
 import { getPageTitle, getPageProperty } from "notion-utils";
+import { getData } from "../../../components/base/Node";
 // import getPageProperties from "../../../lib/notion/getPageProperties";
 // import dayjs from "dayjs";
-async function getData(slug) {
-  const res = await fetch(process.env.NEXT_PUBLIC_BLOG+"api/blog/5fe60377-b3c1-4ede-b3e2-8bc4d312a893")
+// async function getData(slug) {
+//   const res = await fetch(process.env.NEXT_PUBLIC_BLOG+"api/blog/"+slug)
   
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
+//   // The return value is *not* serialized
+//   // You can return Date, Map, Set, etc.
  
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
+//   if (!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error('Failed to fetch data')
+//   }
  
-  return res.json()
-}
+//   return res.json()
+// }
 export async function generateStaticParams() {
   return pagesStaticParam()
 }
 export default async function Page({ params }) {
   const { slug } = params;
-  const d = await getData(slug)
+  const d = await getData("api/blog/"+slug)
   // console.log(recordMap)
   // console.log(tags)
   if (!d.data.title) {
@@ -45,7 +46,7 @@ export default async function Page({ params }) {
       <main>
         <NotionPage
           recordMap={d.data.recordMap}
-          name={await getMainUser()}
+          name={d.data.mainUser}
           title={d.data.title}
           mainTitle={d.data.mainTitle}
           data={d.data}
