@@ -52,7 +52,12 @@ npm run start
 ```
 
 ### Vercel
+## 注意：自d90dd87以后的版本，部署Vercel需要设置：
 
+```
+NEXT_PUBLIC_BLOG
+```
+## 否则将编译失败。
 2.选择Next.js<br />
 ![20240125153353](https://github.com/kisrea-team/NoDrogen/assets/49295983/c5d256f3-e56e-42e6-8d86-8aae1bfd63b8)<br />
 3.导入Git仓库<br />
