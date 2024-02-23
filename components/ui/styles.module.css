@@ -120,7 +120,7 @@
 .comments {
    width: 100%;
    margin-top: 2em;
-   border-top: 1px solid var(--fg-color-0);
+   border-top: 1px solid var(--fg-color);
 }
 
 @media only screen and (max-width: 566px) {

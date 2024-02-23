@@ -3,78 +3,86 @@
 @tailwind utilities;
 
 * {
-   box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :root {
-   --body-color: #ffffff;
-   --header-color: #ffffff;
-   --bg-color: #ffffff;
-   --zi-color: #202020;
-   --gray: #8f8f8f;
-   --gray_200: rgb(107, 114, 128);
-   --white: #fff;
-   --black: #202020;
-   --bg_dark: #202020;
-   --bg_item_dark: #242424;
-   --bg_item_dark_hover: #202224;
-   --shadow: rgba(0, 0, 0, 0.08);
-   --shadow_2: rgba(0, 0, 0, 0.16);
-   --shadow_3: rgba(0, 0, 0, 0.20);
-   --px: 10px;
-   --radius: 8px;
-   --font_size: 18px;
-   --font_height: 1.5rem;
-   --bar_border: 1.2px solid var(--shadow);
-   --bar_border_hover: 2px solid var(--shadow);
-   /* 以下为notion Tags颜色 */
-   --tag-color: #6B5449;
-   --notion-red: rgb(255, 226, 221);
-   --notion-pink: rgb(245, 224, 233);
-   --notion-blue: rgb(211, 229, 239);
-   --notion-purple: rgb(232, 222, 238);
-   --notion-green: rgb(219, 237, 219);
-   --notion-yellow: rgb(253, 236, 200);
-   --notion-orange: rgb(250, 222, 201);
-   --notion-brown: rgb(238, 224, 218);
-   --notion-gray: rgb(227, 226, 224);
-   --notion-default: rgb(240, 239, 238);
+  --body-color: #ffffff;
+  --header-color: #ffffff;
+  --bg-color: #ffffff;
+  --zi-color: #202020;
+  --gray: #8f8f8f;
+  --gray_200: rgb(107, 114, 128);
+  --white: #fff;
+  --black: #202020;
+  --bg_dark: #202020;
+  --bg_item_dark: #242424;
+  --bg_item_dark_hover: #202224;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --shadow_2: rgba(0, 0, 0, 0.16);
+  --shadow_3: rgba(0, 0, 0, 0.2);
+  --px: 10px;
+  --radius: 8px;
+  --font_size: 18px;
+  --font_height: 1.5rem;
+  --bar_border: 1.2px solid var(--shadow);
+  --bar_border_hover: 2px solid var(--shadow);
+  /* 以下为notion Tags颜色 */
+  --tag-color: #6b5449;
+  --notion-red: rgb(255, 226, 221);
+  --notion-pink: rgb(245, 224, 233);
+  --notion-blue: rgb(211, 229, 239);
+  --notion-purple: rgb(232, 222, 238);
+  --notion-green: rgb(219, 237, 219);
+  --notion-yellow: rgb(253, 236, 200);
+  --notion-orange: rgb(250, 222, 201);
+  --notion-brown: rgb(238, 224, 218);
+  --notion-gray: rgb(227, 226, 224);
+  --notion-default: rgb(240, 239, 238);
 }
 
-
 [data-theme="dark"] {
-   --body-color: #18171d;
-   --header-color: #202020;
-   --bg-color: #242424;
-   --zi-color: #ffffff;
-   --bg_item_dark: #242424;
-   --fg-color: rgba(255, 255, 255, 0.9);
-   --fg-color-0: var(--fg-color);
+  --body-color: #18171d;
+  --header-color: #202020;
+  --bg-color: #242424;
+  --zi-color: #ffffff;
+  --bg_item_dark: #242424;
+  --fg-color: rgba(255, 255, 255, 0.9);
+  /* --fg-color-0: var(--fg-color);
    --fg-color-1: var(--fg-color);
    --fg-color-2: var(--fg-color);
    --fg-color-3: var(--fg-color);
    --fg-color-4: var(--fg-color);
    --fg-color-5: rgba(255, 255, 255, 0.7);
    --fg-color-6: #fff;
-   --fg-color-icon: #fff;
-   /* --bg-color: #2f3437; */
-   --bg-color-0: rgb(71, 76, 80);
-   --bg-color-1: rgb(63, 68, 71);
-   --bg-color-2: rgba(135, 131, 120, 0.15);
-   /* 以下为notion Tags颜色(Dark)*/
-   --tag-color: #bcbbbb;
-   --notion-red: rgb(110, 54, 48);
-   --notion-pink: rgb(105, 49, 76);
-   --notion-blue: rgb(40, 69, 108);
-   --notion-purple: rgb(73, 47, 100);
-   --notion-green: rgb(43, 89, 63);
-   --notion-yellow: rgb(137, 99, 42);
-   --notion-orange: rgb(133, 76, 29);
-   --notion-brown: rgb(96, 59, 44);
-   --notion-gray: rgb(90, 90, 90);
-   --notion-default: rgb(55, 55, 55);
+   --fg-color-icon: #fff; */
+  /* --bg-color: #2f3437; */
+  --bg-color-0: rgb(71, 76, 80);
+  --bg-color-1: rgb(63, 68, 71);
+  --bg-color-2: rgba(135, 131, 120, 0.15);
+  /* 以下为notion Tags颜色(Dark)*/
+  --tag-color: #e3d8d6;
+  --notion-red: rgb(110, 54, 48);
+  --notion-pink: rgb(105, 49, 76);
+  --notion-blue: rgb(40, 69, 108);
+  --notion-purple: rgb(73, 47, 100);
+  --notion-green: rgb(43, 89, 63);
+  --notion-yellow: rgb(137, 99, 42);
+  --notion-orange: rgb(133, 76, 29);
+  --notion-brown: rgb(96, 59, 44);
+  --notion-gray: rgb(90, 90, 90);
+  --notion-default: rgb(55, 55, 55);
+  --notion-red_background: rgb(110, 54, 48);
+  --notion-pink_background: rgb(105, 49, 76);
+  --notion-blue_background: rgb(40, 69, 108);
+  --notion-purple_background: rgb(73, 47, 100);
+  --notion-green_background: rgb(43, 89, 63);
+  --notion-yellow_background: rgb(137, 99, 42);
+  --notion-orange_background: rgb(133, 76, 29);
+  --notion-brown_background: rgb(96, 59, 44);
+  --notion-gray_background: rgb(90, 90, 90);
+  --notion-default_background: rgb(55, 55, 55);
 }
-
 
 [data-theme='dark'] [data-hide-on-theme='dark'],
 [data-theme='light'] [data-hide-on-theme='light'] {
@@ -82,116 +90,107 @@
 }
 
 body {
-   padding: 0;
-   margin: 0;
-   background-color: var(--body-color);
+  padding: 0;
+  margin: 0;
+  background-color: var(--body-color);
 }
 
 ::-webkit-scrollbar {
-   display: none;
+  display: none;
 }
 
 .block {
-   display: inline-block;
+  display: inline-block;
 }
 
 .container {
-   display: flex;
-   flex-direction: column;
-   gap: calc(var(--px)*1.5);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--px) * 1.5);
 }
 
 .time {
-   background-color: rgba(255, 255, 255, 0.2);
-   color: var(--white);
-   border-radius: 10px;
-   width: fit-content;
-   padding: 0 10px;
-   text-align: right;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  border-radius: 10px;
+  width: fit-content;
+  padding: 0 10px;
+  text-align: right;
 }
 
 .tags {
-   font-size: .8rem;
-   padding: 3px 5px;
-   color: var(--tag-color);
+  font-size: calc(var(--px) * 1.5);
+  padding: 3px 12px;
+  color: var(--tag-color);
 }
 
 .niubi {
-   background-color: var(--bg-color);
-   box-shadow: 0 0 10px 5px var(--shadow_2);
-   transition: all 0.5s cubic-bezier(0.45, 0.01, 0.49, 1.01) 0s;
+  background-color: var(--bg-color);
+  box-shadow: 0 0 10px 5px var(--shadow_2);
+  transition: all 0.5s cubic-bezier(0.45, 0.01, 0.49, 1.01) 0s;
 }
 
 .haha {
-   transform: translateY(0%)!important;
-   transition: transform .6s cubic-bezier(.19,1,.22,1);
+  transform: translateY(0%) !important;
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-
-
-@media(min-width: 375px) and (max-width: 427px) {
-
-   .container {
-      display: flex;
-      flex-direction: column;
-      max-width: 100%;
-      gap: 15px;
-      padding: calc(var(--px)*1.5);
-      padding-top: calc(var(--px)*2.5);
-   }
+@media (min-width: 375px) and (max-width: 427px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    gap: 15px;
+    padding: calc(var(--px) * 1.5);
+    padding-top: calc(var(--px) * 2.5);
+  }
 }
 
 @media (min-width: 428px) and (max-width: 639px) {
-   .container {
-      max-width: 100%;
-   }
+  .container {
+    max-width: 100%;
+  }
 }
 
 @media (min-width: 640px) and (max-width: 767px) {
-
-   .container {
-      max-width: 540px;
-   }
+  .container {
+    max-width: 540px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-
-   .container {
-      max-width: 728px;
-   }
+  .container {
+    max-width: 728px;
+  }
 }
 
 @media (min-width: 1024px) and (max-width: 1279px) {
-
-   .container {
-      max-width: 924px;
-   }
+  .container {
+    max-width: 924px;
+  }
 }
 
 @media (min-width: 1280px) and (max-width: 1535px) {
-
-   .container {
-      max-width: 1180px;
-   }
+  .container {
+    max-width: 1180px;
+  }
 }
 
 @media (min-width: 1536px) {
-
-   .container {
-      max-width: 1436px;
-   }
+  .container {
+    max-width: 1436px;
+  }
 }
-
 
 p,
 h1,
 h2,
 span,
 a {
-   color: var(--zi-color);
+  color: var(--zi-color);
 }
 
 .time {
-   background-color: rgba(255, 255, 255, 0.2);
-   color: var(--white);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
 }

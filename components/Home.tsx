@@ -11,15 +11,15 @@ import { getData } from "../components/base/Node";
 
 // async function getData() {
 //   const res = await fetch(process.env.NEXT_PUBLIC_BLOG+"api")
-  
+
 //   // The return value is *not* serialized
 //   // You can return Date, Map, Set, etc.
- 
+
 //   if (!res.ok) {
 //     // This will activate the closest `error.js` Error Boundary
 //     throw new Error('Failed to fetch data')
 //   }
- 
+
 //   return res.json()
 // }
 export default async function List(props) {
@@ -105,8 +105,7 @@ export default async function List(props) {
 
   return (
     <>
-        
-        <div className={styles.land} id="land">
+      <div className={styles.land} id="land">
         <p>sadasd</p>
       </div>
       <div className={`${styles.container}`}>
