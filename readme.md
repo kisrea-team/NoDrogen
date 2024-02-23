@@ -68,7 +68,7 @@ npm run start
 
 ### 静态导出
 
-##Nodrogen默认不再支持静态导出，但我们依然保留了`generateStaticParams`函数以便有能力者快速修改。
+## Nodrogen默认不再支持静态导出，但我们依然保留了`generateStaticParams`函数以便有能力者快速修改。
 
 
 ## 致谢
