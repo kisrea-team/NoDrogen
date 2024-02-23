@@ -9,6 +9,7 @@ Nodrogen是使用Next.js开发、React-Notion-X渲染的Notion写作博客系统
 ![预览](https://i0.imgs.ovh/2024/02/08/bapfO.png)
 
 ## 基本特性
+* 一式两端，Core和Client，高度分离，更快速。
 * Nodrogen支持几乎所有Notion的块。</br>最快每一个月一个二级版本，相同二级版本之间(1.2.x)都能任意兼容。
 * 核心大小仅300kb，专注于Notion内容渲染。
 * 重视SEO
@@ -18,30 +19,31 @@ Nodrogen是使用Next.js开发、React-Notion-X渲染的Notion写作博客系统
 *星标该仓库*🤪
 
 * [Fork](https://github.com/kisrea-team/NoDrogen/fork)此仓库
+* [Fork](https://github.com/kisrea-team/NoDrogen-Core/fork)NoDrogen-Core仓库
 * 复制[Nodrogen模板](<https://www.notion.so/kisrea/1ac8cfb2dde44bbc8f6ed18d2acb1e3b?v=86c74e71bd524a29b5dc0fa1a1cf4fce>)并公之于众
-* 设置环境变量（使用Vercel部署时在Deloy之前设置）
-```.env.local
-PAGE_ID=98f7af9c0c8f403cab2e918b4aa630c0
-TWIKOO_ID=https://zitons-nodrogen.hf.space
-NEXT_PUBLIC_BLOG=https://zitons.kisrea.com/
+* 设置Core端环境变量（使用Vercel部署时在Deloy之前设置）
+``` .env.local
+PAGE_ID=aa045af321034b62ad9c962b42fe7f48
 ```
-`PAGE_ID`
 
-<details><summary>PAGE_ID在哪里？</summary>
+`PAGE_ID`<details><summary>PAGE_ID在哪里？</summary>
 打码处就是啦
   <img src="https://i0.imgs.ovh/2024/02/08/baeyd.png">
 </details>
 
-`TWIKOO_ID`
+* 设置客户端环境变量
+``` .env.local
+TWIKOO_ID=https://zitons-nodrogen.hf.space
+NEXT_PUBLIC_PROTOCOL=https://
+NEXT_PUBLIC_BLOG=api.kisrea.com
+NEXT_PUBLIC_FIRST_SLUG=c64b67c2-ff19-43c7-8f7f-9dbe0144ac1f
+```
+`NEXT_PUBLIC_BLOG`部署Core的域名
+`TWIKOO_ID`用于调用评论系统
+`NEXT_PUBLIC_FIRST_SLUG`为保留名
 
-用于调用评论系统
 
-`TWIKOO_ID`
-
-用于生成站点地图
-
-
-### 自有服务器
+### 自有服务器（推荐）
 
 ```shell
 git clone http://github.com/kisrea-team/NoDrogen.git
@@ -51,13 +53,10 @@ npm run build
 npm run start
 ```
 
-### Vercel
-## 注意：自d90dd87以后的版本，部署Vercel需要设置：
+### Vercel（推荐）
 
-```
-NEXT_PUBLIC_BLOG
-```
-## 否则将编译失败。
+## 注意：需要部署两次，一个Core，一个Client，配置的环境变量在前提配置中。
+1.启动Vercel<br />
 2.选择Next.js<br />
 ![20240125153353](https://github.com/kisrea-team/NoDrogen/assets/49295983/c5d256f3-e56e-42e6-8d86-8aae1bfd63b8)<br />
 3.导入Git仓库<br />
@@ -69,23 +68,8 @@ NEXT_PUBLIC_BLOG
 
 ### 静态导出
 
-Nodrogen全面支持静态导出。
+##Nodrogen默认不再支持静态导出，但我们依然保留了`generateStaticParams`函数以便有能力者快速修改。
 
-```shell
-npm run build
-```
-
-可导出静态导出out文件夹。
-对于Nginx，可设置Nginx Rewrite以实现完美的路由。
-
-```shell
-location / {
-  if (!-e $request_filename){
-      rewrite ^(.*)$ /$1.html last;
-      break;
-  }
-}
-```
 
 ## 致谢
 
