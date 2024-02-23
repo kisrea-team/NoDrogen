@@ -1,13 +1,13 @@
 import Image from "next/image";
-import { getAllPosts } from "../lib/notion/getData";
+import { searchsFromPosts } from "../lib/notion/getData";
 import { getAllTagsFromPosts } from "../lib/notion/getAllTagsFromPosts";
-import { setDataToCache, getDataFromCache } from "../lib/cache";
 import { paginate } from "../lib/notion/getData";
 import styles from "../components/Home.module.css";
 import Footer from "./ui/Footer";
 import Time from "./ui/Time";
 import Pagination from "./ui/Pagination";
 import { getData } from "../components/base/Node";
+import { search } from "../lib/notion";
 
 // async function getData() {
 //   const res = await fetch(process.env.NEXT_PUBLIC_BLOG+"api")
@@ -25,11 +25,10 @@ import { getData } from "../components/base/Node";
 export default async function List(props) {
   let d;
   d = await getData("api");
-  const view = d.posts[0];
-  d.posts = d.posts.slice(1);
+  const view = d.wiki;
 
   const tags = await getAllTagsFromPosts(d.posts);
-  const star = await getAllPosts(1, d.posts, "精选");
+  const star = await searchsFromPosts(d.posts, "精选");
   d.posts = d.posts.filter((post) => {
     return post?.type?.[0] != "精选";
   });

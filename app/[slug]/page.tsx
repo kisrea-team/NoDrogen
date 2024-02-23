@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-11 14:16:42
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-22 22:14:38
+ * @LastEditTime: 2024-02-23 18:12:27
  * @Description: 简介
  */
 /* _  __  _
@@ -13,14 +13,11 @@
  */
 //  "use client";
 import { Suspense } from "react";
-import { setDataToCache, getDataFromCache } from "../../lib/cache";
-import { getAllPosts } from "../../lib/notion/getData";
 import "../globals.css";
 import { lazy } from "react";
 // import Main from "../../components/Main";
 // import Head from "../../components/Head";
 import List from "../../components/Home";
-import Footer from "../../components/ui/Footer";
 import { Loading } from "../../components/Loading";
 import dynamic from "next/dynamic";
 import { title } from "process";
@@ -28,17 +25,8 @@ import Head from "../../components/Head";
 import { getData } from "../../components/base/Node";
 
 export async function generateStaticParams() {
-  let posts;
-  posts = await getAllPosts(0, 0, 0);
-  posts = posts.slice(1);
-  posts = posts.filter((post) => {
-    return post?.type?.[0] != "精选";
-  });
-  const pagesCount = Math.ceil(posts.length / 10); // 100/10
-  const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
-  return pages.map((post) => ({
-    slug: String(post),
-  }));
+  const d = await getData("api");
+  return d.pageNumber
 }
 export default async function Page({ params }) {
   const { slug } = params;
@@ -60,7 +48,7 @@ export default async function Page({ params }) {
           </div>
         }
       >
-        <Head title={d["posts"]["0"]["name"]}/>
+        <Head title={d.wiki["name"]}/>
         <div className="container mx-auto">
           <Main>
             <List currentPage={slug || 1} />
@@ -75,22 +63,18 @@ export default async function Page({ params }) {
 }
 
 export async function generateMetadata() {
-  let posts, icon;
-  if ((await getDataFromCache("posts")) != null) {
-    posts = await getDataFromCache("posts");
-  } else {
-    posts = await getAllPosts(0, 0, 0);
-    await setDataToCache("posts", posts);
-  }
-  if (posts[0]["icon"].startsWith("http") <= 0) {
+  let icon;
+  const d = await getData("api");
+  icon = d.wiki['icon']
+  if (icon.startsWith("http") <= 0) {
     icon =
       "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>" +
-      posts[0]["icon"] +
+      icon +
       "</text></svg>";
   }
   return {
-    title: posts[0]["name"],
+    title: d.wiki["name"],
     icons: icon,
-    description: posts[0]["description"],
+    description: d.wiki["description"],
   };
 }
