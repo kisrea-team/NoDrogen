@@ -2,12 +2,11 @@
  * @Author: zitons
  * @Date: 2024-02-11 14:16:43
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-11 17:45:25
+ * @LastEditTime: 2024-02-23 18:51:00
  * @Description: 简介
  */
 import * as React from "react";
 
-import { setDataToCache, getDataFromCache } from "../../lib/cache";
 import {
   FaEnvelopeOpenText,
   FaGithub,

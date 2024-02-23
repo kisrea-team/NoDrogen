@@ -7,7 +7,7 @@ import Footer from "./ui/Footer";
 import Time from "./ui/Time";
 import Pagination from "./ui/Pagination";
 import { getData } from "../components/base/Node";
-import { search } from "../lib/notion";
+// import { search } from "../lib/notion";
 
 // async function getData() {
 //   const res = await fetch(process.env.NEXT_PUBLIC_BLOG+"api")
