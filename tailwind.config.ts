@@ -1,6 +1,14 @@
+/*
+ * @Author: zitons
+ * @Date: 2023-12-09 20:47:04
+ * @LastEditors: 
+ * @LastEditTime: 2024-02-16 15:57:24
+ * @Description: 简介
+ */
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',

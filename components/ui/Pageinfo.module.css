@@ -1,0 +1,30 @@
+.pageinfo {
+  margin: 30px auto auto;
+  gap: initial;
+}
+.index {
+  z-index: 1;
+}
+.title {
+  display: flex;
+  align-items: center;
+  font-size: calc(var(--px) * 5);
+}
+.title p {
+  font-size: calc(var(--px) * 5);
+}
+.title span {
+  font-size: calc(var(--px) * 3);
+  color: var(--fg-color);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  position: absolute;
+  filter: blur(10px);
+  object-fit: cover;
+}

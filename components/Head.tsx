@@ -1,36 +1,69 @@
-import { getAllPosts } from '../lib/notion/getData'
-import { setDataToCache, getDataFromCache } from '../lib/cache'
-import styles from '../components/Head.module.css'
+/*
+ * @Author: zitons
+ * @Date: 2024-02-16 14:41:22
+ * @LastEditors: vhko hirsch-k@outlook.com
+ * @LastEditTime: 2024-02-25 20:47:40
+ * @Description: 简介
+ */
+"use client";
+import React, { useEffect, useState } from "react";
+import styles from "../components/Head.module.css";
+import ThemeSwitcher from "./ui/ThemeSwitch";
 
+export default async function Head(props) {
+  const btn = () => {
+    if (document.getElementById("land").classList.contains("haha")) {
+      document.getElementById("land").classList.remove("haha");
+    } else {
+      document.getElementById("land").classList.add("haha");
+    }
+  };
 
+//   let noneY = 0;
+//   const [direction, setDirection] = useState("up");
+//   const [Y, setY] = React.useState(0);
+//   const controlDirection = () => {
+//     if (window.scrollY > noneY) {
+//       setDirection("down");
+//     } else {
+//       setDirection("up");
+//     }
+//     noneY = window.scrollY;
+//     setY(window.scrollY);
+//   };
+//   useEffect(() => {
+//     window.addEventListener("scroll", controlDirection);
+//     return () => {
+//       window.removeEventListener("scroll", controlDirection);
+//     };
+//   }, []);
+//   useEffect(() => {
+//     if (Y > 800) {
+//       document.getElementById("scrolled").classList.add("niubi");
+//     } else {
+//       document.getElementById("scrolled").classList.remove("niubi");
+//     }
+//   }, [direction, Y]);
 
-export default async function Head() {
-   let posts
-   if (await getDataFromCache("posts") == null) {
-      posts = await getAllPosts(0, 0, 0)
-      await setDataToCache("posts", posts)
-      console.log("N")
-   }
-   else {
-      posts = await getDataFromCache("posts")
-      console.log('Y')
-   }
-   const view = posts['0']
-   return (
-
-      <div className={styles.header}>
-         {/* <title>{posts['0']['name']}</title>
-         <meta name="description" content={view. description}/> */}
-         <div className={styles.head}>
-            <p className={styles.title}>{posts['0']['name']}</p>
-            <p className={styles.grow}></p>
-            <div id={styles.btn_menu} className={styles.btn_menu}></div>
-         </div>
-         <div className={styles.bar}>
-            <p className={styles.bar_text}>{view. description}</p>
-
-         </div>
-         
-      </div>
-   )
+  return (
+    <>
+      {/*     
+      <div className={styles.land} id="land">
+        <p>sadasd</p>
+      </div> */}
+      <header className={styles.header} id="scrolled">
+        <p className={styles.title}>{props.title}</p>
+        <div className={styles.grow}></div>
+        <div>
+          <div></div>
+        </div>
+        <div className={styles.right}>
+          <ThemeSwitcher />
+          <div id={styles.btn_menu} className={styles.btn_menu} onClick={btn}>
+            <p></p>
+          </div>
+        </div>
+      </header>
+    </>
+  );
 }

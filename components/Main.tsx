@@ -1,44 +1,48 @@
+/*
+ * @Author: zitons
+ * @Date: 2024-02-20 10:39:14
+ * @LastEditors: vhko hirsch-k@outlook.com
+ * @LastEditTime: 2024-02-25 22:27:19
+ * @Description: 简介
+ */
+"use client";
+import React, { useEffect, useState } from "react";
 
-import { getAllPosts } from '../lib/notion/getData'
-import Image from 'next/image'
-import {setDataToCache,getDataFromCache} from '../lib/cache'
-import Head from 'next/head'
+export default function Main({ children }: { children: React.ReactNode }) {
 
-export default async function Main() {
-   // const posts = await getAllPosts({ includePages: false })
-   //const view = await getAllPosts(0,0)
-   let posts
+  let oldScrollY = 0;
 
-   
-   if (await getDataFromCache("posts") == null) {
-      posts = await getAllPosts(0,0,0)
-      await setDataToCache("posts",posts)
-      console.log("N")
-   }
-   else
-   {
-      posts = await getDataFromCache("posts")
-      console.log('Y')
-   }
+  const [direction, setDirection] = useState("up");
+  const [y, setY] = useState(0);
+  const controlDirection = () => {
+    if (window.scrollY > oldScrollY) {
+      setDirection("down");
+    } else {
+      setDirection("up");
+    }
+    oldScrollY = window.scrollY;
+    setY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", controlDirection);
+    return () => {
+      window.removeEventListener("scroll", controlDirection);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (y > 40) {
+      document.getElementById("scrolled").classList.add("head");
+    } else {
+      document.getElementById("scrolled").classList.remove("head");
+    }
+  }, [direction, y]);
+
+  //   useEffect(() => {
+
+
+  //   });
   
-
-   return (
-      <div>
-      {/* <Head>
-         <link rel="icon" href={`data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${posts[1].icon}</text></svg>`}/>
-      </Head> */}
-
-         {/* <div className='relative cover'>
-            <Image
-               className=''
-               src={posts['0']['cover']}
-               // width={1000}
-               // height={1000}
-               alt='cover'
-               fill={true}
-            />
-            <div className=' absolute text-center'>{view['0']['description']}</div>
-         </div> */}
-      </div>
-   )
+  return <>{children}</>;
 }
