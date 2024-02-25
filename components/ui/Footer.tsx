@@ -1,37 +1,20 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-11 14:16:43
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-23 18:51:00
+ * @LastEditors: vhko
+ * @LastEditTime: 2024-02-25 23:24:03
  * @Description: 简介
  */
 import * as React from "react";
-
-import {
-  FaEnvelopeOpenText,
-  FaGithub,
-  FaLinkedin,
-  FaMastodon,
-  FaTwitter,
-  FaYoutube,
-  FaZhihu,
-} from "react-icons/fa";
-import { IoMoonSharp, IoSunnyOutline } from "react-icons/io5";
-// import * as config from '@/lib/config'
-import styles from "../../components/ui/styles.module.css";
 export default async function Footer(props) {
-  // headersList.get('host'); // to get domain
-
   return (
-    <footer className={styles.footer}>
-      <div className={styles.footer_text}>
+    <footer
+      className={`flex text-gray-400 w-full m-auto p-2 flex-row justify-between items-center`}
+    >
+      <div className="text-gray-400 text-base">
         Nodrogen © 2024 By
-        <a
-          href={process.env.BLOG}
-          target="_blank"
-          className={styles.footer_text}
-        >
-          <span className={styles.footer_text}> {props.name}</span>
+        <a href={process.env.BLOG} target="_blank">
+          <span className="text-gray-400 text-base">&nbsp;{props.name}</span>
         </a>
       </div>
     </footer>

@@ -26,4 +26,5 @@
 .img {
   position: absolute;
   filter: blur(10px);
+  object-fit: cover;
 }

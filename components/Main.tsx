@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-20 10:39:14
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-22 22:12:23
+ * @LastEditors: vhko hirsch-k@outlook.com
+ * @LastEditTime: 2024-02-25 22:27:19
  * @Description: 简介
  */
 "use client";
@@ -32,10 +32,10 @@ export default function Main({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (y > 100) {
-      document.getElementById("scrolled").classList.add("niubi");
+    if (y > 40) {
+      document.getElementById("scrolled").classList.add("head");
     } else {
-      document.getElementById("scrolled").classList.remove("niubi");
+      document.getElementById("scrolled").classList.remove("head");
     }
   }, [direction, y]);
 

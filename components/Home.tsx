@@ -95,7 +95,7 @@ export default async function List(props) {
       </div>
     </a>
   ));
-  const tagsitem = tags?.map((tag) => (
+  const tagsitem = tags.map((tag) => (
     <span
       className={`${styles.tags} rounded-md m-1 notion-${tag.color}_background`}
     >
@@ -110,7 +110,7 @@ export default async function List(props) {
       </div>
       <div className={`${styles.container}`}>
         <div className={styles.bar}>
-          <p className={styles.bar_text}>{view.description}</p>
+          <p className={styles.bar_text}>{view?.description}</p>
         </div>
         <div className={styles.layout}>
           <div className={styles.list_items}>

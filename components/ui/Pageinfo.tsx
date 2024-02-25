@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-21 09:19:46
- * @LastEditors:
- * @LastEditTime: 2024-02-21 09:20:10
+ * @LastEditors: vhko hirsch-k@outlook.com
+ * @LastEditTime: 2024-02-24 14:06:44
  * @Description: 简介
  */
 import Image from "next/image";
@@ -13,23 +13,26 @@ import Style from "./Pageinfo.module.css";
 const Pageinfo = (props) => {
   return (
     <div className={`${Style.pageinfo} container mt-6`}>
-      {/*<Image*/}
-      {/*  className={Style.img}*/}
-      {/*  src={props.data?.cover}*/}
-      {/*  alt="cover"*/}
-      {/*  fill={true}*/}
-      {/*/>*/}
-      <div className={Style.index}>
-        {/* 以下数据依次为时间 */}
-        {props.data.tags.map((item) => (
-          <div>
+      <div style={{ width: "100px" }}>
+        <Image
+          className={Style.img}
+          src={props.data?.cover}
+          alt="cover"
+          fill={true}
+          //  width={300}
+          //  height={200}
+        />
+      </div>
+      <div>
+        <div>
+          {props.data.tags.map((item) => (
             <span
               className={`tags rounded-md leading-8 m-1 notion-${item.color}_background`}
             >
               {item.name}
             </span>
-          </div>
-        ))}
+          ))}
+        </div>
         <div className={Style.title}>
           <p>{props.title}&nbsp;</p>
           <span>&#35;{props.data?.type}</span>

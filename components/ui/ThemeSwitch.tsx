@@ -1,21 +1,18 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-16 14:41:22
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-16 15:33:08
+ * @LastEditors: vhko hirsch-k@outlook.com
+ * @LastEditTime: 2024-02-24 11:26:28
  * @Description: 简介
  */
 "use client";
 import { useTheme } from "next-themes";
 import React, { useEffect } from "react";
 import styles from "../ui/ThemeSwitcher.module.css";
-import { useMedia } from "react-use";
 import { useState } from "react";
 
-import { MdLightMode } from "react-icons/md";
-import { LuMoonStar } from "react-icons/lu";
+import { MdLightMode,MdHdrAuto } from "react-icons/md";
 import { HiMoon } from "react-icons/hi2";
-
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -24,7 +21,6 @@ const ThemeSwitch = () => {
   let isDarkChecked = theme == "dark";
   let isAutoChecked = theme == "system";
 
-  // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -67,7 +63,7 @@ const ThemeSwitch = () => {
           >
             <HiMoon className="h-7 w-7" />
           </label>
-          {/* <input
+          <input
             className={styles.input}
             type="radio"
             id="radio-3"
@@ -76,9 +72,9 @@ const ThemeSwitch = () => {
             checked={isAutoChecked}
           />
           <label className={styles.tab} htmlFor="radio-3">
-            <MdLightMode className="h-7 w-7" />
+            <MdHdrAuto className="h-7 w-7" />
           </label>
-          <span className={styles.glider}></span> */}
+          <span className={styles.glider}></span>
         </div>
       </div>
     </>

@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-14 14:40:26
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-20 10:45:55
+ * @LastEditors: vhko hirsch-k@outlook.com
+ * @LastEditTime: 2024-02-24 11:38:32
  * @Description: 简介
  */
 
@@ -22,7 +22,7 @@ export default async function PageHeader(props) {
     <>
       <header className={Styles.header}>
         <p>
-          {props.mainTitle} {props.title} {props.data?.summary} <br /> 发布于 {props.data.date}{" "}
+          {props.mainTitle} {props.title} {props.data?.summary} <br /> 发布于 {props.data?.date}{" "}
           <br />
           {props.data?.Person?.[0]?.name}
           {/* {props.data?.["0"]["name"]} */}

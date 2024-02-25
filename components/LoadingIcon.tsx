@@ -1,8 +1,18 @@
+/*
+ * @Author: vhko
+ * @Date: 2024-01-30 23:04:00
+ * @LastEditors: vhko
+ * @LastEditTime: 2024-02-25 22:52:05
+ * @FilePath: \NoDrogen\components\LoadingIcon.tsx
+ * @Description: 
+ * 
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved. 
+ */
 import * as React from "react";
 
 import cs from "classnames";
 
-import styles from "./styles.module.css";
+import styles from "./Loading.module.css";
 
 export const LoadingIcon = (props) => {
   const { className, ...rest } = props;
