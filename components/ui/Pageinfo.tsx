@@ -1,29 +1,26 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-21 09:19:46
- * @LastEditors: vhko hirsch-k@outlook.com
- * @LastEditTime: 2024-02-24 14:06:44
+ * @LastEditors: vhko
+ * @LastEditTime: 2024-02-26 20:17:39
  * @Description: 简介
  */
 import Image from "next/image";
 import { HiMiniClock, HiMiniUserCircle } from "react-icons/hi2";
 
 import Style from "./Pageinfo.module.css";
-// import { ST } from "next/dist/shared/lib/utils";
 const Pageinfo = (props) => {
   return (
     <div className={`${Style.pageinfo} container mt-6`}>
-      <div style={{ width: "100px" }}>
+      <div className={Style.cover}>
         <Image
           className={Style.img}
           src={props.data?.cover}
           alt="cover"
           fill={true}
-          //  width={300}
-          //  height={200}
         />
       </div>
-      <div>
+      <div className=" z-10">
         <div>
           {props.data.tags.map((item) => (
             <span

@@ -7,6 +7,8 @@ import Footer from "./ui/Footer";
 import Time from "./ui/Time";
 import Pagination from "./ui/Pagination";
 import { getData } from "../components/base/Node";
+
+import { MdBookmark } from "react-icons/md";
 // import { search } from "../lib/notion";
 
 // async function getData() {
@@ -39,20 +41,7 @@ export default async function List(props) {
     <a className={styles.posts_item} href={"/blog/" + list.id} target="_blank">
       <div className={styles.posts_heart}>
         {list.type == "精选" ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            version="1.1"
-            width="16.000003814697266"
-            height="22.30051803588867"
-            viewBox="0 0 35.000003814697266 47.30051803588867"
-          >
-            <path
-              d="M0,45.9367L0,0L35,0L35,45.9367C35,47.1162,33.6172,47.7374,32.7517,46.9469L18.4022,33.8438C17.8898,33.3758,17.1102,33.3758,16.5978,33.8438L2.2484,46.9469C1.38265,47.7374,0,47.1162,0,45.9367Z"
-              fill="#838383"
-              fillOpacity="0.27000001072883606"
-            />
-          </svg>
+          <MdBookmark className=" w-full h-full" />
         ) : (
           <span></span>
         )}
