@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-16 14:41:22
- * @LastEditors: vhko
- * @LastEditTime: 2024-03-02 09:33:00
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-03 21:44:01
  * @Description: 简介
  */
 "use client";
@@ -31,7 +31,7 @@ export default async function Head(props) {
         <div className={styles.grow}></div>
         <div>
           <div>
-            <Dropdown />
+            <Dropdown title={props.title} />
           </div>
         </div>
         <div className={styles.grow}></div>

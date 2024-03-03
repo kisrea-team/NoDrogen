@@ -1,14 +1,32 @@
 /*
  * @Author: vhko
  * @Date: 2024-03-02 09:29:04
- * @LastEditors: vhko
- * @LastEditTime: 2024-03-02 09:36:11
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-03 21:55:30
  * @FilePath: \NoDrogen\components\ui\Dropdown.tsx
  * @Description:
  *
  * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved.
  */
+import { useState, useRef, useEffect } from "react";
+
 export default async function Dropdown(props) {
+
+  const [isVisible, setIsVisible] = useState(false);
+  const menuRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (menuRef.current && !menuRef.current.contains(event.target)) {
+      setIsVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
   return (
     <div className="relative">
       <div className="inline-flex items-center overflow-hidden rounded-md border bg-white">
@@ -16,10 +34,11 @@ export default async function Dropdown(props) {
           href="#"
           className="border-e px-4 py-2 text-sm/none text-gray-600 hover:bg-gray-50 hover:text-gray-700"
         >
-          归档{props.title}
+          {props.title}
         </a>
-
-        <button className="h-full p-2 text-gray-600 hover:bg-gray-50 hover:text-gray-700">
+        <button onClick={() => setIsVisible(!isVisible)} className="h-full p-2 text-gray-600 hover:bg-gray-50 hover:text-gray-700">
+      
+        
           <span className="sr-only">Menu</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +53,10 @@ export default async function Dropdown(props) {
             />
           </svg>
         </button>
+
+        
       </div>
+      {isVisible && (
 
       <div
         className="absolute end-0 z-10 mt-2 w-56 rounded-md border border-gray-100 bg-white shadow-lg"
@@ -96,8 +118,12 @@ export default async function Dropdown(props) {
               Delete Product
             </button>
           </form>
+          
         </div>
+        
+
       </div>
+      )}
     </div>
   );
 }
