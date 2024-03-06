@@ -1,0 +1,13 @@
+.type_btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.type_menu {
+  /* display: none; */
+  position: absolute;
+  z-index: 10;
+  border-radius: var(--radius);
+  transform: translateY(-30%);
+  transition: all 0.5s cubic-bezier(0.45, 0.01, 0.49, 1.01) 0s;
+}
