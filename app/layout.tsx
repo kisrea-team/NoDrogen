@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-10 10:30:54
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-16 15:21:06
+ * @LastEditTime: 2024-03-10 22:35:51
  * @Description: 简介
  */
 import "../app/copy.css";
@@ -24,7 +24,11 @@ export default function RootLayout({
     <html suppressHydrationWarning>
       <head />
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          
+          {children}
+          
+        </Providers>
       </body>
     </html>
   );

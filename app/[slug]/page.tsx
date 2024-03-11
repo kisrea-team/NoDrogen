@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-11 14:16:42
- * @LastEditors: vhko hirsch-k@outlook.com
- * @LastEditTime: 2024-02-24 11:52:42
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-11 17:23:47
  * @Description: 简介
  */
 /* _  __  _
@@ -38,7 +38,7 @@ export default async function Page({ params }) {
           </div>
         }
       >
-        <Head title={d.wiki["name"]} />
+        <Head title={d.wiki["name"]} type={d.wiki["type"]} />
         <div className="container mx-auto">
           <Main>
             <List currentPage={slug || 1} />

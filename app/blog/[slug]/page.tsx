@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-05 16:18:05
- * @LastEditors: vhko
- * @LastEditTime: 2024-02-25 23:26:53
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-11 17:25:05
  * @Description: 简介
  */
 //import * as React from 'react'
@@ -28,6 +28,7 @@ export default async function Page({ params }) {
         recordMap={d.recordMap}
         name={d.wiki.mainUser}
         title={d.data.title}
+        type={d.wiki.type}
         mainTitle={d.wiki.title}
         data={d.data}
       />
