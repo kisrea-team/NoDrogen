@@ -25,7 +25,7 @@
 
 .title {
   margin-left: calc(var(--px) * 1.5);
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.5rem;
   line-height: 2rem;
   user-select: none;

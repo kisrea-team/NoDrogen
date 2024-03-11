@@ -14,7 +14,7 @@
 //  "use client";
 import { Suspense } from "react";
 import "../globals.css";
-import List from "../../components/Home";
+import Home from "../../components/Home";
 import { Loading } from "../../components/Loading";
 import dynamic from "next/dynamic";
 import Head from "../../components/Head";
@@ -41,7 +41,7 @@ export default async function Page({ params }) {
         <Head title={d.wiki["name"]} />
         <div className="container mx-auto">
           <Main>
-            <List currentPage={slug || 1} />
+            <Home currentPage={slug || 1} />
           </Main>
         </div>
       </Suspense>

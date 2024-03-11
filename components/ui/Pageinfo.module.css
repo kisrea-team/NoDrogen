@@ -1,8 +1,8 @@
 .pageinfo {
   position: relative;
-  margin: 30px auto auto;
+  margin: 10px auto 30px auto;
   gap: initial;
-  height: 400px;
+  align-items: center;
 }
 .index {
   z-index: 1;
@@ -10,6 +10,7 @@
 .title {
   display: flex;
   align-items: center;
+  line-height: normal;
 }
 .title p {
   font-size: calc(var(--px) * 5);
@@ -39,7 +40,7 @@
     margin: 0;
   }
   .title p {
-    font-size: calc(var(--px) * 3);
+    font-size: calc(var(--px) * 2.5);
   }
   .title span {
     font-size: calc(var(--px) * 2);

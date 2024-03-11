@@ -215,7 +215,6 @@
   align-self: flex-start;
   position: sticky;
 }
-
 .date {
   color: var(--gray);
 }

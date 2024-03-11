@@ -100,11 +100,11 @@ pre[class*="language-"] {
 .language-json .token.boolean,
 .language-json .token.number,
 code[class*="language-css"] {
-   color: #0000ff;
+   color: #07a;
 }
 
 .token.function {
-   color: #393A34;
+   color: #dd4a68;
 }
 
 .token.deleted,
@@ -132,7 +132,7 @@ code[class*="language-css"] {
 
 .token.class-name,
 .language-json .token.property {
-   color: #2B91AF;
+   color: #690;
 }
 
 .token.tag,
@@ -259,7 +259,7 @@ code[class*="language-css"] {
    .token.symbol,
    .token.inserted,
    .token.unit {
-      color: #b5cea8;
+      color: #905;
    }
 
    [data-theme='dark'] .token.selector,
@@ -419,7 +419,7 @@ code[class*="language-css"] {
    code[class*="language-typescript"],
    pre[class*="language-tsx"],
    code[class*="language-tsx"] {
-      color: #9cdcfe;
+      color:rgb(55, 53, 47);
    }
 
    [data-theme='dark'] pre[class*="language-css"],

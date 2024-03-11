@@ -53,9 +53,9 @@ export default async function List(props) {
           alt="cover"
           fill={true}
         />
-        <div className={styles.time_down}>
+        {/* <div className={styles.time_down}>
           <p>test</p>
-        </div>
+        </div> */}
       </div>
       <div className={styles.posts_info}>
         <div className={styles.posts_secondary}>

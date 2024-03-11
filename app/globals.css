@@ -197,6 +197,9 @@ body {
   .container {
     max-width: 1436px;
   }
+  .pagecontainer {
+   max-width: 85%;
+ }
 }
 
 p,

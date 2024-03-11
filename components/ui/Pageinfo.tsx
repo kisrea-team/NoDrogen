@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-21 09:19:46
  * @LastEditors: vhko
- * @LastEditTime: 2024-03-04 10:57:42
+ * @LastEditTime: 2024-03-11 13:59:59
  * @Description: 简介
  */
 import Image from "next/image";
@@ -12,16 +12,23 @@ import Style from "./Pageinfo.module.css";
 const Pageinfo = (props) => {
   return (
     <div className={`${Style.pageinfo} container mt-6`}>
-      <div className={Style.cover}>
+      {/* <div className={Style.cover}>
         <Image
           className={Style.img}
           src={props.data?.cover}
           alt="cover"
           fill={true}
         />
-      </div>
-      <div className=" z-10">
-        <div>
+      </div> */}
+      <div className="z-10">
+        <div className={Style.title}>
+          <p>
+            {props.icon}
+            {props.title}&nbsp;
+          </p>
+          <span>&#35;{props.data?.type}</span>
+        </div>
+        <div style={{ marginLeft: "-5px" }}>
           {props.data.tags.map((item) => (
             <span
               className={`tags rounded-md leading-8 m-1 notion-${item.color}_background`}
@@ -29,10 +36,6 @@ const Pageinfo = (props) => {
               {item.name}
             </span>
           ))}
-        </div>
-        <div className={Style.title}>
-          <p>{props.title}&nbsp;</p>
-          <span>&#35;{props.data?.type}</span>
         </div>
         <div>
           <p>{props.data?.summary}</p>

@@ -148,6 +148,7 @@ export const NotionPage = ({
   title,
   mainTitle,
   data,
+  icon,
 }: {
   recordMap: ExtendedRecordMap;
   previewImagesEnabled?: boolean;
@@ -157,6 +158,7 @@ export const NotionPage = ({
   title: string;
   mainTitle: string;
   data: Object;
+  icon: string;
 }) => {
   const router = useRouter();
   console.log(data);
@@ -183,7 +185,7 @@ export const NotionPage = ({
       > */}
       <Main>
         <Head title={title} />
-        <Pageinfo title={title} data={data} />
+        <Pageinfo title={title} icon={icon} data={data} />
         <NotionRenderer
           recordMap={recordMap}
           fullPage={true}

@@ -2,7 +2,7 @@
  * @Author: vhko
  * @Date: 2024-03-02 09:29:04
  * @LastEditors: vhko
- * @LastEditTime: 2024-03-06 23:52:36
+ * @LastEditTime: 2024-03-09 16:56:41
  * @FilePath: \NoDrogen\components\ui\Dropdown.tsx
  * @Description:
  *
@@ -37,10 +37,7 @@ export default async function Dropdown(props) {
   return (
     <div className="relative">
       <button onClick={aaa} className={style.type_btn}>
-        <a href="#" className="">
-          分类
-        </a>
-        <span className="sr-only"></span>
+        分类
         <FaAngleDown />
       </button>
       <div

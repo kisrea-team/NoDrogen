@@ -10,13 +10,28 @@
 }
 
 .notion-app {
+   --padding:15px;
+   padding-left: var(--padding);
+   padding-right: var(--padding);
   margin: auto;
-  max-width: 85%;
+  margin-top: 70px;
+  max-width: 1000px;
+  box-shadow: 0 0 15px 2px var(--shadow);
+  border-radius: 15px;
   background-color: initial;
 }
 
 .katex-display > .katex > .katex-html {
   display: none;
+}
+.notion-full-width {
+  box-sizing: border-box;
+  --notion-max-width: calc(min(1920px, 98vw));
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.notion-page-has-cover.notion-page-has-icon.notion-page-has-text-icon {
+  padding-top: 2rem;
 }
 @media (min-width: 375px) and (max-width: 427px) {
   .notion-app {
