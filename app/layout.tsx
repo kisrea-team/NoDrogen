@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-10 10:30:54
- * @LastEditors: vhko
- * @LastEditTime: 2024-03-11 13:44:35
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-02-16 15:21:06
  * @Description: 简介
  */
 import "../app/copy.css";
@@ -28,7 +28,11 @@ export default function RootLayout({
     <html suppressHydrationWarning>
       <head />
       <body className={noto.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          
+          {children}
+          
+        </Providers>
       </body>
     </html>
   );

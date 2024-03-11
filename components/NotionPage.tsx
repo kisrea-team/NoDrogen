@@ -146,6 +146,7 @@ export const NotionPage = ({
   rootDomain,
   name,
   title,
+  type,
   mainTitle,
   data,
   icon,
@@ -156,6 +157,7 @@ export const NotionPage = ({
   rootDomain?: string;
   name: string;
   title: string;
+  type: Object;
   mainTitle: string;
   data: Object;
   icon: string;
@@ -184,8 +186,8 @@ export const NotionPage = ({
         }
       > */}
       <Main>
-        <Head title={title} />
-        <Pageinfo title={title} icon={icon} data={data} />
+        <Head title={title} type={type} />
+        <Pageinfo title={title} data={data} />
         <NotionRenderer
           recordMap={recordMap}
           fullPage={true}

@@ -2,7 +2,7 @@
  * @Author: vhko
  * @Date: 2024-03-02 09:29:04
  * @LastEditors: vhko
- * @LastEditTime: 2024-03-09 16:56:41
+ * @LastEditTime: 2024-03-11 22:19:04
  * @FilePath: \NoDrogen\components\ui\Dropdown.tsx
  * @Description:
  *
@@ -11,11 +11,10 @@
 import { useState, useRef, useEffect } from "react";
 
 import style from "./ui.module.css";
-
 import { FaAngleDown } from "react-icons/fa6";
 
 export default async function Dropdown(props) {
-  const type = ["瞎写", "编程", "吐槽", "666"];
+
   const aaa = () => {
     if (document.getElementById("menu").classList.contains("aaa")) {
       document.getElementById("menu").classList.remove("aaa");
@@ -23,7 +22,7 @@ export default async function Dropdown(props) {
       document.getElementById("menu").classList.add("aaa");
     }
   };
-  const typelist = type.map((abc) => (
+  const typelist = props.type.map((abc) => (
     <div>
       <a
         href="#"
