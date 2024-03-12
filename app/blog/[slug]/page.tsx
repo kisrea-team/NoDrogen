@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-05 16:18:05
- * @LastEditors: vhko
- * @LastEditTime: 2024-03-11 22:17:27
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-12 22:27:30
  * @Description: 简介
  */
 //import * as React from 'react'
@@ -18,7 +18,7 @@ export default async function Page({ params }) {
   const { slug } = params;
   const d = await getData("api/blog/" + slug);
   // console.log(recordMap)
-  // console.log(tags)
+  console.log(d.wiki["type"])
   if (!d.data.title) {
     return;
   }
@@ -28,7 +28,7 @@ export default async function Page({ params }) {
         recordMap={d.recordMap}
         name={d.wiki.mainUser}
         title={d.data.title}
-        type={d.wiki.type}
+        type={d.wiki["type"]}
         mainTitle={d.wiki.title}
         data={d.data}
       />

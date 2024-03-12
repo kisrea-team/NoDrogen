@@ -149,7 +149,7 @@ export const NotionPage = ({
   type,
   mainTitle,
   data,
-  icon,
+  // icon,
 }: {
   recordMap: ExtendedRecordMap;
   previewImagesEnabled?: boolean;
@@ -160,10 +160,10 @@ export const NotionPage = ({
   type: Object;
   mainTitle: string;
   data: Object;
-  icon: string;
+  // icon: string;
 }) => {
   const router = useRouter();
-  console.log(data);
+  console.log(type);
   //   const footer = React.useMemo(() => <Footer />, []);
   if (!recordMap) {
     return null;
@@ -178,13 +178,13 @@ export const NotionPage = ({
   }
   return (
     <>
-      {/* <Suspense
+      <Suspense
         fallback={
           <div>
             <Loading />
           </div>
         }
-      > */}
+      >
       <Main>
         <Head title={title} type={type} />
         <Pageinfo title={title} data={data} />
@@ -210,7 +210,7 @@ export const NotionPage = ({
         </div>
         <Footer name={name} />
       </Main>
-      {/* </Suspense> */}
+      </Suspense>
     </>
   );
 };
