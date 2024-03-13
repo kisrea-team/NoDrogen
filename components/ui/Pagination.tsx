@@ -1,6 +1,13 @@
+/*
+ * @Author: zitons
+ * @Date: 2024-03-03 21:36:18
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-13 13:50:23
+ * @Description: 简介
+ */
 import styles from "../ui/Pagination.module.css";
 
-const Pagination = ({ items, currentPage, pageSize, onPageChange }) => {
+const Pagination = ({ items, currentPage, pageSize, onPageChange, api }) => {
   const pagesCount = Math.ceil(items / pageSize); // 100/10
   //if (pagesCount === 1) return null;
   const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
@@ -13,7 +20,7 @@ const Pagination = ({ items, currentPage, pageSize, onPageChange }) => {
     <div className="flex  gap-3">
       <ul className={styles.line}>
         <a
-          href={"/" + String(currentPage - 1)}
+          href={api + "/" + String(currentPage - 1)}
           style={{ display: currentPage != 1 ? "block" : "none" }}
         >
           <svg
@@ -42,7 +49,7 @@ const Pagination = ({ items, currentPage, pageSize, onPageChange }) => {
               page === currentPage ? styles.pageItemActive : styles.pageItem
             }
           >
-            <a className={styles.pageLink} href={"/" + page}>
+            <a className={styles.pageLink} href={api + "/" + page}>
               {page}
             </a>
           </li>
@@ -50,7 +57,7 @@ const Pagination = ({ items, currentPage, pageSize, onPageChange }) => {
       </ul>
       <ul className={styles.line}>
         <a
-          href={"/" + String(currentPage + 1)}
+          href={api + "/" + String(currentPage + 1)}
           style={{ display: currentPage != pagesCount ? "block" : "none" }}
         >
           <svg

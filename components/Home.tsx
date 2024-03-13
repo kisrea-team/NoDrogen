@@ -26,7 +26,7 @@ import { MdBookmark } from "react-icons/md";
 // }
 export default async function List(props) {
   let d;
-  d = await getData("api");
+  d = await getData("api"+props.api);
   const view = d.wiki;
 
   const tags = await getAllTagsFromPosts(d.posts);
@@ -110,6 +110,7 @@ export default async function List(props) {
                 currentPage={props.currentPage} // 1
                 pageSize={10} // 10
                 onPageChange={1}
+                api={props.api}
               />
             </div>
           </div>

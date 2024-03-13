@@ -1,8 +1,8 @@
 /*
  * @Author: vhko
  * @Date: 2024-03-02 09:29:04
- * @LastEditors: vhko
- * @LastEditTime: 2024-03-11 22:19:04
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-13 13:54:46
  * @FilePath: \NoDrogen\components\ui\Dropdown.tsx
  * @Description:
  *
@@ -25,7 +25,7 @@ export default async function Dropdown(props) {
   const typelist = props.type.map((abc) => (
     <div>
       <a
-        href="#"
+        href={"/type/"+abc+"/1"}
         className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
         role="menuitem"
       >

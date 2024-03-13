@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-11 14:16:42
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-03-11 17:23:47
+ * @LastEditTime: 2024-03-13 13:40:00
  * @Description: 简介
  */
 /* _  __  _
@@ -41,7 +41,7 @@ export default async function Page({ params }) {
         <Head title={d.wiki["name"]} type={d.wiki["type"]} />
         <div className="container mx-auto">
           <Main>
-            <Home currentPage={slug || 1} />
+            <Home currentPage={slug || 1} api={""}/>
           </Main>
         </div>
       </Suspense>
