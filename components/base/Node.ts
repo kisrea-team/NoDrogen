@@ -1,18 +1,15 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-22 21:10:24
- * @LastEditors: vhko
- * @LastEditTime: 2024-03-13 22:14:57
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-16 20:26:09
  * @Description: 简介
  */
 export async function getData(to) {
-  if (to == "api/blog/%5Bslug%5D") {
-    console.log("Try to fix build bugs...")
-    to = "api/blog/"+process.env.NEXT_PUBLIC_FIRST_SLUG
-  }
+
   console.log(`run ${process.env.NEXT_PUBLIC_PROTOCOL + process.env.NEXT_PUBLIC_BLOG + "/" + to + "/"}`)
   const data = await fetch(`${process.env.NEXT_PUBLIC_PROTOCOL + process.env.NEXT_PUBLIC_BLOG + "/" + to + "/"}`, {
-    cache: "no-cache",
+    
   }).then((res) => res.json());
   return data;
   // The return value is *not* serialized

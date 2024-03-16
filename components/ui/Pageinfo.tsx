@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-21 09:19:46
- * @LastEditors: vhko
- * @LastEditTime: 2024-03-15 10:52:17
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-16 15:15:44
  * @Description: 简介
  */
 import Image from "next/image";
@@ -10,7 +10,6 @@ import { HiMiniClock, HiMiniUserCircle } from "react-icons/hi2";
 
 import Style from "./ui.module.css";
 const Pageinfo = (props) => {
-   console.log(props.data)
   return (
     <div className={`${Style.pageinfo} container mt-6`}>
       <div className={Style.cover}>
@@ -49,7 +48,7 @@ const Pageinfo = (props) => {
             </p>
             <p className={Style.meta}>
               <HiMiniClock />
-              {props.data.date}
+              {props.data.date?.["start_date"]}
             </p>
           </div>
         </div>

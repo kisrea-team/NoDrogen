@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-05 16:18:05
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-03-12 22:27:30
+ * @LastEditTime: 2024-03-16 20:15:51
  * @Description: 简介
  */
 //import * as React from 'react'
@@ -10,13 +10,9 @@ import { NotionPage } from "../../../components/NotionPage";
 import { getData } from "../../../components/base/Node";
 // import "../../../components/styles.module.css"
 
-export async function generateStaticParams() {
-  const d = await getData("api");
-  return d.pageId;
-}
 export default async function Page({ params }) {
   const { slug } = params;
-  const d = await getData("api/blog/" + slug);
+  const d = await getData("api/content/" + slug);
   // console.log(recordMap)
   console.log(d.wiki["type"])
   if (!d.data.title) {
@@ -26,11 +22,9 @@ export default async function Page({ params }) {
   return (
     <main>
       <NotionPage
-        recordMap={d.recordMap}
-        name={d.wiki.mainUser}
+        recordMap={d.record_map}
         title={d.data.title}
         type={d.wiki["type"]}
-        mainTitle={d.wiki.title}
         data={d.data}
       />
     </main>
@@ -38,7 +32,7 @@ export default async function Page({ params }) {
 }
 export async function generateMetadata({ params }) {
   const { slug } = params;
-  const d = await getData("api/blog/" + slug);
+  const d = await getData("api/content/" + slug);
   let icon;
   if (d.data["icon"]) {
     if (d.data["icon"].startsWith("http") <= 0) {

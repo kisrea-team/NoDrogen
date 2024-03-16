@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-11 14:16:42
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-03-13 13:40:00
+ * @LastEditTime: 2024-03-16 15:02:57
  * @Description: 简介
  */
 /* _  __  _
@@ -20,14 +20,11 @@ import dynamic from "next/dynamic";
 import Head from "../../components/Head";
 import { getData } from "../../components/base/Node";
 
-export async function generateStaticParams() {
-  const d = await getData("api");
-  return d.pageNumber;
-}
+
 export default async function Page({ params }) {
   const { slug } = params;
   const Main = dynamic(() => import("../../components/Main"), { ssr: false });
-  const d = await getData("api");
+  const d = await getData("api/post/"+slug);
 
   return (
     <main>
@@ -41,7 +38,7 @@ export default async function Page({ params }) {
         <Head title={d.wiki["name"]} type={d.wiki["type"]} />
         <div className="container mx-auto">
           <Main>
-            <Home currentPage={slug || 1} api={""}/>
+            <Home currentPage={slug || 1} data={d} />
           </Main>
         </div>
       </Suspense>
@@ -51,7 +48,7 @@ export default async function Page({ params }) {
 
 export async function generateMetadata() {
   let icon;
-  const d = await getData("api");
+  const d = await getData("api/wiki");
   icon = d.wiki["icon"];
   if (icon.startsWith("http") <= 0) {
     icon =

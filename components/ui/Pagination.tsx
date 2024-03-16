@@ -2,16 +2,22 @@
  * @Author: zitons
  * @Date: 2024-03-03 21:36:18
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-03-13 13:50:23
+ * @LastEditTime: 2024-03-16 20:19:47
  * @Description: 简介
  */
 import styles from "./ui.module.css";
 
-const Pagination = ({ items, currentPage, pageSize, onPageChange, api }) => {
-  const pagesCount = Math.ceil(items / pageSize); // 100/10
+const Pagination = ({
+  api,
+  pageNumber,
+  currentPage,
+  pageSize,
+  onPageChange,
+}) => {
+  const pagesCount = Number(pageNumber[0]);
   //if (pagesCount === 1) return null;
   const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
-  console.log(pages); //1，2
+
   // const searchParams = useSearchParams();
 
   // const currentPage = Number(searchParams.get('page')) || 1;

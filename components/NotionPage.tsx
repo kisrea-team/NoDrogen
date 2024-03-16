@@ -144,10 +144,8 @@ export const NotionPage = ({
   previewImagesEnabled,
   rootPageId,
   rootDomain,
-  name,
   title,
   type,
-  mainTitle,
   data,
   // icon,
 }: {
@@ -155,10 +153,8 @@ export const NotionPage = ({
   previewImagesEnabled?: boolean;
   rootPageId?: string;
   rootDomain?: string;
-  name: string;
   title: string;
   type: Object;
-  mainTitle: string;
   data: Object;
   // icon: string;
 }) => {
@@ -208,7 +204,7 @@ export const NotionPage = ({
         <div className="twikoos">
           <Twikoo />
         </div>
-        <Footer name={name} />
+        {/* <Footer name={"name"} /> */}
       </Main>
       </Suspense>
     </>

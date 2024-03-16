@@ -1,43 +1,18 @@
 import Image from "next/image";
-import { searchsFromPosts } from "../lib/notion/getData";
-import { getAllTagsFromPosts } from "../lib/notion/getAllTagsFromPosts";
-import { paginate } from "../lib/notion/getData";
 import styles from "../components/Home.module.css";
 import Footer from "./ui/Footer";
 import Time from "./ui/Time";
 import Pagination from "./ui/Pagination";
-import { getData } from "../components/base/Node";
 
 import { MdBookmark } from "react-icons/md";
-// import { search } from "../lib/notion";
 
-// async function getData() {
-//   const res = await fetch(process.env.NEXT_PUBLIC_BLOG+"api")
-
-//   // The return value is *not* serialized
-//   // You can return Date, Map, Set, etc.
-
-//   if (!res.ok) {
-//     // This will activate the closest `error.js` Error Boundary
-//     throw new Error('Failed to fetch data')
-//   }
-
-//   return res.json()
-// }
 export default async function List(props) {
   let d;
-  d = await getData("api"+props.api);
+  d = props.data;
   const view = d.wiki;
-  console.log(props)
-  const tags = await getAllTagsFromPosts(d.posts);
-  const star = await searchsFromPosts(d.posts, "精选");
-  d.posts = d.posts.filter((post) => {
-    return post?.type?.[0] != "精选";
-  });
 
-  const postsp = paginate(star.concat(d.posts), Number(props.currentPage), 10);
   console.log("page:" + props.currentPage);
-  const ListItems = postsp.map((list) => (
+  const ListItems = d.posts.map((list) => (
     <a className={styles.posts_item} href={"/blog/" + list.id} target="_blank">
       <div className={styles.posts_heart}>
         {list.type == "精选" ? (
@@ -65,7 +40,7 @@ export default async function List(props) {
           </p>
           <div className={styles.posts_wrapper}>
             <p className={styles.date}>
-              {list.type}|{list.date}
+              {list.type}|{list.date?.["start_date"]}
             </p>
             {/* <p className={styles.date}>{list.start_date}</p> */}
             {/* <p>{list.type}</p> */}
@@ -84,11 +59,11 @@ export default async function List(props) {
       </div>
     </a>
   ));
-  const tagsitem = tags.map((tag) => (
+  const tagsitem = d.tags.map((tag) => (
     <span
       className={`${styles.tags} rounded-md m-1 notion-${tag.color}_background`}
     >
-      {tag.name}
+      {tag.value}
     </span>
   ));
 
@@ -106,7 +81,7 @@ export default async function List(props) {
             {ListItems}
             <div className="mt-5 flex w-full justify-center">
               <Pagination
-                items={d.posts.length} // 100
+                pageNumber={d.page_number} // 100
                 currentPage={props.currentPage} // 1
                 pageSize={10} // 10
                 onPageChange={1}
@@ -119,11 +94,11 @@ export default async function List(props) {
               <Time />
               <div className={styles.auther_info}>
                 <div className={styles.auther_name}>
-                  <p>{view?.["user"]?.[0]?.[0]?.name}</p>
+                  <p>{d.main_user[0]?.name}</p>
                 </div>
                 <div className={styles.auther_avatar}>
                   <Image
-                    src={view?.["user"]?.[0]?.[0]?.profile_photo}
+                    src={d.main_user[0]?.profile_photo}
                     width={100}
                     height={100}
                     alt="牛"
@@ -139,7 +114,7 @@ export default async function List(props) {
           </aside>
         </div>
       </div>
-      <Footer name={view?.["user"]?.[0]?.[0]?.name} />
+      <Footer name={d.main_user[0]?.name} />
     </>
   );
 }
