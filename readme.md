@@ -2,7 +2,7 @@
 <img src="https://i0.imgs.ovh/2024/02/08/ba1c2.png" width="200" height="200">
 
 # NoDrogen
-Nodrogen是使用Next.js开发、React-Notion-X渲染的Notion写作博客系统
+NoDrogen是使用Next.js开发、React-Notion-X渲染的Notion写作博客系统
 
 演示网站 https://nodrogen.vercel.app/
 ## 实验性版本在[dev分支](https://github.com/kisrea-team/Notion-New/tree/dev)
@@ -10,7 +10,7 @@ Nodrogen是使用Next.js开发、React-Notion-X渲染的Notion写作博客系统
 
 ## 基本特性
 * 一式两端，Core和Client，高度分离，更快速。
-* Nodrogen支持几乎所有Notion的块。</br>最快每一个月一个二级版本，相同二级版本之间(1.2.x)都能任意兼容。
+* NoDrogen支持几乎所有Notion的块。</br>最快每一个月一个二级版本，相同二级版本之间(1.2.x)都能任意兼容。
 * 核心大小仅300kb，专注于Notion内容渲染。
 * 重视SEO
 
@@ -20,7 +20,7 @@ Nodrogen是使用Next.js开发、React-Notion-X渲染的Notion写作博客系统
 
 * [Fork](https://github.com/kisrea-team/NoDrogen/fork)此仓库
 * [Fork](https://github.com/kisrea-team/NoDrogen-Core/fork)NoDrogen-Core仓库
-* 复制[Nodrogen模板](<https://www.notion.so/kisrea/1ac8cfb2dde44bbc8f6ed18d2acb1e3b?v=86c74e71bd524a29b5dc0fa1a1cf4fce>)并公之于众
+* 复制[NoDrogen模板](<https://www.notion.so/kisrea/1ac8cfb2dde44bbc8f6ed18d2acb1e3b?v=86c74e71bd524a29b5dc0fa1a1cf4fce>)并公之于众
 * 设置Core端环境变量（使用Vercel部署时在Deloy之前设置）
 ``` .env.local
 PAGE_ID=aa045af321034b62ad9c962b42fe7f48
@@ -68,7 +68,7 @@ npm run start
 
 ### 静态导出
 
-## Nodrogen默认不再支持静态导出，但我们依然保留了`generateStaticParams`函数以便有能力者快速修改。
+## NoDrogen默认不再支持静态导出。
 
 
 ## 致谢
