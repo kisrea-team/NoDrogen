@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-11 14:16:42
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-03-16 15:02:57
+ * @LastEditTime: 2024-03-16 21:16:01
  * @Description: 简介
  */
 /* _  __  _
@@ -20,11 +20,10 @@ import dynamic from "next/dynamic";
 import Head from "../../components/Head";
 import { getData } from "../../components/base/Node";
 
-
 export default async function Page({ params }) {
   const { slug } = params;
   const Main = dynamic(() => import("../../components/Main"), { ssr: false });
-  const d = await getData("api/post/"+slug);
+  const d = await getData("api/post/" + slug);
 
   return (
     <main>
@@ -38,7 +37,7 @@ export default async function Page({ params }) {
         <Head title={d.wiki["name"]} type={d.wiki["type"]} />
         <div className="container mx-auto">
           <Main>
-            <Home currentPage={slug || 1} data={d} />
+            <Home currentPage={slug || 1} data={d} api={""} />
           </Main>
         </div>
       </Suspense>
