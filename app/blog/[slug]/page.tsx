@@ -22,6 +22,7 @@ export default async function Page({ params }) {
   if (!d.data.title) {
     return;
   }
+ 
   return (
     <main>
       <NotionPage

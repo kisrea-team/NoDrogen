@@ -28,7 +28,7 @@ export default async function List(props) {
   let d;
   d = await getData("api"+props.api);
   const view = d.wiki;
-
+  console.log(props)
   const tags = await getAllTagsFromPosts(d.posts);
   const star = await searchsFromPosts(d.posts, "精选");
   d.posts = d.posts.filter((post) => {

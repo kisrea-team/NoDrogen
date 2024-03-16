@@ -31,9 +31,7 @@ export default async function Head(props) {
         <p className={styles.title}>{props.title}</p>
         <div className={styles.grow}></div>
         <div>
-          <div>
-            <Dropdown title={props.title} type={props.type}/>
-          </div>
+          <Dropdown title={props.title} type={props.type} />
         </div>
         <div className={styles.grow}></div>
         <div className={styles.right}>

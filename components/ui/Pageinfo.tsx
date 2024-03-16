@@ -2,32 +2,26 @@
  * @Author: zitons
  * @Date: 2024-02-21 09:19:46
  * @LastEditors: vhko
- * @LastEditTime: 2024-03-11 13:59:59
+ * @LastEditTime: 2024-03-15 10:52:17
  * @Description: 简介
  */
 import Image from "next/image";
 import { HiMiniClock, HiMiniUserCircle } from "react-icons/hi2";
 
-import Style from "./Pageinfo.module.css";
+import Style from "./ui.module.css";
 const Pageinfo = (props) => {
+   console.log(props.data)
   return (
     <div className={`${Style.pageinfo} container mt-6`}>
-      {/* <div className={Style.cover}>
+      <div className={Style.cover}>
         <Image
           className={Style.img}
           src={props.data?.cover}
           alt="cover"
           fill={true}
         />
-      </div> */}
+      </div>
       <div className="z-10">
-        <div className={Style.title}>
-          <p>
-            {props.icon}
-            {props.title}&nbsp;
-          </p>
-          <span>&#35;{props.data?.type}</span>
-        </div>
         <div style={{ marginLeft: "-5px" }}>
           {props.data.tags.map((item) => (
             <span
@@ -36,7 +30,16 @@ const Pageinfo = (props) => {
               {item.name}
             </span>
           ))}
+          <span>&#35;{props.data?.type}</span>
         </div>
+        <div className={Style.title}>
+          <p>
+            {props.data?.icon}
+            {props.title}&nbsp;
+          </p>
+          <span>&#35;{props.data?.type}</span>
+        </div>
+
         <div>
           <p>{props.data?.summary}</p>
           <div className="flex gap-4">

@@ -5,7 +5,7 @@
  * @LastEditTime: 2024-03-13 13:50:23
  * @Description: 简介
  */
-import styles from "../ui/Pagination.module.css";
+import styles from "./ui.module.css";
 
 const Pagination = ({ items, currentPage, pageSize, onPageChange, api }) => {
   const pagesCount = Math.ceil(items / pageSize); // 100/10
