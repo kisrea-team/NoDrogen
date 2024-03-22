@@ -15,11 +15,11 @@
 .type_btn:hover .type_menu {
   display: flex;
 }
-.test:hover .type_menu {
+/* .test:hover .type_menu {
   display: flex;
   transform: translateY(20%) scale(1);
   transition: all 0.5s cubic-bezier(0.45, 0.01, 0.49, 1.01) 0s;
-}
+} */
 
 .header {
   display: flex;

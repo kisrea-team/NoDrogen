@@ -133,7 +133,6 @@ body {
 .aaa {
   display: flex;
   transform: translateY(10%) !important;
-  transition: all 0.5s !important;
 }
 .twikoos {
   --bg-color: #1c1c1c;

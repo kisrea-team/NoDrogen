@@ -38,11 +38,5 @@ export default function Main({ children }: { children: React.ReactNode }) {
       document.getElementById("scrolled").classList.remove("head");
     }
   }, [direction, y]);
-
-  //   useEffect(() => {
-
-
-  //   });
-  
   return <>{children}</>;
 }

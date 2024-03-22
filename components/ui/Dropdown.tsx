@@ -2,7 +2,7 @@
  * @Author: vhko
  * @Date: 2024-03-13 15:09:54
  * @LastEditors: vhko
- * @LastEditTime: 2024-03-14 10:23:49
+ * @LastEditTime: 2024-03-17 15:33:33
  * @FilePath: \NoDrogen\components\ui\Dropdown.tsx
  */
 // import { useState, useRef, useEffect } from "react";
@@ -37,7 +37,7 @@ export default async function Dropdown(props) {
       </button>
       <div
         id="menu"
-        className={`${style.type_menu} hidden absolute end-0 z-10 mt-20 w-auto rounded-md border border-gray-100 bg-white shadow-lg`}
+        className={`${style.type_menu} hidden absolute end-0 z-10 w-auto rounded-md border border-gray-100 bg-white shadow-lg`}
         role="menu"
       >
         <div className="p-2">{typelist}</div>
