@@ -101,6 +101,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: calc(var(--px) * 1.5);
+  padding-top: 60px;
 }
 
 .time {

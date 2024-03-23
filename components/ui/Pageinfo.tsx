@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-21 09:19:46
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-03-23 11:43:09
+ * @LastEditors: vhko
+ * @LastEditTime: 2024-03-23 22:05:33
  * @Description: 简介
  */
 import Image from "next/image";
@@ -14,7 +14,7 @@ const Pageinfo = (props) => {
   return (
     <>
       {/* <Head /> */}
-      <div className={`${Style.pageinfo} container mt-6`}>
+      <div className={`${Style.pageinfo} container`}>
         <div className={Style.cover}>
           <Image
             className={Style.img}
@@ -23,7 +23,7 @@ const Pageinfo = (props) => {
             fill={true}
           />
         </div>
-        <div className="z-10">
+        <div className=" flex z-10 absolute items-center flex-col gap-2">
           <div style={{ marginLeft: "-5px" }}>
             {props.data.tags == undefined
               ? console.log(null)
@@ -34,14 +34,14 @@ const Pageinfo = (props) => {
                     {item.name}
                   </span>
                 ))}
-            <span>&#35;{props.data?.type}</span>
           </div>
           <div className={Style.title}>
+             <p>[{props.data?.type}]&nbsp;</p>
             <p>
               {props.data?.icon}
-              {props.title}&nbsp;
+              {props.title}
             </p>
-            <span>&#35;{props.data?.type}</span>
+           
           </div>
 
           <div>

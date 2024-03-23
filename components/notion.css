@@ -15,8 +15,8 @@
    padding-right: var(--padding);
   margin: auto;
   margin-top: 70px;
-  max-width: 1000px;
-  box-shadow: 0 0 15px 2px var(--shadow);
+  max-width: 70rem;
+  /* box-shadow: 0 0 15px 2px var(--shadow); */
   border-radius: 15px;
   background-color: initial;
 }

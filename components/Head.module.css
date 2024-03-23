@@ -1,7 +1,7 @@
 .header {
   display: flex;
   flex-grow: 1;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
