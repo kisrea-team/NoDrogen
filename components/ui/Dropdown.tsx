@@ -1,8 +1,8 @@
 /*
  * @Author: vhko
  * @Date: 2024-03-13 15:09:54
- * @LastEditors: vhko
- * @LastEditTime: 2024-03-17 15:33:33
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-23 11:47:57
  * @FilePath: \NoDrogen\components\ui\Dropdown.tsx
  */
 // import { useState, useRef, useEffect } from "react";
@@ -18,17 +18,23 @@ export default async function Dropdown(props) {
       document.getElementById("menu").classList.add("aaa");
     }
   };
-  const typelist = props.type.map((type: string) => (
-    <div>
-      <a
-        href={"/type/" + type + "/1"}
-        className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
-        role="menuitem"
-      >
-        {type}
-      </a>
-    </div>
-  ));
+  let typelist;
+  if (props.type == undefined) {
+    console.log(null);
+    typelist = ["null"];
+  } else {
+    typelist = props.type.map((type: string) => (
+      <div>
+        <a
+          href={"/type/" + type + "/1"}
+          className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+          role="menuitem"
+        >
+          {type}
+        </a>
+      </div>
+    ));
+  }
   return (
     <div className={`${style.test} relative`}>
       <button onClick={aaa} className={style.type_btn}>
