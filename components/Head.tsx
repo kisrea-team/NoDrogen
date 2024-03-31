@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-16 14:41:22
- * @LastEditors: vhko
- * @LastEditTime: 2024-03-11 22:18:12
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-31 22:00:05
  * @Description: 简介
  */
 "use client";
@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../components/Head.module.css";
 import ThemeSwitcher from "./ui/ThemeSwitch";
 import Dropdown from "./ui/Dropdown";
-import Timeline from "./ui/timeline";
+// import Timeline from "./ui/timeline";
 
 export default async function Head(props) {
   const btn = () => {

@@ -19,7 +19,7 @@ import "../components/ui/prism-vsc-dark-plus.css";
 import Main from "./Main";
 import Head from "../components/Head";
 import Pageinfo from "./ui/Pageinfo";
-import Footer from "../components/ui/Footer";
+// import Footer from "../components/ui/Footer";
 
 import { createElement as h } from "react";
 import { Loading } from "../components/Loading";
