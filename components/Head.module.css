@@ -8,6 +8,10 @@
   align-items: center;
   width: 100%;
   height: calc(var(--px) * 5.5);
+  color: var(--white);
+}
+.header p{
+   color: var(--white);
 }
 
 .land {
@@ -59,7 +63,7 @@
   display: block;
   width: var(--width);
   height: 3px;
-  background: #000;
+  background: #fff;
   border-radius: 0;
   position: absolute;
   left: 0;
@@ -68,7 +72,7 @@
 
 .btn_menu::before {
   top: 10px;
-  box-shadow: 0 10px #000;
+  box-shadow: 0 10px #fff;
 }
 
 .btn_menu::after {

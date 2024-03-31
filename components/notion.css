@@ -22,7 +22,7 @@
 }
 
 .katex-display > .katex > .katex-html {
-  display: none;
+  display: none;  
 }
 .notion-full-width {
   box-sizing: border-box;

@@ -1,32 +1,49 @@
-自豪地开源：<br/>[![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/kisrea-team/NoDrogen/blob/main/LICENSE)
+<!--
+ * @Author: vhko
+ * @Date: 2024-03-17 13:56:20
+ * @LastEditors: vhko
+ * @LastEditTime: 2024-03-31 12:19:58
+ * @FilePath: \NoDrogen\readme.md
+-->
+<!-- 自豪地开源：<br/> -->
+# 截至到202/04/1 建议查看[dev分支](https://github.com/kisrea-team/Notion-New/tree/dev)
 <img src="https://i0.imgs.ovh/2024/02/08/ba1c2.png" width="200" height="200">
 
+<!-- [![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/kisrea-team/NoDrogen/blob/main/LICENSE) -->
 # NoDrogen
 NoDrogen是使用Next.js开发、React-Notion-X渲染的Notion写作博客系统
 
-演示网站 https://nodrogen.vercel.app/
+## [演示网站](https://nodrogen.vercel.app/)👈
+
 ## 实验性版本在[dev分支](https://github.com/kisrea-team/Notion-New/tree/dev)
 ![预览](https://i0.imgs.ovh/2024/02/08/bapfO.png)
-
+# 以下内容暂不完善
 ## 基本特性
 * 一式两端，Core和Client，高度分离，更快速。
+
 * NoDrogen支持几乎所有Notion的块。</br>最快每一个月一个二级版本，相同二级版本之间(1.2.x)都能任意兼容。
 * 核心大小仅300kb，专注于Notion内容渲染。
 * 重视SEO
 
 # 快速构建
+
 ## 前提配置
+
 *星标该仓库*🤪
 
 * [Fork](https://github.com/kisrea-team/NoDrogen/fork)此仓库
 * [Fork](https://github.com/kisrea-team/NoDrogen-Core/fork)NoDrogen-Core仓库
 * 复制[NoDrogen模板](<https://www.notion.so/kisrea/1ac8cfb2dde44bbc8f6ed18d2acb1e3b?v=86c74e71bd524a29b5dc0fa1a1cf4fce>)并公之于众
+
 * 设置Core端环境变量（使用Vercel部署时在Deloy之前设置）
+
 ``` .env.local
 PAGE_ID=aa045af321034b62ad9c962b42fe7f48
 ```
 
-`PAGE_ID`<details><summary>PAGE_ID在哪里？</summary>
+`PAGE_ID`
+<details>
+<summary>PAGE_ID在哪里？</summary>
 打码处就是啦
   <img src="https://i0.imgs.ovh/2024/02/08/baeyd.png">
 </details>
