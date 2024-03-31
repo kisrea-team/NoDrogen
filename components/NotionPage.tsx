@@ -19,7 +19,7 @@ import "../components/ui/prism-vsc-dark-plus.css";
 import Main from "./Main";
 import Head from "../components/Head";
 import Pageinfo from "./ui/Pageinfo";
-import Footer from "../components/ui/Footer";
+// import Footer from "../components/ui/Footer";
 
 import { createElement as h } from "react";
 import { Loading } from "../components/Loading";
@@ -144,22 +144,22 @@ export const NotionPage = ({
   previewImagesEnabled,
   rootPageId,
   rootDomain,
-  name,
   title,
-  mainTitle,
+  type,
   data,
+  // icon,
 }: {
   recordMap: ExtendedRecordMap;
   previewImagesEnabled?: boolean;
   rootPageId?: string;
   rootDomain?: string;
-  name: string;
   title: string;
-  mainTitle: string;
+  type: Object;
   data: Object;
+  // icon: string;
 }) => {
   const router = useRouter();
-  console.log(data);
+  console.log(type);
   //   const footer = React.useMemo(() => <Footer />, []);
   if (!recordMap) {
     return null;
@@ -174,15 +174,15 @@ export const NotionPage = ({
   }
   return (
     <>
-      {/* <Suspense
+      <Suspense
         fallback={
           <div>
             <Loading />
           </div>
         }
-      > */}
+      >
       <Main>
-        <Head title={title} />
+        <Head title={title} type={type} />
         <Pageinfo title={title} data={data} />
         <NotionRenderer
           recordMap={recordMap}
@@ -204,9 +204,9 @@ export const NotionPage = ({
         <div className="twikoos">
           <Twikoo />
         </div>
-        <Footer name={name} />
+        {/* <Footer name={"name"} /> */}
       </Main>
-      {/* </Suspense> */}
+      </Suspense>
     </>
   );
 };

@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-10 10:30:55
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-24 07:25:12
+ * @LastEditTime: 2024-03-16 14:24:19
  * @Description: 简介
  */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -19,7 +19,6 @@ module.exports = withBundleAnalyzer({
 
       return config;
    },
-   //output: 'export',
    async redirects() {
       return [
          {

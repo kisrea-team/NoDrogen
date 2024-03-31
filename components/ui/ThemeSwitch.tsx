@@ -1,17 +1,17 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-16 14:41:22
- * @LastEditors: vhko hirsch-k@outlook.com
- * @LastEditTime: 2024-02-24 11:26:28
+ * @LastEditors: vhko
+ * @LastEditTime: 2024-03-13 22:27:50
  * @Description: 简介
  */
 "use client";
 import { useTheme } from "next-themes";
 import React, { useEffect } from "react";
-import styles from "../ui/ThemeSwitcher.module.css";
+import styles from "./ui.module.css";
 import { useState } from "react";
 
-import { MdLightMode,MdHdrAuto } from "react-icons/md";
+import { MdLightMode, MdHdrAuto } from "react-icons/md";
 import { HiMoon } from "react-icons/hi2";
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false);

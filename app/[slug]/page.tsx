@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-11 14:16:42
- * @LastEditors: vhko hirsch-k@outlook.com
- * @LastEditTime: 2024-02-24 11:52:42
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-16 21:16:01
  * @Description: 简介
  */
 /* _  __  _
@@ -14,20 +14,16 @@
 //  "use client";
 import { Suspense } from "react";
 import "../globals.css";
-import List from "../../components/Home";
+import Home from "../../components/Home";
 import { Loading } from "../../components/Loading";
 import dynamic from "next/dynamic";
 import Head from "../../components/Head";
 import { getData } from "../../components/base/Node";
 
-export async function generateStaticParams() {
-  const d = await getData("api");
-  return d.pageNumber;
-}
 export default async function Page({ params }) {
   const { slug } = params;
   const Main = dynamic(() => import("../../components/Main"), { ssr: false });
-  const d = await getData("api");
+  const d = await getData("api/post/" + slug);
 
   return (
     <main>
@@ -38,10 +34,10 @@ export default async function Page({ params }) {
           </div>
         }
       >
-        <Head title={d.wiki["name"]} />
+        <Head title={d.wiki["name"]} type={d.wiki["type"]} />
         <div className="container mx-auto">
           <Main>
-            <List currentPage={slug || 1} />
+            <Home currentPage={slug || 1} data={d} api={""} />
           </Main>
         </div>
       </Suspense>
@@ -51,7 +47,7 @@ export default async function Page({ params }) {
 
 export async function generateMetadata() {
   let icon;
-  const d = await getData("api");
+  const d = await getData("api/wiki");
   icon = d.wiki["icon"];
   if (icon.startsWith("http") <= 0) {
     icon =

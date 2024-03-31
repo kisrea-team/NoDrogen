@@ -73,10 +73,16 @@
 
 .posts_heart {
   position: absolute;
-  top: 0;
-  right: 20px;
+  z-index: 100;
+  top: -5px;
+  right: 15px;
+  width: 30px;
+  color: var(--bookmark);
 }
-
+.bookmark {
+  width: auto;
+  height: auto;
+}
 .posts_cover {
   position: relative;
   overflow: hidden;
@@ -182,7 +188,10 @@
   flex-wrap: wrap;
   padding-top: 8px;
 }
-
+.tags_item span {
+  user-select: none;
+  cursor: pointer;
+}
 .tags {
   height: calc(var(--px) * 2.5);
   font-size: 0.8rem;
@@ -209,7 +218,6 @@
   align-self: flex-start;
   position: sticky;
 }
-
 .date {
   color: var(--gray);
 }
@@ -225,7 +233,8 @@
     margin: auto;
     margin-bottom: calc(var(--px) * 2);
     flex-direction: column;
-    max-width: 380px;
+    max-width: 100%;
+    width: auto;
   }
 
   .posts_cover {
@@ -236,12 +245,17 @@
 
   .posts_info {
     width: 100%;
-    padding-left: 20px;
+    padding-left: calc(var(--px) * 2);
     padding-right: 0.5rem;
   }
 
   .posts_info .icon {
     font-size: 21px;
+  }
+  .posts_heart {
+    top: -3px;
+    width: calc(var(--px) * 2.5);
+    color: var(--bookmark_2);
   }
 
   .date {

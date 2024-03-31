@@ -1,52 +1,26 @@
-"use client";
-import React from "react";
-class GreetingMessage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      message: "",
-    };
-  }
-
-  componentDidMount() {
-    this.updateGreetingMessage();
-    // 每隔一分钟检查一次时间并更新消息
-    this.interval = setInterval(this.updateGreetingMessage, 60000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-  updateGreetingMessage = () => {
-    const currentTime = new Date();
-    const currentHour = currentTime.getHours();
-
-    let message = "";
-
-    if (currentHour >= 0 && currentHour < 8) {
-      message = "早上好！";
-    } else if (currentHour >= 8 && currentHour < 12) {
-      message = "上午好！";
-    } else if (currentHour >= 12 && currentHour < 18) {
-      message = "下午好！";
-    } else if (currentHour >= 18 && currentHour < 23) {
-      message = "晚上好！";
-    } else {
-      message = "晚安！";
-    }
-
-    // 在 render() 函数中更新 this.state
-    this.setState({ message });
-  };
-
-  render() {
-    return (
-      <div>
-        <p className="time">{this.state.message}</p>
-      </div>
-    );
-  }
+'use client'
+import { useEffect, useState } from "react";
+export default function Time() {
+   const [time, setTime] = useState<string>();
+   useEffect(() => {
+      const hour = new Date().getHours();
+      var get =
+         hour > 19
+            ? "晚上好🌃"
+            : hour > 17
+               ? "傍晚好🌇"
+               : hour > 12
+                  ? "下午好🍵"
+                  : hour > 11
+                     ? "中午好🍞"
+                     : hour > 8
+                        ? " 早上好🌅"
+                        : hour > 2
+                           ? "记得早点睡觉"
+                           : "好";
+      setTime(get);
+   }, []);
+   return (
+      <p className="time">{time ? time : ""}</p>
+   )
 }
-
-export default GreetingMessage;

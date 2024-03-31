@@ -1,10 +1,23 @@
-import styles from "../ui/Pagination.module.css";
+/*
+ * @Author: zitons
+ * @Date: 2024-03-03 21:36:18
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-16 20:19:47
+ * @Description: 简介
+ */
+import styles from "./ui.module.css";
 
-const Pagination = ({ items, currentPage, pageSize, onPageChange }) => {
-  const pagesCount = Math.ceil(items / pageSize); // 100/10
+const Pagination = ({
+  api,
+  pageNumber,
+  currentPage,
+  pageSize,
+  onPageChange,
+}) => {
+  const pagesCount = Number(pageNumber[0]);
   //if (pagesCount === 1) return null;
   const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
-  console.log(pages); //1，2
+
   // const searchParams = useSearchParams();
 
   // const currentPage = Number(searchParams.get('page')) || 1;
@@ -13,7 +26,7 @@ const Pagination = ({ items, currentPage, pageSize, onPageChange }) => {
     <div className="flex  gap-3">
       <ul className={styles.line}>
         <a
-          href={"/" + String(currentPage - 1)}
+          href={api + "/" + String(currentPage - 1)}
           style={{ display: currentPage != 1 ? "block" : "none" }}
         >
           <svg
@@ -42,7 +55,7 @@ const Pagination = ({ items, currentPage, pageSize, onPageChange }) => {
               page === currentPage ? styles.pageItemActive : styles.pageItem
             }
           >
-            <a className={styles.pageLink} href={"/" + page}>
+            <a className={styles.pageLink} href={api + "/" + page}>
               {page}
             </a>
           </li>
@@ -50,7 +63,7 @@ const Pagination = ({ items, currentPage, pageSize, onPageChange }) => {
       </ul>
       <ul className={styles.line}>
         <a
-          href={"/" + String(currentPage + 1)}
+          href={api + "/" + String(currentPage + 1)}
           style={{ display: currentPage != pagesCount ? "block" : "none" }}
         >
           <svg

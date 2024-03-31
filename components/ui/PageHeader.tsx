@@ -6,7 +6,7 @@
  * @Description: 简介
  */
 
-import Styles from "./PageHeader.module.css";
+import Styles from "./ui.module.css";
 import ThemeSwitcher from "./ThemeSwitch";
 
 export default async function PageHeader(props) {
