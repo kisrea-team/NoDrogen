@@ -8,11 +8,11 @@
   align-items: center;
   width: 100%;
   height: calc(var(--px) * 5.5);
-  color: var(--white);
+  /* color: var(--white); */
 }
-.header p{
+/* .header p{
    color: var(--white);
-}
+} */
 
 .land {
   display: flex;
@@ -63,7 +63,7 @@
   display: block;
   width: var(--width);
   height: 3px;
-  background: #fff;
+  background: #000000;
   border-radius: 0;
   position: absolute;
   left: 0;
@@ -72,7 +72,7 @@
 
 .btn_menu::before {
   top: 10px;
-  box-shadow: 0 10px #fff;
+  box-shadow: 0 10px #000000;
 }
 
 .btn_menu::after {
@@ -85,7 +85,8 @@
 
 @media (min-width: 375px) and (max-width: 427px) {
   .title {
-    font-size: calc(var(--px) * 2);
+    font-size: calc(var(--px) * 1.8);
+    margin-left: calc(var(--px) * 0.5);
   }
 }
 

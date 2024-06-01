@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-16 14:41:22
  * @LastEditors: vhko
- * @LastEditTime: 2024-03-11 22:18:12
+ * @LastEditTime: 2024-05-12 14:33:56
  * @Description: 简介
  */
 "use client";
@@ -14,10 +14,10 @@ import Timeline from "./ui/timeline";
 
 export default async function Head(props) {
    const btn = () => {
-      if (document.getElementById("land").classList.contains("haha")) {
-         document.getElementById("land").classList.remove("haha");
+      if (document.getElementById("land").classList.contains("menu")) {
+         document.getElementById("land").classList.remove("menu");
       } else {
-         document.getElementById("land").classList.add("haha");
+         document.getElementById("land").classList.add("menu");
       }
    };
 
@@ -29,8 +29,8 @@ export default async function Head(props) {
             </div>
 
             <p className={styles.title}>{props.title}</p>
-            <div className={styles.grow}></div>
-            <div>
+            <div className={styles.grow}></div> 
+            <div id="acc">
                <Dropdown title={props.title} type={props.type} />
             </div>
             <div className={styles.grow}></div>

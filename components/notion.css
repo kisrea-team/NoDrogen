@@ -33,9 +33,11 @@
 .notion-page-has-cover.notion-page-has-icon.notion-page-has-text-icon {
   padding-top: 2rem;
 }
-@media (min-width: 375px) and (max-width: 427px) {
+@media (min-width: 370px) and (max-width: 427px) {
   .notion-app {
     max-width: none;
+    margin-top: initial;
+    padding: initial;
   }
   .notion-full-width {
     --notion-max-width: none;

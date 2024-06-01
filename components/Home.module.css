@@ -222,7 +222,7 @@
   color: var(--gray);
 }
 
-@media (min-width: 375px) and (max-width: 427px) {
+@media (min-width: 300px) and (max-width: 427px) {
   .list_container {
     display: block;
     max-width: 100%;
@@ -371,8 +371,8 @@
 @media (min-width: 1280px) and (max-width: 1535px) {
   .posts_item {
     flex-direction: initial;
-    width: 550px;
-    height: 200px;
+    width: 630px;
+    height: 230px;
   }
 
   .sticky {
