@@ -2,14 +2,14 @@
  * @Author: zitons
  * @Date: 2024-02-10 10:30:54
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-02-16 15:21:06
+ * @LastEditTime: 2024-03-31 21:57:21
  * @Description: 简介
  */
 import "../app/copy.css";
 import { Providers } from "./providers";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import { Noto_Sans_SC } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 const noto = Noto_Sans_SC({
   subsets: ["latin"],
   weight: "500",

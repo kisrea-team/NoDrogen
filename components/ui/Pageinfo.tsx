@@ -1,13 +1,18 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-21 09:19:46
+<<<<<<< HEAD
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-03-31 22:03:33
+=======
  * @LastEditors: vhko
  * @LastEditTime: 2024-03-25 19:24:02
+>>>>>>> 8a5622994b6bf94b9ebf24d4db30e0473110f123
  * @Description: 简介
  */
 import Image from "next/image";
 import { HiMiniClock, HiMiniUserCircle } from "react-icons/hi2";
-import Head from "../Head";
+// import Head from "../Head";
 
 import Style from "./ui.module.css";
 const Pageinfo = (props) => {
@@ -36,9 +41,9 @@ const Pageinfo = (props) => {
                      ))}
                </div>
                <div className={Style.title}>
-                  <p>[{props.data?.type}]&nbsp;</p>
+                  <p>[{props.data.type}]&nbsp;</p>
                   <p>
-                     {props.data?.icon}
+                     {props.data.icon}
                      {props.title}
                   </p>
 

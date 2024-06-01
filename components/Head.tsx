@@ -2,6 +2,8 @@
  * @Author: zitons
  * @Date: 2024-02-16 14:41:22
  * @LastEditors: vhko
+ * @LastEditTime: 2024-06-01 23:50:03
+ * @LastEditors: vhko
  * @LastEditTime: 2024-05-12 14:33:56
  * @Description: 简介
  */
@@ -10,7 +12,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../components/Head.module.css";
 import ThemeSwitcher from "./ui/ThemeSwitch";
 import Dropdown from "./ui/Dropdown";
-import Timeline from "./ui/timeline";
+// import Timeline from "./ui/timeline";
 
 export default async function Head(props) {
    const btn = () => {
