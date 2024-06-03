@@ -17,7 +17,7 @@ import "../globals.css";
 import Home from "../../components/Home";
 import { Loading } from "../../components/Loading";
 import dynamic from "next/dynamic";
-import Head from "../../components/Head";
+import Head from "../../components/ui/Head";
 import { getData } from "../../components/base/Node";
 
 export default async function Page({ params }) {

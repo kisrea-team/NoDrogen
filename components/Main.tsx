@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-20 10:39:14
- * @LastEditors: vhko
- * @LastEditTime: 2024-05-12 14:29:45
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-06-03 12:54:48
  * @Description: 简介
  */
 "use client";
@@ -42,3 +42,5 @@ export default function Main({ children }: { children: React.ReactNode }) {
    }, [direction, y]);
    return <>{children}</>;
 }
+
+

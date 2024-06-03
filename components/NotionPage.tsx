@@ -16,8 +16,8 @@ import "../app/globals.css";
 import "../components/ui/prism-vsc-dark-plus.css";
 // import styles from "../components/ui/styles.module.css";
 
-import Main from "./Main";
-import Head from "../components/Head";
+import PageMain from "./PageMain";
+import PageHead from "./ui/PageHead";
 import Pageinfo from "./ui/Pageinfo";
 // import Footer from "../components/ui/Footer";
 
@@ -181,8 +181,8 @@ export const NotionPage = ({
           </div>
         }
       >
-      <Main>
-        <Head title={title} type={type} />
+      <PageMain>
+        <PageHead type={type} />
         <Pageinfo title={title} data={data} />
         <NotionRenderer
           recordMap={recordMap}
@@ -205,7 +205,7 @@ export const NotionPage = ({
           <Twikoo />
         </div>
         {/* <Footer name={"name"} /> */}
-      </Main>
+      </PageMain>
       </Suspense>
     </>
   );
