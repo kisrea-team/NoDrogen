@@ -125,11 +125,17 @@ body {
   transition: all 0.5s cubic-bezier(0.45, 0.01, 0.49, 1.01) 0s;
   color: black;
 }
-.head p{
-   color: black;
+.head p {
+  color: black;
 }
-.acc{
-   color: black;
+[data-theme="dark"] .head {
+  color: var(--white);
+}
+[data-theme="dark"] .head p {
+  color: var(--white);
+}
+.acc {
+  color: black;
 }
 .menu {
   transform: translateY(0%) !important;

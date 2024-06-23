@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-02-16 14:41:22
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-06-03 12:42:45
+ * @LastEditors: vhko
+ * @LastEditTime: 2024-06-09 09:22:33
  * @LastEditors: vhko
  * @LastEditTime: 2024-05-12 14:33:56
  * @Description: 简介
@@ -25,7 +25,7 @@ export default async function PageHead(props) {
 
    return (
       <>
-         <header className={styles.header} id="scrolled">
+         <header className={styles.pagehead} id="scrolled">
             <div className={styles.land} id="land">
                <p>sadasd</p>
             </div>

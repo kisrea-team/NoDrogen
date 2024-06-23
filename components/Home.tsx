@@ -110,7 +110,7 @@ export default async function List(props) {
             <div className={styles.tags_card}>
               <h1 className={styles.title}>标签</h1>
               <div className={styles.tags_item}>{tagsitem}</div>
-            </div>
+            </div>   
           </aside>
         </div>
       </div>
