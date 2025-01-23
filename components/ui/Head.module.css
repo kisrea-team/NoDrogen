@@ -30,6 +30,7 @@
 }
 
 .title {
+  width: auto;
   margin-left: calc(var(--px) * 1.5);
   font-weight: 500;
   font-size: 1.5rem;

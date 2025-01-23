@@ -1,8 +1,8 @@
 /*
  * @Author: zitons
  * @Date: 2024-03-12 21:48:14
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-07-17 20:44:47
+ * @LastEditors: vhko
+ * @LastEditTime: 2025-01-23
  * @Description: 简介
  */
 import { getData } from "../../../components/base/Node";
@@ -17,7 +17,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   const type = params.slug[0];
   const slug = params.slug[1];
   const Main = dynamic(() => import("../../../components/Main"), {
-    ssr: false,
+    // ssr: false,
   });
   const d = await getData("api/type/" + type + "/" + slug);
 
