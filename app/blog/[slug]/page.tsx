@@ -20,6 +20,7 @@ export default async function Page({ params }) {
   }
 
   return (
+    <body>
     <main>
       <NotionPage
         recordMap={d.record_map}
@@ -28,6 +29,7 @@ export default async function Page({ params }) {
         data={d.data}
       />
     </main>
+    </body>
   );
 }
 export async function generateMetadata({ params }) {

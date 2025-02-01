@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-16 14:41:22
  * @LastEditors: vhko
- * @LastEditTime: 2025-01-23
+ * @LastEditTime: 2025-01-24
  * @LastEditors: vhko
  * @LastEditTime: 2024-05-12 14:33:56
  * @Description: 简介
@@ -27,11 +27,18 @@ export default function Head(props) {
   };
   return (
     <header className={styles.header} id="scrolled">
-      <div className={styles.title}
-      //  style={{ width: 100, color: "pink" }}
-       >
-        {props.title || <Skeleton style={{width:100}}/>}
-        {/* {props.title} */}
+      <div
+        className={styles.title}
+        //  style={{ width: 100, color: "pink" }}
+      >
+        {/* {props.title || <Skeleton style={{width:100}}/>} */}
+          {props.icon?.startsWith("h") ? (
+            <img src={props.icon} alt="emoji" height="30" width="30" />
+          ) : (
+            props.icon
+          )}
+  
+        {props.title}
       </div>
 
       <div className={styles.grow}></div>

@@ -7,9 +7,9 @@
  */
 import "../app/copy.css";
 import { Providers } from "./providers";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 // import { Noto_Sans_SC } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 // const noto = Inter({
 //   subsets: ["latin"],
 //   weight: "500",
@@ -25,15 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning>
-      <head />
-      <body className={inter.className}>
+
+      <html suppressHydrationWarning>
         <Providers>
           
           {children}
           
         </Providers>
-      </body>
+      
     </html>
   );
 }

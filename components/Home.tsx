@@ -15,15 +15,20 @@ async function delay(ms: number) {
   });
 }
 import { MdBookmark } from "react-icons/md";
-export default async function List(props) {
-  let d;
-  d = props.data;
-  const view = d.wiki;
-//   await delay(300000);
+export default async function List(props: any) {
+  let nData;
+  nData = props.data;
+  const view = nData.wiki;
+  // await delay(300000);
 
   console.log("page:" + props.currentPage);
-  const ListItems = d.posts.map((list) => (
-    <a className={styles.posts_item} href={"/blog/" + list.id} target="_blank">
+  const ListItems = nData.posts.map((list: any) => (
+    <a
+      // key={list.id}
+      className={styles.posts_item}
+      href={"/blog/" + list.id}
+      target="_blank"
+    >
       <div className={styles.posts_heart}>
         {list.type == "精选" ? (
           <MdBookmark className=" w-full h-full" />
@@ -73,7 +78,7 @@ export default async function List(props) {
       </div>
     </a>
   ));
-  const tagsitem = d.tags.map((tag) => (
+  const tagsitem = nData.tags.map((tag) => (
     <span
       className={`${styles.tags} rounded-md m-1 notion-${tag.color}_background`}
     >
@@ -95,7 +100,7 @@ export default async function List(props) {
             {ListItems}
             <div className="mt-5 flex w-full justify-center">
               <Pagination
-                pageNumber={d.page_number} // 100
+                pageNumber={nData.page_number} // 100
                 currentPage={props.currentPage} // 1
                 pageSize={10} // 10
                 onPageChange={1}
@@ -108,11 +113,11 @@ export default async function List(props) {
               <Time />
               <div className={styles.auther_info}>
                 <div className={styles.auther_name}>
-                  <p>{d.main_user[0]?.name}</p>
+                  <p>{nData.main_user[0]?.name}</p>
                 </div>
                 <div className={styles.auther_avatar}>
                   <Image
-                    src={d.main_user[0]?.profile_photo}
+                    src={nData.main_user[0]?.profile_photo}
                     width={100}
                     height={100}
                     alt="牛"
@@ -129,7 +134,7 @@ export default async function List(props) {
           </aside>
         </div>
       </div>
-      <Footer name={d.main_user[0]?.name} />
+      <Footer name={nData.main_user[0]?.name} />
     </>
   );
 }
