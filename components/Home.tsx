@@ -2,9 +2,10 @@ import Image from "next/image";
 import styles from "../components/Home.module.css";
 import Footer from "./ui/Footer";
 import Time from "./ui/Time";
-import Timeline from "./ui/timeline";
+// import Timeline from "./ui/timeline";
 import Pagination from "./ui/Pagination";
-
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 // import TextLoop from "react-text-loop";
 // import Link from "react-router-dom";
 // import { BodyText } from "./ui";
@@ -57,7 +58,7 @@ export default async function List(props: any) {
             )}
             <span>{list.title}</span>
           </p>
-          <div className={styles.posts_wrapper}>
+          <div>
             <p className={styles.date}>
               {list.type}|{list.date?.["start_date"]}
             </p>
@@ -78,6 +79,7 @@ export default async function List(props: any) {
       </div>
     </a>
   ));
+  //////////
   const tagsitem = nData.tags.map((tag) => (
     <span
       className={`${styles.tags} rounded-md m-1 notion-${tag.color}_background`}
@@ -88,13 +90,13 @@ export default async function List(props: any) {
 
   return (
     <>
-      <div className={styles.land} id="">
+      <div className={styles.land}>
         <p>aaabbb</p>
       </div>
-      <div className={`${styles.container}`}>
-        <div className={styles.bar}>
+      <div className={styles.post_wrapper}>
+        {/* <div className={styles.bar}>
           <p className={styles.bar_text}>{view?.description}</p>
-        </div>
+        </div> */}
         <div className={styles.layout}>
           <div className={styles.list_items}>
             {ListItems}
@@ -109,25 +111,25 @@ export default async function List(props: any) {
             </div>
           </div>
           <aside className={styles.sticky}>
-            <div className={styles.auther_card}>
+            <div className={styles.user_card}>
               <Time />
-              <div className={styles.auther_info}>
-                <div className={styles.auther_name}>
-                  <p>{nData.main_user[0]?.name}</p>
-                </div>
-                <div className={styles.auther_avatar}>
+              <div className={styles.user_info}>
+                <div className={styles.user_avatar}>
                   <Image
                     src={nData.main_user[0]?.profile_photo}
                     width={100}
                     height={100}
                     alt="牛"
                   />
+                  <div className={styles.user_name}>
+                    <p>{nData.main_user[0]?.name}</p>
+                  </div>
                 </div>
                 <p>{view.description}</p>
               </div>
             </div>
             <div className={styles.tags_card}>
-              <h1 className={styles.title}>标 签</h1>
+              <h1 className={styles.title}>标签</h1>
               <a href="./Timeline">abc</a>
               <div className={styles.tags_item}>{tagsitem}</div>
             </div>

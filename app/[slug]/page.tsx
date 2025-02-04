@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-11 14:16:42
  * @LastEditors: vhko
- * @LastEditTime: 2025-01-30
+ * @LastEditTime: 2025-02-04
  * @Description: 简介
  */
 /* _  __  _
@@ -16,110 +16,83 @@ import { Suspense } from "react";
 import "../globals.css";
 import Head from "../../components/ui/Head";
 import Main from "../../components/Main";
-import { getData } from "../../components/base/Node";
 import SenderMain from "../../components/base/Sender";
 import styles from "../../components/Home.module.css";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-export default async function Page({ params }) {
-  const { slug } = await params;
-  // const Main = dynamic(() => import("../../components/Main"));
 
+export default async function Page({ params: { slug } }) {
+  let data = [1, 2, 3, 4, 5, 6];
+  const postList = data.map(() => {
+    return (
+      <a className={styles.ske_postitem} target="_blank">
+        {/* <div className={styles.posts_heart}></div> */}
+        <div className={styles.ske_cover}>
+          <Skeleton className="h-full" />
+        </div>
+        <div className={styles.ske_secondary}>
+          {/* <div> */}
+          <p className={styles.ske_1}>
+            <Skeleton height={20} inline={false} />
+          </p>
+          <p className={styles.ske_2}>
+            <Skeleton height={20} />
+          </p>
+          <p className={styles.ske_3}>
+            <Skeleton height={20} />
+          </p>
+          {/* </div> */}
+        </div>
+      </a>
+    );
+  });
   return (
     <main>
       <Suspense
         fallback={
           <>
-            <body>
-              <Head type={"文章"} />
-              <div className="container mx-auto">
-                <Main>
-                  <div className={styles.land} id="">
-                    <p>aaabbb</p>
-                  </div>
-                  <div className={`${styles.container}`}>
-                    <div className={styles.bar}>
-                      <p className={styles.bar_text}>{<Skeleton />}</p>
-                    </div>
-                    <div className={styles.layout}>
-                      <div className={styles.list_items}>
-                        <a className={styles.posts_item} target="_blank">
-                          <div className={styles.posts_heart}></div>
-                          <div className={styles.posts_cover}>
-                            <Skeleton
-                              count={10}
-                              className=" h-full"
-                              style={{ lineHeight: "inherit" }}
-                            />
-                            {/* <div className={styles.time_down}>
-          <p>test</p>
-        </div> */}
-                          </div>
-                          <div className={styles.posts_info}>
-                            <div className={styles.posts_secondary}>
-                              <p className={styles.posts_title}>
-                                <Skeleton />
-                              </p>
-                              <div className={styles.posts_wrapper}>
-                                <p
-                                  className={styles.date}
-                                  style={{ width: 200 }}
-                                >
-                                  <Skeleton />
-                                </p>
-                                {/* <p className={styles.date}>{list.start_date}</p> */}
-                                {/* <p>{list.type}</p> */}
-                                <p>
-                                  <Skeleton />
-                                </p>
-                                <div className={styles.post_tags}>
-                                  <Skeleton /> <Skeleton />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                        {/* {ListItems} */}
-                      </div>
-                      <aside className={styles.sticky}>
-                        <div className={styles.auther_card}>
-                          <div className={styles.auther_info}>
-                            <div className={styles.auther_name}>
-                              <p>
-                                <Skeleton />
-                              </p>
-                            </div>
-                            <div className={styles.auther_avatar}>
-                              <Skeleton
-                                circle={true}
-                                style={{ width: 100, height: 100 }}
-                              />
-                            </div>
+            <Head type="文章">{/* <Skeleton /> */}</Head>
+            <div className="container mx-auto">
+              <Main>
+                <div className={styles.post_wrapper}>
+                  <div className={styles.layout}>
+                    <div className={styles.list_items}>{postList}</div>
+                    {/* 这里是文章加载时的样式 */}
+                    <aside className={styles.sticky}>
+                      <div className={styles.user_card}>
+                        <div className={styles.ske_info}>
+                          <Skeleton containerClassName={styles.info1} />
+                          <Skeleton />
+                        </div>
+                        <div>
+                          <div
+                            className={`${styles.user_avatar} ${styles.ske_username}`}
+                          >
+                            <Skeleton circle width={100} height={100} />
                             <p>
                               <Skeleton />
                             </p>
                           </div>
                         </div>
-                        <div className={styles.tags_card}>
-                          <h1 className={styles.title}>标 签</h1>
-                          <a href="./Timeline">abc</a>
-                          <Skeleton />
+                      </div>
 
-                          <div className={styles.tags_item}>
-                            <Skeleton count={3} />
-                          </div>
+                      {/* tag_card */}
+                      <div className={styles.tags_card}>
+                        <h1 className={styles.title}>
+                          <Skeleton />
+                        </h1>
+                        <div>
+                          <Skeleton count={3} />
                         </div>
-                      </aside>
-                    </div>
+                      </div>
+                    </aside>
                   </div>
-                  {/* <Footer name={<Skeleton />} /> */}
-                </Main>
-              </div>
-            </body>
+                </div>
+              </Main>
+            </div>
           </>
         }
       >
-        {/* <p>{<Skeleton />}</p> */}
         <SenderMain slug={slug} />
       </Suspense>
     </main>

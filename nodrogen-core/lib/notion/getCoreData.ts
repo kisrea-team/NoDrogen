@@ -20,6 +20,7 @@ export class Nodrogen {
   type: any;
   tagObj: any;
   mainUser: any = [];
+  q: any;
   mapImgUrl(img: any, block: any): string {
     let ret = null;
     if (!img) {
@@ -64,7 +65,7 @@ export class Nodrogen {
     //视图号
     try {
       this.response = await this.client.getPage(id);
-      console.log(this.response)
+      // console.log(this.response)
       // 处理结果
     } catch (error) {
       // 处理错误
@@ -84,14 +85,13 @@ export class Nodrogen {
     const rawProperties: any = Object.entries(
       this.collection[0]["value"]["schema"]
     );
-    let q: number = 0;
+    this.q = 0;
     //console.log(rawProperties);
     for (let i = 0; i < rawProperties.length; i++) {
       switch (rawProperties[i][1]["name"]) {
 
 
         case "type": {
-          q++;
           // for (let j = 0; j < rawProperties[i][1]["options"].length; j++) {
           //   this.typeObj.push(rawProperties[i][1]["options"][j]["value"]);
           // }
@@ -145,46 +145,36 @@ export class Notion extends Nodrogen {
     );
     const excludeProperties = ["date", "select", "multi_select", "person"];
     const properties: any = {};
-    for (let i = 0; i < rawProperties.length; i++) {
-      const [key, val]: any = rawProperties[i];
-      properties["id"] = id;
-      if (
-        this.collection[0]["value"]["schema"][key]?.type &&
-        !excludeProperties.includes(
-          this.collection[0]["value"]["schema"][key].type
-        )
-      ) {
-        properties[this.collection[0]["value"]["schema"][key].name] =
-          getTextContent(val);
+    const processProperty = async (key: string, val: any) => {
+      const propertySchema = this.collection[0]["value"]["schema"][key];
+      if (propertySchema?.type && !excludeProperties.includes(propertySchema.type)) {
+        properties[propertySchema.name] = getTextContent(val);
       } else {
-        switch (this.collection[0]["value"]["schema"][key]?.type) {
+        switch (propertySchema?.type) {
           case "date": {
             let dateProperty: any = getDateValue(val);
-
-            let batchDate = new Date(dateProperty["start_date"]).getFullYear() + '年' + (new Date(dateProperty["start_date"]).getMonth() + 1) + '月' + new Date(dateProperty["start_date"]).getDate() + '日'
-
+            let batchDate = new Date(dateProperty["start_date"]).getFullYear() + '年' + (new Date(dateProperty["start_date"]).getMonth() + 1) + '月' + new Date(dateProperty["start_date"]).getDate() + '日';
             dateProperty["date"] = batchDate;
-            // delete dateProperty.type;
-            properties[this.collection[0]["value"]["schema"][key].name] =
-              dateProperty;
-
+            properties[propertySchema.name] = dateProperty;
             break;
           }
           case "select":
           case "multi_select": {
             const selects = getTextContent(val);
             if (selects[0]?.length) {
-              properties[this.collection[0]["value"]["schema"][key].name] =
-                selects.split(",");
+              properties[propertySchema.name] = selects.split(",");
             }
             break;
           }
           case "person": {
             const rawUsers = val.flat();
             const users = [];
-            for (let i = 0; i < 1; i++) {
-              if (rawUsers[i][0][1]) {
+            // console.log(rawUsers)
+            for (let i = 0; i < rawUsers.length; i++) {
+              // console.log(this.mainUser.length)
+              if (rawUsers[i][0][1] && this.mainUser.length == 0) {
                 const userId = rawUsers[i][0];
+
                 const res: any = await this.client.getUsers(userId);
                 const resValue =
                   res?.["recordMapWithRoles"]?.notion_user?.[userId[1]]?.value;
@@ -196,16 +186,33 @@ export class Notion extends Nodrogen {
                   profile_photo: resValue?.profile_photo,
                 };
                 users.push(user);
+                this.mainUser = users;
+                break;
+
               }
             }
-            properties[this.collection[0]["value"]["schema"][key].name] = users;
+            // properties[this.collection[0]["value"]["schema"][key].name] = users;
             break;
           }
           default:
             break;
         }
       }
-    }
+    };
+
+    const processAllProperties = async () => {
+
+      const propertyPromises = rawProperties.map(([key, val]: any) => {
+        properties["id"] = id;
+        return processProperty(key, val);
+      });
+
+      await Promise.all(propertyPromises);
+    };
+
+    // 执行并行处理
+    await processAllProperties();
+
     properties["tags"] =
       properties["tags"]?.map((tag: any) => {
         return {
@@ -320,9 +327,9 @@ export class Notion extends Nodrogen {
       console.log(years);
       return years;
     } else {
-      const found = postsF.find((element) => element["Person"]);
+      // const found = postsF.find((element) => element["Person"]);
 
-      this.mainUser = found["Person"];
+      // this.mainUser = found["Person"];
 
       // console.log(await getPageProperties("5fe60377-b3c1-4ede-b3e2-8bc4d312a893",this.block,this.collection[0]["value"]["schema"]))
       return postsF;
@@ -354,7 +361,7 @@ export class Notion extends Nodrogen {
     // )
 
 
-    // console.log(recordMap)
+    console.log(recordMap)
 
     return recordMap;
 

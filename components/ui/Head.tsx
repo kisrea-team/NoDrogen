@@ -2,7 +2,7 @@
  * @Author: zitons
  * @Date: 2024-02-16 14:41:22
  * @LastEditors: vhko
- * @LastEditTime: 2025-01-24
+ * @LastEditTime: 2025-02-04
  * @LastEditors: vhko
  * @LastEditTime: 2024-05-12 14:33:56
  * @Description: 简介
@@ -25,26 +25,18 @@ export default function Head(props) {
       document.getElementById("land").classList.add("menu");
     }
   };
+
   return (
     <header className={styles.header} id="scrolled">
-      <div
-        className={styles.title}
-        //  style={{ width: 100, color: "pink" }}
-      >
-        {/* {props.title || <Skeleton style={{width:100}}/>} */}
-          {props.icon?.startsWith("h") ? (
-            <img src={props.icon} alt="emoji" height="30" width="30" />
-          ) : (
-            props.icon
-          )}
-  
+      <div className={`${styles.ske_title} `}>
+        {props.icon?.startsWith("h") ? (
+          <img src={props.icon} alt="emoji" height="30" width="30" />
+        ) : (
+          props.icon || <Skeleton />
+        )}
         {props.title}
       </div>
-
       <div className={styles.grow}></div>
-      {/* <div id="acc">
-               <Dropdown title={props.title} type={props.type} />
-            </div> */}
       <div className={`${style.menu} relative`}>
         <div>
           <a href="/achieve">
@@ -54,7 +46,6 @@ export default function Head(props) {
             </button>
           </a>
         </div>
-
         <div>
           <button className={style.type_btn}>
             <p>分类1</p>

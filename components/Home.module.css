@@ -1,8 +1,9 @@
-.container {
+.post_wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 100%;
+  margin-top: 2.33rem;
   margin: auto;
   gap: calc(var(--px) * 2);
 }
@@ -27,6 +28,7 @@
   display: flex;
   /* max-width: 97%; */
   margin: auto;
+  margin-top: 1rem;
   gap: calc(var(--px) * 4);
 }
 
@@ -39,15 +41,14 @@
   text-align: center;
   border-color: var(--shadow);
   border: var(--bar_border);
-  box-shadow: 0 0 20px 2px var(--shadow);
+  box-shadow: 0 0 5px 2px var(--shadow);
   transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
 }
-
+/* 
 .bar:hover {
-  /* transform: scale(1.02, 1.02); */
   border: var(--bar_border_hover);
   box-shadow: 0 0px 20px 2px var(--shadow_2);
-}
+} */
 
 .bar_text {
   text-align: center;
@@ -117,22 +118,21 @@
 
 .posts_title {
   display: flex;
+  align-items: center;
   font-weight: bold;
   font-size: var(--font_size);
   line-height: var(--font_height);
 }
-
-.posts_wrapper {
-  margin-left: 10px;
+.posts_title span{
+  margin-left: 5px;
 }
-
 .post_tags {
   display: flex;
   flex-wrap: wrap;
   margin-left: -6px;
 }
 
-.auther_card,
+.user_card,
 .tags_card {
   border-radius: var(--radius);
   box-shadow: 2px 4px 12px 2px var(--shadow_3);
@@ -140,34 +140,36 @@
   padding: 1rem;
 }
 
-.auther_card {
+.user_card {
   width: 300px;
   height: 340px;
   background: #425aef;
 }
 
-.auther_avatar {
+.user_avatar {
   display: flex;
   margin: 45px auto;
   justify-content: center;
+  flex-direction: column;
   position: relative;
 }
 
-.auther_avatar img {
+.user_avatar img {
   border-radius: 100%;
 }
 
-.auther_info {
+.user_info {
   display: flex;
   flex-direction: column-reverse;
 }
 
-.auther_info p {
+.user_info p {
   color: var(--white);
 }
 
-.auther_name {
-  position: absolute;
+.user_name {
+  /* position: absolute; */
+  /* justify-self: anchor-center; */
   font-size: 1.1rem;
   font-weight: bold;
   line-height: 2rem;
@@ -182,7 +184,9 @@
   font-size: 1.5rem;
   font-weight: bold;
 }
-
+.title span{
+  width: 20%;
+}
 .tags_item {
   display: flex;
   flex-wrap: wrap;
@@ -221,7 +225,70 @@
 .date {
   color: var(--gray);
 }
-
+.ske_bar {
+  width: 50%;
+  margin: auto;
+}
+.ske_bar span {
+  height: 40px;
+}
+.ske_postitem {
+  display: flex;
+  flex-direction: initial;
+  position: relative;
+  width: 700px;
+  /* height: 230px; */
+  border-radius: var(--radius);
+  margin-bottom: calc(var(--px) * 2);
+  background-color: var(--bg-color);
+  box-shadow: 2px 4px 12px var(--shadow);
+  transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
+}
+.ske_cover {
+  position: relative;
+  overflow: hidden;
+  width: 48%;
+  border-radius: 8px 0 0 8px;
+}
+.ske_cover span {
+  line-height: 2;
+}
+.ske_secondary {
+  /* display: flex; */
+  width: 55%;
+  padding-top: calc(var(--px) * 1.5);
+  padding-bottom: var(--px);
+  padding-left: calc(var(--px) * 1.6);
+  padding-right: var(--px);
+}
+.ske_secondary .ske_1 {
+  width: 50%;
+}
+.ske_secondary .ske_2 {
+  width: 26%;
+}
+.ske_secondary .ske_3 {
+  width: 66%;
+}
+.ske_info{
+width: auto;
+max-width: 80%;
+}
+.ske_info .info1{
+  display: block;
+  max-width: 35%;
+}
+.ske_username{
+margin:45px 0 0 0;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+}
+.ske_username p{
+  width: 30%;
+  margin-top: 3%;
+  font-size: 21px;
+}
 @media (min-width: 300px) and (max-width: 427px) {
   .list_container {
     display: block;
@@ -386,7 +453,9 @@
     width: 700px;
     height: 230px;
   }
-
+  .ske_postitem {
+    height: 230px;
+  }
   .sticky {
     display: flex;
   }
