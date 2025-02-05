@@ -23,6 +23,7 @@ import Pageinfo from "./ui/Pageinfo";
 // import Footer from "../components/ui/Footer";
 // import { Loading } from "../components/Loading";
 // import { Suspense } from "react";
+
 const Code = dynamic(async () => {
   return function CodeSwitch(props) {
     switch (getTextContent(props["block"]["properties"]["language"])) {
@@ -121,6 +122,13 @@ export const NotionPage = ({
   // icon: string;
 }) => {
   //   const footer = React.useMemo(() => <Footer />, []);
+  let icon = data["icon"]
+  if (data["icon"].startsWith("http") <= 0) {
+    icon =
+      "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>" +
+      icon +
+      "</text></svg>";
+  }
   if (!recordMap) {
     return null;
   }
@@ -140,6 +148,11 @@ export const NotionPage = ({
           </div>
         }
       > */}
+      <head>
+        <title>{data["name"]}</title>
+        <link rel="icon" type="image/x-icon" href={icon} />
+
+      </head>
       <PageMain>
         <PageHead type={type} />
         <Pageinfo title={title} data={data} />
