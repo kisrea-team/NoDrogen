@@ -8,11 +8,14 @@
 //import * as React from 'react'
 import { Suspense } from "react";
 // import { NotionPage } from "../../../components/NotionPage";
-import { getData } from "../../../components/base/Node";
 import SenderBlog from "../../../components/base/Sender2";
-import dynamic from "next/dynamic";
 // import "../../../components/styles.module.css"
+import PageMain from "../../../components/PageMain";
 
+// import Head from "../Head";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import Style from "../../../components/ui/ui.module.css";
 export default async function Page({ params }) {
   const { slug } = await params;
   // const d = await getData("api/content/" + slug);
@@ -21,22 +24,80 @@ export default async function Page({ params }) {
   // if (!d.data.title) {
   //   return;
   // }
-  const DynamicHeader = dynamic(() => import('../../../components/base/Sender'), {
-    loading: () => <p>Loading...</p>,
-  })
+
   return (
     <>
-      {/* <Suspense
+      <Suspense
         fallback={
-          <>{"nb"}
+          <>
+            <body>
+              {/* <PageHead type={"精选"} /> */}
+              {/* <Head /> */}
 
+              <div className={`${Style.pageinfo} container`}>
+                <div className={Style.cover}>
+                </div>
+                <div className={Style.pagetext}>
+                  <div style={{ marginLeft: "-5px" }}>
+
+                  </div>
+                  <div className={Style.title}>
+
+                    <p>
+
+                      <Skeleton width={60} height={24} />
+                      <Skeleton circle width={36} height={36} />
+
+
+                    </p>
+                    <span>&nbsp;#&nbsp;<Skeleton width={60} height={24} /></span>
+                  </div>
+
+                  <div>
+                    {/* <p>{props.data?.summary}</p> */}
+                    <div className="flex gap-4">
+                      {/* <p className={Style.meta}>
+                        <HiMiniUserCircle />
+                        {props.data?.Person?.[0]?.name}
+                     </p> */}
+                      <p className={Style.meta}>
+                        {/* <HiMiniClock /> */}
+                        <Skeleton />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mx-auto w-full md:w-3/5 p-4">
+                <div className="flex flex-col items-center space-y-4">
+                  <div className="p-4 rounded-lg w-full">
+                    <p className="leading-relaxed">
+                      <Skeleton count={20} />
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+              {/* <Footer name={"name"} /> */}
+
+            </body>
           </>
         }
-      > */}
+      >
 
 
-      <SenderBlog slug={slug} />
-      {/* </Suspense> */}
+        <SenderBlog slug={slug} />
+      </Suspense >
     </>
   );
 

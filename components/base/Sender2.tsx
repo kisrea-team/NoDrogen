@@ -22,7 +22,10 @@ export default async function SenderBlog(props) {
     // }
     return (
         <>
+            <head>
+                <title>{d.data.title}</title>
 
+            </head>
             <body>
 
                 <main>

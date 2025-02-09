@@ -8,7 +8,8 @@
 import Image from "next/image";
 import { HiMiniClock, HiMiniUserCircle } from "react-icons/hi2";
 // import Head from "../Head";
-
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import Style from "./ui.module.css";
 const Pageinfo = (props) => {
    return (
@@ -41,7 +42,7 @@ const Pageinfo = (props) => {
 
                      {props.data?.icon?.startsWith("h") ? <img src={props.data.icon} alt="emoji" height="30" width="30" />
                         : props.data.icon}
-                     {props.title}
+                     {props.title || <Skeleton />}
                   </p>
                   <span>&nbsp;#&nbsp;{props.data.type} </span>
                </div>

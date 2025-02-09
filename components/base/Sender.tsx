@@ -20,7 +20,7 @@ import { getData } from "../../components/base/Node";
 //     icons: icon,
 //     description: d.wiki["description"],
 //   };
-import { NotionPage } from "../../components/NotionPage";
+// import { NotionPage } from "../../components/NotionPage";
 
 export default async function SenderMain(props) {
     const d = await getData("api/post/" + props.slug);
